@@ -36,11 +36,10 @@ z-index:999;
 .topbar{
 position:sticky;
 top:0;
-background:white;
 padding:12px 16px;
 box-shadow:0 2px 10px rgba(0,0,0,0.08);
 z-index:999;
-border-radius:12px;
+border-radius: 20px;
 margin:10px;
 }
 
@@ -53,14 +52,14 @@ align-items:center;
 
 /* LOGO */
 .logo{
-font-size:20px;
+font-size:50px;
 font-weight:700;
 color:#2e7d32;
 }
 
 /* HAMBURGER */
 .hamburger{
-font-size:22px;
+font-size:40px;
 cursor:pointer;
 }
 
