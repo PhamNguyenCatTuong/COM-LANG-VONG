@@ -300,5 +300,18 @@ elif page == "nguongoc":
             
     """)
     st.markdown('<div class="watermark-center">', unsafe_allow_html=True)
+    st.markdown("""
+<div class="floating-contact">
+
+<a href="tel:0123456789" class="float-btn call-btn">
+📞
+</a>
+
+<a href="https://zalo.me/0123456789" target="_blank" class="float-btn zalo-btn">
+💬
+</a>
+
+</div>
+""", unsafe_allow_html=True)
     st.image("GANH COM.png", width=450)
     st.markdown('</div>', unsafe_allow_html=True)
