@@ -197,11 +197,7 @@ font-size:16px;
 
 # Lấy trang hiện tại
 params = st.query_params
-page = st.radio(
-    "",
-    ["Tổng quan", "Sản phẩm", "Dinh dưỡng", "Nguồn gốc"],
-    horizontal=True
-)
+page = params.get ("page", "Tổng quan")
 
 # Thanh tiêu đề + menu
 st.markdown("""
