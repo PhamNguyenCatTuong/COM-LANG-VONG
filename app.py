@@ -57,6 +57,58 @@ font-weight:700;
 color:#2e7d32;
 }
 
+/* ===== FLOAT BUTTON ===== */
+.floating-contact{
+position:fixed;
+bottom:20px;
+right:15px;
+display:flex;
+flex-direction:column;
+gap:10px;
+z-index:9999;
+}
+
+/* NÚT CHUNG */
+.float-btn{
+width:50px;
+height:50px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:22px;
+text-decoration:none;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+animation: pulse 1.5s infinite;
+}
+
+/* GỌI */
+.call-btn{
+background:#2e7d32;
+}
+
+/* ZALO */
+.zalo-btn{
+background:#0084ff;
+}
+
+/* HIỆU ỨNG NHẤP NHÁY */
+@keyframes pulse {
+0% {transform: scale(1);}
+50% {transform: scale(1.1);}
+100% {transform: scale(1);}
+}
+
+/* MOBILE chỉnh nhỏ lại */
+@media (max-width:768px){
+.float-btn{
+width:45px;
+height:45px;
+font-size:20px;
+}
+}
+
 /* HAMBURGER */
 .hamburger{
 font-size:25px;
