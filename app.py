@@ -13,137 +13,121 @@ page = params.get("page","home")
 st.markdown("""
 <style>
 
+/* ===== RESET ===== */
+html, body {
+margin: 0;
+padding: 0;
+}
+
+/* ===== TOPBAR ===== */
 .topbar{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 background:white;
-padding:49px 50px;
+padding:10px 15px;
 display:flex;
-justify-content:space-between;
-align-items:center;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
+flex-direction:column;
+box-shadow:0 2px 8px rgba(0,0,0,0.08);
 z-index:999;
 }
 
+/* HEADER ROW */
+.top-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+width:100%;
+}
+
+/* LOGO */
 .logo{
-font-size:55px;
-font-weight:1000;
-color:#2e7d32;
-letter-spacing:0.5px;
-font-family:serif;
-}
-
-.menu{
 font-size:20px;
+font-weight:700;
+color:#2e7d32;
 }
 
-.menu a{
+/* HAMBURGER */
+.hamburger{
+font-size:24px;
+cursor:pointer;
+}
+
+/* MOBILE MENU */
+.mobile-menu{
+display:none;
+flex-direction:column;
+margin-top:10px;
+}
+
+.mobile-menu a{
+padding:12px 0;
+font-size:16px;
+border-bottom:1px solid #eee;
 text-decoration:none;
 color:#333;
-margin:0 5px;
 }
 
-.menu span{
-color:#999;
-margin:0 1px;
+.mobile-menu.active{
+display:flex;
 }
 
-.menu a:hover{
-color:#2e7d32;
-font-weight:bold;
+/* ===== CONTENT ===== */
+.content{
+margin-top:90px;
+padding:12px;
+max-width:700px;
+margin-left:auto;
+margin-right:auto;
+font-size:15px;
+line-height:1.6;
+}
+
+/* IMAGE AUTO SCALE */
+img{
+border-radius:10px;
+}
+
+/* ===== DESKTOP ===== */
+@media (min-width:768px){
+
+.topbar{
+flex-direction:row;
+align-items:center;
+padding:15px 40px;
+}
+
+.mobile-menu{
+display:flex !important;
+flex-direction:row;
+margin-top:0;
+}
+
+.mobile-menu a{
+border:none;
+margin-left:20px;
+padding:0;
+}
+
+.hamburger{
+display:none;
+}
+
+.logo{
+font-size:26px;
 }
 
 .content{
-margin-top:50px;
-padding:20px;
-}
-            
-.watermark{
-display:block;
-margin-left:auto;
-margin-right:auto;
-margin-top:60px;
-opacity:0.12;
-position:relative;
-z-index:0;
-}
-
-.text-layer{
-position:relative;
-z-index:2;
-}
-
-.watermark-center{
-text-align:center;
-margin-top:60px;
-opacity:0.12;
-}
-            
-/* Responsive khi màn hình nhỏ */
-
-@media (max-width:900px){
-
-.topbar{
-flex-direction:column;
-align-items:flex-start;
-}
-
-}
-.menu{
-justify-content:flex-start;
-margin-top:8px;
-}
-
-@media (max-width:800px){
-
-.watermark{
-width:60vw;
-opacity:0.1;
+margin-top:80px;
+font-size:16px;
 }
 
 }
 
 </style>
 """, unsafe_allow_html=True)
-st.markdown("""
-<div class="topbar">
 
-<div style="width:100%; display:flex; justify-content:space-between; align-items:center;">
-    <div class="logo">🌾 Cốm Làng Vòng</div>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-</div>
-
-<!-- MENU DESKTOP -->
-<div class="menu">
-<a href="?page=tongquan">Tổng quan</a>
-<a href="?page=sanpham">Sản phẩm</a>
-<a href="?page=dinhduong">Dinh dưỡng</a>
-<a href="?page=nguongoc">Nguồn gốc</a>
-</div>
-
-<!-- MENU MOBILE -->
-<div id="mobileMenu" class="mobile-menu">
-<a href="?page=tongquan">Tổng quan</a>
-<a href="?page=sanpham">Sản phẩm</a>
-<a href="?page=dinhduong">Dinh dưỡng</a>
-<a href="?page=nguongoc">Nguồn gốc</a>
-</div>
-
-</div>
-
-<script>
-function toggleMenu() {
-    var menu = document.getElementById("mobileMenu");
-    if (menu.classList.contains("active")) {
-        menu.classList.remove("active");
-    } else {
-        menu.classList.add("active");
-    }
-}
-</script>
-""", unsafe_allow_html=True)
 # Lấy trang hiện tại
 params = st.query_params
 page = params.get("page","tongquan")
@@ -152,18 +136,26 @@ page = params.get("page","tongquan")
 st.markdown("""
 <div class="topbar">
 
-<div class="logo">
-🌾 Cốm Làng Vòng
+<div class="top-row">
+    <div class="logo">🌾 Cốm Làng Vòng</div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
 </div>
 
-<div class="menu">
-<a href="?page=tongquan">Tổng quan</a><span>|</span>
-<a href="?page=sanpham">Sản phẩm</a><span>|</span>
-<a href="?page=dinhduong">Giá trị dinh dưỡng</a><span>|</span>
-<a href="?page=nguongoc">Nguồn gốc</a>
+<div id="menu" class="mobile-menu">
+    <a href="?page=tongquan">Tổng quan</a>
+    <a href="?page=sanpham">Sản phẩm</a>
+    <a href="?page=dinhduong">Dinh dưỡng</a>
+    <a href="?page=nguongoc">Nguồn gốc</a>
 </div>
 
 </div>
+
+<script>
+function toggleMenu(){
+    var menu = document.getElementById("menu");
+    menu.classList.toggle("active");
+}
+</script>
 """, unsafe_allow_html=True)
 
 st.markdown("<div class='content'>", unsafe_allow_html=True)
