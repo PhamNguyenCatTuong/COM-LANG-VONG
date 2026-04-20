@@ -39,7 +39,7 @@ top:0;
 padding:12px 16px;
 box-shadow:0 2px 10px rgba(0,0,0,0.08);
 z-index:999;
-border-radius: 20px;
+border-radius: 15px;
 margin:10px;
 }
 
