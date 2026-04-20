@@ -228,7 +228,7 @@ st.markdown("<div class='content'>", unsafe_allow_html=True)
 
 # Nội dung các menu
 
-if page == "tongquan":
+if page == "Tổng quan":
 
     import streamlit as st
     st.markdown("<h1 style='text-align: center;'>Tổng quan</h1>", unsafe_allow_html=True)
@@ -275,7 +275,7 @@ if page == "tongquan":
 </div>
 """, unsafe_allow_html=True)
 
-elif page == "sanpham":
+elif page == "Sản phẩm":
 
     import streamlit as st
     st.markdown("<h1 style='text-align: center;'>Sản phẩm</h1>", unsafe_allow_html=True)
@@ -302,7 +302,7 @@ elif page == "sanpham":
 </div>
 """, unsafe_allow_html=True)
 
-elif page == "dinhduong":
+elif page == "Dinh dưỡng":
 
     import streamlit as st
     st.markdown("<h1 style='text-align: center;'>Giá trị dinh dưỡng</h1>", unsafe_allow_html=True)
@@ -332,7 +332,7 @@ elif page == "dinhduong":
     st.image("GANH COM.png", width=450)
     st.markdown('</div>', unsafe_allow_html=True)
 
-elif page == "nguongoc":
+elif page == "Nguồn gốc":
 
     import streamlit as st
     st.markdown("<h1 style='text-align: center;'>Nguồn gốc</h1>", unsafe_allow_html=True)
