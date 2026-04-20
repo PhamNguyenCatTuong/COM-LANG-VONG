@@ -257,6 +257,19 @@ if page == "tongquan":
     st.write("""
          Ngày nay, giữa nhịp sống hiện đại và sự phát triển không ngừng của Hà Nội, nghề làm cốm vẫn được gìn giữ như một phần hồn cốt của Thủ đô. Dù có nhiều biến đổi về hình thức kinh doanh hay bao bì sản phẩm, hương vị cốm truyền thống vẫn giữ nguyên nét thanh tao vốn có. Cốm làng Vòng không chỉ là món ăn, mà còn là ký ức, là văn hóa, là biểu tượng của mùa thu Hà Nội – một thức quà giản dị nhưng chứa đựng cả tinh hoa của đất trời và bàn tay cần mẫn của con người.
     """)
+    st.markdown("""
+<div class="floating-contact">
+
+<a href="tel:0385437503" class="float-btn call-btn">
+📞
+</a>
+
+<a href="https://zalo.me/0385437503" target="_blank" class="float-btn zalo-btn">
+💬
+</a>
+
+</div>
+""", unsafe_allow_html=True)
 
 elif page == "sanpham":
 
@@ -271,6 +284,19 @@ elif page == "sanpham":
     - Chả cốm  
     - Xôi cốm
     """)
+    st.markdown("""
+<div class="floating-contact">
+
+<a href="tel:0385437503" class="float-btn call-btn">
+📞
+</a>
+
+<a href="https://zalo.me/0385437503" target="_blank" class="float-btn zalo-btn">
+💬
+</a>
+
+</div>
+""", unsafe_allow_html=True)
 
 elif page == "dinhduong":
 
@@ -286,6 +312,19 @@ elif page == "dinhduong":
     - Một số khoáng chất cần thiết
     """)
     st.markdown('<div class="watermark-center">', unsafe_allow_html=True)
+    st.markdown("""
+<div class="floating-contact">
+
+<a href="tel:0385437503" class="float-btn call-btn">
+📞
+</a>
+
+<a href="https://zalo.me/0385437503" target="_blank" class="float-btn zalo-btn">
+💬
+</a>
+
+</div>
+""", unsafe_allow_html=True)
     st.image("GANH COM.png", width=450)
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -303,11 +342,11 @@ elif page == "nguongoc":
     st.markdown("""
 <div class="floating-contact">
 
-<a href="tel:0123456789" class="float-btn call-btn">
+<a href="tel:0385437503" class="float-btn call-btn">
 📞
 </a>
 
-<a href="https://zalo.me/0123456789" target="_blank" class="float-btn zalo-btn">
+<a href="https://zalo.me/0385437503" target="_blank" class="float-btn zalo-btn">
 💬
 </a>
 
