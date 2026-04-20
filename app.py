@@ -107,7 +107,43 @@ opacity:0.1;
 
 </style>
 """, unsafe_allow_html=True)
+st.markdown("""
+<div class="topbar">
 
+<div style="width:100%; display:flex; justify-content:space-between; align-items:center;">
+    <div class="logo">🌾 Cốm Làng Vòng</div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+</div>
+
+<!-- MENU DESKTOP -->
+<div class="menu">
+<a href="?page=tongquan">Tổng quan</a>
+<a href="?page=sanpham">Sản phẩm</a>
+<a href="?page=dinhduong">Dinh dưỡng</a>
+<a href="?page=nguongoc">Nguồn gốc</a>
+</div>
+
+<!-- MENU MOBILE -->
+<div id="mobileMenu" class="mobile-menu">
+<a href="?page=tongquan">Tổng quan</a>
+<a href="?page=sanpham">Sản phẩm</a>
+<a href="?page=dinhduong">Dinh dưỡng</a>
+<a href="?page=nguongoc">Nguồn gốc</a>
+</div>
+
+</div>
+
+<script>
+function toggleMenu() {
+    var menu = document.getElementById("mobileMenu");
+    if (menu.classList.contains("active")) {
+        menu.classList.remove("active");
+    } else {
+        menu.classList.add("active");
+    }
+}
+</script>
+""", unsafe_allow_html=True)
 # Lấy trang hiện tại
 params = st.query_params
 page = params.get("page","tongquan")
