@@ -86,7 +86,7 @@ font-size:15px;
 }
 
 /* Khi check thì mở menu */
-#menu-toggle:checked + .menu{
+#menu-toggle:checked ~ .menu{
 display:flex;
 }
 
@@ -153,13 +153,12 @@ page = params.get("page","tongquan")
 st.markdown("""
 <div class="topbar">
 
+<input type="checkbox" id="menu-toggle">
+
 <div class="top-row">
     <div class="logo">🌾 Cốm Làng Vòng</div>
-
-   <label class="hamburger">
-        ☰
-        <input type="checkbox" id="menu-toggle">
-    </label>
+    <label for="menu-toggle" class="hamburger">☰</label>
+</div>
 
 <div class="menu">
     <a href="?page=tongquan">Tổng quan</a>
