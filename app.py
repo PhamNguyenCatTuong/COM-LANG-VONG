@@ -52,7 +52,7 @@ align-items:center;
 
 /* LOGO */
 .logo{
-font-size:25px;
+font-size:35px;
 font-weight:700;
 color:#2e7d32;
 }
