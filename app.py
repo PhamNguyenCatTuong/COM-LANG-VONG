@@ -25,7 +25,6 @@ position:sticky;
 top:0;
 left:0;
 width:100%;
-background:white;
 padding:10px 15px;
 display:flex;
 flex-direction:column;
