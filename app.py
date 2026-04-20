@@ -156,10 +156,10 @@ st.markdown("""
 <div class="top-row">
     <div class="logo">🌾 Cốm Làng Vòng</div>
 
-    <label for="menu-toggle" class="hamburger">☰</label>
-</div>
-
-<input type="checkbox" id="menu-toggle">
+   <label class="hamburger">
+        ☰
+        <input type="checkbox" id="menu-toggle">
+    </label>
 
 <div class="menu">
     <a href="?page=tongquan">Tổng quan</a>
