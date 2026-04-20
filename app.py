@@ -52,14 +52,14 @@ align-items:center;
 
 /* LOGO */
 .logo{
-font-size:40px;
+font-size:25px;
 font-weight:700;
 color:#2e7d32;
 }
 
 /* HAMBURGER */
 .hamburger{
-font-size:40px;
+font-size:25px;
 cursor:pointer;
 }
 
