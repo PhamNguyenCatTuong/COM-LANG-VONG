@@ -60,7 +60,7 @@ color:#2e7d32;
 /* ===== FLOAT BUTTON ===== */
 .floating-contact{
 position:fixed;
-bottom:30px;
+bottom:40px;
 right:15px;
 display:flex;
 flex-direction:column;
