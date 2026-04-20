@@ -33,12 +33,23 @@ box-shadow:0 2px 8px rgba(0,0,0,0.08);
 z-index:999;
 }
 
-/* HEADER ROW */
+/* ===== HEADER ===== */
+.topbar{
+position:sticky;
+top:0;
+background:white;
+padding:12px 16px;
+box-shadow:0 2px 10px rgba(0,0,0,0.08);
+z-index:999;
+border-radius:12px;
+margin:10px;
+}
+
+/* ROW */
 .top-row{
 display:flex;
 justify-content:space-between;
 align-items:center;
-width:100%;
 }
 
 /* LOGO */
@@ -50,26 +61,32 @@ color:#2e7d32;
 
 /* HAMBURGER */
 .hamburger{
-font-size:24px;
+font-size:22px;
 cursor:pointer;
 }
 
-/* MOBILE MENU */
-.mobile-menu{
+/* ẨN CHECKBOX */
+#menu-toggle{
+display:none;
+}
+
+/* MENU */
+.menu{
 display:none;
 flex-direction:column;
 margin-top:10px;
 }
 
-.mobile-menu a{
-padding:12px 0;
-font-size:16px;
+.menu a{
+padding:10px 0;
 border-bottom:1px solid #eee;
 text-decoration:none;
 color:#333;
+font-size:15px;
 }
 
-.mobile-menu.active{
+/* Khi check thì mở menu */
+#menu-toggle:checked + .menu{
 display:flex;
 }
 
@@ -98,13 +115,13 @@ align-items:center;
 padding:15px 40px;
 }
 
-.mobile-menu{
+.menu{
 display:flex !important;
 flex-direction:row;
 margin-top:0;
 }
 
-.mobile-menu a{
+.menu a{
 border:none;
 margin-left:20px;
 padding:0;
@@ -138,10 +155,13 @@ st.markdown("""
 
 <div class="top-row">
     <div class="logo">🌾 Cốm Làng Vòng</div>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+    <label for="menu-toggle" class="hamburger">☰</label>
 </div>
 
-<div id="menu" class="mobile-menu">
+<input type="checkbox" id="menu-toggle">
+
+<div class="menu">
     <a href="?page=tongquan">Tổng quan</a>
     <a href="?page=sanpham">Sản phẩm</a>
     <a href="?page=dinhduong">Dinh dưỡng</a>
@@ -149,13 +169,6 @@ st.markdown("""
 </div>
 
 </div>
-
-<script>
-function toggleMenu(){
-    var menu = document.getElementById("menu");
-    menu.classList.toggle("active");
-}
-</script>
 """, unsafe_allow_html=True)
 
 st.markdown("<div class='content'>", unsafe_allow_html=True)
