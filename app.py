@@ -302,7 +302,7 @@ elif page == "Dinh dưỡng":
 
     import streamlit as st
 
-    st.markdown("<h1 style='text-align: center;'>Giá trị dinh dưỡng</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center;'>Dinh dưỡng</h1>", unsafe_allow_html=True)
 
     st.image("Com dinh duong.jpg", width=450)
 
