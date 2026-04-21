@@ -301,30 +301,110 @@ elif page == "Sản phẩm":
 elif page == "Dinh dưỡng":
 
     import streamlit as st
+
     st.markdown("<h1 style='text-align: center;'>Giá trị dinh dưỡng</h1>", unsafe_allow_html=True)
 
+    st.image("Com dinh duong.jpg", width=450)
+
     st.write("""
-    Cốm chứa nhiều chất dinh dưỡng từ lúa nếp non:
-
-    - Carbohydrate cung cấp năng lượng
-    - Vitamin nhóm B
-    - Chất xơ
-    - Một số khoáng chất cần thiết
+    Cốm khô được làm từ gạo nếp non, không chỉ thơm ngon mà còn cung cấp nhiều giá trị dinh dưỡng tự nhiên cho cơ thể.
     """)
-    st.markdown('<div class="watermark-center">', unsafe_allow_html=True)
+
+    # ===== BẢNG DINH DƯỠNG =====
+    st.markdown("### 📊 Thành phần dinh dưỡng trong 100g cốm khô")
+
     st.markdown("""
-<div class="floating-contact">
+    <table>
+        <tr>
+            <th>Thành phần</th>
+            <th>Hàm lượng</th>
+        </tr>
+        <tr>
+            <td>Năng lượng</td>
+            <td>350 – 370 kcal</td>
+        </tr>
+        <tr>
+            <td>Carbohydrate</td>
+            <td>75 – 80g</td>
+        </tr>
+        <tr>
+            <td>Protein</td>
+            <td>6 – 8g</td>
+        </tr>
+        <tr>
+            <td>Chất béo</td>
+            <td>1 – 2g</td>
+        </tr>
+        <tr>
+            <td>Chất xơ</td>
+            <td>1 – 2g</td>
+        </tr>
+    </table>
+    """, unsafe_allow_html=True)
 
-<a href="tel:0385437503" class="float-btn call-btn">
-📞
-</a>
+    # ===== HIGHLIGHT =====
+    st.markdown("""
+    <div style="
+        background:#e8f5e9;
+        padding:15px;
+        border-radius:10px;
+        margin-top:20px;
+    ">
+        👉 <b>Điểm nổi bật:</b> Giàu năng lượng – Ít chất béo – Dễ tiêu hóa
+    </div>
+    """, unsafe_allow_html=True)
 
-<a href="https://zalo.me/0385437503" target="_blank" class="float-btn zalo-btn">
-💬
-</a>
+    # ===== LỢI ÍCH =====
+    st.markdown("### 💪 Lợi ích khi sử dụng cốm")
 
-</div>
-""", unsafe_allow_html=True)
+    st.write("""
+    - ⚡ **Bổ sung năng lượng nhanh**: Hàm lượng tinh bột cao giúp cơ thể hoạt động hiệu quả  
+    - 🌿 **Tự nhiên, ít chế biến**: Giữ được hương vị và dưỡng chất từ lúa non  
+    - 🧠 **Hỗ trợ chuyển hóa**: Chứa vitamin nhóm B tốt cho cơ thể  
+    - ❤️ **Dễ tiêu hóa**: Phù hợp ăn nhẹ, không gây nặng bụng  
+    """)
+
+    # ===== LƯU Ý =====
+    st.markdown("### ⚠️ Lưu ý khi sử dụng")
+
+    st.write("""
+    - Nên ăn vừa phải nếu đang giảm cân  
+    - Người cần kiểm soát đường huyết nên hạn chế  
+    """)
+
+    # ===== CTA =====
+    st.markdown("""
+    <div style="
+        text-align:center;
+        margin-top:30px;
+    ">
+        <a href="?page=sanpham" style="
+            background:#2e7d32;
+            color:white;
+            padding:12px 20px;
+            border-radius:8px;
+            text-decoration:none;
+            font-weight:bold;
+        ">
+            👉 Xem sản phẩm ngay
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # ===== FLOAT BUTTON =====
+    st.markdown("""
+    <div class="floating-contact">
+
+    <a href="tel:0385437503" class="float-btn call-btn">
+    📞
+    </a>
+
+    <a href="https://zalo.me/0385437503" target="_blank" class="float-btn zalo-btn">
+    💬
+    </a>
+
+    </div>
+    """, unsafe_allow_html=True)
     st.image("GANH COM.png", width=450)
     st.markdown('</div>', unsafe_allow_html=True)
 
