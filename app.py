@@ -285,31 +285,26 @@ elif page == "sanpham":
     st.markdown("### 🌾 Các sản phẩm nổi bật")
 
     st.markdown("""
-    <div style="display:flex; flex-direction:column; gap:15px; margin-top:10px;">
+<div style="padding:15px; border-radius:10px; background:#f1f8e9;">
+<b>🌿 Cốm khô</b><br>
+Thơm nhẹ, dễ bảo quản, phù hợp ăn trực tiếp hoặc chế biến
+</div>
 
-        <div style="padding:15px; border-radius:10px; background:#f1f8e9;">
-            <b>🌿 Cốm khô</b><br>
-            Thơm nhẹ, dễ bảo quản, phù hợp ăn trực tiếp hoặc chế biến
-        </div>
+<div style="padding:15px; border-radius:10px; background:#f1f8e9;">
+<b>🍰 Bánh cốm</b><br>
+Dẻo thơm, nhân đậu xanh ngọt dịu – đặc sản cưới hỏi
+</div>
 
-        <div style="padding:15px; border-radius:10px; background:#f1f8e9;">
-            <b>🍰 Bánh cốm</b><br>
-            Dẻo thơm, nhân đậu xanh ngọt dịu – đặc sản cưới hỏi
-        </div>
+<div style="padding:15px; border-radius:10px; background:#f1f8e9;">
+<b>🍖 Chả cốm</b><br>
+Kết hợp thịt và cốm – món ăn đậm vị Hà Nội
+</div>
 
-        <div style="padding:15px; border-radius:10px; background:#f1f8e9;">
-            <b>🍖 Chả cốm</b><br>
-            Kết hợp thịt và cốm – món ăn đậm vị Hà Nội
-        </div>
-
-        <div style="padding:15px; border-radius:10px; background:#f1f8e9;">
-            <b>🍚 Xôi cốm</b><br>
-            Mềm dẻo, thơm hương lá sen, ăn sáng cực ngon
-        </div>
-
-    </div>
-    """, unsafe_allow_html=True)
-
+<div style="padding:15px; border-radius:10px; background:#f1f8e9;">
+<b>🍚 Xôi cốm</b><br>
+Mềm dẻo, thơm hương lá sen, ăn sáng cực ngon
+</div>
+""", unsafe_allow_html=True)
     # ===== ĐIỂM NỔI BẬT =====
     st.markdown("""
     <div style="
