@@ -301,11 +301,7 @@ elif page == "sanpham":
 elif page == "dinhduong":
 
     import streamlit as st
-
     st.markdown("<h1 style='text-align: center;'>Dinh dưỡng</h1>", unsafe_allow_html=True)
-
-    st.image("Com dinh duong.jpg", width=450)
-
     st.write("""
     Cốm khô được làm từ gạo nếp non, không chỉ thơm ngon mà còn cung cấp nhiều giá trị dinh dưỡng tự nhiên cho cơ thể.
     """)
