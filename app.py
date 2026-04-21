@@ -197,7 +197,7 @@ font-size:16px;
 
 # Lấy trang hiện tại
 params = st.query_params
-page = params.get ("page", "Tổng quan")
+page = params.get ("page", "tongquan")
 
 # Thanh tiêu đề + menu
 st.markdown("""
@@ -224,7 +224,7 @@ st.markdown("<div class='content'>", unsafe_allow_html=True)
 
 # Nội dung các menu
 
-if page == "Tổng quan":
+if page == "tongquan":
 
     import streamlit as st
     st.markdown("<h1 style='text-align: center;'>Tổng quan</h1>", unsafe_allow_html=True)
@@ -271,7 +271,7 @@ if page == "Tổng quan":
 </div>
 """, unsafe_allow_html=True)
 
-elif page == "Sản phẩm":
+elif page == "sanpham":
 
     import streamlit as st
     st.markdown("<h1 style='text-align: center;'>Sản phẩm</h1>", unsafe_allow_html=True)
@@ -298,7 +298,7 @@ elif page == "Sản phẩm":
 </div>
 """, unsafe_allow_html=True)
 
-elif page == "Dinh dưỡng":
+elif page == "dinhduong":
 
     import streamlit as st
 
@@ -408,7 +408,7 @@ elif page == "Dinh dưỡng":
     st.image("GANH COM.png", width=450)
     st.markdown('</div>', unsafe_allow_html=True)
 
-elif page == "Nguồn gốc":
+elif page == "nguongoc":
 
     import streamlit as st
     st.markdown("<h1 style='text-align: center;'>Nguồn gốc</h1>", unsafe_allow_html=True)
