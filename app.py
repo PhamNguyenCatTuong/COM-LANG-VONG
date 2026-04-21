@@ -274,29 +274,82 @@ if page == "tongquan":
 elif page == "sanpham":
 
     import streamlit as st
-    st.markdown("<h1 style='text-align: center;'>Sản phẩm</h1>", unsafe_allow_html=True)
+
+    st.markdown("<h1 style='text-align: center;'>Sản phẩm từ cốm</h1>", unsafe_allow_html=True)
 
     st.write("""
-    Các sản phẩm phổ biến từ cốm:
-
-    - Cốm tươi  
-    - Bánh cốm  
-    - Chả cốm  
-    - Xôi cốm
+    Cốm không chỉ là món ăn truyền thống mà còn được chế biến thành nhiều sản phẩm hấp dẫn, phù hợp làm quà biếu hoặc thưởng thức hàng ngày.
     """)
+
+    # ===== DANH SÁCH SẢN PHẨM =====
+    st.markdown("### 🌾 Các sản phẩm nổi bật")
+
     st.markdown("""
-<div class="floating-contact">
+    <div style="display:flex; flex-direction:column; gap:15px; margin-top:10px;">
 
-<a href="tel:0385437503" class="float-btn call-btn">
-📞
-</a>
+        <div style="padding:15px; border-radius:10px; background:#f1f8e9;">
+            <b>🌿 Cốm khô</b><br>
+            Thơm nhẹ, dễ bảo quản, phù hợp ăn trực tiếp hoặc chế biến
+        </div>
 
-<a href="https://zalo.me/0385437503" target="_blank" class="float-btn zalo-btn">
-💬
-</a>
+        <div style="padding:15px; border-radius:10px; background:#f1f8e9;">
+            <b>🍰 Bánh cốm</b><br>
+            Dẻo thơm, nhân đậu xanh ngọt dịu – đặc sản cưới hỏi
+        </div>
 
-</div>
-""", unsafe_allow_html=True)
+        <div style="padding:15px; border-radius:10px; background:#f1f8e9;">
+            <b>🍖 Chả cốm</b><br>
+            Kết hợp thịt và cốm – món ăn đậm vị Hà Nội
+        </div>
+
+        <div style="padding:15px; border-radius:10px; background:#f1f8e9;">
+            <b>🍚 Xôi cốm</b><br>
+            Mềm dẻo, thơm hương lá sen, ăn sáng cực ngon
+        </div>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+    # ===== ĐIỂM NỔI BẬT =====
+    st.markdown("""
+    <div style="
+        background:#e8f5e9;
+        padding:15px;
+        border-radius:10px;
+        margin-top:20px;
+    ">
+        ✔ Nguyên liệu nếp non chọn lọc <br>
+        ✔ Không chất bảo quản <br>
+        ✔ Hương vị truyền thống Hà Nội
+    </div>
+    """, unsafe_allow_html=True)
+
+    # ===== CTA =====
+    st.markdown("""
+    <div style="text-align:center; margin-top:30px;">
+        <a href="tel:0385437503" style="
+            background:#2e7d32;
+            color:white;
+            padding:12px 20px;
+            border-radius:8px;
+            text-decoration:none;
+            font-weight:bold;
+        ">
+            📞 Đặt hàng ngay
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # FLOAT BUTTON
+    st.markdown("""
+    <div class="floating-contact">
+
+    <a href="tel:0385437503" class="float-btn call-btn">📞</a>
+
+    <a href="https://zalo.me/0385437503" target="_blank" class="float-btn zalo-btn">💬</a>
+
+    </div>
+    """, unsafe_allow_html=True)
 
 elif page == "dinhduong":
 
@@ -407,26 +460,70 @@ elif page == "dinhduong":
 elif page == "nguongoc":
 
     import streamlit as st
-    st.markdown("<h1 style='text-align: center;'>Nguồn gốc</h1>", unsafe_allow_html=True)
+
+    st.markdown("<h1 style='text-align: center;'>Nguồn gốc cốm làng Vòng</h1>", unsafe_allow_html=True)
 
     st.write("""
-             Cốm Làng Vòng có nguồn gốc từ làng Vòng xưa (nay thuộc phường Dịch Vọng Hậu, quận Cầu Giấy, Hà Nội). Theo truyền lại, nghề làm cốm đã có từ hàng trăm năm trước. Có giai thoại kể rằng vào một năm mưa bão lớn, lúa ngoài đồng bị ngập khi còn xanh. Để cứu đói, người dân hái lúa non rang lên ăn tạm, không ngờ lại phát hiện hương vị dẻo thơm đặc biệt. Từ sự tình cờ ấy, nghề làm cốm ra đời và dần được hoàn thiện, truyền từ đời này sang đời khác như một báu vật của làng.
-             Trải qua thời gian, cốm không chỉ là món ăn mà còn trở thành niềm tự hào của người dân nơi đây. Từ những gánh hàng rong len lỏi khắp phố phường đến các dịp lễ hỏi, cưới xin truyền thống của người Hà Nội, cốm luôn hiện diện như một phần không thể thiếu. 
-            
+    Cốm làng Vòng là đặc sản nổi tiếng của Hà Nội, gắn liền với truyền thống hàng trăm năm và được xem là biểu tượng của mùa thu đất Bắc.
     """)
-    st.markdown('<div class="watermark-center">', unsafe_allow_html=True)
+
+    # ===== CÂU CHUYỆN =====
+    st.markdown("### 📜 Câu chuyện hình thành")
+
+    st.write("""
+    Theo truyền lại, vào một năm mưa bão lớn, lúa bị ngập khi còn xanh. Người dân đã thu hoạch lúa non, rang lên để chống đói. Không ngờ hạt lúa non lại mang hương vị dẻo thơm đặc biệt. Từ đó, nghề làm cốm ra đời và phát triển cho đến ngày nay.
+    """)
+
+    # ===== QUY TRÌNH =====
+    st.markdown("### ⚙️ Quy trình làm cốm truyền thống")
+
+    st.write("""
+    - 🌾 Gặt lúa nếp non đúng thời điểm  
+    - 🔥 Rang thóc bằng chảo gang  
+    - 🥣 Giã thủ công nhiều lần  
+    - 🍃 Gói trong lá sen giữ hương thơm  
+    """)
+
+    # ===== GIÁ TRỊ =====
     st.markdown("""
-<div class="floating-contact">
+    <div style="
+        background:#f1f8e9;
+        padding:15px;
+        border-radius:10px;
+        margin-top:20px;
+    ">
+        💚 Cốm không chỉ là món ăn mà còn là:
+        <br>• Văn hóa
+        <br>• Ký ức tuổi thơ
+        <br>• Tinh hoa ẩm thực Hà Nội
+    </div>
+    """, unsafe_allow_html=True)
 
-<a href="tel:0385437503" class="float-btn call-btn">
-📞
-</a>
+    # ===== CTA =====
+    st.markdown("""
+    <div style="text-align:center; margin-top:30px;">
+        <a href="?page=sanpham" style="
+            background:#2e7d32;
+            color:white;
+            padding:12px 20px;
+            border-radius:8px;
+            text-decoration:none;
+            font-weight:bold;
+        ">
+            👉 Xem sản phẩm
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
 
-<a href="https://zalo.me/0385437503" target="_blank" class="float-btn zalo-btn">
-💬
-</a>
+    # FLOAT BUTTON
+    st.markdown("""
+    <div class="floating-contact">
 
-</div>
-""", unsafe_allow_html=True)
+    <a href="tel:0385437503" class="float-btn call-btn">📞</a>
+
+    <a href="https://zalo.me/0385437503" target="_blank" class="float-btn zalo-btn">💬</a>
+
+    </div>
+    """, unsafe_allow_html=True)
     st.image("GANH COM.png", width=450)
     st.markdown('</div>', unsafe_allow_html=True)
