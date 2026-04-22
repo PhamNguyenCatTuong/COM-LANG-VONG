@@ -524,29 +524,51 @@ elif page == "nguongoc":
     st.markdown('</div>', unsafe_allow_html=True)
 
 st.markdown("""
-<div style="
-    background:#000;
-    color:#fff;
-    padding:30px 20px;
-    margin-top:50px;
-    border-radius:15px 15px 0 0;
-">
+<style>
+.footer-full {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+    background: #000;
+    color: #fff;
+    padding: 30px 20px;
+    margin-top: 50px;
+}
 
-    <div style="max-width:700px; margin:auto; text-align:center;">
+.footer-content {
+    max-width: 700px;
+    margin: auto;
+    text-align: center;
+}
+
+.footer-content a {
+    color: #fff;
+    text-decoration: none;
+}
+</style>
+
+<div class="footer-full">
+    <div class="footer-content">
 
         <h3 style="margin-bottom:15px;">🌾 Cốm Làng Vòng</h3>
 
         <p>📍 Địa chỉ: Làng Vòng, Dịch Vọng Hậu, Cầu Giấy, Hà Nội</p>
 
-        <p>📞 SĐT: 0385 437 503</p>
+        <p>
+            📞 <a href="tel:0385437503">0385 437 503</a>
+        </p>
 
-        <p>💬 Zalo: 0385 437 503</p>
+        <p>
+            💬 <a href="https://zalo.me/0385437503" target="_blank">Chat Zalo</a>
+        </p>
 
         <p style="margin-top:15px; font-size:13px; color:#ccc;">
             © 2026 Cốm Làng Vòng. All rights reserved.
         </p>
 
     </div>
-
 </div>
 """, unsafe_allow_html=True)
