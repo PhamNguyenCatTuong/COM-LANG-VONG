@@ -525,45 +525,48 @@ elif page == "nguongoc":
 
 st.markdown("""
 <style>
-.footer-full {
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    width: 100vw;
-    background: #000;
-    color: #fff;
-    padding: 30px 20px;
-    margin-top: 50px;
+
+/* XÓA KHUNG TRẮNG STREAMLIT */
+.block-container {
+    padding: 0 !important;
 }
 
+/* FOOTER FULL MÀN HÌNH */
+.footer-full {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+    background: #000;
+    color: #fff;
+    padding: 40px 20px;
+}
+
+/* NỘI DUNG BÊN TRONG */
 .footer-content {
     max-width: 700px;
     margin: auto;
     text-align: center;
 }
 
+/* LINK */
 .footer-content a {
     color: #fff;
     text-decoration: none;
 }
+
 </style>
 
 <div class="footer-full">
     <div class="footer-content">
 
-        <h3 style="margin-bottom:15px;">🌾 Cốm Làng Vòng</h3>
+        <h3>🌾 Cốm Làng Vòng</h3>
 
         <p>📍 Địa chỉ: Làng Vòng, Dịch Vọng Hậu, Cầu Giấy, Hà Nội</p>
 
-        <p>
-            📞 <a href="tel:0385437503">0385 437 503</a>
-        </p>
+        <p>📞 <a href="tel:0385437503">0385 437 503</a></p>
 
-        <p>
-            💬 <a href="https://zalo.me/0385437503" target="_blank">Chat Zalo</a>
-        </p>
+        <p>💬 <a href="https://zalo.me/0385437503" target="_blank">Chat Zalo</a></p>
 
         <p style="margin-top:15px; font-size:13px; color:#ccc;">
             © 2026 Cốm Làng Vòng. All rights reserved.
