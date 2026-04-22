@@ -522,3 +522,31 @@ elif page == "nguongoc":
     """, unsafe_allow_html=True)
     st.image("GANH COM.png", width=450)
     st.markdown('</div>', unsafe_allow_html=True)
+
+st.markdown("""
+<div style="
+    background:#000;
+    color:#fff;
+    padding:30px 20px;
+    margin-top:50px;
+    border-radius:15px 15px 0 0;
+">
+
+    <div style="max-width:700px; margin:auto; text-align:center;">
+
+        <h3 style="margin-bottom:15px;">🌾 Cốm Làng Vòng</h3>
+
+        <p>📍 Địa chỉ: Làng Vòng, Dịch Vọng Hậu, Cầu Giấy, Hà Nội</p>
+
+        <p>📞 SĐT: 0385 437 503</p>
+
+        <p>💬 Zalo: 0385 437 503</p>
+
+        <p style="margin-top:15px; font-size:13px; color:#ccc;">
+            © 2026 Cốm Làng Vòng. All rights reserved.
+        </p>
+
+    </div>
+
+</div>
+""", unsafe_allow_html=True)
