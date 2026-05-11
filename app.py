@@ -543,21 +543,20 @@ elif page == "nguongoc":
 st.markdown("""
 <style>
 
-/* XÓA KHUNG TRẮNG STREAMLIT */
+/* GIỮ KHOẢNG CÁCH NỘI DUNG TRÊN MOBILE */
 .block-container {
-    padding: 0 !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 /* FOOTER FULL MÀN HÌNH */
 .footer-full {
     position: relative;
-    width: 100vw;
+    width: calc(100vw - 32px);
     left: 50%;
-    margin-left: -50vw;
-    background: #000;
-    color: #fff;
-    padding: 40px 20px;
-}
+    margin-left: calc(-50vw + 16px);
 
 /* NỘI DUNG BÊN TRONG */
 .footer-content {
