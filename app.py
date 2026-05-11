@@ -13,6 +13,12 @@ page = params.get("page","home")
 st.markdown("""
 <style>
 
+/* ẨN MENU STREAMLIT */
+#MainMenu {visibility: hidden;}
+header {visibility: hidden;}
+footer {visibility: hidden;}
+[data-testid="stToolbar"] {display: none !important;}
+
 /* ===== RESET ===== */
 html, body {
 margin: 0;
@@ -55,6 +61,10 @@ align-items:center;
 font-size:35px;
 font-weight:700;
 color:#2e7d32;
+white-space: nowrap;
+overflow: visible;
+line-height:1.2;
+padding-right:10px;
 }
 
 /* ===== FLOAT BUTTON ===== */
@@ -143,12 +153,12 @@ display:flex;
 /* ===== CONTENT ===== */
 .content{
 margin-top:90px;
-padding:12px;
+padding:20px;
 max-width:700px;
 margin-left:auto;
 margin-right:auto;
 font-size:15px;
-line-height:1.6;
+line-height:1.8;
 }
 
 /* IMAGE AUTO SCALE */
