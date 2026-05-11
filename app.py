@@ -54,6 +54,9 @@ margin:10px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+gap:10px;
+width:100%;
+overflow:hidden;
 }
 
 /* LOGO */
@@ -164,6 +167,10 @@ line-height:1.8;
 /* IMAGE AUTO SCALE */
 img{
 border-radius:10px;
+max-width:100%;
+height:auto;
+padding:5px;
+box-sizing:border-box;
 }
 
 /* ===== DESKTOP ===== */
