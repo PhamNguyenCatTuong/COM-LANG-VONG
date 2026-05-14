@@ -34,6 +34,7 @@ page = params.get("page", "tongquan")
 
 st.markdown("""
 <style>
+
 #MainMenu {visibility: hidden;}
 header {visibility: hidden;}
 footer {visibility: hidden;}
@@ -50,6 +51,9 @@ html, body {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 }
+
+</style>
+""", unsafe_allow_html=True)
 
 .topbar {
     position: sticky;
