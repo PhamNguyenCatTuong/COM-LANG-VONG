@@ -20,37 +20,6 @@ page = params.get("page", "tongquan")
 st.markdown("""
 <style>
 
-/* =========================
-ẨN STREAMLIT + GITHUB
-========================= */
-
-/* ẨN HEADER STREAMLIT */
-header {
-    visibility: hidden;
-}
-
-/* ẨN FOOTER STREAMLIT */
-footer {
-    visibility: hidden;
-}
-
-/* ẨN NÚT GITHUB / FORK */
-[data-testid="stToolbar"] {
-    display: none !important;
-}
-
-/* ẨN BADGE STREAMLIT GÓC PHẢI */
-.viewerBadge_container__1QSob,
-.viewerBadge_link__1S137,
-.viewerBadge_text__1JaDK {
-    display: none !important;
-}
-
-/* ẨN DÒNG MADE WITH STREAMLIT */
-#MainMenu {
-    visibility: hidden;
-}
-
 /* ẨN THANH STREAMLIT */
 #MainMenu {visibility: hidden;}
 header {visibility: hidden;}
@@ -292,56 +261,46 @@ st.markdown("""
 <div class="dropdown">
     <button class="dropbtn">Thông tin sản phẩm</button>
     <div class="dropdown-content">
-        <a href="?page=tensp">Tên sản phẩm</a>
-        <a href="?page=masp">Mã sản phẩm</a>
-        <a href="?page=thuonghieu">Thương hiệu</a>
+        <a href="?page=tensp" target="_self">Tên sản phẩm</a>
+        <a href="?page=masp" target="_self">Mã sản phẩm</a>
+        <a href="?page=thuonghieu" target="_self">Thương hiệu</a>
     </div>
 </div>
 
 <div class="dropdown">
     <button class="dropbtn">Truy xuất nguồn gốc</button>
     <div class="dropdown-content">
-        <a href="?page=nguyenlieu">Nguồn nguyên liệu</a>
-        <a href="?page=khuvuc">Khu vực sản xuất</a>
-        <a href="?page=malo">Mã lô hàng</a>
+        <a href="?page=nguyenlieu" target="_self">Nguồn nguyên liệu</a>
+        <a href="?page=khuvuc" target="_self">Khu vực sản xuất</a>
+        <a href="?page=malo" target="_self">Mã lô hàng</a>
     </div>
 </div>
 
 <div class="dropdown">
     <button class="dropbtn">Chất lượng & chứng nhận</button>
     <div class="dropdown-content">
-        <a href="?page=ocop">Chứng nhận OCOP</a>
-        <a href="?page=kiemdinh">Kiểm định chất lượng</a>
+        <a href="?page=ocop" target="_self">Chứng nhận OCOP</a>
+        <a href="?page=kiemdinh" target="_self">Kiểm định chất lượng</a>
     </div>
 </div>
 
 <div class="dropdown">
     <button class="dropbtn">Nội dung truyền thông</button>
     <div class="dropdown-content">
-        <a href="?page=cauchuyen">Câu chuyện sản phẩm</a>
-        <a href="?page=hinhanh">Hình ảnh</a>
-        <a href="?page=video">Video giới thiệu</a>
+        <a href="?page=cauchuyen" target="_self">Câu chuyện sản phẩm</a>
+        <a href="?page=hinhanh" target="_self">Hình ảnh</a>
+        <a href="?page=video" target="_self">Video giới thiệu</a>
     </div>
 </div>
 
 <div class="dropdown">
     <button class="dropbtn">Thông tin bao bì</button>
     <div class="dropdown-content">
-        <a href="?page=muc">Mực</a>
-        <a href="?page=giay">Giấy</a>
-        <a href="?page=thuhhoi">Chính sách thu hồi bao bì</a>
+        <a href="?page=muc" target="_self">Mực</a>
+        <a href="?page=giay" target="_self">Giấy</a>
+        <a href="?page=thuhhoi" target="_self">Chính sách thu hồi bao bì</a>
     </div>
 </div>
-
-<div class="dropdown">
-    <button class="dropbtn">Thông tin liên hệ</button>
-    <div class="dropdown-content">
-        <a href="?page=website">Website</a>
-        <a href="?page=hotline">Hotline</a>
-        <a href="?page=mxh">Mạng xã hội</a>
-    </div>
-</div>
-
 </div>
 
 """, unsafe_allow_html=True)
@@ -509,45 +468,6 @@ elif page == "thuhoi":
     </div>
     """, unsafe_allow_html=True)
 
-elif page == "website":
-    st.markdown("<h1 style='text-align:center;'>Website</h1>", unsafe_allow_html=True)
-    st.markdown("""
-    <div class="card">
-        <h3>🌐 Website giới thiệu sản phẩm</h3>
-        <p>Website cung cấp thông tin về sản phẩm, nguồn gốc, chất lượng, bao bì và kênh liên hệ đặt hàng.</p>
-        <p><b>Địa chỉ website:</b> com-lang-vong.streamlit.app</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-elif page == "hotline":
-    st.markdown("<h1 style='text-align:center;'>Hotline</h1>", unsafe_allow_html=True)
-    st.markdown("""
-    <div class="card" style="text-align:center;">
-        <h3>📞 Hotline đặt hàng</h3>
-        <p>Khách hàng có thể liên hệ để được tư vấn sản phẩm, giá bán và phương thức giao hàng.</p>
-        <p style="font-size:26px; font-weight:bold; color:#2e7d32;">0385 437 503</p>
-        <a href="tel:0385437503" style="
-            background:#2e7d32;
-            color:white;
-            padding:12px 20px;
-            border-radius:8px;
-            text-decoration:none;
-            font-weight:bold;
-        ">Gọi ngay</a>
-    </div>
-    """, unsafe_allow_html=True)
-
-elif page == "mxh":
-    st.markdown("<h1 style='text-align:center;'>Mạng xã hội</h1>", unsafe_allow_html=True)
-    st.markdown("""
-    <div class="card">
-        <h3>💬 Kết nối với chúng tôi</h3>
-        <p>Theo dõi các kênh mạng xã hội để cập nhật hình ảnh sản phẩm, chương trình khuyến mãi và thông tin đặt hàng.</p>
-        <p>💬 Zalo: 0385 437 503</p>
-        <p>📘 Facebook: Cốm Làng Vòng</p>
-    </div>
-    """, unsafe_allow_html=True)
-
 else:
     st.markdown("<h1 style='text-align:center;'>Trang không tồn tại</h1>", unsafe_allow_html=True)
     st.write("Vui lòng chọn lại mục trong menu.")
@@ -573,12 +493,4 @@ st.markdown("""
         </p>
     </div>
 </div>
-""", unsafe_allow_html=True)
-
-st.markdown("""
-<style>
-iframe {
-    display: none !important;
-}
-</style>
 """, unsafe_allow_html=True)
