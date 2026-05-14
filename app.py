@@ -20,6 +20,37 @@ page = params.get("page", "tongquan")
 st.markdown("""
 <style>
 
+/* =========================
+ẨN STREAMLIT + GITHUB
+========================= */
+
+/* ẨN HEADER STREAMLIT */
+header {
+    visibility: hidden;
+}
+
+/* ẨN FOOTER STREAMLIT */
+footer {
+    visibility: hidden;
+}
+
+/* ẨN NÚT GITHUB / FORK */
+[data-testid="stToolbar"] {
+    display: none !important;
+}
+
+/* ẨN BADGE STREAMLIT GÓC PHẢI */
+.viewerBadge_container__1QSob,
+.viewerBadge_link__1S137,
+.viewerBadge_text__1JaDK {
+    display: none !important;
+}
+
+/* ẨN DÒNG MADE WITH STREAMLIT */
+#MainMenu {
+    visibility: hidden;
+}
+
 /* ẨN THANH STREAMLIT */
 #MainMenu {visibility: hidden;}
 header {visibility: hidden;}
@@ -542,4 +573,12 @@ st.markdown("""
         </p>
     </div>
 </div>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+<style>
+iframe {
+    display: none !important;
+}
+</style>
 """, unsafe_allow_html=True)
