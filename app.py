@@ -188,7 +188,7 @@ img {
     margin-left: calc(50% - 50vw + 16px);
     background: #000;
     color: white;
-    padding: 10px 20px;
+    padding: 10px 10px;
     margin-top: 40px;
     box-sizing: border-box;
 }
