@@ -361,104 +361,291 @@ st.markdown("<div class='content'>", unsafe_allow_html=True)
 
 # Nội dung các menu
 
-if page == "tongquan":
+elif page == "tensp":
 
-    import streamlit as st
-    st.markdown("<h1 style='text-align: center;'>Tổng quan</h1>", unsafe_allow_html=True)
-    st.image("Com tong quan.jpg", width=450)
-    st.write("""
-            Mỗi khi thu về, Hà Nội như dịu lại trong làn gió heo may và sắc vàng nhè nhẹ của nắng cuối mùa. Giữa không gian ấy, hương thơm ngọt lành của lúa non từ những gánh cốm thoảng qua từng con phố khiến lòng người bỗng chậm lại. Nhắc đến mùa thu Hà Nội, người ta không thể không nhắc đến Cốm Làng Vòng – thức quà thanh tao đã trở thành biểu tượng ẩm thực của Thủ đô. Câu ca dao xưa vẫn còn nhắc:
-    """)
-    st.write("""
-            “Cốm Vòng, gạo tám Mễ Trì
-    """)
-    st.write("""
-            Tương Bần, húng Láng còn gì ngon hơn!”
-    """)
-    st.write("""
-            Lời ca ấy không chỉ tôn vinh hương vị mà còn khẳng định vị thế của cốm làng Vòng trong bản đồ ẩm thực đất kinh kỳ.
-    """)
-    st.image("Com tong quan 1.jpg", width=450)
-    st.write("""
-             Nguyên liệu làm nên cốm là lúa nếp cái hoa vàng – giống nếp quý nổi tiếng thơm dẻo. Lúa phải được gặt khi hạt vừa ngậm sữa, không quá non để khỏi nát, cũng không quá già để tránh cứng. Chính sự chuẩn xác trong khâu chọn lúa đã quyết định đến chất lượng hạt cốm. Sau khi tuốt lấy thóc, người thợ phải sàng sảy kỹ, đãi sạch hạt lép rồi đem rang trong chảo gang trên lửa đều tay. Đây là công đoạn đòi hỏi kinh nghiệm và sự tinh tế, bởi chỉ cần quá lửa một chút là hạt sẽ gãy, mất đi độ dẻo đặc trưng.
-    """)
-    st.image("Com tong quan 2.jpg", width=450)
-    st.write("""
-            Thóc rang xong còn nóng được đem giã bằng chày gỗ. Người thợ phải giã nhiều lần, nhịp nhàng và kiên nhẫn để tách vỏ trấu mà không làm nát hạt. Sau đó cốm được sàng sảy lại nhiều lượt cho đến khi hạt mỏng, dẹt, xanh mướt. Cuối cùng, cốm được gói trong hai lớp lá – bên trong là lá ráy giữ ẩm, bên ngoài là lá sen thơm ngát. Chính lớp lá sen ấy đã góp phần làm nên mùi hương rất riêng của cốm, khiến mỗi gói cốm như gói trọn hương thu Hà Nội.
-            Từ một sản phẩm làng nghề, cốm dần trở thành món quà đặc trưng của Thủ đô. Mỗi độ thu sang, người Hà Nội lại mong chờ những mẻ cốm mới. Hình ảnh các bà, các mẹ gánh cốm đi bán đã in sâu vào ký ức bao thế hệ. Cốm không phải để ăn vội vàng, mà để nhâm nhi. Người ta thường dùng năm đầu ngón tay nâng nhẹ một nhúm cốm, nhai chậm rãi để cảm nhận vị ngọt thanh, dẻo thơm hòa cùng hương sữa non. Nhấp thêm một ngụm trà xanh ấm nóng, đặc biệt là trà Thái Nguyên, vị chát dịu của trà quyện với vị ngọt của cốm tạo nên một sự cân bằng tinh tế.
-    """)
-    st.image("Com tong quan 3.jpg", width=450)
-    st.write("""
-         Không chỉ thưởng thức trực tiếp, cốm còn được sáng tạo thành nhiều món ăn hấp dẫn như bánh cốm, chả cốm, xôi cốm hạt sen, cốm xào hay đậu chiên cốm. Trong đó, bánh cốm đã trở thành lễ vật quen thuộc trong các dịp cưới hỏi truyền thống ở miền Bắc, góp phần đưa hương cốm làng Vòng lan tỏa rộng khắp cả nước.
-    """)
-    st.write("""
-         Ngày nay, giữa nhịp sống hiện đại và sự phát triển không ngừng của Hà Nội, nghề làm cốm vẫn được gìn giữ như một phần hồn cốt của Thủ đô. Dù có nhiều biến đổi về hình thức kinh doanh hay bao bì sản phẩm, hương vị cốm truyền thống vẫn giữ nguyên nét thanh tao vốn có. Cốm làng Vòng không chỉ là món ăn, mà còn là ký ức, là văn hóa, là biểu tượng của mùa thu Hà Nội – một thức quà giản dị nhưng chứa đựng cả tinh hoa của đất trời và bàn tay cần mẫn của con người.
-    """)
-    st.markdown("""
-<div class="floating-contact">
-
-<a href="tel:0385437503" class="float-btn call-btn">
-📞
-</a>
-
-<a href="https://zalo.me/0385437503" target="_blank" class="float-btn zalo-btn">
-💬
-</a>
-
-</div>
-""", unsafe_allow_html=True)
-
-elif page == "sanpham":
-
-    import streamlit as st
-
-    st.markdown("<h1 style='text-align: center;'>Sản phẩm từ cốm</h1>", unsafe_allow_html=True)
-
-    st.write("""
-    Cốm không chỉ là món ăn truyền thống mà còn được chế biến thành nhiều sản phẩm hấp dẫn, phù hợp làm quà biếu hoặc thưởng thức hàng ngày.
-    """)
-
-    # ===== DANH SÁCH SẢN PHẨM =====
-    st.markdown("### 🌾 Các sản phẩm nổi bật")
+    st.markdown("<h1 style='text-align:center;'>Tên sản phẩm</h1>", unsafe_allow_html=True)
 
     st.markdown("""
-<div style="padding:15px; border-radius:10px; background:#f1f8e9;">
-<b>🌿 Cốm khô</b><br>
-Thơm nhẹ, dễ bảo quản, phù hợp ăn trực tiếp hoặc chế biến
-</div>
-
-<div style="padding:15px; border-radius:10px; background:#f1f8e9;">
-<b>🍰 Bánh cốm</b><br>
-Dẻo thơm, nhân đậu xanh ngọt dịu – đặc sản cưới hỏi
-</div>
-
-<div style="padding:15px; border-radius:10px; background:#f1f8e9;">
-<b>🍖 Chả cốm</b><br>
-Kết hợp thịt và cốm – món ăn đậm vị Hà Nội
-</div>
-
-<div style="padding:15px; border-radius:10px; background:#f1f8e9;">
-<b>🍚 Xôi cốm</b><br>
-Mềm dẻo, thơm hương lá sen, ăn sáng cực ngon
-</div>
-""", unsafe_allow_html=True)
-    # ===== ĐIỂM NỔI BẬT =====
-    st.markdown("""
-    <div style="
-        background:#e8f5e9;
-        padding:15px;
-        border-radius:10px;
-        margin-top:20px;
-    ">
-        ✔ Nguyên liệu nếp non chọn lọc <br>
-        ✔ Không chất bảo quản <br>
-        ✔ Hương vị truyền thống Hà Nội
+    <div style="background:#f1f8e9; padding:20px; border-radius:12px;">
+        <h3>🌾 Cốm Làng Vòng</h3>
+        <p>
+        Cốm Làng Vòng là sản phẩm truyền thống đặc trưng của Hà Nội, được làm từ lúa nếp non.
+        Sản phẩm có màu xanh dịu, hạt mỏng dẻo, hương thơm nhẹ và vị ngọt thanh tự nhiên.
+        </p>
+        <p>
+        Cốm thường được dùng để ăn trực tiếp, làm quà biếu hoặc chế biến thành nhiều món ăn như
+        bánh cốm, chả cốm, xôi cốm, chè cốm.
+        </p>
     </div>
     """, unsafe_allow_html=True)
 
-    # ===== CTA =====
+
+elif page == "masp":
+
+    st.markdown("<h1 style='text-align:center;'>Mã sản phẩm</h1>", unsafe_allow_html=True)
+
     st.markdown("""
-    <div style="text-align:center; margin-top:30px;">
+    <div style="background:#f1f8e9; padding:20px; border-radius:12px;">
+        <h3>🏷️ Mã sản phẩm</h3>
+        <p><b>Mã sản phẩm:</b> COM-LV-001</p>
+        <p><b>Nhóm sản phẩm:</b> Thực phẩm truyền thống</p>
+        <p><b>Dòng sản phẩm:</b> Đặc sản Hà Nội</p>
+        <p>
+        Mã sản phẩm giúp khách hàng dễ dàng nhận diện, tra cứu thông tin và phân biệt
+        sản phẩm Cốm Làng Vòng với các sản phẩm khác.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+
+elif page == "thuonghieu":
+
+    st.markdown("<h1 style='text-align:center;'>Thương hiệu</h1>", unsafe_allow_html=True)
+
+    st.markdown("""
+    <div style="background:#f1f8e9; padding:20px; border-radius:12px;">
+        <h3>🌿 Thương hiệu Cốm Làng Vòng</h3>
+        <p>
+        Cốm Làng Vòng là thương hiệu gắn liền với làng nghề truyền thống tại Hà Nội.
+        Sản phẩm đại diện cho nét tinh tế trong văn hóa ẩm thực đất kinh kỳ.
+        </p>
+        <p>
+        Thương hiệu hướng đến việc gìn giữ hương vị cốm truyền thống, đồng thời giới thiệu
+        sản phẩm đến nhiều khách hàng hơn thông qua bao bì, thông tin truy xuất và kênh liên hệ hiện đại.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+
+elif page == "nguyenlieu":
+
+    st.markdown("<h1 style='text-align:center;'>Nguồn nguyên liệu</h1>", unsafe_allow_html=True)
+
+    st.markdown("""
+    <div style="background:#e8f5e9; padding:20px; border-radius:12px;">
+        <h3>🌾 Lúa nếp non chọn lọc</h3>
+        <p>
+        Nguyên liệu chính để làm cốm là lúa nếp non, thường được chọn khi hạt lúa còn ngậm sữa.
+        Đây là thời điểm hạt có độ mềm, dẻo và mùi thơm đặc trưng.
+        </p>
+        <p>
+        Lúa sau khi thu hoạch được tuốt, sàng lọc và loại bỏ hạt lép trước khi đưa vào rang, giã.
+        Việc chọn nguyên liệu kỹ giúp cốm giữ được màu xanh đẹp, vị ngọt nhẹ và hương thơm tự nhiên.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+
+elif page == "khuvuc":
+
+    st.markdown("<h1 style='text-align:center;'>Khu vực sản xuất</h1>", unsafe_allow_html=True)
+
+    st.markdown("""
+    <div style="background:#e8f5e9; padding:20px; border-radius:12px;">
+        <h3>📍 Làng Vòng, Cầu Giấy, Hà Nội</h3>
+        <p>
+        Sản phẩm gắn với khu vực làng Vòng, phường Dịch Vọng Hậu, quận Cầu Giấy, Hà Nội.
+        Đây là địa danh nổi tiếng với nghề làm cốm truyền thống.
+        </p>
+        <p>
+        Khu vực sản xuất mang giá trị văn hóa lâu đời, góp phần tạo nên hình ảnh cốm như
+        một thức quà đặc trưng của mùa thu Hà Nội.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+
+elif page == "malo":
+
+    st.markdown("<h1 style='text-align:center;'>Mã lô hàng</h1>", unsafe_allow_html=True)
+
+    st.markdown("""
+    <div style="background:#e8f5e9; padding:20px; border-radius:12px;">
+        <h3>🏷️ Thông tin lô hàng</h3>
+        <p><b>Mã lô mẫu:</b> LV-2026-001</p>
+        <p><b>Ngày sản xuất:</b> Cập nhật trên bao bì sản phẩm</p>
+        <p><b>Hạn sử dụng:</b> Cập nhật theo từng loại sản phẩm</p>
+        <p>
+        Mã lô hàng giúp người bán và khách hàng theo dõi thông tin sản xuất,
+        thời gian đóng gói và chất lượng sản phẩm theo từng đợt.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+
+elif page == "ocop":
+
+    st.markdown("<h1 style='text-align:center;'>Chứng nhận OCOP</h1>", unsafe_allow_html=True)
+
+    st.markdown("""
+    <div style="background:#f1f8e9; padding:20px; border-radius:12px;">
+        <h3>✅ Định hướng sản phẩm OCOP</h3>
+        <p>
+        OCOP là chương trình đánh giá, phân hạng sản phẩm đặc trưng của địa phương.
+        Với giá trị truyền thống và nguồn gốc rõ ràng, Cốm Làng Vòng phù hợp để phát triển
+        theo định hướng sản phẩm OCOP.
+        </p>
+        <p>
+        Thông tin chứng nhận cụ thể cần được cập nhật theo hồ sơ thực tế của cơ sở sản xuất.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+
+elif page == "kiemdinh":
+
+    st.markdown("<h1 style='text-align:center;'>Kiểm định chất lượng</h1>", unsafe_allow_html=True)
+
+    st.markdown("""
+    <div style="background:#f1f8e9; padding:20px; border-radius:12px;">
+        <h3>🔍 Kiểm soát chất lượng sản phẩm</h3>
+        <p>
+        Cốm cần được sản xuất trong điều kiện sạch sẽ, nguyên liệu được chọn lọc kỹ
+        và quy trình chế biến đảm bảo vệ sinh an toàn thực phẩm.
+        </p>
+        <ul>
+            <li>Nguyên liệu rõ nguồn gốc</li>
+            <li>Không sử dụng nguyên liệu kém chất lượng</li>
+            <li>Bảo quản nơi khô ráo, thoáng mát</li>
+            <li>Đóng gói sạch, hạn chế tiếp xúc trực tiếp với môi trường bên ngoài</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+
+
+elif page == "cauchuyen":
+
+    st.markdown("<h1 style='text-align:center;'>Câu chuyện sản phẩm</h1>", unsafe_allow_html=True)
+
+    st.write("""
+    Cốm Làng Vòng không chỉ là một món ăn mà còn là một phần ký ức của Hà Nội.
+    Mỗi hạt cốm là kết quả của quá trình chọn lúa, rang, giã và sàng sảy công phu.
+    """)
+
+    st.write("""
+    Hương cốm thơm nhẹ, màu xanh non và vị ngọt thanh khiến sản phẩm trở thành thức quà
+    quen thuộc mỗi độ thu về. Cốm thường được gói trong lá sen để giữ hương thơm tự nhiên
+    và tạo nên nét riêng rất Hà Nội.
+    """)
+
+
+elif page == "hinhanh":
+
+    st.markdown("<h1 style='text-align:center;'>Hình ảnh</h1>", unsafe_allow_html=True)
+
+    st.write("Một số hình ảnh giới thiệu sản phẩm Cốm Làng Vòng:")
+
+    st.image("Com tong quan.jpg", width=450)
+    st.image("Com tong quan 1.jpg", width=450)
+    st.image("Com tong quan 2.jpg", width=450)
+
+
+elif page == "video":
+
+    st.markdown("<h1 style='text-align:center;'>Video giới thiệu</h1>", unsafe_allow_html=True)
+
+    st.markdown("""
+    <div style="background:#f1f8e9; padding:20px; border-radius:12px; text-align:center;">
+        <h3>🎬 Video giới thiệu sản phẩm</h3>
+        <p>
+        Khu vực này dùng để hiển thị video giới thiệu về quy trình làm cốm,
+        câu chuyện làng nghề hoặc hướng dẫn sử dụng sản phẩm.
+        </p>
+        <p><i>Bạn có thể thêm link YouTube bằng lệnh st.video("link_video").</i></p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Ví dụ khi có video:
+    # st.video("https://www.youtube.com/watch?v=link_video")
+
+
+elif page == "muc":
+
+    st.markdown("<h1 style='text-align:center;'>Thông tin mực in</h1>", unsafe_allow_html=True)
+
+    st.markdown("""
+    <div style="background:#e8f5e9; padding:20px; border-radius:12px;">
+        <h3>🖨️ Mực in bao bì</h3>
+        <p>
+        Bao bì sản phẩm nên sử dụng loại mực in rõ nét, bền màu và phù hợp với bao bì thực phẩm.
+        Thông tin trên bao bì cần dễ đọc, không bị lem nhòe trong quá trình vận chuyển.
+        </p>
+        <p>
+        Các nội dung quan trọng như tên sản phẩm, hạn sử dụng, mã lô hàng và thông tin liên hệ
+        cần được in rõ ràng để khách hàng dễ tra cứu.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+
+elif page == "giay":
+
+    st.markdown("<h1 style='text-align:center;'>Thông tin giấy bao bì</h1>", unsafe_allow_html=True)
+
+    st.markdown("""
+    <div style="background:#e8f5e9; padding:20px; border-radius:12px;">
+        <h3>📦 Chất liệu bao bì</h3>
+        <p>
+        Bao bì cần đảm bảo sạch, chắc chắn và phù hợp với thực phẩm.
+        Với sản phẩm cốm, bao bì nên giúp hạn chế ẩm, giữ hương thơm và bảo vệ sản phẩm
+        trong quá trình vận chuyển.
+        </p>
+        <p>
+        Có thể kết hợp phong cách truyền thống như họa tiết lá sen, màu xanh cốm
+        cùng thiết kế hiện đại để tăng tính nhận diện thương hiệu.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+
+elif page == "thuhhoi":
+
+    st.markdown("<h1 style='text-align:center;'>Chính sách thu hồi bao bì</h1>", unsafe_allow_html=True)
+
+    st.markdown("""
+    <div style="background:#e8f5e9; padding:20px; border-radius:12px;">
+        <h3>♻️ Chính sách thu hồi bao bì</h3>
+        <p>
+        Khách hàng được khuyến khích phân loại và xử lý bao bì sau khi sử dụng.
+        Với các đơn hàng số lượng lớn, cơ sở có thể triển khai chương trình thu hồi bao bì
+        để góp phần giảm rác thải và bảo vệ môi trường.
+        </p>
+        <ul>
+            <li>Không vứt bao bì ra môi trường</li>
+            <li>Phân loại bao bì giấy, túi, hộp sau khi dùng</li>
+            <li>Ưu tiên sử dụng bao bì thân thiện với môi trường</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+
+
+elif page == "website":
+
+    st.markdown("<h1 style='text-align:center;'>Website</h1>", unsafe_allow_html=True)
+
+    st.markdown("""
+    <div style="background:#f1f8e9; padding:20px; border-radius:12px; text-align:center;">
+        <h3>🌐 Website giới thiệu sản phẩm</h3>
+        <p>
+        Website cung cấp thông tin về sản phẩm, nguồn gốc, chất lượng, bao bì
+        và kênh liên hệ đặt hàng.
+        </p>
+        <p><b>Địa chỉ website:</b> com-lang-vong.streamlit.app</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+
+elif page == "hotline":
+
+    st.markdown("<h1 style='text-align:center;'>Hotline</h1>", unsafe_allow_html=True)
+
+    st.markdown("""
+    <div style="background:#f1f8e9; padding:20px; border-radius:12px; text-align:center;">
+        <h3>📞 Hotline đặt hàng</h3>
+        <p>Khách hàng có thể liên hệ để được tư vấn sản phẩm, giá bán và phương thức giao hàng.</p>
+        <p style="font-size:24px; font-weight:bold; color:#2e7d32;">
+            0385 437 503
+        </p>
         <a href="tel:0385437503" style="
             background:#2e7d32;
             color:white;
@@ -467,198 +654,27 @@ Mềm dẻo, thơm hương lá sen, ăn sáng cực ngon
             text-decoration:none;
             font-weight:bold;
         ">
-            📞 Đặt hàng ngay
+            Gọi ngay
         </a>
     </div>
     """, unsafe_allow_html=True)
 
-    # FLOAT BUTTON
+
+elif page == "mxh":
+
+    st.markdown("<h1 style='text-align:center;'>Mạng xã hội</h1>", unsafe_allow_html=True)
+
     st.markdown("""
-    <div class="floating-contact">
-
-    <a href="tel:0385437503" class="float-btn call-btn">📞</a>
-
-    <a href="https://zalo.me/0385437503" target="_blank" class="float-btn zalo-btn">💬</a>
-
+    <div style="background:#f1f8e9; padding:20px; border-radius:12px; text-align:center;">
+        <h3>💬 Kết nối với chúng tôi</h3>
+        <p>
+        Theo dõi các kênh mạng xã hội để cập nhật hình ảnh sản phẩm, chương trình khuyến mãi
+        và thông tin đặt hàng mới nhất.
+        </p>
+        <p>💬 Zalo: 0385 437 503</p>
+        <p>📘 Facebook: Cốm Làng Vòng</p>
     </div>
     """, unsafe_allow_html=True)
-
-elif page == "dinhduong":
-
-    import streamlit as st
-    st.markdown("<h1 style='text-align: center;'>Dinh dưỡng</h1>", unsafe_allow_html=True)
-    st.write("""
-    Cốm khô được làm từ gạo nếp non, không chỉ thơm ngon mà còn cung cấp nhiều giá trị dinh dưỡng tự nhiên cho cơ thể.
-    """)
-
-    # ===== BẢNG DINH DƯỠNG =====
-    st.markdown("### 📊 Thành phần dinh dưỡng trong 100g cốm khô")
-
-    st.markdown("""
-    <table>
-        <tr>
-            <th>Thành phần</th>
-            <th>Hàm lượng</th>
-        </tr>
-        <tr>
-            <td>Năng lượng</td>
-            <td>350 – 370 kcal</td>
-        </tr>
-        <tr>
-            <td>Carbohydrate</td>
-            <td>75 – 80g</td>
-        </tr>
-        <tr>
-            <td>Protein</td>
-            <td>6 – 8g</td>
-        </tr>
-        <tr>
-            <td>Chất béo</td>
-            <td>1 – 2g</td>
-        </tr>
-        <tr>
-            <td>Chất xơ</td>
-            <td>1 – 2g</td>
-        </tr>
-    </table>
-    """, unsafe_allow_html=True)
-
-    # ===== HIGHLIGHT =====
-    st.markdown("""
-    <div style="
-        background:#e8f5e9;
-        padding:15px;
-        border-radius:10px;
-        margin-top:20px;
-    ">
-        👉 <b>Điểm nổi bật:</b> Giàu năng lượng – Ít chất béo – Dễ tiêu hóa
-    </div>
-    """, unsafe_allow_html=True)
-
-    # ===== LỢI ÍCH =====
-    st.markdown("### 💪 Lợi ích khi sử dụng cốm")
-
-    st.write("""
-    - ⚡ **Bổ sung năng lượng nhanh**: Hàm lượng tinh bột cao giúp cơ thể hoạt động hiệu quả  
-    - 🌿 **Tự nhiên, ít chế biến**: Giữ được hương vị và dưỡng chất từ lúa non  
-    - 🧠 **Hỗ trợ chuyển hóa**: Chứa vitamin nhóm B tốt cho cơ thể  
-    - ❤️ **Dễ tiêu hóa**: Phù hợp ăn nhẹ, không gây nặng bụng  
-    """)
-
-    # ===== LƯU Ý =====
-    st.markdown("### ⚠️ Lưu ý khi sử dụng")
-
-    st.write("""
-    - Nên ăn vừa phải nếu đang giảm cân  
-    - Người cần kiểm soát đường huyết nên hạn chế  
-    """)
-
-    # ===== CTA =====
-    st.markdown("""
-    <div style="
-        text-align:center;
-        margin-top:30px;
-    ">
-        <a href="?page=sanpham" style="
-            background:#2e7d32;
-            color:white;
-            padding:12px 20px;
-            border-radius:8px;
-            text-decoration:none;
-            font-weight:bold;
-        ">
-            👉 Xem sản phẩm ngay
-        </a>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # ===== FLOAT BUTTON =====
-    st.markdown("""
-    <div class="floating-contact">
-
-    <a href="tel:0385437503" class="float-btn call-btn">
-    📞
-    </a>
-
-    <a href="https://zalo.me/0385437503" target="_blank" class="float-btn zalo-btn">
-    💬
-    </a>
-
-    </div>
-    """, unsafe_allow_html=True)
-    st.image("GANH COM.png", width=450)
-    st.markdown('</div>', unsafe_allow_html=True)
-
-elif page == "nguongoc":
-
-    import streamlit as st
-
-    st.markdown("<h1 style='text-align: center;'>Nguồn gốc cốm làng Vòng</h1>", unsafe_allow_html=True)
-
-    st.write("""
-    Cốm làng Vòng là đặc sản nổi tiếng của Hà Nội, gắn liền với truyền thống hàng trăm năm và được xem là biểu tượng của mùa thu đất Bắc.
-    """)
-
-    # ===== CÂU CHUYỆN =====
-    st.markdown("### 📜 Câu chuyện hình thành")
-
-    st.write("""
-    Theo truyền lại, vào một năm mưa bão lớn, lúa bị ngập khi còn xanh. Người dân đã thu hoạch lúa non, rang lên để chống đói. Không ngờ hạt lúa non lại mang hương vị dẻo thơm đặc biệt. Từ đó, nghề làm cốm ra đời và phát triển cho đến ngày nay.
-    """)
-
-    # ===== QUY TRÌNH =====
-    st.markdown("### ⚙️ Quy trình làm cốm truyền thống")
-
-    st.write("""
-    - 🌾 Gặt lúa nếp non đúng thời điểm  
-    - 🔥 Rang thóc bằng chảo gang  
-    - 🥣 Giã thủ công nhiều lần  
-    - 🍃 Gói trong lá sen giữ hương thơm  
-    """)
-
-    # ===== GIÁ TRỊ =====
-    st.markdown("""
-    <div style="
-        background:#f1f8e9;
-        padding:15px;
-        border-radius:10px;
-        margin-top:20px;
-    ">
-        💚 Cốm không chỉ là món ăn mà còn là:
-        <br>• Văn hóa
-        <br>• Ký ức tuổi thơ
-        <br>• Tinh hoa ẩm thực Hà Nội
-    </div>
-    """, unsafe_allow_html=True)
-
-    # ===== CTA =====
-    st.markdown("""
-    <div style="text-align:center; margin-top:30px;">
-        <a href="?page=sanpham" style="
-            background:#2e7d32;
-            color:white;
-            padding:12px 20px;
-            border-radius:8px;
-            text-decoration:none;
-            font-weight:bold;
-        ">
-            👉 Xem sản phẩm
-        </a>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # FLOAT BUTTON
-    st.markdown("""
-    <div class="floating-contact">
-
-    <a href="tel:0385437503" class="float-btn call-btn">📞</a>
-
-    <a href="https://zalo.me/0385437503" target="_blank" class="float-btn zalo-btn">💬</a>
-
-    </div>
-    """, unsafe_allow_html=True)
-    st.image("GANH COM.png", width=450)
-    st.markdown('</div>', unsafe_allow_html=True)
 
 st.markdown("""
 <style>
