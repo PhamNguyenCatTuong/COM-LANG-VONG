@@ -307,15 +307,7 @@ st.markdown("""
 
 st.markdown("<div class='content'>", unsafe_allow_html=True)
 
-if page == "tongquan":
-    st.markdown("<h1 style='text-align:center;'>Tổng quan</h1>", unsafe_allow_html=True)
-    st.image("Com tong quan.jpg", width=700)
-    st.write("""
-    Cốm Làng Vòng là đặc sản truyền thống nổi tiếng của Hà Nội, gắn liền với mùa thu và văn hóa ẩm thực đất kinh kỳ.
-    Sản phẩm được làm từ lúa nếp non, có màu xanh dịu, hương thơm nhẹ, vị ngọt thanh và độ dẻo đặc trưng.
-    """)
-
-elif page == "tensp":
+if page == "tensp":
     st.markdown("<h1 style='text-align:center;'>Tên sản phẩm</h1>", unsafe_allow_html=True)
     st.markdown("""
     <div class="card">
