@@ -257,15 +257,12 @@ st.markdown("""
 </div>
 
 <div class="menu">
-
-    <div class="dropdown">
-        <button class="dropbtn">Thông tin sản phẩm</button>
-        <div class="dropdown-content">
-            <a href="?page=tensp">Tên sản phẩm</a>
-            <a href="?page=masp">Mã sản phẩm</a>
-            <a href="?page=thuonghieu">Thương hiệu</a>
-        </div>
-    </div>
+    <a href="?page=tongquan">Tổng quan</a>
+    <a href="?page=sanpham">Sản phẩm</a>
+    <a href="?page=truyxuat">Truy xuất nguồn gốc</a>
+    <a href="?page=chatluong">Chất lượng & chứng nhận</a>
+    <a href="?page=lienhe">Thông tin liên hệ</a>
+</div>
 
     <div class="dropdown">
         <button class="dropbtn">Truy xuất nguồn gốc</button>
