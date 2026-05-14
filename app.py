@@ -12,7 +12,7 @@ st.set_page_config(
 # LẤY TRANG HIỆN TẠI
 # =========================
 params = st.query_params
-page = params.get("page", "tongquan")
+page = params.get("page", "tensp")
 
 # =========================
 # CSS GIAO DIỆN WEBSITE
