@@ -228,11 +228,58 @@ st.markdown("""
 </div>
 
 <div class="menu">
-    <a href="?page=tongquan">Tổng quan</a>
-    <a href="?page=sanpham">Sản phẩm</a>
-    <a href="?page=dinhduong">Dinh dưỡng</a>
-    <a href="?page=nguongoc">Nguồn gốc</a>
+
+<div class="dropdown">
+    <button class="dropbtn">Thông tin sản phẩm</button>
+    <div class="dropdown-content">
+        <a href="?page=tensp">Tên sản phẩm</a>
+        <a href="?page=masp">Mã sản phẩm</a>
+        <a href="?page=thuonghieu">Thương hiệu</a>
+    </div>
 </div>
+
+<div class="dropdown">
+    <button class="dropbtn">Truy xuất nguồn gốc</button>
+    <div class="dropdown-content">
+        <a href="?page=nguyenlieu">Nguồn nguyên liệu</a>
+        <a href="?page=khuvuc">Khu vực sản xuất</a>
+        <a href="?page=malo">Mã lô hàng</a>
+    </div>
+</div>
+
+<div class="dropdown">
+    <button class="dropbtn">Chất lượng & chứng nhận</button>
+    <div class="dropdown-content">
+        <a href="?page=ocop">Chứng nhận OCOP</a>
+        <a href="?page=kiemdinh">Kiểm định chất lượng</a>
+    </div>
+</div>
+
+<div class="dropdown">
+    <button class="dropbtn">Nội dung truyền thông</button>
+    <div class="dropdown-content">
+        <a href="?page=cauchuyen">Câu chuyện sản phẩm</a>
+        <a href="?page=hinhanh">Hình ảnh</a>
+        <a href="?page=video">Video giới thiệu</a>
+    </div>
+</div>
+
+<div class="dropdown">
+    <button class="dropbtn">Thông tin bao bì</button>
+    <div class="dropdown-content">
+        <a href="?page=muc">Mực</a>
+        <a href="?page=giay">Giấy</a>
+        <a href="?page=thuhhoi">Chính sách thu hồi bao bì</a>
+    </div>
+</div>
+
+<div class="dropdown">
+    <button class="dropbtn">Thông tin liên hệ</button>
+    <div class="dropdown-content">
+        <a href="?page=website">Website</a>
+        <a href="?page=hotline">Hotline</a>
+        <a href="?page=mxh">Mạng xã hội</a>
+    </div>
 
 </div>
 """, unsafe_allow_html=True)
