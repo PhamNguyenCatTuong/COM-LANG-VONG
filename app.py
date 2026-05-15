@@ -50,7 +50,8 @@ HEADER / THANH MENU
     box-shadow: 0 4px 18px rgba(0,0,0,0.08);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 28px;
 }
 
 .logo {
@@ -68,15 +69,18 @@ HEADER / THANH MENU
 
 .nav a {
     text-decoration: none;
-    color: #333;
-    font-weight: 600;
-    font-size: 15px;
+    color: white;
+    background: #2e7d32;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px 18px;
+    border-radius: 8px;
 }
 
 .nav a:hover {
-    color: #2e7d32;
+    background: #256b29;
+    color: white;
 }
-
 .order-btn {
     background: #2e7d32;
     color: white !important;
@@ -489,16 +493,14 @@ MOBILE
 # =========================
 st.markdown("""
 <div class="header">
-    <div class="logo">🌾 Cốm Làng Vòng</div>
-
-    <div class="nav">
-        <a href="#trangchu" target="_self">Trang chủ</a>
-        <a href="#cauchuyen" target="_self">Câu chuyện</a>
-        <a href="#sanpham" target="_self">Sản phẩm</a>
-        <a href="#truyxuat" target="_self">Truy xuất</a>
-        <a href="#hinhanh" target="_self">Hình ảnh</a>
-        <a href="#lienhe" target="_self" class="order-btn">Liên hệ</a>
-    </div>
+<div class="logo">🌾 Cốm Làng Vòng</div>
+<div class="nav">
+<a href="#trangchu" target="_self">Thông tin sản phẩm</a>
+<a href="#truyxuat" target="_self">Truy xuất nguồn gốc</a>
+<a href="#chatluong" target="_self">Chất lượng & chứng nhận</a>
+<a href="#cauchuyen" target="_self">Nội dung truyền thông</a>
+<a href="#baobi" target="_self">Thông tin bao bì</a>
+</div>
 </div>
 """, unsafe_allow_html=True)
 
