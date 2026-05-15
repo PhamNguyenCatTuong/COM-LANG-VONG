@@ -123,19 +123,14 @@ HERO
 .hero {
     position: relative;
     width: calc(100% - 28px);
-    min-height: 640px;
-
+    height: 420px;
     margin: 0 14px;
     border-radius: 26px;
-
     overflow: hidden;
-
     display: flex;
     align-items: center;
-
-    padding: 60px;
+    padding: 40px;
     box-sizing: border-box;
-
     color: white;
 }
 
@@ -159,26 +154,27 @@ HERO
 .hero-box {
     position: relative;
     z-index: 2;
-    max-width: 700px;
+    max-width: 320px;
+    margin-top: 40px;
 }
 
 .hero-small {
-    font-size: 18px;
-    letter-spacing: 2px;
+    font-size: 14px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     font-weight: 700;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .hero h1 {
-    font-size: 68px;
+    font-size: 52px;
     line-height: 1.1;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
 }
 
 .hero p {
-    font-size: 20px;
-    line-height: 1.8;
+    font-size: 16px;
+    line-height: 1.7;
 }
 
 /* =========================
@@ -436,16 +432,21 @@ MOBILE
 }
 
 .hero {
-    min-height: 540px;
-    padding: 34px 24px;
+    height: 320px;
+    padding: 24px;
 }
 
 .hero h1 {
-    font-size: 44px;
+    font-size: 34px;
 }
 
 .hero p {
-    font-size: 17px;
+    font-size: 14px;
+}
+
+.hero-box {
+    max-width: 220px;
+    margin-top: 20px;
 }
 
 .feature-grid,
