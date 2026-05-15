@@ -116,7 +116,7 @@ HERO BANNER
     border-radius: 26px;
     background:
         linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-        url("images/Com tong quan 1.jpg");
+        url("http://tuhaoviet.vn/com/huong-com-mua-thu-p306.html");
     background-size: cover;
     background-position: center;
     display: flex;
