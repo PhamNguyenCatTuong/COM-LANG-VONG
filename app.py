@@ -123,7 +123,7 @@ HERO
 .hero {
     position: relative;
     width: calc(100% - 28px);
-    height: 340px;
+    height: 290px;
     margin: 0 14px;
     border-radius: 26px;
     overflow: hidden;
@@ -161,18 +161,20 @@ HERO
     letter-spacing: 1px;
     text-transform: uppercase;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 2px;
 }
 
 .hero h1 {
-    font-size: 45px;
+    font-size: 36px;
     line-height: 1.1;
-    margin-bottom: 14px;
+    margin: 4px 0 10px 0;
+    white-space: nowrap;
 }
 
 .hero p {
-    font-size: 13px;
-    line-height: 1.7;
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
 }
 
 /* =========================
@@ -430,16 +432,23 @@ MOBILE
 }
 
 .hero {
-    height: 320px;
-    padding: 24px;
+    height: 260px;
+    padding: 28px;
 }
 
 .hero h1 {
-    font-size: 34px;
+    font-size: 32px;
+    white-space: nowrap;
+}
+
+.hero-small {
+    font-size: 12px;
+    margin-bottom: 2px;
 }
 
 .hero p {
     font-size: 14px;
+    line-height: 1.5;
 }
 
 .hero-box {
