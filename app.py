@@ -119,7 +119,7 @@ HERO BANNER
     border-radius: 26px;
     background:
         linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-        url("http://tuhaoviet.vn/UploadImages/News/hinh-anh-com-lang-vong.jpg");
+        url("anh nen com.jpg");
     background-size: cover;
     background-position: center;
     display: flex;
@@ -559,17 +559,17 @@ st.markdown("""
 if page == "thongtin":
 
    st.markdown("""
-<section class="hero">
-    <div class="hero-box">
-        <div class="hero-small">Đặc sản mùa thu Hà Nội</div>
-        <h1>Cốm Làng Vòng</h1>
-        <p>
-            Hạt cốm xanh non, dẻo thơm, thanh nhẹ — thức quà truyền thống gói trọn hương vị
-            tinh tế của đất kinh kỳ.
-        </p>
+   <section class="hero">
+       <div class="hero-box">
+           <div class="hero-small">Đặc sản mùa thu Hà Nội</div>
+           <h1>Cốm Làng Vòng</h1>
+           <p>
+               Hạt cốm xanh non, dẻo thơm, thanh nhẹ — thức quà truyền thống gói trọn hương vị
+               tinh tế của đất kinh kỳ.
+           </p>
     </div>
-</section>
-""", unsafe_allow_html=True)
+    </section>
+    """, unsafe_allow_html=True)
 
     st.markdown("""
     PHẦN GIỚI THIỆU NHANH
