@@ -116,7 +116,7 @@ HERO BANNER
     border-radius: 26px;
     background:
         linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-        url("Com tong quan 1.jpg");
+        url("images/Com tong quan 1.jpg");
     background-size: cover;
     background-position: center;
     display: flex;
