@@ -114,15 +114,36 @@ HERO BANNER
     min-height: 620px;
     margin: 0 14px;
     border-radius: 26px;
-    background:
-        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-        url("http://tuhaoviet.vn/com/huong-com-mua-thu-p306.html");
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+    
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
     padding: 60px;
     color: white;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+}
+
+.hero-box {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
 }
 
 .hero-box {
@@ -531,20 +552,30 @@ st.markdown("""
 if page == "thongtin":
 
     st.markdown("""
-<section class="hero">
+    <section class="hero">
+
+    <img src="Com tong quan 1.jpg" class="hero-bg">
+
+    <div class="hero-overlay"></div>
+
     <div class="hero-box">
-        <div class="hero-small">Đặc sản mùa thu Hà Nội</div>
+        <div class="hero-small">
+            Đặc sản mùa thu Hà Nội
+        </div>
+
         <h1>Cốm Làng Vòng</h1>
+
         <p>
             Hạt cốm xanh non, dẻo thơm, thanh nhẹ — thức quà truyền thống gói trọn hương vị
             tinh tế của đất kinh kỳ.
         </p>
     </div>
-</section>
-""", unsafe_allow_html=True)
+
+    </section>
+    """, unsafe_allow_html=True)
 
     st.markdown("""
-<section class="section">
+    <section class="section">
     <div class="section-title">
         <p>Giá trị nổi bật</p>
         <h2>Vì sao chọn Cốm Làng Vòng?</h2>
@@ -575,11 +606,11 @@ if page == "thongtin":
             <p>Khách hàng có thể liên hệ nhanh qua hotline hoặc Zalo để được tư vấn.</p>
         </div>
     </div>
-</section>
-""", unsafe_allow_html=True)
+    </section>
+    """, unsafe_allow_html=True)
 
     st.markdown("""
-<section class="section">
+    <section class="section">
     <div class="section-title">
         <p>Sản phẩm</p>
         <h2>Những món từ cốm</h2>
