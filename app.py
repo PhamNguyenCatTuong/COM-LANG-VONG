@@ -129,6 +129,7 @@ body {
 /* HERO */
 .hero {
     min-height: 620px;
+    width: calc(100% - 28px);
     margin: 0 14px;
     border-radius: 26px;
     position: relative;
@@ -141,10 +142,12 @@ body {
 
 .hero-bg {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
+    height: 100% !important;
     object-fit: cover;
+    z-index: 0;
 }
 
 .hero-overlay {
@@ -496,19 +499,19 @@ st.markdown("""
 # =========================
 if page == "thongtin":
 
-    st.markdown(f"""
+st.markdown(f"""
 <section class="hero">
-    <img src="{hero_img}" class="hero-bg">
-    <div class="hero-overlay"></div>
+<img src="{hero_img}" class="hero-bg">
+<div class="hero-overlay"></div>
 
-    <div class="hero-box">
-        <div class="hero-small">Đặc sản mùa thu Hà Nội</div>
-        <h1>Cốm Làng Vòng</h1>
-        <p>
-            Hạt cốm xanh non, dẻo thơm, thanh nhẹ — thức quà truyền thống gói trọn hương vị
-            tinh tế của đất kinh kỳ.
-        </p>
-    </div>
+<div class="hero-box">
+<div class="hero-small">Đặc sản mùa thu Hà Nội</div>
+<h1>Cốm Làng Vòng</h1>
+<p>
+Hạt cốm xanh non, dẻo thơm, thanh nhẹ — thức quà truyền thống gói trọn hương vị
+tinh tế của đất kinh kỳ.
+</p>
+</div>
 </section>
 """, unsafe_allow_html=True)
 
