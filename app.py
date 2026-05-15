@@ -1,4 +1,6 @@
 import streamlit as st
+from pathlib import Path
+import base64
 
 # =========================
 # CÀI ĐẶT TRANG WEB
@@ -7,6 +9,26 @@ st.set_page_config(
     page_title="Cốm Làng Vòng",
     layout="wide"
 )
+
+# =========================
+# HÀM ĐỌC ẢNH LOCAL
+# =========================
+def image_to_base64(image_name):
+    image_path = Path(image_name)
+
+    if image_path.exists():
+        img_bytes = image_path.read_bytes()
+        encoded = base64.b64encode(img_bytes).decode()
+        return f"data:image/jpeg;base64,{encoded}"
+
+    return "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=1600&q=80"
+
+
+hero_img = image_to_base64("Com tong quan 1.jpg")
+img_1 = image_to_base64("Com tong quan.jpg")
+img_2 = image_to_base64("Com tong quan 1.jpg")
+img_3 = image_to_base64("Com tong quan 2.jpg")
+img_4 = image_to_base64("Com tong quan 3.jpg")
 
 # =========================
 # LẤY TRANG HIỆN TẠI
@@ -48,9 +70,7 @@ body {
     max-width: 100% !important;
 }
 
-/* =========================
-HEADER / THANH MENU
-========================= */
+/* HEADER */
 .header {
     position: sticky;
     top: 0;
@@ -95,7 +115,6 @@ HEADER / THANH MENU
     color: white;
 }
 
-/* NÚT 3 GẠCH */
 #menu-toggle {
     display: none;
 }
@@ -107,19 +126,13 @@ HEADER / THANH MENU
     color: #333;
 }
 
-/* =========================
-HERO BANNER
-========================= */
+/* HERO */
 .hero {
     min-height: 620px;
     margin: 0 14px;
     border-radius: 26px;
-    background: transparent;
     position: relative;
     overflow: hidden;
-    
-    background-size: cover;
-    background-position: center;
     display: flex;
     align-items: center;
     padding: 60px;
@@ -137,16 +150,12 @@ HERO BANNER
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.35);
+    background: rgba(0,0,0,0.38);
 }
 
 .hero-box {
     position: relative;
     z-index: 2;
-    max-width: 680px;
-}
-
-.hero-box {
     max-width: 680px;
 }
 
@@ -170,9 +179,7 @@ HERO BANNER
     margin-bottom: 30px;
 }
 
-/* =========================
-SECTION CHUNG
-========================= */
+/* SECTION */
 .section {
     max-width: 1180px;
     margin: 80px auto;
@@ -198,9 +205,7 @@ SECTION CHUNG
     color: #222;
 }
 
-/* =========================
-CARD
-========================= */
+/* CARD */
 .feature-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -230,9 +235,7 @@ CARD
     line-height: 1.7;
 }
 
-/* =========================
-SẢN PHẨM
-========================= */
+/* PRODUCT */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -266,9 +269,7 @@ SẢN PHẨM
     line-height: 1.7;
 }
 
-/* =========================
-TRUY XUẤT
-========================= */
+/* TRACE */
 .trace-box {
     background: #f1f8e9;
     padding: 36px;
@@ -290,9 +291,7 @@ TRUY XUẤT
     margin-top: 0;
 }
 
-/* =========================
-CÂU CHUYỆN / TRUYỀN THÔNG
-========================= */
+/* STORY */
 .story {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -318,9 +317,7 @@ CÂU CHUYỆN / TRUYỀN THÔNG
     font-size: 17px;
 }
 
-/* =========================
-GALLERY
-========================= */
+/* GALLERY */
 .gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -334,46 +331,7 @@ GALLERY
     border-radius: 20px;
 }
 
-/* =========================
-LIÊN HỆ
-========================= */
-.contact {
-    background: #2e7d32;
-    color: white;
-    border-radius: 28px;
-    padding: 50px;
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 30px;
-    align-items: center;
-}
-
-.contact h2 {
-    font-size: 40px;
-    margin-top: 0;
-}
-
-.contact p {
-    font-size: 17px;
-    line-height: 1.8;
-}
-
-.contact-card {
-    background: white;
-    color: #222;
-    padding: 28px;
-    border-radius: 20px;
-}
-
-.contact-card a {
-    color: #2e7d32;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-/* =========================
-NÚT GỌI / ZALO NỔI
-========================= */
+/* FLOAT BUTTON */
 .floating-contact {
     position: fixed;
     bottom: 28px;
@@ -405,9 +363,7 @@ NÚT GỌI / ZALO NỔI
     background: #0084ff;
 }
 
-/* =========================
-FOOTER
-========================= */
+/* FOOTER */
 .footer {
     background: #111;
     color: white;
@@ -441,9 +397,7 @@ FOOTER
     font-size: 14px;
 }
 
-/* =========================
-MOBILE
-========================= */
+/* MOBILE */
 @media (max-width: 900px) {
     .header {
         flex-direction: row;
@@ -493,7 +447,6 @@ MOBILE
     .trace-box,
     .gallery,
     .story,
-    .contact,
     .footer-inner {
         grid-template-columns: 1fr;
     }
@@ -507,14 +460,6 @@ MOBILE
         font-size: 32px;
     }
 
-    .contact {
-        padding: 32px 24px;
-    }
-
-    .contact h2 {
-        font-size: 32px;
-    }
-
     .logo {
         font-size: 25px;
     }
@@ -524,7 +469,7 @@ MOBILE
 """, unsafe_allow_html=True)
 
 # =========================
-# HEADER / MENU WEBSITE
+# HEADER / MENU
 # =========================
 st.markdown("""
 <div class="header">
@@ -551,31 +496,24 @@ st.markdown("""
 # =========================
 if page == "thongtin":
 
-    st.markdown("""
-    <section class="hero">
-
-    <img src="Com tong quan 1.jpg" class="hero-bg">
-
+    st.markdown(f"""
+<section class="hero">
+    <img src="{hero_img}" class="hero-bg">
     <div class="hero-overlay"></div>
 
     <div class="hero-box">
-        <div class="hero-small">
-            Đặc sản mùa thu Hà Nội
-        </div>
-
+        <div class="hero-small">Đặc sản mùa thu Hà Nội</div>
         <h1>Cốm Làng Vòng</h1>
-
         <p>
             Hạt cốm xanh non, dẻo thơm, thanh nhẹ — thức quà truyền thống gói trọn hương vị
             tinh tế của đất kinh kỳ.
         </p>
     </div>
-
-    </section>
-    """, unsafe_allow_html=True)
+</section>
+""", unsafe_allow_html=True)
 
     st.markdown("""
-    <section class="section">
+<section class="section">
     <div class="section-title">
         <p>Giá trị nổi bật</p>
         <h2>Vì sao chọn Cốm Làng Vòng?</h2>
@@ -606,11 +544,11 @@ if page == "thongtin":
             <p>Khách hàng có thể liên hệ nhanh qua hotline hoặc Zalo để được tư vấn.</p>
         </div>
     </div>
-    </section>
-    """, unsafe_allow_html=True)
+</section>
+""", unsafe_allow_html=True)
 
-    st.markdown("""
-    <section class="section">
+    st.markdown(f"""
+<section class="section">
     <div class="section-title">
         <p>Sản phẩm</p>
         <h2>Những món từ cốm</h2>
@@ -618,7 +556,7 @@ if page == "thongtin":
 
     <div class="product-grid">
         <div class="product-card">
-            <img src="Com tong quan.jpg">
+            <img src="{img_1}">
             <div class="product-info">
                 <h3>Cốm tươi</h3>
                 <p>Hạt cốm mềm dẻo, thơm nhẹ, phù hợp ăn trực tiếp hoặc dùng làm quà biếu.</p>
@@ -626,7 +564,7 @@ if page == "thongtin":
         </div>
 
         <div class="product-card">
-            <img src="Com tong quan 1.jpg">
+            <img src="{img_2}">
             <div class="product-info">
                 <h3>Bánh cốm</h3>
                 <p>Món bánh truyền thống có vỏ dẻo thơm, nhân đậu xanh ngọt dịu.</p>
@@ -634,7 +572,7 @@ if page == "thongtin":
         </div>
 
         <div class="product-card">
-            <img src="Com tong quan 2.jpg">
+            <img src="{img_3}">
             <div class="product-info">
                 <h3>Chả cốm</h3>
                 <p>Sự kết hợp giữa cốm và thịt tạo nên món ăn đậm vị, quen thuộc trong bữa cơm Việt.</p>
@@ -720,10 +658,10 @@ elif page == "chatluong":
 # =========================
 elif page == "truyenthong":
 
-    st.markdown("""
+    st.markdown(f"""
 <section class="section story">
     <div>
-        <img src="Com tong quan 3.jpg">
+        <img src="{img_4}">
     </div>
 
     <div class="story-text">
@@ -741,7 +679,7 @@ elif page == "truyenthong":
 </section>
 """, unsafe_allow_html=True)
 
-    st.markdown("""
+    st.markdown(f"""
 <section class="section">
     <div class="section-title">
         <p>Thư viện</p>
@@ -749,9 +687,9 @@ elif page == "truyenthong":
     </div>
 
     <div class="gallery">
-        <img src="Com tong quan.jpg">
-        <img src="Com tong quan 1.jpg">
-        <img src="Com tong quan 2.jpg">
+        <img src="{img_1}">
+        <img src="{img_2}">
+        <img src="{img_3}">
     </div>
 </section>
 """, unsafe_allow_html=True)
@@ -797,20 +735,6 @@ elif page == "baobi":
 """, unsafe_allow_html=True)
 
 # =========================
-# TRANG KHÔNG TỒN TẠI
-# =========================
-else:
-
-    st.markdown("""
-<section class="section">
-    <div class="section-title">
-        <h2>Trang không tồn tại</h2>
-        <p>Vui lòng chọn lại mục trong menu.</p>
-    </div>
-</section>
-""", unsafe_allow_html=True)
-
-# =========================
 # NÚT GỌI / ZALO NỔI
 # =========================
 st.markdown("""
@@ -821,7 +745,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # =========================
-# FOOTER CUỐI TRANG
+# FOOTER
 # =========================
 st.markdown("""
 <footer class="footer">
