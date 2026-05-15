@@ -8,6 +8,9 @@ st.set_page_config(
     layout="wide"
 )
 
+# =========================
+# LẤY TRANG HIỆN TẠI
+# =========================
 params = st.query_params
 page = params.get("page", "thongtin")
 
@@ -87,6 +90,11 @@ HEADER / THANH MENU
     border-radius: 8px;
 }
 
+.nav a:hover {
+    background: #256b29;
+    color: white;
+}
+
 /* NÚT 3 GẠCH */
 #menu-toggle {
     display: none;
@@ -97,17 +105,6 @@ HEADER / THANH MENU
     font-size: 30px;
     cursor: pointer;
     color: #333;
-}
-
-.nav a:hover {
-    background: #256b29;
-    color: white;
-}
-.order-btn {
-    background: #2e7d32;
-    color: white !important;
-    padding: 10px 16px;
-    border-radius: 999px;
 }
 
 /* =========================
@@ -125,7 +122,6 @@ HERO BANNER
     display: flex;
     align-items: center;
     padding: 60px;
-    box-sizing: border-box;
     color: white;
 }
 
@@ -151,30 +147,6 @@ HERO BANNER
     font-size: 20px;
     line-height: 1.7;
     margin-bottom: 30px;
-}
-
-.hero-actions {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-}
-
-.btn-main {
-    background: #2e7d32;
-    color: white;
-    padding: 14px 24px;
-    border-radius: 999px;
-    text-decoration: none;
-    font-weight: 700;
-}
-
-.btn-light {
-    background: white;
-    color: #2e7d32;
-    padding: 14px 24px;
-    border-radius: 999px;
-    text-decoration: none;
-    font-weight: 700;
 }
 
 /* =========================
@@ -206,7 +178,7 @@ SECTION CHUNG
 }
 
 /* =========================
-CARD GIỚI THIỆU
+CARD
 ========================= */
 .feature-grid {
     display: grid;
@@ -238,35 +210,7 @@ CARD GIỚI THIỆU
 }
 
 /* =========================
-CÂU CHUYỆN SẢN PHẨM
-========================= */
-.story {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 45px;
-    align-items: center;
-}
-
-.story img {
-    width: 100%;
-    border-radius: 24px;
-    box-shadow: 0 8px 26px rgba(0,0,0,0.12);
-}
-
-.story-text h2 {
-    font-size: 40px;
-    color: #222;
-    margin-bottom: 18px;
-}
-
-.story-text p {
-    line-height: 1.9;
-    color: #444;
-    font-size: 17px;
-}
-
-/* =========================
-SẢN PHẨM NỔI BẬT
+SẢN PHẨM
 ========================= */
 .product-grid {
     display: grid;
@@ -302,7 +246,7 @@ SẢN PHẨM NỔI BẬT
 }
 
 /* =========================
-TRUY XUẤT NGUỒN GỐC
+TRUY XUẤT
 ========================= */
 .trace-box {
     background: #f1f8e9;
@@ -323,6 +267,34 @@ TRUY XUẤT NGUỒN GỐC
 .trace-item h3 {
     color: #2e7d32;
     margin-top: 0;
+}
+
+/* =========================
+CÂU CHUYỆN / TRUYỀN THÔNG
+========================= */
+.story {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 45px;
+    align-items: center;
+}
+
+.story img {
+    width: 100%;
+    border-radius: 24px;
+    box-shadow: 0 8px 26px rgba(0,0,0,0.12);
+}
+
+.story-text h2 {
+    font-size: 40px;
+    color: #222;
+    margin-bottom: 18px;
+}
+
+.story-text p {
+    line-height: 1.9;
+    color: #444;
+    font-size: 17px;
 }
 
 /* =========================
@@ -452,33 +424,35 @@ FOOTER
 MOBILE
 ========================= */
 @media (max-width: 900px) {
-   .header {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 14px 18px;
+        gap: 10px;
+    }
 
-.hamburger {
-    display: block;
-}
+    .hamburger {
+        display: block;
+    }
 
-.nav {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 15px;
-}
+    .nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 15px;
+    }
 
-#menu-toggle:checked ~ .nav {
-    display: flex;
-}
+    #menu-toggle:checked ~ .nav {
+        display: flex;
+    }
 
-.nav a {
-    width: 100%;
-    text-align: center;
-    box-sizing: border-box;
-}
+    .nav a {
+        width: 100%;
+        text-align: center;
+    }
 
     .hero {
         min-height: 560px;
@@ -505,6 +479,7 @@ MOBILE
 
     .section {
         margin: 55px auto;
+        padding: 0 18px;
     }
 
     .section-title h2 {
@@ -551,33 +526,92 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # =========================
-# HERO BANNER
-# =========================
-# =========================
 # TRANG THÔNG TIN SẢN PHẨM
 # =========================
 if page == "thongtin":
 
-   st.markdown("""
-   <section class="hero">
-       <div class="hero-box">
-           <div class="hero-small">Đặc sản mùa thu Hà Nội</div>
-           <h1>Cốm Làng Vòng</h1>
-           <p>
-               Hạt cốm xanh non, dẻo thơm, thanh nhẹ — thức quà truyền thống gói trọn hương vị
-               tinh tế của đất kinh kỳ.
-           </p>
+    st.markdown("""
+<section class="hero">
+    <div class="hero-box">
+        <div class="hero-small">Đặc sản mùa thu Hà Nội</div>
+        <h1>Cốm Làng Vòng</h1>
+        <p>
+            Hạt cốm xanh non, dẻo thơm, thanh nhẹ — thức quà truyền thống gói trọn hương vị
+            tinh tế của đất kinh kỳ.
+        </p>
     </div>
-    </section>
-    """, unsafe_allow_html=True)
-    
-st.markdown("""
-    PHẦN GIỚI THIỆU NHANH
-    """, unsafe_allow_html=True)
+</section>
+""", unsafe_allow_html=True)
 
-st.markdown("""
-    PHẦN SẢN PHẨM
-    """, unsafe_allow_html=True)
+    st.markdown("""
+<section class="section">
+    <div class="section-title">
+        <p>Giá trị nổi bật</p>
+        <h2>Vì sao chọn Cốm Làng Vòng?</h2>
+    </div>
+
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="feature-icon">🌾</div>
+            <h3>Tên sản phẩm</h3>
+            <p>Cốm Làng Vòng là đặc sản truyền thống của Hà Nội, nổi bật với màu xanh non và hương thơm dịu.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🏷️</div>
+            <h3>Mã sản phẩm</h3>
+            <p>Mã sản phẩm mẫu: COM-LV-001, giúp khách hàng dễ nhận diện và tra cứu thông tin.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🌿</div>
+            <h3>Thương hiệu</h3>
+            <p>Thương hiệu gắn với làng nghề lâu đời, thể hiện nét tinh tế trong văn hóa ẩm thực Hà Nội.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📞</div>
+            <h3>Dễ đặt hàng</h3>
+            <p>Khách hàng có thể liên hệ nhanh qua hotline hoặc Zalo để được tư vấn.</p>
+        </div>
+    </div>
+</section>
+""", unsafe_allow_html=True)
+
+    st.markdown("""
+<section class="section">
+    <div class="section-title">
+        <p>Sản phẩm</p>
+        <h2>Những món từ cốm</h2>
+    </div>
+
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="Com tong quan.jpg">
+            <div class="product-info">
+                <h3>Cốm tươi</h3>
+                <p>Hạt cốm mềm dẻo, thơm nhẹ, phù hợp ăn trực tiếp hoặc dùng làm quà biếu.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="Com tong quan 1.jpg">
+            <div class="product-info">
+                <h3>Bánh cốm</h3>
+                <p>Món bánh truyền thống có vỏ dẻo thơm, nhân đậu xanh ngọt dịu.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="Com tong quan 2.jpg">
+            <div class="product-info">
+                <h3>Chả cốm</h3>
+                <p>Sự kết hợp giữa cốm và thịt tạo nên món ăn đậm vị, quen thuộc trong bữa cơm Việt.</p>
+            </div>
+        </div>
+    </div>
+</section>
+""", unsafe_allow_html=True)
 
 # =========================
 # TRANG TRUY XUẤT
@@ -585,8 +619,30 @@ st.markdown("""
 elif page == "truyxuat":
 
     st.markdown("""
-    PHẦN TRUY XUẤT
-    """, unsafe_allow_html=True)
+<section class="section">
+    <div class="section-title">
+        <p>Thông tin sản phẩm</p>
+        <h2>Truy xuất nguồn gốc</h2>
+    </div>
+
+    <div class="trace-box">
+        <div class="trace-item">
+            <h3>🌾 Nguồn nguyên liệu</h3>
+            <p>Lúa nếp non chọn lọc, thu hoạch khi hạt còn ngậm sữa để giữ vị ngọt thanh và độ dẻo.</p>
+        </div>
+
+        <div class="trace-item">
+            <h3>📍 Khu vực sản xuất</h3>
+            <p>Làng Vòng, Dịch Vọng Hậu, Cầu Giấy, Hà Nội — nơi gắn với nghề làm cốm truyền thống.</p>
+        </div>
+
+        <div class="trace-item">
+            <h3>🏷️ Mã lô hàng</h3>
+            <p>Mã lô mẫu: LV-2026-001. Ngày sản xuất và hạn sử dụng được cập nhật trên bao bì.</p>
+        </div>
+    </div>
+</section>
+""", unsafe_allow_html=True)
 
 # =========================
 # TRANG CHẤT LƯỢNG
@@ -594,8 +650,39 @@ elif page == "truyxuat":
 elif page == "chatluong":
 
     st.markdown("""
-    PHẦN CHẤT LƯỢNG
-    """, unsafe_allow_html=True)
+<section class="section">
+    <div class="section-title">
+        <p>Chất lượng</p>
+        <h2>Chất lượng & chứng nhận</h2>
+    </div>
+
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="feature-icon">🏅</div>
+            <h3>Chứng nhận OCOP</h3>
+            <p>Sản phẩm phù hợp định hướng phát triển theo nhóm đặc sản địa phương.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>Kiểm định chất lượng</h3>
+            <p>Chú trọng nguyên liệu rõ nguồn gốc, quy trình sạch và bảo quản đúng cách.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">✅</div>
+            <h3>An toàn sản phẩm</h3>
+            <p>Sản phẩm cần được đóng gói sạch, hạn chế tiếp xúc trực tiếp với môi trường bên ngoài.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🍃</div>
+            <h3>Hương vị tự nhiên</h3>
+            <p>Giữ hương thơm lúa non, vị ngọt thanh và độ dẻo đặc trưng của cốm.</p>
+        </div>
+    </div>
+</section>
+""", unsafe_allow_html=True)
 
 # =========================
 # TRANG TRUYỀN THÔNG
@@ -603,12 +690,40 @@ elif page == "chatluong":
 elif page == "truyenthong":
 
     st.markdown("""
-    PHẦN CÂU CHUYỆN
-    """, unsafe_allow_html=True)
+<section class="section story">
+    <div>
+        <img src="Com tong quan 3.jpg">
+    </div>
+
+    <div class="story-text">
+        <p style="color:#2e7d32; font-weight:700; text-transform:uppercase;">Câu chuyện sản phẩm</p>
+        <h2>Thức quà thanh tao của mùa thu Hà Nội</h2>
+        <p>
+            Cốm Làng Vòng không chỉ là món ăn, mà còn là ký ức của Hà Nội.
+            Từ những hạt lúa nếp non, người thợ rang, giã, sàng sảy nhiều lần để tạo nên hạt cốm mỏng, dẻo, thơm.
+        </p>
+        <p>
+            Cốm thường được gói trong lá sen để giữ hương thơm tự nhiên.
+            Khi thưởng thức, người ta ăn chậm để cảm nhận vị ngọt thanh và hương lúa non.
+        </p>
+    </div>
+</section>
+""", unsafe_allow_html=True)
 
     st.markdown("""
-    PHẦN HÌNH ẢNH
-    """, unsafe_allow_html=True)
+<section class="section">
+    <div class="section-title">
+        <p>Thư viện</p>
+        <h2>Hình ảnh Cốm Làng Vòng</h2>
+    </div>
+
+    <div class="gallery">
+        <img src="Com tong quan.jpg">
+        <img src="Com tong quan 1.jpg">
+        <img src="Com tong quan 2.jpg">
+    </div>
+</section>
+""", unsafe_allow_html=True)
 
 # =========================
 # TRANG BAO BÌ
@@ -616,8 +731,53 @@ elif page == "truyenthong":
 elif page == "baobi":
 
     st.markdown("""
-    PHẦN BAO BÌ
-    """, unsafe_allow_html=True)
+<section class="section">
+    <div class="section-title">
+        <p>Bao bì</p>
+        <h2>Thông tin bao bì</h2>
+    </div>
+
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="feature-icon">🖨️</div>
+            <h3>Mực in</h3>
+            <p>Mực in cần rõ nét, bền màu và phù hợp với bao bì thực phẩm.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📦</div>
+            <h3>Giấy bao bì</h3>
+            <p>Bao bì cần sạch, chắc chắn, giúp hạn chế ẩm và bảo vệ sản phẩm khi vận chuyển.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">♻️</div>
+            <h3>Thu hồi bao bì</h3>
+            <p>Khuyến khích phân loại, tái sử dụng và xử lý bao bì đúng cách sau khi dùng.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🌿</div>
+            <h3>Thiết kế nhận diện</h3>
+            <p>Có thể sử dụng màu xanh cốm, họa tiết lá sen để tăng tính nhận diện thương hiệu.</p>
+        </div>
+    </div>
+</section>
+""", unsafe_allow_html=True)
+
+# =========================
+# TRANG KHÔNG TỒN TẠI
+# =========================
+else:
+
+    st.markdown("""
+<section class="section">
+    <div class="section-title">
+        <h2>Trang không tồn tại</h2>
+        <p>Vui lòng chọn lại mục trong menu.</p>
+    </div>
+</section>
+""", unsafe_allow_html=True)
 
 # =========================
 # NÚT GỌI / ZALO NỔI
@@ -645,10 +805,11 @@ st.markdown("""
 
         <div>
             <h3>Danh mục</h3>
-            <p><a href="#trangchu" target="_self">Trang chủ</a></p>
-            <p><a href="#cauchuyen" target="_self">Câu chuyện</a></p>
-            <p><a href="#sanpham" target="_self">Sản phẩm</a></p>
-            <p><a href="#truyxuat" target="_self">Truy xuất</a></p>
+            <p><a href="?page=thongtin" target="_self">Thông tin sản phẩm</a></p>
+            <p><a href="?page=truyxuat" target="_self">Truy xuất nguồn gốc</a></p>
+            <p><a href="?page=chatluong" target="_self">Chất lượng & chứng nhận</a></p>
+            <p><a href="?page=truyenthong" target="_self">Nội dung truyền thông</a></p>
+            <p><a href="?page=baobi" target="_self">Thông tin bao bì</a></p>
         </div>
 
         <div>
