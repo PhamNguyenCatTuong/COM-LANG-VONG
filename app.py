@@ -428,61 +428,31 @@ MOBILE
 @media (max-width: 900px) {
     .header {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
+        align-items: center;
+        gap: 14px;
+        padding: 16px;
     }
 
     .nav {
-        flex-wrap: wrap;
-        gap: 12px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        gap: 10px;
     }
 
-    .hero {
-        min-height: 560px;
-        padding: 36px 24px;
+    .nav a {
+        background: #f1f8e9;
+        padding: 10px;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 14px;
     }
 
-    .hero h1 {
-        font-size: 42px;
-    }
-
-    .hero p {
-        font-size: 17px;
-    }
-
-    .feature-grid,
-    .product-grid,
-    .trace-box,
-    .gallery,
-    .story,
-    .contact,
-    .footer-inner {
-        grid-template-columns: 1fr;
-    }
-
-    .section {
-        margin: 55px auto;
-    }
-
-    .section-title h2 {
-        font-size: 32px;
-    }
-
-    .contact {
-        padding: 32px 24px;
-    }
-
-    .contact h2 {
-        font-size: 32px;
-    }
-
-    .logo {
-        font-size: 25px;
+    .order-btn {
+        background: #2e7d32 !important;
+        color: white !important;
     }
 }
-
-</style>
-""", unsafe_allow_html=True)
 
 # =========================
 # HEADER / MENU WEBSITE
@@ -492,12 +462,12 @@ st.markdown("""
     <div class="logo">🌾 Cốm Làng Vòng</div>
 
     <div class="nav">
-        <a href="#trangchu" target="_self">Trang chủ</a>
-        <a href="#cauchuyen" target="_self">Câu chuyện</a>
-        <a href="#sanpham" target="_self">Sản phẩm</a>
-        <a href="#truyxuat" target="_self">Truy xuất</a>
-        <a href="#hinhanh" target="_self">Hình ảnh</a>
-        <a href="#lienhe" target="_self" class="order-btn">Liên hệ</a>
+        <a href="#trangchu" target="_self>Trang chủ</a>
+        <a href="#cauchuyen" target="_self>Câu chuyện</a>
+        <a href="#sanpham" target="_self>Sản phẩm</a>
+        <a href="#truyxuat" target="_self>Truy xuất</a>
+        <a href="#hinhanh" target="_self>Hình ảnh</a>
+        <a href="#lienhe" class="order-btn">Liên hệ</a>
     </div>
 </div>
 """, unsafe_allow_html=True)
