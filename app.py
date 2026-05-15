@@ -8,6 +8,9 @@ st.set_page_config(
     layout="wide"
 )
 
+params = st.query_params
+page = params.get("page", "thongtin")
+
 # =========================
 # CSS GIAO DIỆN WEBSITE
 # =========================
@@ -23,12 +26,18 @@ footer {visibility: hidden;}
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
     margin: 0;
     padding: 0;
     background: #fffdf7;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 .block-container {
@@ -52,6 +61,7 @@ HEADER / THANH MENU
     align-items: center;
     justify-content: flex-start;
     gap: 28px;
+    width: calc(100% - 28px);
 }
 
 .logo {
@@ -75,6 +85,18 @@ HEADER / THANH MENU
     font-size: 14px;
     padding: 12px 18px;
     border-radius: 8px;
+}
+
+/* NÚT 3 GẠCH */
+#menu-toggle {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #333;
 }
 
 .nav a:hover {
@@ -430,16 +452,33 @@ FOOTER
 MOBILE
 ========================= */
 @media (max-width: 900px) {
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-    }
+   .header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 
-    .nav {
-        flex-wrap: wrap;
-        gap: 12px;
-    }
+.hamburger {
+    display: block;
+}
+
+.nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+#menu-toggle:checked ~ .nav {
+    display: flex;
+}
+
+.nav a {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
 
     .hero {
         min-height: 560px;
@@ -493,247 +532,85 @@ MOBILE
 # =========================
 st.markdown("""
 <div class="header">
+
+<input type="checkbox" id="menu-toggle">
+
 <div class="logo">🌾 Cốm Làng Vòng</div>
+
+<label for="menu-toggle" class="hamburger">☰</label>
+
 <div class="nav">
-<a href="#trangchu" target="_self">Thông tin sản phẩm</a>
-<a href="#truyxuat" target="_self">Truy xuất nguồn gốc</a>
-<a href="#chatluong" target="_self">Chất lượng & chứng nhận</a>
-<a href="#cauchuyen" target="_self">Nội dung truyền thông</a>
-<a href="#baobi" target="_self">Thông tin bao bì</a>
+<a href="?page=thongtin" target="_self">Thông tin sản phẩm</a>
+<a href="?page=truyxuat" target="_self">Truy xuất nguồn gốc</a>
+<a href="?page=chatluong" target="_self">Chất lượng & chứng nhận</a>
+<a href="?page=truyenthong" target="_self">Nội dung truyền thông</a>
+<a href="?page=baobi" target="_self">Thông tin bao bì</a>
 </div>
+
 </div>
 """, unsafe_allow_html=True)
 
 # =========================
 # HERO BANNER
 # =========================
-st.markdown("""
-<section class="hero" id="trangchu">
-    <div class="hero-box">
-        <div class="hero-small">Đặc sản mùa thu Hà Nội</div>
-        <h1>Cốm Làng Vòng</h1>
-        <p>
-            Hạt cốm xanh non, dẻo thơm, thanh nhẹ — thức quà truyền thống gói trọn hương vị
-            tinh tế của đất kinh kỳ.
-        </p>
-        <div class="hero-actions">
-            <a href="#sanpham" class="btn-main" target="_self">Xem sản phẩm</a>
-            <a href="#lienhe" class="btn-light" target="_self">Đặt hàng ngay</a>
-        </div>
-    </div>
-</section>
-""", unsafe_allow_html=True)
+# =========================
+# TRANG THÔNG TIN SẢN PHẨM
+# =========================
+if page == "thongtin":
+
+    st.markdown("""
+    <section class="hero">
+    ...
+    </section>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    PHẦN GIỚI THIỆU NHANH
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    PHẦN SẢN PHẨM
+    """, unsafe_allow_html=True)
 
 # =========================
-# GIỚI THIỆU NHANH
+# TRANG TRUY XUẤT
 # =========================
-st.markdown("""
-<section class="section">
-    <div class="section-title">
-        <p>Giá trị nổi bật</p>
-        <h2>Vì sao chọn Cốm Làng Vòng?</h2>
-    </div>
+elif page == "truyxuat":
 
-    <div class="feature-grid">
-        <div class="feature-card">
-            <div class="feature-icon">🌾</div>
-            <h3>Truyền thống</h3>
-            <p>Gắn với làng nghề lâu đời, mang đậm dấu ấn ẩm thực Hà Nội.</p>
-        </div>
-
-        <div class="feature-card">
-            <div class="feature-icon">🍃</div>
-            <h3>Nguyên liệu chọn lọc</h3>
-            <p>Làm từ lúa nếp non, chọn đúng thời điểm để giữ độ dẻo và hương thơm.</p>
-        </div>
-
-        <div class="feature-card">
-            <div class="feature-icon">✅</div>
-            <h3>Thông tin rõ ràng</h3>
-            <p>Có thông tin sản phẩm, mã lô hàng, nguồn nguyên liệu và khu vực sản xuất.</p>
-        </div>
-
-        <div class="feature-card">
-            <div class="feature-icon">📞</div>
-            <h3>Dễ đặt hàng</h3>
-            <p>Khách hàng có thể liên hệ nhanh qua hotline hoặc Zalo.</p>
-        </div>
-    </div>
-</section>
-""", unsafe_allow_html=True)
+    st.markdown("""
+    PHẦN TRUY XUẤT
+    """, unsafe_allow_html=True)
 
 # =========================
-# CÂU CHUYỆN SẢN PHẨM
+# TRANG CHẤT LƯỢNG
 # =========================
-st.markdown("""
-<section class="section story" id="cauchuyen">
-    <div>
-        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80">
-    </div>
+elif page == "chatluong":
 
-    <div class="story-text">
-        <p style="color:#2e7d32; font-weight:700; text-transform:uppercase;">Câu chuyện sản phẩm</p>
-        <h2>Thức quà thanh tao của mùa thu Hà Nội</h2>
-        <p>
-            Cốm Làng Vòng không chỉ là món ăn, mà còn là ký ức của Hà Nội. Từ những hạt lúa nếp non,
-            người thợ rang, giã, sàng sảy nhiều lần để tạo nên hạt cốm mỏng, dẻo, thơm và có màu xanh dịu.
-        </p>
-        <p>
-            Cốm thường được gói trong lá sen để giữ hương thơm tự nhiên. Khi thưởng thức, người ta ăn chậm,
-            nhai nhẹ để cảm nhận vị ngọt thanh và hương lúa non lan dần.
-        </p>
-    </div>
-</section>
-""", unsafe_allow_html=True)
+    st.markdown("""
+    PHẦN CHẤT LƯỢNG
+    """, unsafe_allow_html=True)
 
 # =========================
-# SẢN PHẨM NỔI BẬT
+# TRANG TRUYỀN THÔNG
 # =========================
-st.markdown("""
-<section class="section" id="sanpham">
-    <div class="section-title">
-        <p>Sản phẩm</p>
-        <h2>Những món từ cốm</h2>
-    </div>
+elif page == "truyenthong":
 
-    <div class="product-grid">
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=1000&q=80">
-            <div class="product-info">
-                <h3>Cốm tươi</h3>
-                <p>Hạt cốm mềm dẻo, thơm nhẹ, phù hợp ăn trực tiếp hoặc dùng làm quà biếu.</p>
-            </div>
-        </div>
+    st.markdown("""
+    PHẦN CÂU CHUYỆN
+    """, unsafe_allow_html=True)
 
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1602663491496-73f07481dbea?auto=format&fit=crop&w=1000&q=80">
-            <div class="product-info">
-                <h3>Bánh cốm</h3>
-                <p>Món bánh truyền thống có vỏ dẻo thơm, nhân đậu xanh ngọt dịu.</p>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80">
-            <div class="product-info">
-                <h3>Chả cốm</h3>
-                <p>Sự kết hợp giữa cốm và thịt tạo nên món ăn đậm vị, quen thuộc trong bữa cơm Việt.</p>
-            </div>
-        </div>
-    </div>
-</section>
-""", unsafe_allow_html=True)
+    st.markdown("""
+    PHẦN HÌNH ẢNH
+    """, unsafe_allow_html=True)
 
 # =========================
-# TRUY XUẤT NGUỒN GỐC
+# TRANG BAO BÌ
 # =========================
-st.markdown("""
-<section class="section" id="truyxuat">
-    <div class="section-title">
-        <p>Thông tin sản phẩm</p>
-        <h2>Truy xuất nguồn gốc</h2>
-    </div>
+elif page == "baobi":
 
-    <div class="trace-box">
-        <div class="trace-item">
-            <h3>🌾 Nguồn nguyên liệu</h3>
-            <p>Lúa nếp non chọn lọc, thu hoạch khi hạt còn ngậm sữa để giữ vị ngọt thanh và độ dẻo.</p>
-        </div>
-
-        <div class="trace-item">
-            <h3>📍 Khu vực sản xuất</h3>
-            <p>Làng Vòng, Dịch Vọng Hậu, Cầu Giấy, Hà Nội — nơi gắn với nghề làm cốm truyền thống.</p>
-        </div>
-
-        <div class="trace-item">
-            <h3>🏷️ Mã lô hàng</h3>
-            <p>Mã lô mẫu: LV-2026-001. Ngày sản xuất và hạn sử dụng được cập nhật trên bao bì.</p>
-        </div>
-    </div>
-</section>
-""", unsafe_allow_html=True)
-
-# =========================
-# CHẤT LƯỢNG & BAO BÌ
-# =========================
-st.markdown("""
-<section class="section">
-    <div class="section-title">
-        <p>Chất lượng</p>
-        <h2>Cam kết sản phẩm</h2>
-    </div>
-
-    <div class="feature-grid">
-        <div class="feature-card">
-            <div class="feature-icon">🏅</div>
-            <h3>OCOP</h3>
-            <p>Định hướng phát triển theo sản phẩm đặc trưng địa phương.</p>
-        </div>
-
-        <div class="feature-card">
-            <div class="feature-icon">🔍</div>
-            <h3>Kiểm định</h3>
-            <p>Chú trọng nguyên liệu rõ ràng, quy trình sạch và bảo quản đúng cách.</p>
-        </div>
-
-        <div class="feature-card">
-            <div class="feature-icon">📦</div>
-            <h3>Bao bì</h3>
-            <p>Thiết kế nhận diện xanh cốm, rõ tên sản phẩm, mã lô và thông tin liên hệ.</p>
-        </div>
-
-        <div class="feature-card">
-            <div class="feature-icon">♻️</div>
-            <h3>Thu hồi bao bì</h3>
-            <p>Khuyến khích phân loại, tái sử dụng và xử lý bao bì đúng cách.</p>
-        </div>
-    </div>
-</section>
-""", unsafe_allow_html=True)
-
-# =========================
-# HÌNH ẢNH SẢN PHẨM
-# =========================
-st.markdown("""
-<section class="section" id="hinhanh">
-    <div class="section-title">
-        <p>Thư viện</p>
-        <h2>Hình ảnh Cốm Làng Vòng</h2>
-    </div>
-
-    <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=1000&q=80">
-        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80">
-        <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1000&q=80">
-    </div>
-</section>
-""", unsafe_allow_html=True)
-
-# =========================
-# LIÊN HỆ ĐẶT HÀNG
-# =========================
-st.markdown("""
-<section class="section contact" id="lienhe">
-    <div>
-        <h2>Liên hệ đặt hàng</h2>
-        <p>
-            Khách hàng có thể liên hệ để được tư vấn sản phẩm, giá bán, đóng gói quà biếu
-            và phương thức giao hàng.
-        </p>
-        <p>
-            Cốm Làng Vòng phù hợp làm quà tặng, dùng trong gia đình hoặc chế biến thành các món ăn truyền thống.
-        </p>
-    </div>
-
-    <div class="contact-card">
-        <h3>🌾 Cốm Làng Vòng</h3>
-        <p>📍 Làng Vòng, Dịch Vọng Hậu, Cầu Giấy, Hà Nội</p>
-        <p>📞 <a href="tel:0385437503">0385 437 503</a></p>
-        <p>💬 <a href="https://zalo.me/0385437503" target="_blank">Chat Zalo</a></p>
-        <p>📘 Facebook: Cốm Làng Vòng</p>
-    </div>
-</section>
-""", unsafe_allow_html=True)
+    st.markdown("""
+    PHẦN BAO BÌ
+    """, unsafe_allow_html=True)
 
 # =========================
 # NÚT GỌI / ZALO NỔI
