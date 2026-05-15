@@ -499,21 +499,21 @@ st.markdown("""
 # =========================
 if page == "thongtin":
 
-st.markdown("""
-<section class="hero">
-<img src="{hero_img}" class="hero-bg">
-<div class="hero-overlay"></div>
+    st.markdown("""
+    <section class="hero">
+    <img src="{hero_img}" class="hero-bg">
+    <div class="hero-overlay"></div>
 
-<div class="hero-box">
-<div class="hero-small">Đặc sản mùa thu Hà Nội</div>
-<h1>Cốm Làng Vòng</h1>
-<p>
-Hạt cốm xanh non, dẻo thơm, thanh nhẹ — thức quà truyền thống gói trọn hương vị
-tinh tế của đất kinh kỳ.
-</p>
-</div>
-</section>
-""", unsafe_allow_html=True)
+    <div class="hero-box">
+    <div class="hero-small">Đặc sản mùa thu Hà Nội</div>
+    <h1>Cốm Làng Vòng</h1>
+    <p>
+        Hạt cốm xanh non, dẻo thơm, thanh nhẹ — thức quà truyền thống gói trọn hương vị
+        tinh tế của đất kinh kỳ.
+    </p>
+    </div>
+    </section>
+    """, unsafe_allow_html=True)
 
     st.markdown("""
 <section class="section">
