@@ -123,7 +123,7 @@ HERO
 .hero {
     position: relative;
     width: calc(100% - 28px);
-    height: 420px;
+    height: 340px;
     margin: 0 14px;
     border-radius: 26px;
     overflow: hidden;
@@ -137,10 +137,8 @@ HERO
 .hero-bg {
     position: absolute;
     inset: 0;
-
     width: 100%;
     height: 100%;
-
     object-fit: cover;
 }
 
@@ -167,13 +165,13 @@ HERO
 }
 
 .hero h1 {
-    font-size: 52px;
+    font-size: 45px;
     line-height: 1.1;
     margin-bottom: 14px;
 }
 
 .hero p {
-    font-size: 16px;
+    font-size: 13px;
     line-height: 1.7;
 }
 
