@@ -570,8 +570,8 @@ if page == "thongtin":
     </div>
     </section>
     """, unsafe_allow_html=True)
-
-    st.markdown("""
+    
+st.markdown("""
     PHẦN GIỚI THIỆU NHANH
     """, unsafe_allow_html=True)
 
