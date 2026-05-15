@@ -499,7 +499,7 @@ st.markdown("""
 # =========================
 if page == "thongtin":
 
-st.markdown(f"""
+st.markdown("""
 <section class="hero">
 <img src="{hero_img}" class="hero-bg">
 <div class="hero-overlay"></div>
