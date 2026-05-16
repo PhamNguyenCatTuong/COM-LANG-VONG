@@ -312,11 +312,11 @@ img {
 """, unsafe_allow_html=True)
 
 st.markdown("""
-<div ="topbar">
+<div class="topbar">
 
 <input type="checkbox" id="menu-toggle">
 
-<div ="top-row">
+<div class="top-row">
     <div class="logo">🌾 Cốm Làng Vòng</div>
     <label for="menu-toggle" class="hamburger">☰</label>
 </div>
