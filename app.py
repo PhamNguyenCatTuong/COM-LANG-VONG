@@ -225,14 +225,6 @@ img {
     color: white;
 }
 
-.hero-small {
-    font-size: 18px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin-bottom: 12px;
-}
-
 .hero-content h1 {
     font-size: 52px;
     margin-bottom: 10px;
@@ -255,11 +247,6 @@ img {
 
     .hero-content {
         max-width: 260px;
-    }
-
-    .hero {
-        min-height: 560px;
-        padding: 36px 24px;
     }
 
     .hero-content h1 {
