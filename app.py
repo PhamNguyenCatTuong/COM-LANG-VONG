@@ -29,6 +29,7 @@ footer {visibility: hidden;}
 html, body {
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 .block-container {
@@ -208,9 +209,9 @@ img {
     min-height: 520px;
     border-radius: 24px;
     margin: 15px auto 30px auto;
-    background:
+    background-image:
         linear-gradient(rgba(0,0,0,0.38), rgba(0,0,0,0.38)),
-        url("https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=1800&q=90");
+        url("https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=1800&q=90");
     background-size: cover;
     background-position: center;
     display: flex;
@@ -366,9 +367,9 @@ st.markdown("""
         <a href="?page=thuhoi" target="_self">Chính sách thu hồi bao bì</a>
     </div>
 </div>
+</div>
+</div>
 
-</div>
-</div>
 """, unsafe_allow_html=True)
 
 st.markdown("""
