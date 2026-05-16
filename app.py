@@ -204,6 +204,62 @@ img {
     text-decoration: none;
 }
 
+.hero-banner {
+    min-height: 520px;
+    border-radius: 24px;
+    margin: 15px auto 30px auto;
+    background:
+        linear-gradient(rgba(0,0,0,0.38), rgba(0,0,0,0.38)),
+        url("https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=1800&q=90");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    padding: 40px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 500px;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 52px;
+    margin-bottom: 10px;
+    line-height: 1.1;
+}
+
+.hero-content p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+@media (max-width:768px) {
+
+    .hero-banner {
+        min-height: 340px;
+        padding: 20px;
+        align-items: flex-end;
+    }
+
+    .hero-content {
+        max-width: 260px;
+    }
+
+    .hero-content h1 {
+        font-size: 28px;
+        margin-bottom: 6px;
+    }
+
+    .hero-content p {
+        font-size: 13px;
+        line-height: 1.3;
+    }
+}
+
 @media (min-width:768px) {
     .topbar {
         display: flex;
@@ -303,6 +359,20 @@ st.markdown("""
 </div>
 </div>
 
+""", unsafe_allow_html=True)
+
+st.markdown("<div class='content'>", unsafe_allow_html=True)
+
+st.markdown("""
+<div class="hero-banner">
+    <div class="hero-content">
+        <h1>🌾 Cốm Làng Vòng</h1>
+        <p>
+            Hương vị truyền thống Hà Nội với hạt cốm xanh non,
+            dẻo thơm và thanh nhẹ.
+        </p>
+    </div>
+</div>
 """, unsafe_allow_html=True)
 
 st.markdown("<div class='content'>", unsafe_allow_html=True)
