@@ -363,14 +363,13 @@ st.markdown("""
     <div class="dropdown-content">
         <a href="?page=muc" target="_self">Mực</a>
         <a href="?page=giay" target="_self">Giấy</a>
-        <a href="?page=thuhhoi" target="_self">Chính sách thu hồi bao bì</a>
+        <a href="?page=thuhoi" target="_self">Chính sách thu hồi bao bì</a>
     </div>
 </div>
+
 </div>
-
+</div>
 """, unsafe_allow_html=True)
-
-st.markdown("<div class='content'>", unsafe_allow_html=True)
 
 st.markdown("""
 <div class="hero-banner">
