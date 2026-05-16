@@ -225,6 +225,14 @@ img {
     color: white;
 }
 
+.hero-small {
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
 .hero-content h1 {
     font-size: 52px;
     margin-bottom: 10px;
@@ -247,6 +255,11 @@ img {
 
     .hero-content {
         max-width: 260px;
+    }
+
+    .hero {
+        min-height: 560px;
+        padding: 36px 24px;
     }
 
     .hero-content h1 {
@@ -364,15 +377,20 @@ st.markdown("""
 st.markdown("<div class='content'>", unsafe_allow_html=True)
 
 st.markdown("""
-<div class="hero-banner">
-    <div class="hero-content">
-        <h1>🌾 Cốm Làng Vòng</h1>
+<section class="hero" id="trangchu">
+    <div class="hero-box">
+        <div class="hero-small">Đặc sản mùa thu Hà Nội</div>
+        <h1>Cốm Làng Vòng</h1>
         <p>
-            Hương vị truyền thống Hà Nội với hạt cốm xanh non,
-            dẻo thơm và thanh nhẹ.
+            Hạt cốm xanh non, dẻo thơm, thanh nhẹ — thức quà truyền thống gói trọn hương vị
+            tinh tế của đất kinh kỳ.
         </p>
+        <div class="hero-actions">
+            <a href="#sanpham" class="btn-main" target="_self">Xem sản phẩm</a>
+            <a href="#lienhe" class="btn-light" target="_self">Đặt hàng ngay</a>
+        </div>
     </div>
-</div>
+</section>
 """, unsafe_allow_html=True)
 
 st.markdown("<div class='content'>", unsafe_allow_html=True)
