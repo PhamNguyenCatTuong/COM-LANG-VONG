@@ -24,7 +24,7 @@ PAGES = {
 if page not in PAGES:
     page = "thong-tin-san-pham"
 
-BANNER_IMAGE = "https://langcomvong.com/uploads/images/com-lang-vong%281%29.jpg"
+BANNER_IMAGE = "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=2200&q=90"
 
 # =========================
 # CSS GIAO DIỆN WEBSITE
@@ -554,73 +554,108 @@ MOBILE
 # =========================
 # HEADER / MENU WEBSITE
 # =========================
+def change_page(page_key):
+    st.query_params["page"] = page_key
+    st.rerun()
+
 st.markdown("""
-<div class="header">
-    <div class="logo">🌾 Cốm Làng Vòng</div>
-
-    <details class="menu-wrap">
-        <summary aria-label="Mở menu">
-            <span></span>
-            <span></span>
-        </summary>
-
-        <div class="menu-panel">
-            <div class="menu-group">
-                <a class="menu-title" href="?page=thong-tin-san-pham" target="_self">Thông tin sản phẩm</a>
-                <div class="sub-menu">
-                    <a href="?page=thong-tin-san-pham#ten-san-pham" target="_self">Tên sản phẩm</a>
-                    <a href="?page=thong-tin-san-pham#ma-san-pham" target="_self">Mã sản phẩm</a>
-                    <a href="?page=thong-tin-san-pham#thuong-hieu" target="_self">Thương hiệu</a>
-                </div>
-            </div>
-
-            <div class="menu-group">
-                <a class="menu-title" href="?page=truy-xuat" target="_self">Truy xuất nguồn gốc</a>
-                <div class="sub-menu">
-                    <a href="?page=truy-xuat#nguon-nguyen-lieu" target="_self">Nguồn nguyên liệu</a>
-                    <a href="?page=truy-xuat#khu-vuc-san-xuat" target="_self">Khu vực sản xuất</a>
-                    <a href="?page=truy-xuat#ma-lo-hang" target="_self">Mã lô hàng</a>
-                </div>
-            </div>
-
-            <div class="menu-group">
-                <a class="menu-title" href="?page=truyen-thong" target="_self">Nội dung truyền thống</a>
-                <div class="sub-menu">
-                    <a href="?page=truyen-thong#cau-chuyen" target="_self">Câu chuyện sản phẩm</a>
-                    <a href="?page=truyen-thong#hinh-anh" target="_self">Hình ảnh</a>
-                    <a href="?page=truyen-thong#video" target="_self">Video giới thiệu</a>
-                </div>
-            </div>
-
-            <div class="menu-group">
-                <a class="menu-title" href="?page=chat-luong" target="_self">Chất lượng & chứng nhận</a>
-                <div class="sub-menu">
-                    <a href="?page=chat-luong#ocop" target="_self">Chứng nhận OCOP</a>
-                    <a href="?page=chat-luong#kiem-dinh" target="_self">Kiểm định chất lượng</a>
-                </div>
-            </div>
-
-            <div class="menu-group">
-                <a class="menu-title" href="?page=bao-bi" target="_self">Bao bì</a>
-                <div class="sub-menu">
-                    <a href="?page=bao-bi#muc" target="_self">Mực</a>
-                    <a href="?page=bao-bi#giay" target="_self">Giấy</a>
-                    <a href="?page=bao-bi#thoi-gian-thu-hoi" target="_self">Thời gian thu hồi</a>
-                </div>
-            </div>
-
-            <div class="menu-group">
-                <a class="menu-title" href="?page=lien-he" target="_self">Thông tin liên hệ</a>
-                <div class="sub-menu">
-                    <a href="?page=lien-he#website" target="_self">Website</a>
-                    <a href="?page=lien-he#hotline" target="_self">Hotline</a>
-                    <a href="?page=lien-he#mang-xa-hoi" target="_self">Mạng xã hội</a>
-                </div>
-            </div>
-        </div>
-    </details>
-</div>
+<style>
+.menu-top-row {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: white;
+    margin: 14px;
+    padding: 14px 22px;
+    border-radius: 18px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+}
+.menu-label {
+    font-size: 26px;
+    font-weight: 800;
+    color: #2e7d32;
+    white-space: nowrap;
+    padding-top: 7px;
+}
+div[data-testid="stPopover"] button {
+    background: #2e7d32 !important;
+    color: white !important;
+    border-radius: 12px !important;
+    font-weight: 800 !important;
+    min-height: 42px !important;
+}
+div[data-testid="stPopoverBody"] {
+    background: #542354;
+    border-radius: 18px;
+    padding: 16px;
+}
+div[data-testid="stPopoverBody"] p,
+div[data-testid="stPopoverBody"] label {
+    color: white !important;
+}
+div[data-testid="stPopoverBody"] .stButton button {
+    width: 100%;
+    background: transparent !important;
+    color: white !important;
+    border: 1px solid rgba(255,255,255,0.28) !important;
+    border-radius: 12px !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
+    margin-bottom: 4px;
+}
+div[data-testid="stPopoverBody"] .stButton button:hover {
+    border-color: #f7d77b !important;
+    color: #f7d77b !important;
+}
+.menu-main-text {
+    color: white;
+    font-size: 17px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 12px 0 5px 0;
+}
+.menu-sub-text {
+    color: rgba(255,255,255,0.85);
+    font-size: 13px;
+    margin: -2px 0 6px 0;
+}
+@media (max-width: 900px) {
+    .menu-top-row { margin: 10px; padding: 12px 14px; }
+    .menu-label { font-size: 21px; padding-top: 8px; }
+}
+</style>
 """, unsafe_allow_html=True)
+
+st.markdown('<div class="menu-top-row">', unsafe_allow_html=True)
+menu_col_1, menu_col_2 = st.columns([0.78, 0.22], vertical_alignment="center")
+with menu_col_1:
+    st.markdown('<div class="menu-label">🌾 Cốm Làng Vòng</div>', unsafe_allow_html=True)
+with menu_col_2:
+    with st.popover("☰ Menu", use_container_width=True):
+        st.markdown('<div class="menu-main-text">Thông tin sản phẩm</div><div class="menu-sub-text">Tên sản phẩm · Mã sản phẩm · Thương hiệu</div>', unsafe_allow_html=True)
+        if st.button("Mở trang Thông tin sản phẩm", key="menu_thong_tin", use_container_width=True):
+            change_page("thong-tin-san-pham")
+
+        st.markdown('<div class="menu-main-text">Truy xuất nguồn gốc</div><div class="menu-sub-text">Nguồn nguyên liệu · Khu vực sản xuất · Mã lô hàng</div>', unsafe_allow_html=True)
+        if st.button("Mở trang Truy xuất nguồn gốc", key="menu_truy_xuat", use_container_width=True):
+            change_page("truy-xuat")
+
+        st.markdown('<div class="menu-main-text">Nội dung truyền thống</div><div class="menu-sub-text">Câu chuyện sản phẩm · Hình ảnh · Video giới thiệu</div>', unsafe_allow_html=True)
+        if st.button("Mở trang Nội dung truyền thống", key="menu_truyen_thong", use_container_width=True):
+            change_page("truyen-thong")
+
+        st.markdown('<div class="menu-main-text">Chất lượng & chứng nhận</div><div class="menu-sub-text">Chứng nhận OCOP · Kiểm định chất lượng</div>', unsafe_allow_html=True)
+        if st.button("Mở trang Chất lượng & chứng nhận", key="menu_chat_luong", use_container_width=True):
+            change_page("chat-luong")
+
+        st.markdown('<div class="menu-main-text">Bao bì</div><div class="menu-sub-text">Mực · Giấy · Thời gian thu hồi</div>', unsafe_allow_html=True)
+        if st.button("Mở trang Bao bì", key="menu_bao_bi", use_container_width=True):
+            change_page("bao-bi")
+
+        st.markdown('<div class="menu-main-text">Thông tin liên hệ</div><div class="menu-sub-text">Website · Hotline · Mạng xã hội</div>', unsafe_allow_html=True)
+        if st.button("Mở trang Thông tin liên hệ", key="menu_lien_he", use_container_width=True):
+            change_page("lien-he")
+st.markdown('</div>', unsafe_allow_html=True)
 
 # =========================
 # HERO BANNER
