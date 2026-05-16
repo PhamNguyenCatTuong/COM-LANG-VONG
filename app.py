@@ -205,71 +205,98 @@ img {
     text-decoration: none;
 }
 
-.hero-banner {
-    min-height: 520px;
-    border-radius: 24px;
-    margin: 15px auto 30px auto;
-    background-image:
-        linear-gradient(rgba(0,0,0,0.38), rgba(0,0,0,0.38)),
-        url("https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=1800&q=90");
+/* =========================
+HERO BANNER
+========================= */
+.hero {
+    min-height: 620px;
+    margin: 0 14px;
+    border-radius: 26px;
+    background:
+        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+        url("https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=1600&q=80");
     background-size: cover;
     background-position: center;
     display: flex;
-    align-items: flex-end;
-    padding: 40px;
+    align-items: center;
+    padding: 60px;
     box-sizing: border-box;
-    overflow: hidden;
+    color: white;
+}
+
+.hero-box {
+    max-width: 680px;
 }
 
 .hero-small {
-    font-size: 14px;
+    font-size: 18px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 8px;
     font-weight: 700;
-    color: white;
+    margin-bottom: 12px;
 }
 
-.hero-content {
-    max-width: 500px;
-    color: white;
-}
-
-.hero-content h1 {
-    font-size: 52px;
-    margin-bottom: 10px;
+.hero h1 {
+    font-size: 64px;
     line-height: 1.1;
+    margin: 0 0 18px 0;
 }
 
-.hero-content p {
-    font-size: 18px;
-    line-height: 1.5;
-    margin-bottom: 0;
+.hero p {
+    font-size: 20px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.btn-main {
+    background: #2e7d32;
+    color: white;
+    padding: 14px 24px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.btn-light {
+    background: white;
+    color: #2e7d32;
+    padding: 14px 24px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
 }
 
 @media (max-width:768px) {
 
-    .hero-banner {
-        min-height: 340px;
-        padding: 20px;
-        align-items: flex-end;
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
     }
 
-    .hero-content {
-        max-width: 260px;
+    .nav {
+        flex-wrap: wrap;
+        gap: 12px;
     }
 
-    .hero-content h1 {
-        font-size: 28px;
-        margin-bottom: 6px;
+    .hero {
+        min-height: 560px;
+        padding: 36px 24px;
     }
 
-    .hero-content p {
-        font-size: 13px;
-        line-height: 1.3;
+    .hero h1 {
+        font-size: 42px;
     }
-}
 
+    .hero p {
+        font-size: 17px;
+    }
 @media (min-width:768px) {
     .topbar {
         display: flex;
