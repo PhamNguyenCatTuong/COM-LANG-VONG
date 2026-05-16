@@ -303,11 +303,11 @@ img {
 """, unsafe_allow_html=True)
 
 st.markdown("""
-<div class="topbar">
+<div ="topbar">
 
 <input type="checkbox" id="menu-toggle">
 
-<div class="top-row">
+<div ="top-row">
     <div class="logo">🌾 Cốm Làng Vòng</div>
     <label for="menu-toggle" class="hamburger">☰</label>
 </div>
@@ -366,11 +366,22 @@ st.markdown("<div class='content'>", unsafe_allow_html=True)
 st.markdown("""
 <div class="hero-banner">
     <div class="hero-content">
-        <h1>🌾 Cốm Làng Vòng</h1>
-        <p>
-            Hương vị truyền thống Hà Nội với hạt cốm xanh non,
-            dẻo thơm và thanh nhẹ.
-        </p>
+    <div style="
+        font-size:14px;
+        letter-spacing:2px;
+        text-transform:uppercase;
+        margin-bottom:8px;
+        font-weight:700;
+    ">
+        Đặc sản mùa thu Hà Nội
+    </div>
+
+    <h1>🌾 Cốm Làng Vòng</h1>
+
+    <p>
+        Hương vị truyền thống Hà Nội với hạt cốm xanh non,
+        dẻo thơm và thanh nhẹ.
+    </p>
     </div>
 </div>
 """, unsafe_allow_html=True)
