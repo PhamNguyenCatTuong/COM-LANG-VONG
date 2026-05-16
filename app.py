@@ -4,7 +4,7 @@ import streamlit as st
 # CÀI ĐẶT TRANG WEB
 # =========================
 st.set_page_config(
-    page_title="Cốm Làng Vòng",
+    page_title="CỐM LÀNG VÒNG",
     layout="wide"
 )
 
@@ -29,7 +29,6 @@ footer {visibility: hidden;}
 html, body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
 }
 
 .block-container {
@@ -205,98 +204,78 @@ img {
     text-decoration: none;
 }
 
+
 /* =========================
-HERO BANNER
+BANNER TRANG CHỦ
 ========================= */
-.hero {
-    min-height: 620px;
-    margin: 0 14px;
-    border-radius: 26px;
+.hero-banner {
+    width: calc(100vw - 32px);
+    margin-left: calc(50% - 50vw + 16px);
+    min-height: 470px;
+    border-radius: 22px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
     background:
-        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-        url("https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=1600&q=80");
+        linear-gradient(90deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0.08) 100%),
+        url("https://source.unsplash.com/1800x900/?vietnam,rice,farmer,harvest");
     background-size: cover;
     background-position: center;
-    display: flex;
-    align-items: center;
-    padding: 60px;
     box-sizing: border-box;
+    margin-top: 14px;
+}
+
+.hero-content {
+    max-width: 620px;
+    padding: 48px;
     color: white;
 }
 
-.hero-box {
-    max-width: 680px;
-}
-
 .hero-small {
-    font-size: 18px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    font-size: 17px;
     font-weight: 700;
-    margin-bottom: 12px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
 }
 
-.hero h1 {
-    font-size: 64px;
-    line-height: 1.1;
-    margin: 0 0 18px 0;
+.hero-content h1 {
+    font-size: 56px;
+    line-height: 1.08;
+    margin: 0 0 12px 0;
 }
 
-.hero p {
+.hero-content p {
     font-size: 20px;
-    line-height: 1.7;
-    margin-bottom: 30px;
+    line-height: 1.45;
+    margin: 0 0 22px 0;
 }
 
 .hero-actions {
     display: flex;
-    gap: 14px;
+    gap: 12px;
     flex-wrap: wrap;
 }
 
-.btn-main {
+.hero-btn {
+    padding: 12px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-block;
+}
+
+.hero-btn.order {
     background: #2e7d32;
     color: white;
-    padding: 14px 24px;
-    border-radius: 999px;
-    text-decoration: none;
-    font-weight: 700;
 }
 
-.btn-light {
+.hero-btn.call {
     background: white;
     color: #2e7d32;
-    padding: 14px 24px;
-    border-radius: 999px;
-    text-decoration: none;
-    font-weight: 700;
 }
 
-@media (max-width:768px) {
-
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-    }
-
-    .nav {
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-
-    .hero {
-        min-height: 560px;
-        padding: 36px 24px;
-    }
-
-    .hero h1 {
-        font-size: 42px;
-    }
-
-    .hero p {
-        font-size: 17px;
-    }
 @media (min-width:768px) {
     .topbar {
         display: flex;
@@ -334,6 +313,41 @@ HERO BANNER
         position: relative;
         width: 100%;
     }
+
+    .hero-banner {
+        min-height: 430px;
+        align-items: flex-end;
+        background-position: center;
+    }
+
+    .hero-content {
+        max-width: 78%;
+        padding: 0 0 28px 22px;
+    }
+
+    .hero-small {
+        font-size: 12px;
+        letter-spacing: 1px;
+        margin-bottom: 4px;
+    }
+
+    .hero-content h1 {
+        font-size: 30px;
+        line-height: 1.05;
+        margin-bottom: 6px;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+        line-height: 1.35;
+        margin-bottom: 12px;
+    }
+
+    .hero-btn {
+        padding: 9px 13px;
+        font-size: 13px;
+    }
+
 }
 
 </style>
@@ -395,23 +409,21 @@ st.markdown("""
     </div>
 </div>
 </div>
+
 </div>
 
-""", unsafe_allow_html=True)
-
-st.markdown("""
-<div class="hero-banner">
+<section class="hero-banner">
     <div class="hero-content">
         <div class="hero-small">Đặc sản mùa thu Hà Nội</div>
-
-        <h1>🌾 Cốm Làng Vòng</h1>
-
-        <p>
-            Hương vị truyền thống Hà Nội với hạt cốm xanh non,
-            dẻo thơm và thanh nhẹ.
-        </p>
+        <h1>Cốm Làng Vòng</h1>
+        <p>Hương vị truyền thống của Hà Nội với hạt cốm dẻo thơm.</p>
+        <div class="hero-actions">
+            <a href="#dathang" class="hero-btn order" target="_self">Đặt hàng ngay</a>
+            <a href="tel:0385437503" class="hero-btn call">Gọi tư vấn</a>
+        </div>
     </div>
-</div>
+</section>
+
 """, unsafe_allow_html=True)
 
 st.markdown("<div class='content'>", unsafe_allow_html=True)
@@ -583,7 +595,7 @@ st.markdown("""
 st.markdown("</div>", unsafe_allow_html=True)
 
 st.markdown("""
-<div class="footer-full">
+<div class="footer-full" id="dathang">
     <div class="footer-content">
         <h3>🌾 Cốm Làng Vòng</h3>
         <p>📍 Địa chỉ: Làng Vòng, Dịch Vọng Hậu, Cầu Giấy, Hà Nội</p>
