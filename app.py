@@ -5,904 +5,465 @@ import streamlit as st
 # =========================
 st.set_page_config(
     page_title="Cốm Làng Vòng",
-    layout="wide",
-    initial_sidebar_state="collapsed"
+    layout="wide"
 )
 
-# Trang mặc định khi mở link / quét mã QR
-page = st.query_params.get("page", "thong-tin-san-pham")
-
-PAGES = {
-    "thong-tin-san-pham": "Thông tin sản phẩm",
-    "truy-xuat": "Truy xuất nguồn gốc",
-    "truyen-thong": "Nội dung truyền thống",
-    "chat-luong": "Chất lượng & chứng nhận",
-    "bao-bi": "Bao bì",
-    "lien-he": "Thông tin liên hệ",
-}
-
-if page not in PAGES:
-    page = "thong-tin-san-pham"
-
-BANNER_IMAGE = "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=2200&q=90"
+# =========================
+# LẤY TRANG HIỆN TẠI
+# =========================
+params = st.query_params
+page = params.get("page", "tensp")
 
 # =========================
 # CSS GIAO DIỆN WEBSITE
 # =========================
-st.markdown(f"""
+st.markdown("""
 <style>
 
-#MainMenu {{visibility: hidden;}}
-header {{visibility: hidden;}}
-footer {{visibility: hidden;}}
-[data-testid="stToolbar"] {{display: none !important;}}
-[data-testid="stDecoration"] {{display: none !important;}}
-[data-testid="stStatusWidget"] {{display: none !important;}}
+/* ẨN THANH STREAMLIT */
+#MainMenu {visibility: hidden;}
+header {visibility: hidden;}
+footer {visibility: hidden;}
+[data-testid="stToolbar"] {display: none !important;}
 
-html {{
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-}}
-
-body {{
+html, body {
     margin: 0;
     padding: 0;
-    background: #fffdf7;
-    overflow-x: hidden;
-}}
+}
 
-* {{
-    box-sizing: border-box;
-}}
+.block-container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
 
-.block-container {{
-    padding: 0 !important;
-    max-width: 100% !important;
-    overflow-x: hidden;
-}}
-
-/* =========================
-HEADER / MENU 2 GẠCH
-========================= */
-.header {{
+.topbar {
     position: sticky;
     top: 0;
-    z-index: 999;
     background: white;
-    margin: 14px;
-    padding: 14px 22px;
-    border-radius: 18px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}}
+    padding: 15px;
+    border-radius: 15px;
+    margin: 10px;
+    z-index: 999;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
 
-.logo {{
-    font-size: 26px;
-    font-weight: 800;
+.top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
     color: #2e7d32;
     white-space: nowrap;
-}}
+}
 
-.menu-wrap {{
-    position: relative;
-}}
-
-.menu-wrap summary {{
-    list-style: none;
+.hamburger {
+    font-size: 28px;
     cursor: pointer;
-    width: 46px;
-    height: 40px;
-    border-radius: 12px;
-    background: #2e7d32;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 7px;
-    padding: 0 10px;
-}}
+}
 
-.menu-wrap summary::-webkit-details-marker {{
+#menu-toggle {
     display: none;
-}}
+}
 
-.menu-wrap summary span {{
-    display: block;
-    height: 3px;
+.menu {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+#menu-toggle:checked ~ .menu {
+    display: flex;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropbtn {
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+    text-align: left;
+}
+
+.dropdown-content {
+    display: none;
     background: white;
+    min-width: 230px;
     border-radius: 10px;
-}}
-
-.menu-panel {{
-    position: absolute;
-    right: 0;
-    top: 54px;
-    width: 340px;
-    max-width: calc(100vw - 28px);
-    background: #542354;
-    color: white;
-    border-radius: 20px;
-    padding: 18px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.22);
-}}
-
-.menu-group {{
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.35);
-}}
-
-.menu-group:last-child {{
-    border-bottom: none;
-}}
-
-.menu-title {{
-    display: block;
-    color: white !important;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 800;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-}}
-
-.sub-menu {{
-    display: grid;
-    gap: 5px;
-    padding-left: 12px;
-}}
-
-.sub-menu a {{
-    color: rgba(255,255,255,0.92) !important;
-    text-decoration: none;
-    font-size: 15px;
-}}
-
-.sub-menu a:hover,
-.menu-title:hover {{
-    color: #f7d77b !important;
-}}
-
-/* =========================
-HERO BANNER
-========================= */
-.hero {{
-    min-height: 620px;
-    margin: 0 14px;
-    border-radius: 26px;
-    background:
-        linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.45)),
-        url("{BANNER_IMAGE}");
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: flex-end;
-    padding: 60px;
-    color: white;
-}}
-
-.hero-box {{
-    max-width: 650px;
-    background: rgba(0,0,0,0.28);
-    padding: 24px 28px;
-    border-radius: 22px;
-    backdrop-filter: blur(2px);
-}}
-
-.hero-small {{
-    font-size: 16px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin-bottom: 8px;
-}}
-
-.hero h1 {{
-    font-size: 58px;
-    line-height: 1.05;
-    margin: 0 0 10px 0;
-}}
-
-.hero p {{
-    font-size: 19px;
-    line-height: 1.45;
-    margin: 0 0 20px 0;
-}}
-
-.hero-actions {{
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-}}
-
-.btn-main,
-.btn-light {{
-    padding: 13px 22px;
-    border-radius: 999px;
-    text-decoration: none;
-    font-weight: 700;
-}}
-
-.btn-main {{
-    background: #2e7d32;
-    color: white !important;
-}}
-
-.btn-light {{
-    background: white;
-    color: #2e7d32 !important;
-}}
-
-/* =========================
-SECTION CHUNG
-========================= */
-.section {{
-    max-width: 1180px;
-    margin: 70px auto;
-    padding: 0 28px;
-}}
-
-.section-title {{
-    text-align: center;
-    margin-bottom: 34px;
-}}
-
-.section-title p {{
-    color: #2e7d32;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-}}
-
-.section-title h2 {{
-    font-size: 42px;
-    margin: 0;
-    color: #222;
-}}
-
-.feature-grid,
-.product-grid,
-.trace-box,
-.gallery {{
-    display: grid;
-    gap: 22px;
-}}
-
-.feature-grid {{
-    grid-template-columns: repeat(4, 1fr);
-}}
-
-.product-grid,
-.trace-box,
-.gallery {{
-    grid-template-columns: repeat(3, 1fr);
-}}
-
-.feature-card,
-.product-card,
-.trace-item,
-.contact-card {{
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 6px 22px rgba(0,0,0,0.08);
-}}
-
-.feature-card,
-.trace-item,
-.contact-card {{
-    padding: 26px;
-}}
-
-.feature-card {{
-    text-align: center;
-}}
-
-.feature-icon {{
-    font-size: 42px;
-    margin-bottom: 12px;
-}}
-
-.feature-card h3,
-.product-info h3,
-.trace-item h3,
-.contact-card h3 {{
-    color: #2e7d32;
-    margin-top: 0;
-}}
-
-.feature-card p,
-.product-info p,
-.trace-item p {{
-    color: #555;
-    line-height: 1.7;
-}}
-
-.product-card {{
     overflow: hidden;
-}}
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    z-index: 9999;
+}
 
-.product-card img,
-.gallery img {{
-    width: 100%;
-    object-fit: cover;
-}}
-
-.product-card img {{
-    height: 230px;
-}}
-
-.product-info {{
-    padding: 22px;
-}}
-
-.gallery img {{
-    height: 260px;
-    border-radius: 20px;
-}}
-
-.story {{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 45px;
-    align-items: center;
-}}
-
-.story img {{
-    width: 100%;
-    border-radius: 24px;
-    box-shadow: 0 8px 26px rgba(0,0,0,0.12);
-}}
-
-.story-text h2 {{
-    font-size: 40px;
-    color: #222;
-    margin-bottom: 18px;
-}}
-
-.story-text p {{
-    line-height: 1.85;
-    color: #444;
-    font-size: 17px;
-}}
-
-.contact {{
-    background: #2e7d32;
-    color: white;
-    border-radius: 28px;
-    padding: 50px;
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 30px;
-    align-items: center;
-}}
-
-.contact h2 {{
-    font-size: 40px;
-    margin-top: 0;
-}}
-
-.contact p {{
-    font-size: 17px;
-    line-height: 1.8;
-}}
-
-.contact-card {{
-    color: #222;
-    min-height: 260px;
+.dropdown-content a {
     display: block;
-}}
-
-.contact-card p {{
-    color: #333;
-    margin: 11px 0;
-}}
-
-.contact-card a {{
-    color: #2e7d32 !important;
-    font-weight: 700;
+    padding: 12px 14px;
     text-decoration: none;
-}}
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
 
-.floating-contact {{
+.dropdown-content a:hover {
+    background: #f1f8e9;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.content {
+    max-width: 850px;
+    margin: auto;
+    padding: 20px;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.card {
+    background: #f1f8e9;
+    padding: 20px;
+    border-radius: 14px;
+    margin-top: 18px;
+}
+
+.card2 {
+    background: #e8f5e9;
+    padding: 20px;
+    border-radius: 14px;
+    margin-top: 18px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+.floating-contact {
     position: fixed;
-    bottom: 28px;
-    right: 18px;
+    bottom: 50px;
+    right: 15px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     z-index: 9999;
-}}
+}
 
-.float-btn {{
-    width: 52px;
-    height: 52px;
+.float-btn {
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    color: white !important;
-    font-size: 24px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-}}
-
-.call-btn {{background: #2e7d32;}}
-.zalo-btn {{background: #0084ff;}}
-
-.footer {{
-    background: #111;
     color: white;
-    padding: 45px 28px;
-    margin-top: 80px;
-}}
+    font-size: 22px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
 
-.footer-inner {{
-    max-width: 1180px;
+.call-btn {
+    background: #2e7d32;
+}
+
+.zalo-btn {
+    background: #0084ff;
+}
+
+.footer-full {
+    width: calc(100vw - 32px);
+    margin-left: calc(50% - 50vw + 16px);
+    background: #000;
+    color: white;
+    padding: 10px 10px;
+    margin-top: 40px;
+    box-sizing: border-box;
+}
+
+.footer-content {
+    max-width: 850px;
     margin: auto;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 28px;
-}}
-
-.footer h3 {{color: white;}}
-
-.footer p,
-.footer a {{
-    color: #ddd !important;
-    text-decoration: none;
-    line-height: 1.8;
-}}
-
-.copy {{
     text-align: center;
-    color: #aaa;
-    margin-top: 35px;
-    font-size: 14px;
-}}
-
-/* =========================
-MOBILE
-========================= */
-@media (max-width: 900px) {{
-    html,
-    body {{
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
-    }}
-
-    .header {{
-        margin: 10px;
-        padding: 12px 14px;
-    }}
-
-    .logo {{
-        font-size: 21px;
-    }}
-
-    .hero {{
-        min-height: 560px;
-        margin: 0 10px;
-        padding: 18px;
-        align-items: flex-end;
-        background-position: center;
-    }}
-
-    .hero-box {{
-        max-width: 82%;
-        padding: 14px 16px;
-        border-radius: 16px;
-    }}
-
-    .hero-small {{
-        font-size: 11px;
-        line-height: 1.15;
-        letter-spacing: 1px;
-        margin-bottom: 5px;
-    }}
-
-    .hero h1 {{
-        font-size: 29px;
-        line-height: 1;
-        margin-bottom: 6px;
-    }}
-
-    .hero p {{
-        font-size: 13px;
-        line-height: 1.28;
-        margin-bottom: 10px;
-    }}
-
-    .btn-main,
-    .btn-light {{
-        padding: 9px 13px;
-        font-size: 13px;
-    }}
-
-    .feature-grid,
-    .product-grid,
-    .trace-box,
-    .gallery,
-    .story,
-    .contact,
-    .footer-inner {{
-        grid-template-columns: 1fr;
-    }}
-
-    .section {{
-        margin: 50px auto;
-        padding: 0 18px;
-    }}
-
-    .section-title h2 {{
-        font-size: 30px;
-    }}
-
-    .contact {{
-        padding: 30px 20px;
-    }}
-
-    .contact h2 {{
-        font-size: 30px;
-    }}
-}}
-
-</style>
-""", unsafe_allow_html=True)
-
-# =========================
-# HEADER / MENU WEBSITE
-# =========================
-def change_page(page_key):
-    st.query_params["page"] = page_key
-    st.rerun()
-
-st.markdown("""
-<style>
-.menu-top-row {
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    background: white;
-    margin: 14px;
-    padding: 14px 22px;
-    border-radius: 18px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
 }
-.menu-label {
-    font-size: 26px;
-    font-weight: 800;
-    color: #2e7d32;
-    white-space: nowrap;
-    padding-top: 7px;
-}
-div[data-testid="stPopover"] button {
-    background: #2e7d32 !important;
-    color: white !important;
-    border-radius: 12px !important;
-    font-weight: 800 !important;
-    min-height: 42px !important;
-}
-div[data-testid="stPopoverBody"] {
-    background: #542354;
-    border-radius: 18px;
-    padding: 16px;
-}
-div[data-testid="stPopoverBody"] p,
-div[data-testid="stPopoverBody"] label {
-    color: white !important;
-}
-div[data-testid="stPopoverBody"] .stButton button {
-    width: 100%;
-    background: transparent !important;
-    color: white !important;
-    border: 1px solid rgba(255,255,255,0.28) !important;
-    border-radius: 12px !important;
-    text-align: left !important;
-    justify-content: flex-start !important;
-    margin-bottom: 4px;
-}
-div[data-testid="stPopoverBody"] .stButton button:hover {
-    border-color: #f7d77b !important;
-    color: #f7d77b !important;
-}
-.menu-main-text {
+
+.footer-content a {
     color: white;
-    font-size: 17px;
-    font-weight: 800;
-    text-transform: uppercase;
-    margin: 12px 0 5px 0;
+    text-decoration: none;
 }
-.menu-sub-text {
-    color: rgba(255,255,255,0.85);
-    font-size: 13px;
-    margin: -2px 0 6px 0;
+
+@media (min-width:768px) {
+    .topbar {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .hamburger {
+        display: none;
+    }
+
+    .menu {
+        display: flex !important;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 0;
+    }
+
+    .dropbtn {
+        width: auto;
+        text-align: center;
+    }
+
+    .dropdown-content {
+        position: absolute;
+    }
 }
-@media (max-width: 900px) {
-    .menu-top-row { margin: 10px; padding: 12px 14px; }
-    .menu-label { font-size: 21px; padding-top: 8px; }
+
+@media (max-width:768px) {
+    .logo {
+        font-size: 25px;
+    }
+
+    .dropdown-content {
+        position: relative;
+        width: 100%;
+    }
 }
+
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="menu-top-row">', unsafe_allow_html=True)
-menu_col_1, menu_col_2 = st.columns([0.78, 0.22], vertical_alignment="center")
-with menu_col_1:
-    st.markdown('<div class="menu-label">🌾 Cốm Làng Vòng</div>', unsafe_allow_html=True)
-with menu_col_2:
-    with st.popover("☰ Menu", use_container_width=True):
-        st.markdown('<div class="menu-main-text">Thông tin sản phẩm</div><div class="menu-sub-text">Tên sản phẩm · Mã sản phẩm · Thương hiệu</div>', unsafe_allow_html=True)
-        if st.button("Mở trang Thông tin sản phẩm", key="menu_thong_tin", use_container_width=True):
-            change_page("thong-tin-san-pham")
-
-        st.markdown('<div class="menu-main-text">Truy xuất nguồn gốc</div><div class="menu-sub-text">Nguồn nguyên liệu · Khu vực sản xuất · Mã lô hàng</div>', unsafe_allow_html=True)
-        if st.button("Mở trang Truy xuất nguồn gốc", key="menu_truy_xuat", use_container_width=True):
-            change_page("truy-xuat")
-
-        st.markdown('<div class="menu-main-text">Nội dung truyền thống</div><div class="menu-sub-text">Câu chuyện sản phẩm · Hình ảnh · Video giới thiệu</div>', unsafe_allow_html=True)
-        if st.button("Mở trang Nội dung truyền thống", key="menu_truyen_thong", use_container_width=True):
-            change_page("truyen-thong")
-
-        st.markdown('<div class="menu-main-text">Chất lượng & chứng nhận</div><div class="menu-sub-text">Chứng nhận OCOP · Kiểm định chất lượng</div>', unsafe_allow_html=True)
-        if st.button("Mở trang Chất lượng & chứng nhận", key="menu_chat_luong", use_container_width=True):
-            change_page("chat-luong")
-
-        st.markdown('<div class="menu-main-text">Bao bì</div><div class="menu-sub-text">Mực · Giấy · Thời gian thu hồi</div>', unsafe_allow_html=True)
-        if st.button("Mở trang Bao bì", key="menu_bao_bi", use_container_width=True):
-            change_page("bao-bi")
-
-        st.markdown('<div class="menu-main-text">Thông tin liên hệ</div><div class="menu-sub-text">Website · Hotline · Mạng xã hội</div>', unsafe_allow_html=True)
-        if st.button("Mở trang Thông tin liên hệ", key="menu_lien_he", use_container_width=True):
-            change_page("lien-he")
-st.markdown('</div>', unsafe_allow_html=True)
-
-# =========================
-# HERO BANNER
-# =========================
 st.markdown("""
-<section class="hero">
-    <div class="hero-box">
-        <div class="hero-small">Đặc sản mùa thu Hà Nội</div>
-        <h1>Cốm Làng Vòng</h1>
-        <p>
-            Hạt cốm xanh non, dẻo thơm, thanh nhẹ — thức quà truyền thống gói trọn hương vị
-            tinh tế của đất kinh kỳ.
-        </p>
-        <div class="hero-actions">
-            <a href="?page=thong-tin-san-pham" class="btn-main" target="_self">Thông tin sản phẩm</a>
-            <a href="?page=lien-he" class="btn-light" target="_self">Liên hệ đặt hàng</a>
-        </div>
+<div class="topbar">
+
+<input type="checkbox" id="menu-toggle">
+
+<div class="top-row">
+    <div class="logo">🌾 Cốm Làng Vòng</div>
+    <label for="menu-toggle" class="hamburger">☰</label>
+</div>
+
+<div class="menu">
+
+<div class="dropdown">
+    <button class="dropbtn">Thông tin sản phẩm</button>
+    <div class="dropdown-content">
+        <a href="?page=tensp" target="_self">Tên sản phẩm</a>
+        <a href="?page=masp" target="_self">Mã sản phẩm</a>
+        <a href="?page=thuonghieu" target="_self">Thương hiệu</a>
     </div>
-</section>
+</div>
+
+<div class="dropdown">
+    <button class="dropbtn">Truy xuất nguồn gốc</button>
+    <div class="dropdown-content">
+        <a href="?page=nguyenlieu" target="_self">Nguồn nguyên liệu</a>
+        <a href="?page=khuvuc" target="_self">Khu vực sản xuất</a>
+        <a href="?page=malo" target="_self">Mã lô hàng</a>
+    </div>
+</div>
+
+<div class="dropdown">
+    <button class="dropbtn">Chất lượng & chứng nhận</button>
+    <div class="dropdown-content">
+        <a href="?page=ocop" target="_self">Chứng nhận OCOP</a>
+        <a href="?page=kiemdinh" target="_self">Kiểm định chất lượng</a>
+    </div>
+</div>
+
+<div class="dropdown">
+    <button class="dropbtn">Nội dung truyền thông</button>
+    <div class="dropdown-content">
+        <a href="?page=cauchuyen" target="_self">Câu chuyện sản phẩm</a>
+        <a href="?page=hinhanh" target="_self">Hình ảnh</a>
+        <a href="?page=video" target="_self">Video giới thiệu</a>
+    </div>
+</div>
+
+<div class="dropdown">
+    <button class="dropbtn">Thông tin bao bì</button>
+    <div class="dropdown-content">
+        <a href="?page=muc" target="_self">Mực</a>
+        <a href="?page=giay" target="_self">Giấy</a>
+        <a href="?page=thuhhoi" target="_self">Chính sách thu hồi bao bì</a>
+    </div>
+</div>
+</div>
+
 """, unsafe_allow_html=True)
 
-# =========================
-# 6 TRANG RIÊNG THEO MENU LỚN
-# =========================
-if page == "thong-tin-san-pham":
+st.markdown("<div class='content'>", unsafe_allow_html=True)
+
+if page == "tensp":
+    st.markdown("<h1 style='text-align:center;'>Tên sản phẩm</h1>", unsafe_allow_html=True)
     st.markdown("""
-    <section class="section" id="ten-san-pham">
-        <div class="section-title">
-            <p>Thông tin sản phẩm</p>
-            <h2>Cốm Làng Vòng</h2>
-        </div>
-
-        <div class="product-grid">
-            <div class="trace-item" id="ten-san-pham">
-                <h3>🌾 Tên sản phẩm</h3>
-                <p>Cốm Làng Vòng — đặc sản truyền thống Hà Nội, làm từ lúa nếp non.</p>
-            </div>
-
-            <div class="trace-item" id="ma-san-pham">
-                <h3>🏷️ Mã sản phẩm</h3>
-                <p>COM-LV-001. Mã có thể dùng để in trên tem, bao bì hoặc mã QR truy xuất.</p>
-            </div>
-
-            <div class="trace-item" id="thuong-hieu">
-                <h3>✅ Thương hiệu</h3>
-                <p>Cốm Làng Vòng — nhận diện xanh cốm, gắn với văn hóa ẩm thực Hà Nội.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="section-title">
-            <p>Sản phẩm</p>
-            <h2>Những món từ cốm</h2>
-        </div>
-
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="https://langcomvong.com/uploads/images/com-lang-vong%281%29.jpg">
-                <div class="product-info">
-                    <h3>Cốm tươi</h3>
-                    <p>Hạt cốm mềm dẻo, thơm nhẹ, phù hợp ăn trực tiếp hoặc dùng làm quà biếu.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://langcomvong.com/uploads/images/banh-com.jpg">
-                <div class="product-info">
-                    <h3>Bánh cốm</h3>
-                    <p>Món bánh truyền thống có vỏ dẻo thơm, nhân đậu xanh ngọt dịu.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://langcomvong.com/uploads/images/cha-com.jpg">
-                <div class="product-info">
-                    <h3>Chả cốm</h3>
-                    <p>Sự kết hợp giữa cốm và thịt tạo nên món ăn đậm vị, quen thuộc trong bữa cơm Việt.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="card">
+        <h3>🌾 Cốm Làng Vòng</h3>
+        <p><b>Tên sản phẩm:</b> Cốm Làng Vòng</p>
+        <p><b>Loại sản phẩm:</b> Thực phẩm truyền thống</p>
+        <p><b>Đặc điểm:</b> Hạt cốm mỏng, dẻo, thơm nhẹ, màu xanh non tự nhiên.</p>
+        <p>Sản phẩm phù hợp để ăn trực tiếp, làm quà biếu hoặc chế biến thành bánh cốm, chả cốm, xôi cốm, chè cốm.</p>
+    </div>
     """, unsafe_allow_html=True)
 
-elif page == "truy-xuat":
+elif page == "masp":
+    st.markdown("<h1 style='text-align:center;'>Mã sản phẩm</h1>", unsafe_allow_html=True)
     st.markdown("""
-    <section class="section">
-        <div class="section-title">
-            <p>Thông tin sản phẩm</p>
-            <h2>Truy xuất nguồn gốc</h2>
-        </div>
-
-        <div class="trace-box">
-            <div class="trace-item" id="nguon-nguyen-lieu">
-                <h3>🌾 Nguồn nguyên liệu</h3>
-                <p>Lúa nếp non chọn lọc, thu hoạch khi hạt còn ngậm sữa để giữ vị ngọt thanh và độ dẻo.</p>
-            </div>
-
-            <div class="trace-item" id="khu-vuc-san-xuat">
-                <h3>📍 Khu vực sản xuất</h3>
-                <p>Làng Vòng, Dịch Vọng Hậu, Cầu Giấy, Hà Nội — nơi gắn với nghề làm cốm truyền thống.</p>
-            </div>
-
-            <div class="trace-item" id="ma-lo-hang">
-                <h3>🏷️ Mã lô hàng</h3>
-                <p>Mã lô mẫu: LV-2026-001. Ngày sản xuất và hạn sử dụng được cập nhật trên bao bì.</p>
-            </div>
-        </div>
-    </section>
+    <div class="card">
+        <h3>🏷️ Mã sản phẩm</h3>
+        <p><b>Mã sản phẩm:</b> COM-LV-001</p>
+        <p><b>Nhóm sản phẩm:</b> Đặc sản Hà Nội</p>
+        <p><b>Dòng sản phẩm:</b> Cốm truyền thống</p>
+        <p>Mã sản phẩm giúp khách hàng nhận diện và tra cứu thông tin sản phẩm dễ dàng hơn.</p>
+    </div>
     """, unsafe_allow_html=True)
 
-elif page == "truyen-thong":
+elif page == "thuonghieu":
+    st.markdown("<h1 style='text-align:center;'>Thương hiệu</h1>", unsafe_allow_html=True)
     st.markdown("""
-    <section class="section story" id="cau-chuyen">
-        <div>
-            <img src="https://langcomvong.com/uploads/images/com-lang-vong%281%29.jpg">
-        </div>
-
-        <div class="story-text">
-            <p style="color:#2e7d32; font-weight:700; text-transform:uppercase;">Câu chuyện sản phẩm</p>
-            <h2>Thức quà thanh tao của mùa thu Hà Nội</h2>
-            <p>
-                Cốm Làng Vòng không chỉ là món ăn, mà còn là ký ức của Hà Nội. Từ những hạt lúa nếp non,
-                người thợ rang, giã, sàng sảy nhiều lần để tạo nên hạt cốm mỏng, dẻo, thơm và có màu xanh dịu.
-            </p>
-            <p>
-                Cốm thường được gói trong lá sen để giữ hương thơm tự nhiên. Khi thưởng thức, người ta ăn chậm,
-                nhai nhẹ để cảm nhận vị ngọt thanh và hương lúa non lan dần.
-            </p>
-        </div>
-    </section>
-
-    <section class="section" id="hinh-anh">
-        <div class="section-title">
-            <p>Thư viện</p>
-            <h2>Hình ảnh Cốm Làng Vòng</h2>
-        </div>
-
-        <div class="gallery">
-            <img src="https://langcomvong.com/uploads/images/com-lang-vong%281%29.jpg">
-            <img src="https://langcomvong.com/uploads/images/com-tuoi.jpg">
-            <img src="https://langcomvong.com/uploads/images/xoi-com.jpg">
-        </div>
-    </section>
-
-    <section class="section" id="video">
-        <div class="section-title">
-            <p>Video giới thiệu</p>
-            <h2>Không gian dành cho video sản phẩm</h2>
-        </div>
-        <div class="trace-item">
-            <p>Có thể gắn video giới thiệu quy trình làm cốm, đóng gói sản phẩm hoặc hướng dẫn quét mã truy xuất tại đây.</p>
-        </div>
-    </section>
+    <div class="card">
+        <h3>🌿 Thương hiệu Cốm Làng Vòng</h3>
+        <p>Cốm Làng Vòng là thương hiệu gắn với làng nghề truyền thống tại Hà Nội.</p>
+        <p>Sản phẩm đại diện cho nét tinh tế, thanh tao và giá trị văn hóa ẩm thực của Thủ đô.</p>
+    </div>
     """, unsafe_allow_html=True)
 
-elif page == "chat-luong":
+elif page == "nguyenlieu":
+    st.markdown("<h1 style='text-align:center;'>Nguồn nguyên liệu</h1>", unsafe_allow_html=True)
     st.markdown("""
-    <section class="section">
-        <div class="section-title">
-            <p>Chất lượng</p>
-            <h2>Chất lượng & chứng nhận</h2>
-        </div>
-
-        <div class="feature-grid">
-            <div class="feature-card" id="ocop">
-                <div class="feature-icon">🏅</div>
-                <h3>Chứng nhận OCOP</h3>
-                <p>Định hướng phát triển theo sản phẩm đặc trưng địa phương.</p>
-            </div>
-
-            <div class="feature-card" id="kiem-dinh">
-                <div class="feature-icon">🔍</div>
-                <h3>Kiểm định chất lượng</h3>
-                <p>Chú trọng nguyên liệu rõ ràng, quy trình sạch và bảo quản đúng cách.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">✅</div>
-                <h3>Thông tin rõ ràng</h3>
-                <p>Có thông tin sản phẩm, mã lô hàng, nguồn nguyên liệu và khu vực sản xuất.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🍃</div>
-                <h3>Nguyên liệu chọn lọc</h3>
-                <p>Làm từ lúa nếp non, chọn đúng thời điểm để giữ độ dẻo và hương thơm.</p>
-            </div>
-        </div>
-    </section>
+    <div class="card2">
+        <h3>🌾 Lúa nếp non chọn lọc</h3>
+        <p>Nguyên liệu chính để làm cốm là lúa nếp non, thường được chọn khi hạt còn ngậm sữa.</p>
+        <p>Lúa được sàng lọc kỹ, loại bỏ hạt lép trước khi rang và giã để tạo nên hạt cốm dẻo thơm.</p>
+    </div>
     """, unsafe_allow_html=True)
 
-elif page == "bao-bi":
+elif page == "khuvuc":
+    st.markdown("<h1 style='text-align:center;'>Khu vực sản xuất</h1>", unsafe_allow_html=True)
     st.markdown("""
-    <section class="section">
-        <div class="section-title">
-            <p>Bao bì</p>
-            <h2>Thông tin bao bì sản phẩm</h2>
-        </div>
-
-        <div class="trace-box">
-            <div class="trace-item" id="muc">
-                <h3>🖨️ Mực</h3>
-                <p>Ưu tiên mực in rõ nét, bền màu, phù hợp thông tin tem nhãn, mã QR và nhận diện thương hiệu.</p>
-            </div>
-
-            <div class="trace-item" id="giay">
-                <h3>📄 Giấy</h3>
-                <p>Sử dụng giấy bao bì có độ cứng phù hợp, dễ in thông tin sản phẩm, hướng đến khả năng tái chế.</p>
-            </div>
-
-            <div class="trace-item" id="thoi-gian-thu-hoi">
-                <h3>♻️ Thời gian thu hồi</h3>
-                <p>Khuyến khích thu hồi hoặc phân loại bao bì sau khi sử dụng. Thời gian thu hồi dự kiến có thể cập nhật theo từng chương trình.</p>
-            </div>
-        </div>
-    </section>
+    <div class="card2">
+        <h3>📍 Làng Vòng, Cầu Giấy, Hà Nội</h3>
+        <p>Sản phẩm gắn với làng Vòng, phường Dịch Vọng Hậu, quận Cầu Giấy, Hà Nội.</p>
+        <p>Đây là địa danh nổi tiếng với nghề làm cốm truyền thống lâu đời.</p>
+    </div>
     """, unsafe_allow_html=True)
 
-elif page == "lien-he":
+elif page == "malo":
+    st.markdown("<h1 style='text-align:center;'>Mã lô hàng</h1>", unsafe_allow_html=True)
     st.markdown("""
-    <section class="section contact">
-        <div>
-            <h2>Liên hệ đặt hàng</h2>
-            <p>
-                Khách hàng có thể liên hệ để được tư vấn sản phẩm, giá bán, đóng gói quà biếu
-                và phương thức giao hàng.
-            </p>
-            <p>
-                Cốm Làng Vòng phù hợp làm quà tặng, dùng trong gia đình hoặc chế biến thành các món ăn truyền thống.
-            </p>
-        </div>
-
-        <div class="contact-card">
-            <h3>🌾 Cốm Làng Vòng</h3>
-            <p id="website">🌐 Website: comlangvong.vn</p>
-            <p id="hotline">📞 Hotline: <a href="tel:0385437503">0385 437 503</a></p>
-            <p>💬 Zalo: <a href="https://zalo.me/0385437503" target="_blank">0385 437 503</a></p>
-            <p id="mang-xa-hoi">📘 Facebook: Cốm Làng Vòng</p>
-            <p>📍 Làng Vòng, Dịch Vọng Hậu, Cầu Giấy, Hà Nội</p>
-        </div>
-    </section>
+    <div class="card2">
+        <h3>🏷️ Thông tin lô hàng</h3>
+        <p><b>Mã lô mẫu:</b> LV-2026-001</p>
+        <p><b>Ngày sản xuất:</b> Cập nhật trên bao bì sản phẩm</p>
+        <p><b>Hạn sử dụng:</b> Cập nhật theo từng loại sản phẩm</p>
+        <p>Mã lô hàng giúp theo dõi thông tin sản xuất và chất lượng sản phẩm.</p>
+    </div>
     """, unsafe_allow_html=True)
 
-# =========================
-# NÚT GỌI / ZALO NỔI
-# =========================
+elif page == "ocop":
+    st.markdown("<h1 style='text-align:center;'>Chứng nhận OCOP</h1>", unsafe_allow_html=True)
+    st.markdown("""
+    <div class="card">
+        <h3>✅ Định hướng sản phẩm OCOP</h3>
+        <p>OCOP là chương trình đánh giá, phân hạng sản phẩm đặc trưng của địa phương.</p>
+        <p>Cốm Làng Vòng phù hợp phát triển theo định hướng sản phẩm OCOP nhờ giá trị truyền thống và nguồn gốc rõ ràng.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+elif page == "kiemdinh":
+    st.markdown("<h1 style='text-align:center;'>Kiểm định chất lượng</h1>", unsafe_allow_html=True)
+    st.markdown("""
+    <div class="card">
+        <h3>🔍 Kiểm soát chất lượng</h3>
+        <ul>
+            <li>Nguyên liệu có nguồn gốc rõ ràng.</li>
+            <li>Quy trình chế biến sạch sẽ.</li>
+            <li>Không sử dụng nguyên liệu kém chất lượng.</li>
+            <li>Bảo quản nơi khô ráo, thoáng mát.</li>
+            <li>Đóng gói cẩn thận, hạn chế tiếp xúc với môi trường bên ngoài.</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+
+elif page == "cauchuyen":
+    st.markdown("<h1 style='text-align:center;'>Câu chuyện sản phẩm</h1>", unsafe_allow_html=True)
+    st.write("""
+    Cốm Làng Vòng không chỉ là một món ăn mà còn là một phần ký ức của Hà Nội.
+    Mỗi hạt cốm là kết quả của quá trình chọn lúa, rang, giã và sàng sảy công phu.
+    """)
+    st.write("""
+    Hương cốm thơm nhẹ, màu xanh non và vị ngọt thanh khiến sản phẩm trở thành thức quà quen thuộc mỗi độ thu về.
+    """)
+
+elif page == "hinhanh":
+    st.markdown("<h1 style='text-align:center;'>Hình ảnh</h1>", unsafe_allow_html=True)
+    st.write("Một số hình ảnh giới thiệu sản phẩm Cốm Làng Vòng:")
+    st.image("Com tong quan.jpg", width=700)
+    st.image("Com tong quan 1.jpg", width=700)
+    st.image("Com tong quan 2.jpg", width=700)
+
+elif page == "video":
+    st.markdown("<h1 style='text-align:center;'>Video giới thiệu</h1>", unsafe_allow_html=True)
+    st.markdown("""
+    <div class="card">
+        <h3>🎬 Video giới thiệu sản phẩm</h3>
+        <p>Khu vực này dùng để hiển thị video giới thiệu quy trình làm cốm hoặc câu chuyện làng nghề.</p>
+        <p><i>Khi có video, bạn thêm:</i></p>
+        <p><b>st.video("link_youtube")</b></p>
+    </div>
+    """, unsafe_allow_html=True)
+
+elif page == "muc":
+    st.markdown("<h1 style='text-align:center;'>Thông tin mực in</h1>", unsafe_allow_html=True)
+    st.markdown("""
+    <div class="card2">
+        <h3>🖨️ Mực in bao bì</h3>
+        <p>Bao bì nên sử dụng mực in rõ nét, bền màu và phù hợp với bao bì thực phẩm.</p>
+        <p>Các thông tin quan trọng như tên sản phẩm, hạn sử dụng, mã lô hàng cần được in rõ ràng.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+elif page == "giay":
+    st.markdown("<h1 style='text-align:center;'>Thông tin giấy bao bì</h1>", unsafe_allow_html=True)
+    st.markdown("""
+    <div class="card2">
+        <h3>📦 Chất liệu bao bì</h3>
+        <p>Bao bì cần sạch, chắc chắn và phù hợp với thực phẩm.</p>
+        <p>Thiết kế có thể dùng màu xanh cốm, họa tiết lá sen để tăng tính nhận diện thương hiệu.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+elif page == "thuhoi":
+    st.markdown("<h1 style='text-align:center;'>Chính sách thu hồi bao bì</h1>", unsafe_allow_html=True)
+    st.markdown("""
+    <div class="card2">
+        <h3>♻️ Chính sách thu hồi bao bì</h3>
+        <p>Khách hàng được khuyến khích phân loại và xử lý bao bì sau khi sử dụng.</p>
+        <ul>
+            <li>Không vứt bao bì ra môi trường.</li>
+            <li>Phân loại bao bì giấy, túi, hộp sau khi dùng.</li>
+            <li>Ưu tiên sử dụng bao bì thân thiện với môi trường.</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+
+else:
+    st.markdown("<h1 style='text-align:center;'>Trang không tồn tại</h1>", unsafe_allow_html=True)
+    st.write("Vui lòng chọn lại mục trong menu.")
+
 st.markdown("""
 <div class="floating-contact">
     <a href="tel:0385437503" class="float-btn call-btn">📞</a>
@@ -910,38 +471,18 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# =========================
-# FOOTER CUỐI TRANG
-# =========================
+st.markdown("</div>", unsafe_allow_html=True)
+
 st.markdown("""
-<footer class="footer">
-    <div class="footer-inner">
-        <div>
-            <h3>🌾 Cốm Làng Vòng</h3>
-            <p>
-                Đặc sản truyền thống Hà Nội, mang hương vị thanh tao của lúa nếp non
-                và nét đẹp văn hóa ẩm thực đất kinh kỳ.
-            </p>
-        </div>
-
-        <div>
-            <h3>Danh mục</h3>
-            <p><a href="?page=thong-tin-san-pham" target="_self">Thông tin sản phẩm</a></p>
-            <p><a href="?page=truy-xuat" target="_self">Truy xuất nguồn gốc</a></p>
-            <p><a href="?page=truyen-thong" target="_self">Nội dung truyền thống</a></p>
-            <p><a href="?page=bao-bi" target="_self">Bao bì</a></p>
-        </div>
-
-        <div>
-            <h3>Liên hệ</h3>
-            <p>📍 Làng Vòng, Dịch Vọng Hậu, Cầu Giấy, Hà Nội</p>
-            <p>📞 0385 437 503</p>
-            <p>💬 Zalo: 0385 437 503</p>
-        </div>
+<div class="footer-full">
+    <div class="footer-content">
+        <h3>🌾 Cốm Làng Vòng</h3>
+        <p>📍 Địa chỉ: Làng Vòng, Dịch Vọng Hậu, Cầu Giấy, Hà Nội</p>
+        <p>📞 <a href="tel:0385437503">0385 437 503</a></p>
+        <p>💬 <a href="https://zalo.me/0385437503" target="_blank">Chat Zalo</a></p>
+        <p style="margin-top:15px; font-size:13px; color:#ccc;">
+            © 2026 Cốm Làng Vòng. All rights reserved.
+        </p>
     </div>
-
-    <div class="copy">
-        © 2026 Cốm Làng Vòng. All rights reserved.
-    </div>
-</footer>
+</div>
 """, unsafe_allow_html=True)
