@@ -306,24 +306,30 @@ BANNER TRANG CHỦ
 }
 
 @media (max-width:768px) {
+
     .logo {
-        font-size: 25px;
+        font-size: 22px;
+    }
+
+    .hamburger {
+        font-size: 24px;
     }
 
     .menu {
-        gap: 14px;
+        gap: 8px;
     }
 
     .dropdown {
         background: white;
-        border-radius: 10px;
+        border-radius: 8px;
         overflow: hidden;
     }
 
     .dropbtn {
-        border-radius: 10px 10px 0 0;
-        font-size: 16px;
-        padding: 14px 16px;
+        border-radius: 8px 8px 0 0;
+        font-size: 14px;
+        padding: 10px 14px;
+        min-height: auto;
     }
 
     .dropdown-content {
@@ -331,47 +337,54 @@ BANNER TRANG CHỦ
         position: relative;
         width: 100%;
         margin-top: 0;
-        border-radius: 0 0 10px 10px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        border-radius: 0 0 8px 8px;
+        box-shadow: none;
     }
 
     .dropdown-content a {
-        font-size: 15px;
-        padding: 14px 16px;
+        font-size: 13px;
+        padding: 10px 14px;
+        line-height: 1.2;
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .topbar {
+        padding: 12px;
+        margin: 8px;
     }
 
     .hero-banner {
-        min-height: 430px;
+        min-height: 350px;
         align-items: flex-end;
         background-position: center;
     }
 
     .hero-content {
-        max-width: 78%;
-        padding: 0 0 28px 22px;
+        max-width: 85%;
+        padding: 0 0 22px 18px;
     }
 
     .hero-small {
-        font-size: 12px;
+        font-size: 11px;
         letter-spacing: 1px;
-        margin-bottom: 4px;
+        margin-bottom: 3px;
     }
 
     .hero-content h1 {
-        font-size: 30px;
+        font-size: 26px;
         line-height: 1.05;
         margin-bottom: 6px;
     }
 
     .hero-content p {
-        font-size: 14px;
-        line-height: 1.35;
-        margin-bottom: 12px;
+        font-size: 13px;
+        line-height: 1.3;
+        margin-bottom: 10px;
     }
 
     .hero-btn {
-        padding: 9px 13px;
-        font-size: 13px;
+        padding: 8px 12px;
+        font-size: 12px;
     }
 }
 
