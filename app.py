@@ -482,7 +482,7 @@ PAGE_DATABASE = {
             "Thiết kế nên dùng màu xanh cốm, họa tiết lá sen để tăng khả năng nhận diện thương hiệu."
         ]
     },
-    ,
+
 "thuonghieu": {
     "title": "Thương hiệu",
     "card_class": "card",
