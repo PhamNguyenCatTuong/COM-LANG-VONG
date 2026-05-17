@@ -474,6 +474,7 @@ PAGE_DATABASE = {
         "type": "group",
         "items": ["muc", "giay", "thuhoi"]
     },
+}
 
 def create_database():
     conn = sqlite3.connect(":memory:")
