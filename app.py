@@ -310,9 +310,34 @@ BANNER TRANG CHỦ
         font-size: 25px;
     }
 
+    .menu {
+        gap: 14px;
+    }
+
+    .dropdown {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .dropbtn {
+        border-radius: 10px 10px 0 0;
+        font-size: 16px;
+        padding: 14px 16px;
+    }
+
     .dropdown-content {
+        display: block !important;
         position: relative;
         width: 100%;
+        margin-top: 0;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .dropdown-content a {
+        font-size: 15px;
+        padding: 14px 16px;
     }
 
     .hero-banner {
@@ -348,7 +373,6 @@ BANNER TRANG CHỦ
         padding: 9px 13px;
         font-size: 13px;
     }
-
 }
 
 </style>
