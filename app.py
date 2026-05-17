@@ -1,3 +1,4 @@
+import sqlite3
 import streamlit as st
 
 # =========================
@@ -428,159 +429,301 @@ st.markdown("""
 
 st.markdown("<div class='content'>", unsafe_allow_html=True)
 
-if page == "tensp":
-    st.markdown("<h1 style='text-align:center;'>Tên sản phẩm</h1>", unsafe_allow_html=True)
-    st.markdown("""
-    <div class="card">
-        <h3>🌾 Cốm Làng Vòng</h3>
-        <p><b>Tên sản phẩm:</b> Cốm Làng Vòng</p>
-        <p><b>Loại sản phẩm:</b> Thực phẩm truyền thống</p>
-        <p><b>Đặc điểm:</b> Hạt cốm mỏng, dẻo, thơm nhẹ, màu xanh non tự nhiên.</p>
-        <p>Sản phẩm phù hợp để ăn trực tiếp, làm quà biếu hoặc chế biến thành bánh cốm, chả cốm, xôi cốm, chè cốm.</p>
-    </div>
-    """, unsafe_allow_html=True)
+# =========================
+# CƠ SỞ DỮ LIỆU NỘI DUNG MENU
+# =========================
+# Cách hoạt động:
+# - Mỗi dòng trong PAGE_DATABASE tương ứng với 1 trang con trên menu.
+# - Muốn sửa nội dung: chỉnh title, card_title, paragraphs, bullets.
+# - Muốn thêm menu mới: thêm dòng vào PAGE_DATABASE và thêm link trên thanh menu phía trên.
 
-elif page == "masp":
-    st.markdown("<h1 style='text-align:center;'>Mã sản phẩm</h1>", unsafe_allow_html=True)
-    st.markdown("""
-    <div class="card">
-        <h3>🏷️ Mã sản phẩm</h3>
-        <p><b>Mã sản phẩm:</b> COM-LV-001</p>
-        <p><b>Nhóm sản phẩm:</b> Đặc sản Hà Nội</p>
-        <p><b>Dòng sản phẩm:</b> Cốm truyền thống</p>
-        <p>Mã sản phẩm giúp khách hàng nhận diện và tra cứu thông tin sản phẩm dễ dàng hơn.</p>
-    </div>
-    """, unsafe_allow_html=True)
+PAGE_DATABASE = {
+    "tensp": {
+        "title": "Tên sản phẩm",
+        "card_class": "card",
+        "card_title": "🌾 Cốm Làng Vòng",
+        "fields": {
+            "Tên sản phẩm": "Cốm Làng Vòng",
+            "Loại sản phẩm": "Thực phẩm truyền thống",
+            "Đặc điểm": "Hạt cốm mỏng, dẻo, thơm nhẹ, màu xanh non tự nhiên."
+        },
+        "paragraphs": [
+            "Sản phẩm phù hợp để ăn trực tiếp, làm quà biếu hoặc chế biến thành bánh cốm, chả cốm, xôi cốm, chè cốm."
+        ]
+    },
+    "masp": {
+        "title": "Mã sản phẩm",
+        "card_class": "card",
+        "card_title": "🏷️ Mã sản phẩm",
+        "fields": {
+            "Mã sản phẩm": "COM-LV-001",
+            "Nhóm sản phẩm": "Đặc sản Hà Nội",
+            "Dòng sản phẩm": "Cốm truyền thống"
+        },
+        "paragraphs": [
+            "Mã sản phẩm giúp khách hàng nhận diện và tra cứu thông tin sản phẩm dễ dàng hơn."
+        ]
+    },
+    "thuonghieu": {
+        "title": "Thương hiệu",
+        "card_class": "card",
+        "card_title": "🌿 Thương hiệu Cốm Làng Vòng",
+        "paragraphs": [
+            "Cốm Làng Vòng là thương hiệu gắn với làng nghề truyền thống tại Hà Nội.",
+            "Sản phẩm đại diện cho nét tinh tế, thanh tao và giá trị văn hóa ẩm thực của Thủ đô."
+        ]
+    },
+    "nguyenlieu": {
+        "title": "Nguồn nguyên liệu",
+        "card_class": "card2",
+        "card_title": "🌾 Lúa nếp non chọn lọc",
+        "paragraphs": [
+            "Nguyên liệu chính để làm cốm là lúa nếp non, thường được chọn khi hạt còn ngậm sữa.",
+            "Lúa được sàng lọc kỹ, loại bỏ hạt lép trước khi rang và giã để tạo nên hạt cốm dẻo thơm."
+        ]
+    },
+    "khuvuc": {
+        "title": "Khu vực sản xuất",
+        "card_class": "card2",
+        "card_title": "📍 Làng Vòng, Cầu Giấy, Hà Nội",
+        "paragraphs": [
+            "Sản phẩm gắn với làng Vòng, phường Dịch Vọng Hậu, quận Cầu Giấy, Hà Nội.",
+            "Đây là địa danh nổi tiếng với nghề làm cốm truyền thống lâu đời."
+        ]
+    },
+    "malo": {
+        "title": "Mã lô hàng",
+        "card_class": "card2",
+        "card_title": "🏷️ Thông tin lô hàng",
+        "fields": {
+            "Mã lô mẫu": "LV-2026-001",
+            "Ngày sản xuất": "Cập nhật trên bao bì sản phẩm",
+            "Hạn sử dụng": "Cập nhật theo từng loại sản phẩm"
+        },
+        "paragraphs": [
+            "Mã lô hàng giúp theo dõi thông tin sản xuất và chất lượng sản phẩm."
+        ]
+    },
+    "ocop": {
+        "title": "Chứng nhận OCOP",
+        "card_class": "card",
+        "card_title": "✅ Định hướng sản phẩm OCOP",
+        "paragraphs": [
+            "OCOP là chương trình đánh giá, phân hạng sản phẩm đặc trưng của địa phương.",
+            "Cốm Làng Vòng phù hợp phát triển theo định hướng sản phẩm OCOP nhờ giá trị truyền thống và nguồn gốc rõ ràng."
+        ]
+    },
+    "kiemdinh": {
+        "title": "Kiểm định chất lượng",
+        "card_class": "card",
+        "card_title": "🔍 Kiểm soát chất lượng",
+        "bullets": [
+            "Nguyên liệu có nguồn gốc rõ ràng.",
+            "Quy trình chế biến sạch sẽ.",
+            "Không sử dụng nguyên liệu kém chất lượng.",
+            "Bảo quản nơi khô ráo, thoáng mát.",
+            "Đóng gói cẩn thận, hạn chế tiếp xúc với môi trường bên ngoài."
+        ]
+    },
+    "cauchuyen": {
+        "title": "Câu chuyện sản phẩm",
+        "card_class": "card",
+        "card_title": "🍃 Câu chuyện Cốm Làng Vòng",
+        "paragraphs": [
+            "Cốm Làng Vòng không chỉ là một món ăn mà còn là một phần ký ức của Hà Nội.",
+            "Mỗi hạt cốm là kết quả của quá trình chọn lúa, rang, giã và sàng sảy công phu.",
+            "Hương cốm thơm nhẹ, màu xanh non và vị ngọt thanh khiến sản phẩm trở thành thức quà quen thuộc mỗi độ thu về."
+        ]
+    },
+    "hinhanh": {
+        "title": "Hình ảnh",
+        "type": "images",
+        "intro": "Một số hình ảnh giới thiệu sản phẩm Cốm Làng Vòng:",
+        "images": [
+            "Com tong quan.jpg",
+            "Com tong quan 1.jpg",
+            "Com tong quan 2.jpg"
+        ]
+    },
+    "video": {
+        "title": "Video giới thiệu",
+        "card_class": "card",
+        "card_title": "🎬 Video giới thiệu sản phẩm",
+        "paragraphs": [
+            "Khu vực này dùng để hiển thị video giới thiệu quy trình làm cốm hoặc câu chuyện làng nghề.",
+            "Khi có video, bạn có thể thay phần nội dung này bằng st.video('link_youtube')."
+        ]
+    },
+    "muc": {
+        "title": "Thông tin mực in",
+        "card_class": "card2",
+        "card_title": "🖨️ Mực in bao bì",
+        "paragraphs": [
+            "Bao bì nên sử dụng mực in rõ nét, bền màu và phù hợp với bao bì thực phẩm.",
+            "Các thông tin quan trọng như tên sản phẩm, hạn sử dụng, mã lô hàng cần được in rõ ràng."
+        ]
+    },
+    "giay": {
+        "title": "Thông tin giấy bao bì",
+        "card_class": "card2",
+        "card_title": "📦 Chất liệu bao bì",
+        "paragraphs": [
+            "Bao bì cần sạch, chắc chắn và phù hợp với thực phẩm.",
+            "Thiết kế có thể dùng màu xanh cốm, họa tiết lá sen để tăng tính nhận diện thương hiệu."
+        ]
+    },
+    "thuhoi": {
+        "title": "Chính sách thu hồi bao bì",
+        "card_class": "card2",
+        "card_title": "♻️ Chính sách thu hồi bao bì",
+        "paragraphs": [
+            "Khách hàng được khuyến khích phân loại và xử lý bao bì sau khi sử dụng."
+        ],
+        "bullets": [
+            "Không vứt bao bì ra môi trường.",
+            "Phân loại bao bì giấy, túi, hộp sau khi dùng.",
+            "Ưu tiên sử dụng bao bì thân thiện với môi trường."
+        ]
+    }
+}
 
-elif page == "thuonghieu":
-    st.markdown("<h1 style='text-align:center;'>Thương hiệu</h1>", unsafe_allow_html=True)
-    st.markdown("""
-    <div class="card">
-        <h3>🌿 Thương hiệu Cốm Làng Vòng</h3>
-        <p>Cốm Làng Vòng là thương hiệu gắn với làng nghề truyền thống tại Hà Nội.</p>
-        <p>Sản phẩm đại diện cho nét tinh tế, thanh tao và giá trị văn hóa ẩm thực của Thủ đô.</p>
-    </div>
-    """, unsafe_allow_html=True)
 
-elif page == "nguyenlieu":
-    st.markdown("<h1 style='text-align:center;'>Nguồn nguyên liệu</h1>", unsafe_allow_html=True)
-    st.markdown("""
-    <div class="card2">
-        <h3>🌾 Lúa nếp non chọn lọc</h3>
-        <p>Nguyên liệu chính để làm cốm là lúa nếp non, thường được chọn khi hạt còn ngậm sữa.</p>
-        <p>Lúa được sàng lọc kỹ, loại bỏ hạt lép trước khi rang và giã để tạo nên hạt cốm dẻo thơm.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-elif page == "khuvuc":
-    st.markdown("<h1 style='text-align:center;'>Khu vực sản xuất</h1>", unsafe_allow_html=True)
-    st.markdown("""
-    <div class="card2">
-        <h3>📍 Làng Vòng, Cầu Giấy, Hà Nội</h3>
-        <p>Sản phẩm gắn với làng Vòng, phường Dịch Vọng Hậu, quận Cầu Giấy, Hà Nội.</p>
-        <p>Đây là địa danh nổi tiếng với nghề làm cốm truyền thống lâu đời.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-elif page == "malo":
-    st.markdown("<h1 style='text-align:center;'>Mã lô hàng</h1>", unsafe_allow_html=True)
-    st.markdown("""
-    <div class="card2">
-        <h3>🏷️ Thông tin lô hàng</h3>
-        <p><b>Mã lô mẫu:</b> LV-2026-001</p>
-        <p><b>Ngày sản xuất:</b> Cập nhật trên bao bì sản phẩm</p>
-        <p><b>Hạn sử dụng:</b> Cập nhật theo từng loại sản phẩm</p>
-        <p>Mã lô hàng giúp theo dõi thông tin sản xuất và chất lượng sản phẩm.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-elif page == "ocop":
-    st.markdown("<h1 style='text-align:center;'>Chứng nhận OCOP</h1>", unsafe_allow_html=True)
-    st.markdown("""
-    <div class="card">
-        <h3>✅ Định hướng sản phẩm OCOP</h3>
-        <p>OCOP là chương trình đánh giá, phân hạng sản phẩm đặc trưng của địa phương.</p>
-        <p>Cốm Làng Vòng phù hợp phát triển theo định hướng sản phẩm OCOP nhờ giá trị truyền thống và nguồn gốc rõ ràng.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-elif page == "kiemdinh":
-    st.markdown("<h1 style='text-align:center;'>Kiểm định chất lượng</h1>", unsafe_allow_html=True)
-    st.markdown("""
-    <div class="card">
-        <h3>🔍 Kiểm soát chất lượng</h3>
-        <ul>
-            <li>Nguyên liệu có nguồn gốc rõ ràng.</li>
-            <li>Quy trình chế biến sạch sẽ.</li>
-            <li>Không sử dụng nguyên liệu kém chất lượng.</li>
-            <li>Bảo quản nơi khô ráo, thoáng mát.</li>
-            <li>Đóng gói cẩn thận, hạn chế tiếp xúc với môi trường bên ngoài.</li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
-
-elif page == "cauchuyen":
-    st.markdown("<h1 style='text-align:center;'>Câu chuyện sản phẩm</h1>", unsafe_allow_html=True)
-    st.write("""
-    Cốm Làng Vòng không chỉ là một món ăn mà còn là một phần ký ức của Hà Nội.
-    Mỗi hạt cốm là kết quả của quá trình chọn lúa, rang, giã và sàng sảy công phu.
+def create_database():
+    conn = sqlite3.connect(":memory:")
+    conn.execute("""
+        CREATE TABLE pages (
+            page_id TEXT PRIMARY KEY,
+            title TEXT,
+            page_type TEXT,
+            card_class TEXT,
+            card_title TEXT,
+            intro TEXT
+        )
     """)
-    st.write("""
-    Hương cốm thơm nhẹ, màu xanh non và vị ngọt thanh khiến sản phẩm trở thành thức quà quen thuộc mỗi độ thu về.
+    conn.execute("""
+        CREATE TABLE page_fields (
+            page_id TEXT,
+            field_name TEXT,
+            field_value TEXT,
+            sort_order INTEGER
+        )
+    """)
+    conn.execute("""
+        CREATE TABLE page_paragraphs (
+            page_id TEXT,
+            content TEXT,
+            sort_order INTEGER
+        )
+    """)
+    conn.execute("""
+        CREATE TABLE page_bullets (
+            page_id TEXT,
+            content TEXT,
+            sort_order INTEGER
+        )
+    """)
+    conn.execute("""
+        CREATE TABLE page_images (
+            page_id TEXT,
+            image_path TEXT,
+            sort_order INTEGER
+        )
     """)
 
-elif page == "hinhanh":
-    st.markdown("<h1 style='text-align:center;'>Hình ảnh</h1>", unsafe_allow_html=True)
-    st.write("Một số hình ảnh giới thiệu sản phẩm Cốm Làng Vòng:")
-    st.image("Com tong quan.jpg", width=700)
-    st.image("Com tong quan 1.jpg", width=700)
-    st.image("Com tong quan 2.jpg", width=700)
+    for page_id, data in PAGE_DATABASE.items():
+        conn.execute(
+            "INSERT INTO pages VALUES (?, ?, ?, ?, ?, ?)",
+            (
+                page_id,
+                data.get("title", ""),
+                data.get("type", "content"),
+                data.get("card_class", "card"),
+                data.get("card_title", ""),
+                data.get("intro", "")
+            )
+        )
+        for idx, (name, value) in enumerate(data.get("fields", {}).items(), start=1):
+            conn.execute("INSERT INTO page_fields VALUES (?, ?, ?, ?)", (page_id, name, value, idx))
+        for idx, paragraph in enumerate(data.get("paragraphs", []), start=1):
+            conn.execute("INSERT INTO page_paragraphs VALUES (?, ?, ?)", (page_id, paragraph, idx))
+        for idx, bullet in enumerate(data.get("bullets", []), start=1):
+            conn.execute("INSERT INTO page_bullets VALUES (?, ?, ?)", (page_id, bullet, idx))
+        for idx, image in enumerate(data.get("images", []), start=1):
+            conn.execute("INSERT INTO page_images VALUES (?, ?, ?)", (page_id, image, idx))
 
-elif page == "video":
-    st.markdown("<h1 style='text-align:center;'>Video giới thiệu</h1>", unsafe_allow_html=True)
-    st.markdown("""
-    <div class="card">
-        <h3>🎬 Video giới thiệu sản phẩm</h3>
-        <p>Khu vực này dùng để hiển thị video giới thiệu quy trình làm cốm hoặc câu chuyện làng nghề.</p>
-        <p><i>Khi có video, bạn thêm:</i></p>
-        <p><b>st.video("link_youtube")</b></p>
-    </div>
-    """, unsafe_allow_html=True)
+    conn.commit()
+    return conn
 
-elif page == "muc":
-    st.markdown("<h1 style='text-align:center;'>Thông tin mực in</h1>", unsafe_allow_html=True)
-    st.markdown("""
-    <div class="card2">
-        <h3>🖨️ Mực in bao bì</h3>
-        <p>Bao bì nên sử dụng mực in rõ nét, bền màu và phù hợp với bao bì thực phẩm.</p>
-        <p>Các thông tin quan trọng như tên sản phẩm, hạn sử dụng, mã lô hàng cần được in rõ ràng.</p>
-    </div>
-    """, unsafe_allow_html=True)
 
-elif page == "giay":
-    st.markdown("<h1 style='text-align:center;'>Thông tin giấy bao bì</h1>", unsafe_allow_html=True)
-    st.markdown("""
-    <div class="card2">
-        <h3>📦 Chất liệu bao bì</h3>
-        <p>Bao bì cần sạch, chắc chắn và phù hợp với thực phẩm.</p>
-        <p>Thiết kế có thể dùng màu xanh cốm, họa tiết lá sen để tăng tính nhận diện thương hiệu.</p>
-    </div>
-    """, unsafe_allow_html=True)
+def fetch_page(conn, page_id):
+    cur = conn.cursor()
+    cur.execute("SELECT page_id, title, page_type, card_class, card_title, intro FROM pages WHERE page_id = ?", (page_id,))
+    row = cur.fetchone()
+    if not row:
+        return None
 
-elif page == "thuhoi":
-    st.markdown("<h1 style='text-align:center;'>Chính sách thu hồi bao bì</h1>", unsafe_allow_html=True)
-    st.markdown("""
-    <div class="card2">
-        <h3>♻️ Chính sách thu hồi bao bì</h3>
-        <p>Khách hàng được khuyến khích phân loại và xử lý bao bì sau khi sử dụng.</p>
-        <ul>
-            <li>Không vứt bao bì ra môi trường.</li>
-            <li>Phân loại bao bì giấy, túi, hộp sau khi dùng.</li>
-            <li>Ưu tiên sử dụng bao bì thân thiện với môi trường.</li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
+    page_data = {
+        "page_id": row[0],
+        "title": row[1],
+        "type": row[2],
+        "card_class": row[3],
+        "card_title": row[4],
+        "intro": row[5],
+        "fields": [],
+        "paragraphs": [],
+        "bullets": [],
+        "images": []
+    }
 
+    cur.execute("SELECT field_name, field_value FROM page_fields WHERE page_id = ? ORDER BY sort_order", (page_id,))
+    page_data["fields"] = cur.fetchall()
+
+    cur.execute("SELECT content FROM page_paragraphs WHERE page_id = ? ORDER BY sort_order", (page_id,))
+    page_data["paragraphs"] = [item[0] for item in cur.fetchall()]
+
+    cur.execute("SELECT content FROM page_bullets WHERE page_id = ? ORDER BY sort_order", (page_id,))
+    page_data["bullets"] = [item[0] for item in cur.fetchall()]
+
+    cur.execute("SELECT image_path FROM page_images WHERE page_id = ? ORDER BY sort_order", (page_id,))
+    page_data["images"] = [item[0] for item in cur.fetchall()]
+
+    return page_data
+
+
+def render_page(page_data):
+    st.markdown(f"<h1 style='text-align:center;'>{page_data['title']}</h1>", unsafe_allow_html=True)
+
+    if page_data["type"] == "images":
+        st.write(page_data["intro"])
+        for image_path in page_data["images"]:
+            st.image(image_path, width=700)
+        return
+
+    html = f"<div class='{page_data['card_class']}'>"
+    if page_data["card_title"]:
+        html += f"<h3>{page_data['card_title']}</h3>"
+
+    for name, value in page_data["fields"]:
+        html += f"<p><b>{name}:</b> {value}</p>"
+
+    for paragraph in page_data["paragraphs"]:
+        html += f"<p>{paragraph}</p>"
+
+    if page_data["bullets"]:
+        html += "<ul>"
+        for bullet in page_data["bullets"]:
+            html += f"<li>{bullet}</li>"
+        html += "</ul>"
+
+    html += "</div>"
+    st.markdown(html, unsafe_allow_html=True)
+
+
+conn = create_database()
+current_page = fetch_page(conn, page)
+
+if current_page:
+    render_page(current_page)
 else:
     st.markdown("<h1 style='text-align:center;'>Trang không tồn tại</h1>", unsafe_allow_html=True)
     st.write("Vui lòng chọn lại mục trong menu.")
@@ -598,7 +741,7 @@ st.markdown("""
 <div class="footer-full" id="dathang">
     <div class="footer-content">
         <h3>🌾 Cốm Làng Vòng</h3>
-        <p>📍 Địa chỉ: Làng Vòng, Dịch Vọng Hậu, Cầu Giấy, Hà Nội</p>
+        <p>📍 Địa chỉ: 44 Trần Thái Tông, Dịch Vọng Hậu, Cầu Giấy, Hà Nội</p>
         <p>📞 <a href="tel:0385437503">0385 437 503</a></p>
         <p>💬 <a href="https://zalo.me/0385437503" target="_blank">Chat Zalo</a></p>
         <p style="margin-top:15px; font-size:13px; color:#ccc;">
