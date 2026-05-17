@@ -587,7 +587,7 @@ def fetch_page(conn, page_id):
 def render_page(page_data):
     st.markdown(f"<h1 style='text-align:center;'>{page_data['title']}</h1>", unsafe_allow_html=True)
 
-        if page_data["type"] == "group":
+    if page_data["type"] == "group":
         for child_page_id in page_data["group_items"]:
             child_data = fetch_page(conn, child_page_id)
 
@@ -619,7 +619,7 @@ def render_page(page_data):
                 st.markdown(html, unsafe_allow_html=True)
 
         return
-            
+
     if page_data["type"] == "images":
         st.write(page_data["intro"])
         for image_path in page_data["images"]:
