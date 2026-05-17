@@ -13,7 +13,7 @@ st.set_page_config(
 # LẤY TRANG HIỆN TẠI
 # =========================
 params = st.query_params
-page = params.get("page", "tensp")
+page = params.get("page", "thongtinsp")
 
 # =========================
 # CSS GIAO DIỆN WEBSITE
@@ -416,6 +416,7 @@ st.markdown("""
         <a href="?page=thuhoi" target="_self">Chính sách thu hồi</a>
     </div>
 </div>
+</div>
 
 <section class="hero-banner">
     <div class="hero-content">
@@ -481,12 +482,120 @@ PAGE_DATABASE = {
             "Thiết kế nên dùng màu xanh cốm, họa tiết lá sen để tăng khả năng nhận diện thương hiệu."
         ]
     },
+    ,
+"thuonghieu": {
+    "title": "Thương hiệu",
+    "card_class": "card",
+    "card_title": "🌿 Thương hiệu Cốm Làng Vòng",
+    "paragraphs": [
+        "Cốm Làng Vòng là thương hiệu gắn với làng nghề truyền thống Hà Nội.",
+        "Sản phẩm đại diện cho nét tinh tế và văn hóa ẩm thực Thủ đô."
+    ]
+},
+
+"truyxuat": {
+    "title": "Truy xuất nguồn gốc",
+    "type": "group",
+    "items": ["nguyenlieu", "khuvuc", "malo"]
+},
+
+"nguyenlieu": {
+    "title": "Nguồn nguyên liệu",
+    "card_class": "card2",
+    "card_title": "🌾 Lúa nếp non",
+    "paragraphs": [
+        "Nguyên liệu chính là lúa nếp non được chọn lọc kỹ lưỡng."
+    ]
+},
+
+"khuvuc": {
+    "title": "Khu vực sản xuất",
+    "card_class": "card2",
+    "card_title": "📍 Làng Vòng - Hà Nội",
+    "paragraphs": [
+        "Sản phẩm được sản xuất tại làng nghề truyền thống Làng Vòng."
+    ]
+},
+
+"malo": {
+    "title": "Mã lô hàng",
+    "card_class": "card2",
+    "card_title": "🏷️ Thông tin lô hàng",
+    "fields": {
+        "Mã lô": "LV-2026-001"
+    }
+},
+
+"ocop": {
+    "title": "Chứng nhận OCOP",
+    "card_class": "card",
+    "card_title": "✅ Chứng nhận OCOP",
+    "paragraphs": [
+        "Sản phẩm định hướng phát triển theo tiêu chuẩn OCOP."
+    ]
+},
+
+"kiemdinh": {
+    "title": "Kiểm định chất lượng",
+    "card_class": "card",
+    "card_title": "🔍 Kiểm định chất lượng",
+    "bullets": [
+        "Nguyên liệu rõ nguồn gốc",
+        "Quy trình sản xuất sạch",
+        "Đảm bảo vệ sinh an toàn thực phẩm"
+    ]
+},
+
+"truyenthong": {
+    "title": "Nội dung truyền thông",
+    "type": "group",
+    "items": ["cauchuyen", "hinhanh", "video"]
+},
+
+"cauchuyen": {
+    "title": "Câu chuyện sản phẩm",
+    "card_class": "card",
+    "card_title": "🍃 Câu chuyện Cốm Làng Vòng",
+    "paragraphs": [
+        "Cốm Làng Vòng là một phần ký ức mùa thu Hà Nội."
+    ]
+},
+
+"hinhanh": {
+    "title": "Hình ảnh",
+    "type": "images",
+    "intro": "Hình ảnh sản phẩm:",
+    "images": [
+        "Com tong quan.jpg",
+        "Com tong quan 1.jpg",
+        "Com tong quan 2.jpg"
+    ]
+},
+
+"video": {
+    "title": "Video giới thiệu",
+    "card_class": "card",
+    "card_title": "🎬 Video giới thiệu",
+    "paragraphs": [
+        "Khu vực hiển thị video giới thiệu sản phẩm."
+    ]
+},
+
+"thuhoi": {
+    "title": "Chính sách thu hồi",
+    "card_class": "card2",
+    "card_title": "♻️ Chính sách thu hồi",
+    "paragraphs": [
+        "Khuyến khích phân loại và tái chế bao bì sau sử dụng."
+    ]
+ },
 }
 
 def create_database():
     conn = sqlite3.connect(":memory:")
+
     conn.execute("""
-         CREATE TABLE pages (
+        CREATE TABLE pages (
             page_id TEXT PRIMARY KEY,
             title TEXT,
             page_type TEXT,
@@ -496,18 +605,16 @@ def create_database():
             group_items TEXT
         )
     """)
-    conn.execute(
-        "INSERT INTO pages VALUES (?, ?, ?, ?, ?, ?, ?)",
-        (
-            page_id,
-            data.get("title", ""),
-            data.get("type", "content"),
-            data.get("card_class", "card"),
-            data.get("card_title", ""),
-            data.get("intro", ""),
-            ",".join(data.get("items", []))
+
+    conn.execute("""
+        CREATE TABLE page_fields (
+            page_id TEXT,
+            field_name TEXT,
+            field_value TEXT,
+            sort_order INTEGER
         )
-    )
+    """)
+
     conn.execute("""
         CREATE TABLE page_paragraphs (
             page_id TEXT,
@@ -515,6 +622,7 @@ def create_database():
             sort_order INTEGER
         )
     """)
+
     conn.execute("""
         CREATE TABLE page_bullets (
             page_id TEXT,
@@ -522,6 +630,7 @@ def create_database():
             sort_order INTEGER
         )
     """)
+
     conn.execute("""
         CREATE TABLE page_images (
             page_id TEXT,
@@ -532,28 +641,44 @@ def create_database():
 
     for page_id, data in PAGE_DATABASE.items():
         conn.execute(
-            "INSERT INTO pages VALUES (?, ?, ?, ?, ?, ?)",
+            "INSERT INTO pages VALUES (?, ?, ?, ?, ?, ?, ?)",
             (
                 page_id,
                 data.get("title", ""),
                 data.get("type", "content"),
                 data.get("card_class", "card"),
                 data.get("card_title", ""),
-                data.get("intro", "")
+                data.get("intro", ""),
+                ",".join(data.get("items", []))
             )
         )
+
         for idx, (name, value) in enumerate(data.get("fields", {}).items(), start=1):
-            conn.execute("INSERT INTO page_fields VALUES (?, ?, ?, ?)", (page_id, name, value, idx))
+            conn.execute(
+                "INSERT INTO page_fields VALUES (?, ?, ?, ?)",
+                (page_id, name, value, idx)
+            )
+
         for idx, paragraph in enumerate(data.get("paragraphs", []), start=1):
-            conn.execute("INSERT INTO page_paragraphs VALUES (?, ?, ?)", (page_id, paragraph, idx))
+            conn.execute(
+                "INSERT INTO page_paragraphs VALUES (?, ?, ?)",
+                (page_id, paragraph, idx)
+            )
+
         for idx, bullet in enumerate(data.get("bullets", []), start=1):
-            conn.execute("INSERT INTO page_bullets VALUES (?, ?, ?)", (page_id, bullet, idx))
+            conn.execute(
+                "INSERT INTO page_bullets VALUES (?, ?, ?)",
+                (page_id, bullet, idx)
+            )
+
         for idx, image in enumerate(data.get("images", []), start=1):
-            conn.execute("INSERT INTO page_images VALUES (?, ?, ?)", (page_id, image, idx))
+            conn.execute(
+                "INSERT INTO page_images VALUES (?, ?, ?)",
+                (page_id, image, idx)
+            )
 
     conn.commit()
     return conn
-
 
 def fetch_page(conn, page_id):
     cur = conn.cursor()
