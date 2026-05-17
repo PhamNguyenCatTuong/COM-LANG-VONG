@@ -307,8 +307,8 @@ BANNER TRANG CHỦ
 
 @media (max-width:768px) {
 
-  .logo {
-    font-size: 21px;
+      .logo {
+        font-size: 21px;
     }
 
     .hamburger {
@@ -351,6 +351,55 @@ BANNER TRANG CHỦ
         padding: 7px 12px;
         line-height: 1.1;
         border-bottom: 1px solid #f1f1f1;
+    }
+/* Thu nhỏ banner trên điện thoại */
+    .hero-banner {
+        min-height: 360px;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .hero-content {
+        max-width: 68%;
+        padding: 0 0 0 28px;
+    }
+
+    .hero-small {
+        font-size: 12px;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+
+    .hero-content h1 {
+        font-size: 42px;
+        line-height: 1.05;
+        margin-bottom: 14px;
+    }
+
+    .hero-content p {
+        font-size: 17px;
+        line-height: 1.35;
+        margin-bottom: 18px;
+    }
+
+    .hero-actions {
+        gap: 8px;
+    }
+    
+    .hero-btn {
+        padding: 9px 13px;
+        font-size: 13px;
+    }
+    /* =========================
+    THU NHỎ TIÊU ĐỀ TRANG
+    ========================= */
+    
+    .page-title {
+        text-align: center;
+        font-size: 26px;
+        line-height: 1.2;
+        margin: 18px 0 12px 0;
+        white-space: nowrap;
     }
 }
 
@@ -717,7 +766,10 @@ def fetch_page(conn, page_id):
 
 
 def render_page(page_data):
-    st.markdown(f"<h1 style='text-align:center;'>{page_data['title']}</h1>", unsafe_allow_html=True)
+    st.markdown(
+        f"<h1 class='page-title'>{page_data['title']}</h1>",
+        unsafe_allow_html=True
+    )
 
     if page_data["type"] == "group":
         for child_page_id in page_data["group_items"]:
