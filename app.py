@@ -367,7 +367,9 @@ st.markdown("""
 <div class="menu">
 
 <div class="dropdown">
-    <button class="dropbtn">Thông tin sản phẩm</button>
+    <a href="?page=thongtinsp" target="_self" style="text-decoration:none;">
+        <button class="dropbtn">Thông tin sản phẩm</button>
+    </a>
     <div class="dropdown-content">
         <a href="?page=tensp" target="_self">Tên sản phẩm</a>
         <a href="?page=masp" target="_self">Mã sản phẩm</a>
@@ -376,7 +378,9 @@ st.markdown("""
 </div>
 
 <div class="dropdown">
-    <button class="dropbtn">Truy xuất nguồn gốc</button>
+    <a href="?page=truyxuat" target="_self" style="text-decoration:none;">
+        <button class="dropbtn">Truy xuất nguồn gốc</button>
+    </a>
     <div class="dropdown-content">
         <a href="?page=nguyenlieu" target="_self">Nguồn nguyên liệu</a>
         <a href="?page=khuvuc" target="_self">Khu vực sản xuất</a>
@@ -385,7 +389,9 @@ st.markdown("""
 </div>
 
 <div class="dropdown">
-    <button class="dropbtn">Chất lượng & chứng nhận</button>
+    <a href="?page=chatluong" target="_self" style="text-decoration:none;">
+        <button class="dropbtn">Chất lượng & chứng nhận</button>
+    </a>
     <div class="dropdown-content">
         <a href="?page=ocop" target="_self">Chứng nhận OCOP</a>
         <a href="?page=kiemdinh" target="_self">Kiểm định chất lượng</a>
@@ -393,7 +399,9 @@ st.markdown("""
 </div>
 
 <div class="dropdown">
-    <button class="dropbtn">Nội dung truyền thông</button>
+    <a href="?page=truyenthong" target="_self" style="text-decoration:none;">
+        <button class="dropbtn">Nội dung truyền thông</button>
+    </a>
     <div class="dropdown-content">
         <a href="?page=cauchuyen" target="_self">Câu chuyện sản phẩm</a>
         <a href="?page=hinhanh" target="_self">Hình ảnh</a>
@@ -402,13 +410,16 @@ st.markdown("""
 </div>
 
 <div class="dropdown">
-    <button class="dropbtn">Thông tin bao bì</button>
+    <a href="?page=baobi" target="_self" style="text-decoration:none;">
+        <button class="dropbtn">Thông tin bao bì</button>
+    </a>
     <div class="dropdown-content">
         <a href="?page=muc" target="_self">Mực</a>
         <a href="?page=giay" target="_self">Giấy</a>
         <a href="?page=thuhoi" target="_self">Chính sách thu hồi bao bì</a>
     </div>
 </div>
+
 </div>
 
 </div>
@@ -438,176 +449,57 @@ st.markdown("<div class='content'>", unsafe_allow_html=True)
 # - Muốn thêm menu mới: thêm dòng vào PAGE_DATABASE và thêm link trên thanh menu phía trên.
 
 PAGE_DATABASE = {
-    "tensp": {
-        "title": "Tên sản phẩm",
-        "card_class": "card",
-        "card_title": "🌾 Cốm Làng Vòng",
-        "fields": {
-            "Tên sản phẩm": "Cốm Làng Vòng",
-            "Loại sản phẩm": "Thực phẩm truyền thống",
-            "Đặc điểm": "Hạt cốm mỏng, dẻo, thơm nhẹ, màu xanh non tự nhiên."
-        },
-        "paragraphs": [
-            "Sản phẩm phù hợp để ăn trực tiếp, làm quà biếu hoặc chế biến thành bánh cốm, chả cốm, xôi cốm, chè cốm."
-        ]
+        "thongtinsp": {
+        "title": "Thông tin sản phẩm",
+        "type": "group",
+        "items": ["tensp", "masp", "thuonghieu"]
     },
-    "masp": {
-        "title": "Mã sản phẩm",
-        "card_class": "card",
-        "card_title": "🏷️ Mã sản phẩm",
-        "fields": {
-            "Mã sản phẩm": "COM-LV-001",
-            "Nhóm sản phẩm": "Đặc sản Hà Nội",
-            "Dòng sản phẩm": "Cốm truyền thống"
-        },
-        "paragraphs": [
-            "Mã sản phẩm giúp khách hàng nhận diện và tra cứu thông tin sản phẩm dễ dàng hơn."
-        ]
+    "truyxuat": {
+        "title": "Truy xuất nguồn gốc",
+        "type": "group",
+        "items": ["nguyenlieu", "khuvuc", "malo"]
     },
-    "thuonghieu": {
-        "title": "Thương hiệu",
-        "card_class": "card",
-        "card_title": "🌿 Thương hiệu Cốm Làng Vòng",
-        "paragraphs": [
-            "Cốm Làng Vòng là thương hiệu gắn với làng nghề truyền thống tại Hà Nội.",
-            "Sản phẩm đại diện cho nét tinh tế, thanh tao và giá trị văn hóa ẩm thực của Thủ đô."
-        ]
+    "chatluong": {
+        "title": "Chất lượng & chứng nhận",
+        "type": "group",
+        "items": ["ocop", "kiemdinh"]
     },
-    "nguyenlieu": {
-        "title": "Nguồn nguyên liệu",
-        "card_class": "card2",
-        "card_title": "🌾 Lúa nếp non chọn lọc",
-        "paragraphs": [
-            "Nguyên liệu chính để làm cốm là lúa nếp non, thường được chọn khi hạt còn ngậm sữa.",
-            "Lúa được sàng lọc kỹ, loại bỏ hạt lép trước khi rang và giã để tạo nên hạt cốm dẻo thơm."
-        ]
+    "truyenthong": {
+        "title": "Nội dung truyền thông",
+        "type": "group",
+        "items": ["cauchuyen", "hinhanh", "video"]
     },
-    "khuvuc": {
-        "title": "Khu vực sản xuất",
-        "card_class": "card2",
-        "card_title": "📍 Làng Vòng, Cầu Giấy, Hà Nội",
-        "paragraphs": [
-            "Sản phẩm gắn với làng Vòng, phường Dịch Vọng Hậu, quận Cầu Giấy, Hà Nội.",
-            "Đây là địa danh nổi tiếng với nghề làm cốm truyền thống lâu đời."
-        ]
+    "baobi": {
+        "title": "Thông tin bao bì",
+        "type": "group",
+        "items": ["muc", "giay", "thuhoi"]
     },
-    "malo": {
-        "title": "Mã lô hàng",
-        "card_class": "card2",
-        "card_title": "🏷️ Thông tin lô hàng",
-        "fields": {
-            "Mã lô mẫu": "LV-2026-001",
-            "Ngày sản xuất": "Cập nhật trên bao bì sản phẩm",
-            "Hạn sử dụng": "Cập nhật theo từng loại sản phẩm"
-        },
-        "paragraphs": [
-            "Mã lô hàng giúp theo dõi thông tin sản xuất và chất lượng sản phẩm."
-        ]
-    },
-    "ocop": {
-        "title": "Chứng nhận OCOP",
-        "card_class": "card",
-        "card_title": "✅ Định hướng sản phẩm OCOP",
-        "paragraphs": [
-            "OCOP là chương trình đánh giá, phân hạng sản phẩm đặc trưng của địa phương.",
-            "Cốm Làng Vòng phù hợp phát triển theo định hướng sản phẩm OCOP nhờ giá trị truyền thống và nguồn gốc rõ ràng."
-        ]
-    },
-    "kiemdinh": {
-        "title": "Kiểm định chất lượng",
-        "card_class": "card",
-        "card_title": "🔍 Kiểm soát chất lượng",
-        "bullets": [
-            "Nguyên liệu có nguồn gốc rõ ràng.",
-            "Quy trình chế biến sạch sẽ.",
-            "Không sử dụng nguyên liệu kém chất lượng.",
-            "Bảo quản nơi khô ráo, thoáng mát.",
-            "Đóng gói cẩn thận, hạn chế tiếp xúc với môi trường bên ngoài."
-        ]
-    },
-    "cauchuyen": {
-        "title": "Câu chuyện sản phẩm",
-        "card_class": "card",
-        "card_title": "🍃 Câu chuyện Cốm Làng Vòng",
-        "paragraphs": [
-            "Cốm Làng Vòng không chỉ là một món ăn mà còn là một phần ký ức của Hà Nội.",
-            "Mỗi hạt cốm là kết quả của quá trình chọn lúa, rang, giã và sàng sảy công phu.",
-            "Hương cốm thơm nhẹ, màu xanh non và vị ngọt thanh khiến sản phẩm trở thành thức quà quen thuộc mỗi độ thu về."
-        ]
-    },
-    "hinhanh": {
-        "title": "Hình ảnh",
-        "type": "images",
-        "intro": "Một số hình ảnh giới thiệu sản phẩm Cốm Làng Vòng:",
-        "images": [
-            "Com tong quan.jpg",
-            "Com tong quan 1.jpg",
-            "Com tong quan 2.jpg"
-        ]
-    },
-    "video": {
-        "title": "Video giới thiệu",
-        "card_class": "card",
-        "card_title": "🎬 Video giới thiệu sản phẩm",
-        "paragraphs": [
-            "Khu vực này dùng để hiển thị video giới thiệu quy trình làm cốm hoặc câu chuyện làng nghề.",
-            "Khi có video, bạn có thể thay phần nội dung này bằng st.video('link_youtube')."
-        ]
-    },
-    "muc": {
-        "title": "Thông tin mực in",
-        "card_class": "card2",
-        "card_title": "🖨️ Mực in bao bì",
-        "paragraphs": [
-            "Bao bì nên sử dụng mực in rõ nét, bền màu và phù hợp với bao bì thực phẩm.",
-            "Các thông tin quan trọng như tên sản phẩm, hạn sử dụng, mã lô hàng cần được in rõ ràng."
-        ]
-    },
-    "giay": {
-        "title": "Thông tin giấy bao bì",
-        "card_class": "card2",
-        "card_title": "📦 Chất liệu bao bì",
-        "paragraphs": [
-            "Bao bì cần sạch, chắc chắn và phù hợp với thực phẩm.",
-            "Thiết kế có thể dùng màu xanh cốm, họa tiết lá sen để tăng tính nhận diện thương hiệu."
-        ]
-    },
-    "thuhoi": {
-        "title": "Chính sách thu hồi bao bì",
-        "card_class": "card2",
-        "card_title": "♻️ Chính sách thu hồi bao bì",
-        "paragraphs": [
-            "Khách hàng được khuyến khích phân loại và xử lý bao bì sau khi sử dụng."
-        ],
-        "bullets": [
-            "Không vứt bao bì ra môi trường.",
-            "Phân loại bao bì giấy, túi, hộp sau khi dùng.",
-            "Ưu tiên sử dụng bao bì thân thiện với môi trường."
-        ]
-    }
-}
-
 
 def create_database():
     conn = sqlite3.connect(":memory:")
     conn.execute("""
-        CREATE TABLE pages (
+         CREATE TABLE pages (
             page_id TEXT PRIMARY KEY,
             title TEXT,
             page_type TEXT,
             card_class TEXT,
             card_title TEXT,
-            intro TEXT
+            intro TEXT,
+            group_items TEXT
         )
     """)
-    conn.execute("""
-        CREATE TABLE page_fields (
-            page_id TEXT,
-            field_name TEXT,
-            field_value TEXT,
-            sort_order INTEGER
+    conn.execute(
+        "INSERT INTO pages VALUES (?, ?, ?, ?, ?, ?, ?)",
+        (
+            page_id,
+            data.get("title", ""),
+            data.get("type", "content"),
+            data.get("card_class", "card"),
+            data.get("card_title", ""),
+            data.get("intro", ""),
+            ",".join(data.get("items", []))
         )
-    """)
+    )
     conn.execute("""
         CREATE TABLE page_paragraphs (
             page_id TEXT,
@@ -657,7 +549,7 @@ def create_database():
 
 def fetch_page(conn, page_id):
     cur = conn.cursor()
-    cur.execute("SELECT page_id, title, page_type, card_class, card_title, intro FROM pages WHERE page_id = ?", (page_id,))
+    cur.execute("SELECT page_id, title, page_type, card_class, card_title, intro, group_items FROM pages WHERE page_id = ?", (page_id,))
     row = cur.fetchone()
     if not row:
         return None
@@ -673,6 +565,7 @@ def fetch_page(conn, page_id):
         "paragraphs": [],
         "bullets": [],
         "images": []
+        "group_items": row[6].split(",") if row[6] else [],
     }
 
     cur.execute("SELECT field_name, field_value FROM page_fields WHERE page_id = ? ORDER BY sort_order", (page_id,))
@@ -693,6 +586,39 @@ def fetch_page(conn, page_id):
 def render_page(page_data):
     st.markdown(f"<h1 style='text-align:center;'>{page_data['title']}</h1>", unsafe_allow_html=True)
 
+        if page_data["type"] == "group":
+        for child_page_id in page_data["group_items"]:
+            child_data = fetch_page(conn, child_page_id)
+
+            if child_data:
+                html = f"<div class='{child_data['card_class']}'>"
+                html += f"<h3>{child_data['card_title']}</h3>"
+
+                for name, value in child_data["fields"]:
+                    html += f"<p><b>{name}:</b> {value}</p>"
+
+                for paragraph in child_data["paragraphs"]:
+                    html += f"<p>{paragraph}</p>"
+
+                if child_data["bullets"]:
+                    html += "<ul>"
+                    for bullet in child_data["bullets"]:
+                        html += f"<li>{bullet}</li>"
+                    html += "</ul>"
+
+                html += f"""
+                <p>
+                    <a href="?page={child_page_id}" target="_self">
+                        Xem chi tiết →
+                    </a>
+                </p>
+                """
+
+                html += "</div>"
+                st.markdown(html, unsafe_allow_html=True)
+
+        return
+            
     if page_data["type"] == "images":
         st.write(page_data["intro"])
         for image_path in page_data["images"]:
