@@ -565,7 +565,7 @@ def fetch_page(conn, page_id):
         "fields": [],
         "paragraphs": [],
         "bullets": [],
-        "images": []
+        "images": [],
         "group_items": row[6].split(",") if row[6] else [],
     }
 
