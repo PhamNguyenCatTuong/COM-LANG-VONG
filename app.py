@@ -307,28 +307,33 @@ BANNER TRANG CHỦ
 
 @media (max-width:768px) {
 
-    .logo {
-        font-size: 22px;
+  .logo {
+    font-size: 21px;
     }
 
     .hamburger {
-        font-size: 24px;
+        font-size: 22px;
+    }
+
+    .topbar {
+        padding: 10px;
+        margin: 6px;
     }
 
     .menu {
-        gap: 8px;
+        gap: 5px;
     }
 
     .dropdown {
         background: white;
-        border-radius: 8px;
+        border-radius: 7px;
         overflow: hidden;
     }
 
     .dropbtn {
-        border-radius: 8px 8px 0 0;
-        font-size: 14px;
-        padding: 10px 14px;
+        border-radius: 7px 7px 0 0;
+        font-size: 13px;
+        padding: 8px 12px;
         min-height: auto;
     }
 
@@ -337,54 +342,15 @@ BANNER TRANG CHỦ
         position: relative;
         width: 100%;
         margin-top: 0;
-        border-radius: 0 0 8px 8px;
+        border-radius: 0 0 7px 7px;
         box-shadow: none;
     }
 
     .dropdown-content a {
-        font-size: 13px;
-        padding: 10px 14px;
-        line-height: 1.2;
-        border-bottom: 1px solid #f1f1f1;
-    }
-
-    .topbar {
-        padding: 12px;
-        margin: 8px;
-    }
-
-    .hero-banner {
-        min-height: 350px;
-        align-items: flex-end;
-        background-position: center;
-    }
-
-    .hero-content {
-        max-width: 85%;
-        padding: 0 0 22px 18px;
-    }
-
-    .hero-small {
-        font-size: 11px;
-        letter-spacing: 1px;
-        margin-bottom: 3px;
-    }
-
-    .hero-content h1 {
-        font-size: 26px;
-        line-height: 1.05;
-        margin-bottom: 6px;
-    }
-
-    .hero-content p {
-        font-size: 13px;
-        line-height: 1.3;
-        margin-bottom: 10px;
-    }
-
-    .hero-btn {
-        padding: 8px 12px;
         font-size: 12px;
+        padding: 7px 12px;
+        line-height: 1.1;
+        border-bottom: 1px solid #f1f1f1;
     }
 }
 
@@ -408,8 +374,7 @@ st.markdown("""
         <button class="dropbtn">Thông tin sản phẩm</button>
     </a>
     <div class="dropdown-content">
-        <a href="?page=tensp" target="_self">Tên sản phẩm</a>
-        <a href="?page=masp" target="_self">Mã sản phẩm</a>
+        <a href="?page=tensp_masp" target="_self">Tên & mã sản phẩm</a>
         <a href="?page=thuonghieu" target="_self">Thương hiệu</a>
     </div>
 </div>
@@ -429,10 +394,6 @@ st.markdown("""
     <a href="?page=chatluong" target="_self" style="text-decoration:none;">
         <button class="dropbtn">Chất lượng & chứng nhận</button>
     </a>
-    <div class="dropdown-content">
-        <a href="?page=ocop" target="_self">Chứng nhận OCOP</a>
-        <a href="?page=kiemdinh" target="_self">Kiểm định chất lượng</a>
-    </div>
 </div>
 
 <div class="dropdown">
@@ -451,14 +412,9 @@ st.markdown("""
         <button class="dropbtn">Thông tin bao bì</button>
     </a>
     <div class="dropdown-content">
-        <a href="?page=muc" target="_self">Mực</a>
-        <a href="?page=giay" target="_self">Giấy</a>
-        <a href="?page=thuhoi" target="_self">Chính sách thu hồi bao bì</a>
+        <a href="?page=muc_giay" target="_self">Mực & giấy bao bì</a>
+        <a href="?page=thuhoi" target="_self">Chính sách thu hồi</a>
     </div>
-</div>
-
-</div>
-
 </div>
 
 <section class="hero-banner">
@@ -486,30 +442,44 @@ st.markdown("<div class='content'>", unsafe_allow_html=True)
 # - Muốn thêm menu mới: thêm dòng vào PAGE_DATABASE và thêm link trên thanh menu phía trên.
 
 PAGE_DATABASE = {
-        "thongtinsp": {
+     "thongtinsp": {
         "title": "Thông tin sản phẩm",
         "type": "group",
-        "items": ["tensp", "masp", "thuonghieu"]
-    },
-    "truyxuat": {
-        "title": "Truy xuất nguồn gốc",
-        "type": "group",
-        "items": ["nguyenlieu", "khuvuc", "malo"]
+        "items": ["tensp_masp", "thuonghieu"]
     },
     "chatluong": {
         "title": "Chất lượng & chứng nhận",
         "type": "group",
         "items": ["ocop", "kiemdinh"]
     },
-    "truyenthong": {
-        "title": "Nội dung truyền thông",
-        "type": "group",
-        "items": ["cauchuyen", "hinhanh", "video"]
-    },
     "baobi": {
         "title": "Thông tin bao bì",
         "type": "group",
-        "items": ["muc", "giay", "thuhoi"]
+        "items": ["muc_giay", "thuhoi"]
+    },
+    "tensp_masp": {
+        "title": "Tên & mã sản phẩm",
+        "card_class": "card",
+        "card_title": "🌾 Thông tin nhận diện sản phẩm",
+        "fields": {
+            "Tên sản phẩm": "Cốm Làng Vòng",
+            "Mã sản phẩm": "COM-LV-001",
+            "Loại sản phẩm": "Thực phẩm truyền thống",
+            "Dòng sản phẩm": "Cốm truyền thống"
+    },
+    "paragraphs": [
+        "Thông tin tên và mã sản phẩm giúp khách hàng nhận diện, tra cứu và truy xuất sản phẩm nhanh chóng."
+    ]
+    },
+    "muc_giay": {
+        "title": "Mực & giấy bao bì",
+        "card_class": "card2",
+        "card_title": "📦 Thông tin chất liệu bao bì",
+        "paragraphs": [
+            "Bao bì sử dụng giấy sạch, chắc chắn và phù hợp với thực phẩm.",
+            "Mực in cần rõ nét, bền màu, thể hiện đầy đủ tên sản phẩm, mã lô hàng, hạn sử dụng và thông tin truy xuất.",
+            "Thiết kế nên dùng màu xanh cốm, họa tiết lá sen để tăng khả năng nhận diện thương hiệu."
+        ]
     },
 }
 
