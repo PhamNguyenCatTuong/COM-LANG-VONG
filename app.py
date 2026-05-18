@@ -828,48 +828,48 @@ def render_page(page_data):
 
     if page_data["type"] == "custom_cert":
 
-    certs = [
-        {
-            "image": "CBSP.jpg",
-            "title": "Tự công bố sản phẩm",
-            "desc": "Chứng nhận sản phẩm đủ điều kiện lưu hành và công bố theo quy định an toàn thực phẩm."
-        },
-        {
-            "image": "KQKN.jpg",
-            "title": "Kiểm nghiệm chất lượng",
-            "desc": "Kết quả kiểm nghiệm vi sinh và kim loại nặng của sản phẩm."
-        },
-        {
-            "image": "OCOP.JPEG",
-            "title": "Chứng nhận OCOP 4 sao",
-            "desc": "Chứng nhận sản phẩm OCOP tiêu biểu của thành phố Hà Nội."
-        },
-        {
-            "image": "HACCP.JPEG",
-            "title": "Chứng nhận HACCP",
-            "desc": "Đảm bảo hệ thống quản lý an toàn thực phẩm theo tiêu chuẩn HACCP."
-        },
-        {
-            "image": "GMP.JPEG",
-            "title": "Chứng nhận GMP",
-            "desc": "Đảm bảo thực hành sản xuất tốt trong chế biến thực phẩm."
-        },
-        {
-            "image": "CNATTP.jpg",
-            "title": "An toàn thực phẩm",
-            "desc": "Chứng nhận cơ sở đủ điều kiện an toàn thực phẩm."
-        }
-    ]
-
-    cols = st.columns(len(certs))
-
-    for col, cert in zip(cols, certs):
-        with col:
-            st.image(cert["image"])
-            st.markdown(f"### {cert['title']}")
-            st.write(cert["desc"])
-
-    return
+        certs = [
+            {
+                "image": "CBSP.jpg",
+                "title": "Tự công bố sản phẩm",
+                "desc": "Chứng nhận sản phẩm đủ điều kiện lưu hành và công bố theo quy định an toàn thực phẩm."
+            },
+            {
+                "image": "KQKN.jpg",
+                "title": "Kiểm nghiệm chất lượng",
+                "desc": "Kết quả kiểm nghiệm vi sinh và kim loại nặng của sản phẩm."
+            },
+            {
+                "image": "OCOP.JPEG",
+                "title": "Chứng nhận OCOP 4 sao",
+                "desc": "Chứng nhận sản phẩm OCOP tiêu biểu của thành phố Hà Nội."
+            },
+            {
+                "image": "HACCP.JPEG",
+                "title": "Chứng nhận HACCP",
+                "desc": "Đảm bảo hệ thống quản lý an toàn thực phẩm theo tiêu chuẩn HACCP."
+            },
+            {
+                "image": "GMP.JPEG",
+                "title": "Chứng nhận GMP",
+                "desc": "Đảm bảo thực hành sản xuất tốt trong chế biến thực phẩm."
+            },
+            {
+                "image": "CNATTP.jpg",
+                "title": "An toàn thực phẩm",
+                "desc": "Chứng nhận cơ sở đủ điều kiện an toàn thực phẩm."
+            }
+        ]
+    
+        cols = st.columns(len(certs))
+    
+        for col, cert in zip(cols, certs):
+            with col:
+                st.image(cert["image"])
+                st.markdown(f"### {cert['title']}")
+                st.write(cert["desc"])
+    
+        return
  
     if page_data["type"] == "group":
         for child_page_id in page_data["group_items"]:
