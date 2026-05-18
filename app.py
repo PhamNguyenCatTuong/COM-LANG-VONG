@@ -184,6 +184,62 @@ img {
     background: #0084ff;
 }
 
+/* =========================
+CHỨNG NHẬN SCROLL NGANG
+========================= */
+
+.cert-scroll {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+}
+
+.cert-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.cert-scroll::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 999px;
+}
+
+.cert-card {
+    min-width: 270px;
+    max-width: 270px;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    flex-shrink: 0;
+    scroll-snap-align: start;
+}
+
+.cert-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+.cert-content {
+    padding: 14px;
+}
+
+.cert-content h4 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    color: #2e7d32;
+}
+
+.cert-content p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.45;
+    color: #555;
+}
+
 .footer-full {
     width: calc(100vw - 32px);
     margin-left: calc(50% - 50vw + 16px);
@@ -499,8 +555,7 @@ PAGE_DATABASE = {
     },
     "chatluong": {
         "title": "Chất lượng & chứng nhận",
-        "type": "group",
-        "items": ["ocop", "kiemdinh"]
+        "type": "custom_cert"
     },
     "baobi": {
         "title": "Thông tin bao bì",
@@ -771,6 +826,51 @@ def render_page(page_data):
         unsafe_allow_html=True
     )
 
+    if page_data["type"] == "custom_cert":
+
+    certs = [
+        {
+            "image": "CBSP.jpg",
+            "title": "Tự công bố sản phẩm",
+            "desc": "Chứng nhận sản phẩm đủ điều kiện lưu hành và công bố theo quy định an toàn thực phẩm."
+        },
+        {
+            "image": "KQKN.jpg",
+            "title": "Kiểm nghiệm chất lượng",
+            "desc": "Kết quả kiểm nghiệm vi sinh và kim loại nặng của sản phẩm."
+        },
+        {
+            "image": "OCOP.JPEG",
+            "title": "Chứng nhận OCOP 4 sao",
+            "desc": "Chứng nhận sản phẩm OCOP tiêu biểu của thành phố Hà Nội."
+        },
+        {
+            "image": "HACCP.JPEG",
+            "title": "Chứng nhận HACCP",
+            "desc": "Đảm bảo hệ thống quản lý an toàn thực phẩm theo tiêu chuẩn HACCP."
+        },
+        {
+            "image": "GMP.JPEG",
+            "title": "Chứng nhận GMP",
+            "desc": "Đảm bảo thực hành sản xuất tốt trong chế biến thực phẩm."
+        },
+        {
+            "image": "CNATTP.jpg",
+            "title": "An toàn thực phẩm",
+            "desc": "Chứng nhận cơ sở đủ điều kiện an toàn thực phẩm."
+        }
+    ]
+
+    cols = st.columns(len(certs))
+
+    for col, cert in zip(cols, certs):
+        with col:
+            st.image(cert["image"])
+            st.markdown(f"### {cert['title']}")
+            st.write(cert["desc"])
+
+    return
+ 
     if page_data["type"] == "group":
         for child_page_id in page_data["group_items"]:
             child_data = fetch_page(conn, child_page_id)
