@@ -363,7 +363,7 @@ BANNER TRANG CHỦ
 
 @media (max-width:768px) {
 
-      .logo {
+    .logo {
         font-size: 21px;
     }
 
@@ -452,7 +452,7 @@ BANNER TRANG CHỦ
     
     .page-title {
         text-align: center;
-        font-size: 18px;
+        font-size: 14px;
         line-height: 1.2;
         margin: 14px 0 10px 0;
         white-space: nowrap;
