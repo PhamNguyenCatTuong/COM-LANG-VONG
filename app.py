@@ -452,9 +452,9 @@ BANNER TRANG CHỦ
     
     .page-title {
         text-align: center;
-        font-size: 26px;
+        font-size: 18px;
         line-height: 1.2;
-        margin: 18px 0 12px 0;
+        margin: 14px 0 10px 0;
         white-space: nowrap;
     }
 }
