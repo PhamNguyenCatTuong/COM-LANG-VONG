@@ -183,7 +183,7 @@ footer {visibility: hidden;}
     }
 
     .page-title.small-title {
-        font-size: 30px !important;
+        font-size: 40px !important;
         white-space: nowrap;
         transform: none;
         letter-spacing: 0;
