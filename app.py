@@ -617,10 +617,13 @@ def render_page(page_data):
                 continue
     
             if child_data["type"] == "products":
-                st.markdown(
-                    "<div class='card'><h3>🌾 Sản phẩm</h3><p>Xem danh sách sản phẩm, giá bán và định lượng.</p><p><a href='?page=sanpham' target='_self'>Xem chi tiết →</a></p></div>",
-                    unsafe_allow_html=True
-                )
+                st.markdown("""
+                <div class='card'>
+                    <h3>🌾 Sản phẩm</h3>
+                    <p>Xem danh sách sản phẩm, giá bán, định lượng và mô tả chi tiết.</p>
+                    <p><a href='?page=sanpham' target='_self'>Xem chi tiết →</a></p>
+                </div>
+                """, unsafe_allow_html=True)
             else:
                 render_content_card(child_data, detail_link=child_page_id)
     
