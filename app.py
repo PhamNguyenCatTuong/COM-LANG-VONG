@@ -156,7 +156,7 @@ footer {visibility: hidden;}
     .topbar { display: flex; align-items: center; gap: 20px; }
     .hamburger { display: none; }
     .menu { display: flex !important; flex-direction: row; flex-wrap: wrap; margin-top: 0; }
-    .dropbtn { width: auto; text-align: center; border-radius: 8px; }
+    .dropbtn { width: auto; text-align: center; border-radius: 8px; } 
     .dropdown-content { position: absolute; border-radius: 10px; }
 }
 
