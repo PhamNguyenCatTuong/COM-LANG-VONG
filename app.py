@@ -40,27 +40,27 @@ CERTIFICATES = [
         "desc": 'Giấy xác nhận tự công bố sản phẩm Cốm Làng Vòng theo quy định an toàn thực phẩm.',
     },
     {
-        "image": 'chung_nhan_2.jpg',
+        "image": 'KQKN.jpg',
         "title": 'Phiếu kiểm nghiệm',
         "desc": 'Kết quả kiểm nghiệm các chỉ tiêu an toàn thực phẩm của sản phẩm.',
     },
     {
-        "image": 'chung_nhan_3.jpg',
+        "image": 'OCOP.JPEG',
         "title": 'Chứng nhận OCOP 4 sao',
         "desc": 'Chứng nhận sản phẩm OCOP đạt 4 sao năm 2022.',
     },
     {
-        "image": 'chung_nhan_4.jpg',
+        "image": 'HACCP.JPEG',
         "title": 'Chứng nhận HACCP',
         "desc": 'Chứng nhận hệ thống phân tích mối nguy và kiểm soát điểm tới hạn.',
     },
     {
-        "image": 'chung_nhan_5.jpg',
+        "image": 'GMP.jpg',
         "title": 'Chứng nhận GMP',
         "desc": 'Chứng nhận thực hành sản xuất tốt trong sản xuất thực phẩm.',
     },
     {
-        "image": 'chung_nhan_6.jpg',
+        "image": 'ATTP.JPEG',
         "title": 'Chứng nhận an toàn thực phẩm',
         "desc": 'Chứng nhận cơ sở đủ điều kiện an toàn thực phẩm.',
     },
