@@ -219,12 +219,18 @@ footer {visibility: hidden;}
 .buy-btn {
     display: inline-block;
     background: #2e7d32;
-    color: white;
-    padding: 10px 18px;
+    color: white !important;
+    padding: 12px 22px;
     border-radius: 999px;
     text-decoration: none;
     font-weight: 700;
-    margin-top: 8px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.buy-btn:hover {
+    background: #256428;
 }
 @media (min-width: 768px) {
     .topbar { display: flex; align-items: center; gap: 20px; }
@@ -338,25 +344,101 @@ st.markdown("""
 st.markdown("<div class='content'>", unsafe_allow_html=True)
 
 PRODUCTS = [
+
     {
-        "name": "Cốm tươi truyền thống",
-        "price": "120.000đ / hộp",
-        "image": "Com tong quan.jpg",
-        "desc": "Hạt cốm dẻo thơm, chuẩn vị Hà Nội."
+        "name": "Bánh Cốm Truyền Thống",
+        "price": "65.000đ",
+        "weight": "250g / hộp",
+        "image": "Banh com.jpg",
+        "desc": "Bánh cốm dẻo thơm với nhân đậu xanh truyền thống Hà Nội."
     },
 
     {
-        "name": "Chả cốm",
-        "price": "85.000đ / hộp",
-        "image": "Com tong quan 1.jpg",
-        "desc": "Chả cốm mềm thơm, đậm vị truyền thống."
+        "name": "Bánh Chưng Cốm",
+        "price": "180.000đ",
+        "weight": "700g",
+        "image": "banh trung com.jpg",
+        "desc": "Bánh chưng kết hợp cốm xanh tạo hương vị độc đáo."
     },
 
     {
-        "name": "Xôi cốm",
-        "price": "45.000đ / suất",
-        "image": "Com tong quan 2.jpg",
-        "desc": "Xôi cốm dẻo thơm ăn kèm dừa tươi."
+        "name": "Bánh Trung Thu Cốm",
+        "price": "95.000đ",
+        "weight": "180g",
+        "image": "Banh trung thu com.jpg",
+        "desc": "Bánh trung thu nhân cốm mềm dẻo, thơm vị mùa thu Hà Nội."
+    },
+
+    {
+        "name": "Bánh Xu Xê Cốm",
+        "price": "55.000đ",
+        "weight": "6 cái / hộp",
+        "image": "Banh xu xe com.jpg",
+        "desc": "Bánh xu xê vị cốm thanh nhẹ, dẻo ngọt vừa phải."
+    },
+
+    {
+        "name": "Bia Cốm Hà Nội",
+        "price": "35.000đ",
+        "weight": "330ml",
+        "image": "bia com.jpg",
+        "desc": "Dòng bia thủ công mang hương thơm nhẹ từ cốm non."
+    },
+
+    {
+        "name": "Cốm Mộc",
+        "price": "120.000đ",
+        "weight": "500g",
+        "image": "com moc.jpg",
+        "desc": "Cốm tươi nguyên bản dẻo thơm, chuẩn vị làng Vòng."
+    },
+
+    {
+        "name": "Cốm Xào Dừa",
+        "price": "85.000đ",
+        "weight": "300g",
+        "image": "com xao dua.jpg",
+        "desc": "Cốm xào cùng dừa non tạo vị béo ngọt hấp dẫn."
+    },
+
+    {
+        "name": "Mochi Cốm",
+        "price": "75.000đ",
+        "weight": "6 bánh / hộp",
+        "image": "mochi com.png",
+        "desc": "Mochi nhân cốm mềm mịn, hiện đại nhưng vẫn đậm chất Việt."
+    },
+
+    {
+        "name": "Sữa Chua Cốm",
+        "price": "45.000đ",
+        "weight": "4 hũ",
+        "image": "sua chua com.png",
+        "desc": "Sữa chua kết hợp cốm non tạo vị thanh mát độc đáo."
+    },
+
+    {
+        "name": "Tôm Tẩm Cốm",
+        "price": "140.000đ",
+        "weight": "500g",
+        "image": "tom tam com.jpg",
+        "desc": "Tôm chiên giòn phủ cốm xanh thơm bùi đặc trưng."
+    },
+
+    {
+        "name": "Trà Sen Cốm",
+        "price": "160.000đ",
+        "weight": "200g",
+        "image": "tra sen.jpg",
+        "desc": "Trà sen ướp hương cốm thanh tao, đậm chất Hà Nội."
+    },
+
+    {
+        "name": "Xôi Cốm",
+        "price": "50.000đ",
+        "weight": "1 suất",
+        "image": "xoi com.jpg",
+        "desc": "Xôi cốm dẻo thơm ăn kèm dừa tươi và đậu xanh."
     }
 ]
 
@@ -459,24 +541,35 @@ def render_content_card(page_data, detail_link=None):
     st.markdown(html, unsafe_allow_html=True)
 
 def render_products():
-    cols = st.columns(3)
+    cols = st.columns(2)
 
     for index, product in enumerate(PRODUCTS):
-        with cols[index % 3]:
+
+        with cols[index % 2]:
+
             image_path = resolve_asset_path(product["image"])
 
             if image_path.exists():
                 st.image(str(image_path), use_container_width=True)
-            else:
-                st.warning(f"Chưa có ảnh: {product['image']}")
 
             st.markdown(f"### {product['name']}")
-            st.markdown(f"{product['desc']}")
-            st.markdown(f"**💰 {product['price']}**")
+
+            st.markdown(product["desc"])
+
+            st.markdown(
+                f"**⚖️ Định lượng:** {product['weight']}"
+            )
+
+            st.markdown(
+                f"## 💰 {product['price']}"
+            )
+
             st.markdown(
                 "<a href='tel:0385437503' class='buy-btn'>Đặt hàng</a>",
                 unsafe_allow_html=True
             )
+
+            st.markdown("---")
     
 def render_page(page_data):
     special_titles = [
