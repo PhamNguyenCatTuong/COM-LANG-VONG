@@ -612,7 +612,18 @@ def render_page(page_data):
     if page_data["type"] == "group":
         for child_page_id in page_data["group_items"]:
             child_data = fetch_page(conn, child_page_id)
-            if child_data: render_content_card(child_data, detail_link=child_page_id)
+    
+            if not child_data:
+                continue
+    
+            if child_data["type"] == "products":
+                st.markdown(
+                    "<div class='card'><h3>🌾 Sản phẩm</h3><p>Xem danh sách sản phẩm, giá bán và định lượng.</p><p><a href='?page=sanpham' target='_self'>Xem chi tiết →</a></p></div>",
+                    unsafe_allow_html=True
+                )
+            else:
+                render_content_card(child_data, detail_link=child_page_id)
+    
         return
     if page_data["type"] == "products":
         render_products()
