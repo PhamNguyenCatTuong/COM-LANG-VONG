@@ -350,7 +350,6 @@ def render_certificate_page():
     @media (max-width:480px) { .cert-shell { padding:0 30px; } .cert-card { flex-basis:78vw; padding:10px; } .cert-card img { height:250px; } .cert-card h3 { font-size:16px; } .cert-card p { font-size:12.5px; } .cert-btn { width:30px; height:30px; font-size:20px; top:125px; } }
     </style>
     <div class="cert-shell">
-      <button class="cert-btn cert-prev" onclick="document.getElementById('certTrack').scrollBy({left:-360,behavior:'smooth'})">‹</button>
       <div class="cert-track" id="certTrack">
     """
     for cert in CERTIFICATES:
@@ -363,7 +362,6 @@ def render_certificate_page():
         """
     html += """
       </div>
-      <button class="cert-btn cert-next" onclick="document.getElementById('certTrack').scrollBy({left:360,behavior:'smooth'})">›</button>
     </div>
     """
     components.html(html, height=440, scrolling=False)
