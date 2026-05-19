@@ -68,7 +68,7 @@ CERTIFICATES = [
 
 banner_image = image_to_data_uri("Com tong quan 3.jpg")
 
-st.markdown(f"""
+st.markdown("""
 <style>
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; overflow-x: hidden; }
@@ -126,7 +126,7 @@ footer {visibility: hidden;}
     align-items: center;
     background:
         linear-gradient(90deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.42) 44%, rgba(0,0,0,0.08) 100%),
-        url("{banner_image}");
+        url("__BANNER_IMAGE__");
     background-size: cover;
     background-position: center;
     margin: 12px auto 0 auto;
@@ -175,7 +175,7 @@ footer {visibility: hidden;}
     .page-title { font-size: clamp(16px, 4.1vw, 19px); white-space: nowrap; }
 }
 </style>
-""", unsafe_allow_html=True)
+""".replace("__BANNER_IMAGE__", image_to_data_uri("Com tong quan 3.jpg")), unsafe_allow_html=True)
 
 st.markdown("""
 <div class="topbar">
