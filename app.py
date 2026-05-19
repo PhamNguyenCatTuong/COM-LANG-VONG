@@ -182,56 +182,66 @@ footer {visibility: hidden;}
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
     margin-top: 20px;
 }
 
 .product-card {
     background: white;
-    border-radius: 18px;
+    border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .product-card img {
     width: 100%;
-    height: 220px;
+    height: 260px;
     object-fit: cover;
 }
 
 .product-info {
-    padding: 14px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .product-info h3 {
     margin: 0 0 8px 0;
-    color: #2e7d32;
+    color: #1f2937;
+    font-size: 20px;
+}
+
+.product-info p {
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+.product-weight {
+    margin-top: auto;
 }
 
 .product-price {
-    font-size: 20px;
-    font-weight: 800;
-    color: #e53935;
-    margin: 10px 0;
+    font-size: 24px;
+    font-weight: 900;
+    color: #1f2937;
+    margin: 8px 0 12px;
 }
 
 .buy-btn {
-    display: inline-block;
+    width: fit-content;
     background: #2e7d32;
     color: white !important;
-    padding: 12px 22px;
+    padding: 10px 20px;
     border-radius: 999px;
     text-decoration: none;
-    font-weight: 700;
-    margin-top: 10px;
-    margin-bottom: 25px;
-    text-align: center;
+    font-weight: 800;
 }
 
-.buy-btn:hover {
-    background: #256428;
-}
 @media (min-width: 768px) {
     .topbar { display: flex; align-items: center; gap: 20px; }
     .hamburger { display: none; }
@@ -281,6 +291,14 @@ footer {visibility: hidden;}
         right: 0;
         position: relative;
     }
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card img {
+        height: 230px;
+    }
+}
 }
 </style>
 """.replace("__BANNER_IMAGE__", image_to_data_uri("Banner com.jpg")), unsafe_allow_html=True)
@@ -529,14 +547,24 @@ def render_certificate_page():
     """
     components.html(html, height=440, scrolling=False)
 
-def render_content_card(page_data, detail_link=None):
-    html = f"<div class='{page_data['card_class']}'>"
-    if page_data["card_title"]: html += f"<h3>{page_data['card_title']}</h3>"
-    for name, value in page_data["fields"]: html += f"<p><b>{name}:</b> {value}</p>"
-    for paragraph in page_data["paragraphs"]: html += f"<p>{paragraph}</p>"
-    if page_data["bullets"]:
-        html += "<ul>" + "".join([f"<li>{b}</li>" for b in page_data["bullets"]]) + "</ul>"
-    if detail_link: html += f"<p><a href='?page={detail_link}' target='_self'>Xem chi tiết →</a></p>"
+def render_products():
+    html = "<div class='product-grid'>"
+
+    for product in PRODUCTS:
+        html += f"""
+        <div class="product-card">
+            <img src="{image_to_data_uri(product['image'])}" alt="{product['name']}">
+
+            <div class="product-info">
+                <h3>{product['name']}</h3>
+                <p>{product['desc']}</p>
+                <p class="product-weight">⚖️ Định lượng: {product['weight']}</p>
+                <div class="product-price">💰 {product['price']}</div>
+                <a href="tel:0385437503" class="buy-btn">Đặt hàng</a>
+            </div>
+        </div>
+        """
+
     html += "</div>"
     st.markdown(html, unsafe_allow_html=True)
 
