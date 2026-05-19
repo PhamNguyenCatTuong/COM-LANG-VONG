@@ -137,12 +137,12 @@ footer {visibility: hidden;}
 .hero-content p { font-size: clamp(12px, 3.4vw, 20px); line-height: 1.32; margin: 0 0 clamp(12px, 3vw, 18px) 0; }
 .hero-actions { display: flex; gap: clamp(7px, 2vw, 12px); flex-wrap: nowrap; }
 .hero-btn {
-    padding: clamp(10px, 2.8vw, 18px) clamp(16px, 4vw, 30px);
+    padding: 16px 32px;
     border-radius: 999px;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 800;
     display: inline-block;
-    font-size: clamp(13px, 3.5vw, 20px);
+    font-size: 18px;
     white-space: nowrap;
 }
 .hero-btn.order { background: #2e7d32; color: white; }
@@ -190,7 +190,11 @@ footer {visibility: hidden;}
         line-height: 1;
     }
     .hero-content p { font-size: clamp(12px, 3.4vw, 14px); }
-    .hero-btn { font-size: clamp(9px, 2.7vw, 11px); padding: 6px 8px; }
+    .hero-btn {
+        padding: 14px 24px;
+        font-size: 16px;
+    }
+}
     .page-title {
         font-size: clamp(16px, 4.1vw, 19px);
         white-space: nowrap;
