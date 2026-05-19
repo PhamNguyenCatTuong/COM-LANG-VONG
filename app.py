@@ -184,7 +184,7 @@ footer {visibility: hidden;}
         transform-origin: center center;
         letter-spacing: -0.2px;
         position: relative;
-        left: -2px;
+        left: -6px;
     }
 }
 </style>
