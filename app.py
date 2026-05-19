@@ -610,22 +610,43 @@ def render_page(page_data):
     if page_data["type"] == "custom_cert":
         render_certificate_page(); return
     if page_data["type"] == "group":
+
         for child_page_id in page_data["group_items"]:
+    
             child_data = fetch_page(conn, child_page_id)
     
             if not child_data:
                 continue
     
             if child_data["type"] == "products":
+    
                 st.markdown("""
-                <div class='card'>
+                <div class="card">
                     <h3>🌾 Sản phẩm</h3>
-                    <p>Xem danh sách sản phẩm, giá bán, định lượng và mô tả chi tiết.</p>
-                    <p><a href='?page=sanpham' target='_self'>Xem chi tiết →</a></p>
+                    <p>Khám phá các sản phẩm đặc sản từ cốm Làng Vòng.</p>
+                    <a href="?page=sanpham" target="_self">
+                        Xem chi tiết →
+                    </a>
                 </div>
                 """, unsafe_allow_html=True)
+    
             else:
-                render_content_card(child_data, detail_link=child_page_id)
+    
+                st.markdown(f"""
+                <div class="{child_data.get('card_class', 'card')}">
+    
+                    <h3>{child_data.get('card_title', '')}</h3>
+    
+                    {''.join([f"<p><b>{name}:</b> {value}</p>" for name, value in child_data.get('fields', [])])}
+    
+                    {''.join([f"<p>{p}</p>" for p in child_data.get('paragraphs', [])])}
+    
+                    <a href="?page={child_page_id}" target="_self">
+                        Xem chi tiết →
+                    </a>
+    
+                </div>
+                """, unsafe_allow_html=True)
     
         return
     if page_data["type"] == "products":
