@@ -185,8 +185,13 @@ footer {visibility: hidden;}
     .page-title.small-title {
         font-size: 35px !important;
         white-space: nowrap;
-        transform: none;
         letter-spacing: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 0 auto;
     }
 }
 </style>
