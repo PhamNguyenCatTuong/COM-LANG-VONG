@@ -65,7 +65,10 @@ CERTIFICATES = [
         "desc": 'Chứng nhận cơ sở đủ điều kiện an toàn thực phẩm.',
     },
 ]
-st.markdown("""
+
+banner_image = image_to_data_uri("Com tong quan 3.jpg")
+
+st.markdown(f"""
 <style>
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; overflow-x: hidden; }
@@ -123,7 +126,7 @@ footer {visibility: hidden;}
     align-items: center;
     background:
         linear-gradient(90deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.42) 44%, rgba(0,0,0,0.08) 100%),
-        url("https://source.unsplash.com/1800x900/?vietnam,rice,farmer,harvest");
+        url("{banner_image}");
     background-size: cover;
     background-position: center;
     margin: 12px auto 0 auto;
