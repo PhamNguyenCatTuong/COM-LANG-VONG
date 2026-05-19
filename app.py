@@ -174,17 +174,13 @@ footer {visibility: hidden;}
     .hero-btn { font-size: clamp(9px, 2.7vw, 11px); padding: 6px 8px; }
     @media (max-width: 768px) {
     .page-title {
-        font-size: min(3.5vw, 15px);
+        font-size: min(4vw, 16px);
         white-space: nowrap;
         width: 100%;
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-        transform: scaleX(0.75);
-        transform-origin: center center;
-        letter-spacing: -0.2px;
-        position: relative;
-        left: -6px;
+        display: block;
+        transform: scaleX(0.92);
+        transform-origin: center;
+        letter-spacing: -0.3px;
     }
 }
 </style>
