@@ -175,7 +175,7 @@ footer {visibility: hidden;}
     .page-title { font-size: clamp(16px, 4.1vw, 19px); white-space: nowrap; }
 }
 </style>
-""".replace("__BANNER_IMAGE__", image_to_data_uri("Com tong quan 3.jpg")), unsafe_allow_html=True)
+""".replace("__BANNER_IMAGE__", image_to_data_uri("Banner com.jpg")), unsafe_allow_html=True)
 
 st.markdown("""
 <div class="topbar">
