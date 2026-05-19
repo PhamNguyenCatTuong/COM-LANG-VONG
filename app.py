@@ -142,6 +142,10 @@ footer {visibility: hidden;}
 
 .content { max-width: 850px; margin: auto; padding: clamp(12px, 3vw, 20px); line-height: 1.75; font-size: clamp(14px, 3vw, 16px); overflow-x: hidden; }
 .page-title { text-align: center; font-size: clamp(17px, 4.2vw, 34px); line-height: 1.2; margin: clamp(14px, 4vw, 24px) auto clamp(10px, 3vw, 18px) auto; white-space: normal; max-width: 100%; overflow-wrap: normal; }
+.page-title.small-title {
+    font-size: clamp(14px, 3.5vw, 26px);
+}
+
 .card, .card2 { padding: clamp(14px, 3vw, 20px); border-radius: 14px; margin-top: 18px; overflow-wrap: anywhere; }
 .card { background: #f1f8e9; }
 .card2 { background: #e8f5e9; }
@@ -181,6 +185,11 @@ footer {visibility: hidden;}
         transform: scaleX(0.88);
         transform-origin: center;
         letter-spacing: -0.3px;
+    }
+    .page-title.small-title {
+        font-size: min(3.4vw, 15px);
+        transform: none;
+        text-align: center;
     }
 }
 </style>
@@ -341,7 +350,8 @@ def render_content_card(page_data, detail_link=None):
     st.markdown(html, unsafe_allow_html=True)
 
 def render_page(page_data):
-    st.markdown(f"<h1 class='page-title'>{page_data['title']}</h1>", unsafe_allow_html=True)
+    title_class = "page-title small-title" if page_data["title"] == "Chất lượng & chứng nhận" else "page-title"
+    st.markdown(f"<h1 class='{title_class}'>{page_data['title']}</h1>", unsafe_allow_html=True)
     if page_data["type"] == "custom_cert":
         render_certificate_page(); return
     if page_data["type"] == "group":
