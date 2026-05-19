@@ -548,46 +548,6 @@ def render_certificate_page():
     components.html(html, height=440, scrolling=False)
 
 def render_products():
-
-    html = """
-    <div class="product-grid">
-    """
-
-    for product in PRODUCTS:
-
-        html += f"""
-        <div class="product-card">
-
-            <img src="{image_to_data_uri(product['image'])}" alt="{product['name']}">
-
-            <div class="product-info">
-
-                <h3>{product['name']}</h3>
-
-                <p>{product['desc']}</p>
-
-                <p class="product-weight">
-                    ⚖️ Định lượng: {product['weight']}
-                </p>
-
-                <div class="product-price">
-                    💰 {product['price']}
-                </div>
-
-                <a href="tel:0385437503" class="buy-btn">
-                    Đặt hàng
-                </a>
-
-            </div>
-
-        </div>
-        """
-
-    html += "</div>"
-
-    st.markdown(html, unsafe_allow_html=True)
-
-def render_products():
     html = "<div class='product-grid'>"
 
     for product in PRODUCTS:
@@ -597,27 +557,47 @@ def render_products():
 
             <div class="product-info">
                 <h3>{product['name']}</h3>
-
                 <p>{product['desc']}</p>
-
-                <p class="product-weight">
-                    ⚖️ Định lượng: {product['weight']}
-                </p>
-
-                <div class="product-price">
-                    💰 {product['price']}
-                </div>
-
-                <a href="tel:0385437503" class="buy-btn">
-                    Đặt hàng
-                </a>
+                <p class="product-weight">⚖️ Định lượng: {product['weight']}</p>
+                <div class="product-price">💰 {product['price']}</div>
+                <a href="tel:0385437503" class="buy-btn">Đặt hàng</a>
             </div>
         </div>
         """
 
     html += "</div>"
-
     st.markdown(html, unsafe_allow_html=True)
+
+def render_products():
+    cols = st.columns(2)
+
+    for index, product in enumerate(PRODUCTS):
+
+        with cols[index % 2]:
+
+            image_path = resolve_asset_path(product["image"])
+
+            if image_path.exists():
+                st.image(str(image_path), use_container_width=True)
+
+            st.markdown(f"### {product['name']}")
+
+            st.markdown(product["desc"])
+
+            st.markdown(
+                f"**⚖️ Định lượng:** {product['weight']}"
+            )
+
+            st.markdown(
+                f"## 💰 {product['price']}"
+            )
+
+            st.markdown(
+                "<a href='tel:0385437503' class='buy-btn'>Đặt hàng</a>",
+                unsafe_allow_html=True
+            )
+
+            st.markdown("---")
     
 def render_page(page_data):
     special_titles = [
