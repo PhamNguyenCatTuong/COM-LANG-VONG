@@ -224,6 +224,7 @@ footer {visibility: hidden;}
     border-radius: 999px;
     text-decoration: none;
     font-weight: 700;
+    margin-top: 8px;
 }
 @media (min-width: 768px) {
     .topbar { display: flex; align-items: center; gap: 20px; }
@@ -458,32 +459,24 @@ def render_content_card(page_data, detail_link=None):
     st.markdown(html, unsafe_allow_html=True)
 
 def render_products():
-    html = "<div class='product-grid'>"
+    cols = st.columns(3)
 
-    for product in PRODUCTS:
-        html += f"""
-        <div class="product-card">
-            <img src="{image_to_data_uri(product['image'])}">
-            
-            <div class="product-info">
-                <h3>{product['name']}</h3>
+    for index, product in enumerate(PRODUCTS):
+        with cols[index % 3]:
+            image_path = resolve_asset_path(product["image"])
 
-                <p>{product['desc']}</p>
+            if image_path.exists():
+                st.image(str(image_path), use_container_width=True)
+            else:
+                st.warning(f"Chưa có ảnh: {product['image']}")
 
-                <div class="product-price">
-                    {product['price']}
-                </div>
-
-                <a href="tel:0385437503" class="buy-btn">
-                    Đặt hàng
-                </a>
-            </div>
-        </div>
-        """
-
-    html += "</div>"
-
-    st.markdown(html, unsafe_allow_html=True)
+            st.markdown(f"### {product['name']}")
+            st.markdown(f"{product['desc']}")
+            st.markdown(f"**💰 {product['price']}**")
+            st.markdown(
+                "<a href='tel:0385437503' class='buy-btn'>Đặt hàng</a>",
+                unsafe_allow_html=True
+            )
     
 def render_page(page_data):
     special_titles = [
