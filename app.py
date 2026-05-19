@@ -443,7 +443,7 @@ PRODUCTS = [
 ]
 
 PAGE_DATABASE = {
-    "thongtinsp": {"title": "Thông tin sản phẩm", "type": "group", "items": ["tensp_masp", "thuonghieu"]},
+    "thongtinsp": {"title": "Thông tin sản phẩm", "type": "group", "items": ["tensp_masp", "thuonghieu", "sanpham"]},
     "tensp_masp": {"title": "Tên & mã sản phẩm", "card_class": "card", "card_title": "🌾 Thông tin nhận diện sản phẩm", "fields": {"Tên sản phẩm": "Cốm Làng Vòng", "Mã sản phẩm": "COM-LV-001", "Loại sản phẩm": "Thực phẩm truyền thống", "Dòng sản phẩm": "Cốm truyền thống"}, "paragraphs": ["Thông tin tên và mã sản phẩm giúp khách hàng nhận diện, tra cứu và truy xuất sản phẩm nhanh chóng."]},
     "thuonghieu": {"title": "Thương hiệu", "card_class": "card", "card_title": "🌿 Thương hiệu Cốm Làng Vòng", "paragraphs": ["Cốm Làng Vòng là thương hiệu gắn với làng nghề truyền thống Hà Nội.", "Sản phẩm đại diện cho nét tinh tế và văn hóa ẩm thực Thủ đô."]},
     "sanpham": {
