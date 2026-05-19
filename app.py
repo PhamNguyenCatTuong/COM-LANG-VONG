@@ -136,7 +136,15 @@ footer {visibility: hidden;}
 .hero-content h1 { font-size: clamp(28px, 8.2vw, 56px); line-height: 1.04; margin: 0 0 -15 0; }
 .hero-content p { font-size: clamp(12px, 3.4vw, 20px); line-height: 1.32; margin: 0 0 clamp(12px, 3vw, 18px) 0; }
 .hero-actions { display: flex; gap: clamp(7px, 2vw, 12px); flex-wrap: nowrap; }
-.hero-btn { padding: clamp(6px, 1.8vw, 12px) clamp(8px, 2.4vw, 20px); border-radius: 999px; text-decoration: none; font-weight: 700; display: inline-block; font-size: clamp(10px, 2.7vw, 16px); white-space: nowrap; }
+.hero-btn {
+    padding: clamp(10px, 2.8vw, 18px) clamp(16px, 4vw, 30px);
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-block;
+    font-size: clamp(13px, 3.5vw, 20px);
+    white-space: nowrap;
+}
 .hero-btn.order { background: #2e7d32; color: white; }
 .hero-btn.call { background: white; color: #2e7d32; }
 
