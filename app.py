@@ -172,7 +172,13 @@ footer {visibility: hidden;}
     .hero-content h1 { font-size: clamp(26px, 8vw, 34px); }
     .hero-content p { font-size: clamp(12px, 3.4vw, 14px); }
     .hero-btn { font-size: clamp(9px, 2.7vw, 11px); padding: 6px 8px; }
-    .page-title { font-size: clamp(16px, 4.1vw, 19px); white-space: normal; }
+    .page-title {
+        font-size: clamp(11px, 3vw, 15px);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 0 6px;
+    }
 }
 </style>
 """.replace("__BANNER_IMAGE__", image_to_data_uri("Banner com.jpg")), unsafe_allow_html=True)
