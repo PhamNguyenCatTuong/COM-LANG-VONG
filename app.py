@@ -66,7 +66,7 @@ CERTIFICATES = [
     },
 ]
 
-banner_image = image_to_data_uri("Com tong quan 3.jpg")
+banner_image = image_to_data_uri("Banner com.jpg")
 
 st.markdown("""
 <style>
