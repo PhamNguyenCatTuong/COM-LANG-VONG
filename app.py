@@ -172,14 +172,17 @@ footer {visibility: hidden;}
     .hero-content h1 { font-size: clamp(26px, 8vw, 34px); }
     .hero-content p { font-size: clamp(12px, 3.4vw, 14px); }
     .hero-btn { font-size: clamp(9px, 2.7vw, 11px); padding: 6px 8px; }
+    @media (max-width: 768px) {
     .page-title {
-        font-size: min(3.6vw, 15px);
+        font-size: min(3.5vw, 15px);
         white-space: nowrap;
         width: 100%;
-        display: block;
-        transform: scaleX(0.7);
-        transform-origin: center;
-        letter-spacing: -0.3px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        transform: scaleX(0.75);
+        transform-origin: center center;
+        letter-spacing: -0.2px;
     }
 }
 </style>
