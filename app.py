@@ -100,7 +100,12 @@ footer {visibility: hidden;}
 }
 
 .top-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-.logo { font-size: clamp(20px, 5vw, 30px); font-weight: 800; color: #2e7d32; white-space: nowrap; }
+.logo {
+    font-size: clamp(32px, 8vw, 48px);
+    font-weight: 900;
+    color: #2e7d32;
+    white-space: nowrap;
+}
 .hamburger { font-size: clamp(22px, 5vw, 28px); cursor: pointer; }
 #menu-toggle { display: none; }
 .menu { display: none; flex-direction: column; gap: 5px; margin-top: 10px; }
@@ -182,6 +187,9 @@ footer {visibility: hidden;}
 }
 
 @media (max-width: 768px) {
+    .logo {
+        font-size: 34px;
+    }
     .block-container { max-width: 100% !important; }
     .topbar { margin: 6px auto; padding: 10px; }
     .dropdown-content { display: block !important; position: relative; width: 100%; min-width: 0; box-shadow: none; }
