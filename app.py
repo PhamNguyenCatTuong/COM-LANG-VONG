@@ -178,6 +178,53 @@ footer {visibility: hidden;}
 .footer-content { max-width: 850px; margin: auto; text-align: center; }
 .footer-content a { color: white; text-decoration: none; }
 
+/* ===== PRODUCT ===== */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 14px;
+}
+
+.product-info h3 {
+    margin: 0 0 8px 0;
+    color: #2e7d32;
+}
+
+.product-price {
+    font-size: 20px;
+    font-weight: 800;
+    color: #e53935;
+    margin: 10px 0;
+}
+
+.buy-btn {
+    display: inline-block;
+    background: #2e7d32;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+}
 @media (min-width: 768px) {
     .topbar { display: flex; align-items: center; gap: 20px; }
     .hamburger { display: none; }
@@ -291,18 +338,36 @@ st.markdown("""
 
 st.markdown("<div class='content'>", unsafe_allow_html=True)
 
+PRODUCTS = [
+    {
+        "name": "Cốm tươi truyền thống",
+        "price": "120.000đ / hộp",
+        "image": "Com tong quan.jpg",
+        "desc": "Hạt cốm dẻo thơm, chuẩn vị Hà Nội."
+    },
+
+    {
+        "name": "Chả cốm",
+        "price": "85.000đ / hộp",
+        "image": "Com tong quan 1.jpg",
+        "desc": "Chả cốm mềm thơm, đậm vị truyền thống."
+    },
+
+    {
+        "name": "Xôi cốm",
+        "price": "45.000đ / suất",
+        "image": "Com tong quan 2.jpg",
+        "desc": "Xôi cốm dẻo thơm ăn kèm dừa tươi."
+    }
+]
+
 PAGE_DATABASE = {
     "thongtinsp": {"title": "Thông tin sản phẩm", "type": "group", "items": ["tensp_masp", "thuonghieu"]},
     "tensp_masp": {"title": "Tên & mã sản phẩm", "card_class": "card", "card_title": "🌾 Thông tin nhận diện sản phẩm", "fields": {"Tên sản phẩm": "Cốm Làng Vòng", "Mã sản phẩm": "COM-LV-001", "Loại sản phẩm": "Thực phẩm truyền thống", "Dòng sản phẩm": "Cốm truyền thống"}, "paragraphs": ["Thông tin tên và mã sản phẩm giúp khách hàng nhận diện, tra cứu và truy xuất sản phẩm nhanh chóng."]},
     "thuonghieu": {"title": "Thương hiệu", "card_class": "card", "card_title": "🌿 Thương hiệu Cốm Làng Vòng", "paragraphs": ["Cốm Làng Vòng là thương hiệu gắn với làng nghề truyền thống Hà Nội.", "Sản phẩm đại diện cho nét tinh tế và văn hóa ẩm thực Thủ đô."]},
     "sanpham": {
         "title": "Sản phẩm",
-        "card_class": "card",
-        "card_title": "🌾 Sản phẩm Cốm Làng Vòng",
-        "paragraphs": [
-            "Cốm Làng Vòng là đặc sản truyền thống nổi tiếng của Hà Nội.",
-            "Sản phẩm được chế biến từ lúa nếp non tuyển chọn, mang hương vị dẻo thơm đặc trưng."
-    ]
+        "type": "products"
     },
     "truyxuat": {"title": "Truy xuất nguồn gốc", "type": "group", "items": ["nguyenlieu", "khuvuc", "malo"]},
     "nguyenlieu": {"title": "Nguồn nguyên liệu", "card_class": "card2", "card_title": "🌾 Lúa nếp non", "paragraphs": ["Nguyên liệu chính là lúa nếp non được chọn lọc kỹ lưỡng.", "Lúa được sàng lọc, loại bỏ hạt lép trước khi rang và giã để tạo nên hạt cốm dẻo thơm."]},
@@ -394,6 +459,34 @@ def render_content_card(page_data, detail_link=None):
     html += "</div>"
     st.markdown(html, unsafe_allow_html=True)
 
+def render_products():
+    html = "<div class='product-grid'>"
+
+    for product in PRODUCTS:
+        html += f"""
+        <div class="product-card">
+            <img src="{image_to_data_uri(product['image'])}">
+            
+            <div class="product-info">
+                <h3>{product['name']}</h3>
+
+                <p>{product['desc']}</p>
+
+                <div class="product-price">
+                    {product['price']}
+                </div>
+
+                <a href="tel:0385437503" class="buy-btn">
+                    Đặt hàng
+                </a>
+            </div>
+        </div>
+        """
+
+    html += "</div>"
+
+    st.markdown(html, unsafe_allow_html=True)
+    
 def render_page(page_data):
     special_titles = [
     "Chất lượng & chứng nhận",
@@ -408,6 +501,9 @@ def render_page(page_data):
         for child_page_id in page_data["group_items"]:
             child_data = fetch_page(conn, child_page_id)
             if child_data: render_content_card(child_data, detail_link=child_page_id)
+        return
+    if page_data["type"] == "products":
+        render_products()
         return
     if page_data["type"] == "images":
         st.write(page_data["intro"])
