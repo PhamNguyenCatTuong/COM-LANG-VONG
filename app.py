@@ -548,24 +548,43 @@ def render_certificate_page():
     components.html(html, height=440, scrolling=False)
 
 def render_products():
-    html = "<div class='product-grid'>"
+
+    html = """
+    <div class="product-grid">
+    """
 
     for product in PRODUCTS:
+
         html += f"""
         <div class="product-card">
+
             <img src="{image_to_data_uri(product['image'])}" alt="{product['name']}">
 
             <div class="product-info">
+
                 <h3>{product['name']}</h3>
+
                 <p>{product['desc']}</p>
-                <p class="product-weight">⚖️ Định lượng: {product['weight']}</p>
-                <div class="product-price">💰 {product['price']}</div>
-                <a href="tel:0385437503" class="buy-btn">Đặt hàng</a>
+
+                <p class="product-weight">
+                    ⚖️ Định lượng: {product['weight']}
+                </p>
+
+                <div class="product-price">
+                    💰 {product['price']}
+                </div>
+
+                <a href="tel:0385437503" class="buy-btn">
+                    Đặt hàng
+                </a>
+
             </div>
+
         </div>
         """
 
     html += "</div>"
+
     st.markdown(html, unsafe_allow_html=True)
 
 def render_products():
