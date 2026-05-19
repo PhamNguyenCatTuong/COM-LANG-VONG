@@ -183,6 +183,8 @@ footer {visibility: hidden;}
         transform: scaleX(0.75);
         transform-origin: center center;
         letter-spacing: -0.2px;
+        position: relative;
+        left: -2px;
     }
 }
 </style>
