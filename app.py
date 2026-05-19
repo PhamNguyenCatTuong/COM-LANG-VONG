@@ -131,7 +131,13 @@ footer {visibility: hidden;}
     background-position: center;
     margin: 12px auto 0 auto;
 }
-.hero-content { width: min(48%, 560px); padding-left: clamp(18px, 5vw, 48px); padding-right: 6px; color: white; }
+.hero-content {
+    width: min(48%, 560px);
+    padding-left: clamp(24px, 6vw, 60px);
+    padding-right: 6px;
+    padding-top: 120px;
+    color: white;
+}
 .hero-small { font-size: clamp(9px, 2.5vw, 17px); font-weight: 700; letter-spacing: clamp(0.7px, 0.25vw, 1.8px); text-transform: uppercase; margin-bottom: -6px; line-height: 1; white-space: nowrap; }
 .hero-content h1 { font-size: clamp(28px, 8.2vw, 56px); line-height: 1.04; margin: 0 0 -15 0; }
 .hero-content p { font-size: clamp(12px, 3.4vw, 20px); line-height: 1.32; margin: 0 0 clamp(12px, 3vw, 18px) 0; }
@@ -182,7 +188,8 @@ footer {visibility: hidden;}
     .hero-banner { min-height: clamp(300px, 86vw, 380px); margin-top: 10px; }
     .hero-content {
         width: 72%;
-        padding-left: 18px;
+        padding-left: 22px;
+        padding-top: 140px;
     }
     .hero-content h1 {
         font-size: clamp(34px, 9vw, 48px);
