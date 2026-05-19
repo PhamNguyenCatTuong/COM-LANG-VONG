@@ -172,11 +172,17 @@ footer {visibility: hidden;}
     .topbar { margin: 6px auto; padding: 10px; }
     .dropdown-content { display: block !important; position: relative; width: 100%; min-width: 0; box-shadow: none; }
     .hero-banner { min-height: clamp(300px, 86vw, 380px); margin-top: 10px; }
-    .hero-content { width: 46%; padding-left: 18px; }
-    .hero-content h1 { font-size: clamp(26px, 8vw, 34px); }
+    .hero-content {
+        width: 72%;
+        padding-left: 18px;
+    }
+    .hero-content h1 {
+        font-size: clamp(34px, 9vw, 48px);
+        white-space: nowrap;
+        line-height: 1;
+    }
     .hero-content p { font-size: clamp(12px, 3.4vw, 14px); }
     .hero-btn { font-size: clamp(9px, 2.7vw, 11px); padding: 6px 8px; }
-@media (max-width: 768px) {
     .page-title {
         font-size: clamp(16px, 4.1vw, 19px);
         white-space: nowrap;
