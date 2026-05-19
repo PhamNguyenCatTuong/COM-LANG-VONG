@@ -182,7 +182,7 @@ footer {visibility: hidden;}
         white-space: nowrap;
         width: 100%;
         display: block;
-        transform: scaleX(0.88);
+        transform: scaleX(1);
         transform-origin: center;
         letter-spacing: -0.3px;
     }
