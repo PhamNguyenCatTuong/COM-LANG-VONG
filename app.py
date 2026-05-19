@@ -133,7 +133,7 @@ footer {visibility: hidden;}
 }
 .hero-content { width: min(48%, 560px); padding-left: clamp(18px, 5vw, 48px); padding-right: 6px; color: white; }
 .hero-small { font-size: clamp(9px, 2.5vw, 17px); font-weight: 700; letter-spacing: clamp(0.7px, 0.25vw, 1.8px); text-transform: uppercase; margin-bottom: -6px; line-height: 1; white-space: nowrap; }
-.hero-content h1 { font-size: clamp(28px, 8.2vw, 56px); line-height: 1.04; margin: 0 0 clamp(8px, 2vw, 12px) 0; }
+.hero-content h1 { font-size: clamp(28px, 8.2vw, 56px); line-height: 1.04; margin: 0 0 clamp(2px, 1vw, 6px) 0; }
 .hero-content p { font-size: clamp(12px, 3.4vw, 20px); line-height: 1.32; margin: 0 0 clamp(12px, 3vw, 18px) 0; }
 .hero-actions { display: flex; gap: clamp(7px, 2vw, 12px); flex-wrap: nowrap; }
 .hero-btn { padding: clamp(6px, 1.8vw, 12px) clamp(8px, 2.4vw, 20px); border-radius: 999px; text-decoration: none; font-weight: 700; display: inline-block; font-size: clamp(10px, 2.7vw, 16px); white-space: nowrap; }
