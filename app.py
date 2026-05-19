@@ -246,6 +246,7 @@ st.markdown("""
     <div class="dropdown-content">
         <a href="?page=tensp_masp" target="_self">Tên & mã sản phẩm</a>
         <a href="?page=thuonghieu" target="_self">Thương hiệu</a>
+        <a href="?page=sanpham" target="_self">Sản phẩm</a>
     </div>
 </div>
 <div class="dropdown">
@@ -263,7 +264,6 @@ st.markdown("""
     <a href="?page=truyenthong" target="_self" style="text-decoration:none;"><button class="dropbtn">Nội dung truyền thông</button></a>
     <div class="dropdown-content">
         <a href="?page=cauchuyen" target="_self">Câu chuyện sản phẩm</a>
-        <a href="?page=hinhanh" target="_self">Hình ảnh</a>
         <a href="?page=video" target="_self">Video giới thiệu</a>
     </div>
 </div>
@@ -295,6 +295,15 @@ PAGE_DATABASE = {
     "thongtinsp": {"title": "Thông tin sản phẩm", "type": "group", "items": ["tensp_masp", "thuonghieu"]},
     "tensp_masp": {"title": "Tên & mã sản phẩm", "card_class": "card", "card_title": "🌾 Thông tin nhận diện sản phẩm", "fields": {"Tên sản phẩm": "Cốm Làng Vòng", "Mã sản phẩm": "COM-LV-001", "Loại sản phẩm": "Thực phẩm truyền thống", "Dòng sản phẩm": "Cốm truyền thống"}, "paragraphs": ["Thông tin tên và mã sản phẩm giúp khách hàng nhận diện, tra cứu và truy xuất sản phẩm nhanh chóng."]},
     "thuonghieu": {"title": "Thương hiệu", "card_class": "card", "card_title": "🌿 Thương hiệu Cốm Làng Vòng", "paragraphs": ["Cốm Làng Vòng là thương hiệu gắn với làng nghề truyền thống Hà Nội.", "Sản phẩm đại diện cho nét tinh tế và văn hóa ẩm thực Thủ đô."]},
+    "sanpham": {
+        "title": "Sản phẩm",
+        "card_class": "card",
+        "card_title": "🌾 Sản phẩm Cốm Làng Vòng",
+        "paragraphs": [
+            "Cốm Làng Vòng là đặc sản truyền thống nổi tiếng của Hà Nội.",
+            "Sản phẩm được chế biến từ lúa nếp non tuyển chọn, mang hương vị dẻo thơm đặc trưng."
+    ]
+    },
     "truyxuat": {"title": "Truy xuất nguồn gốc", "type": "group", "items": ["nguyenlieu", "khuvuc", "malo"]},
     "nguyenlieu": {"title": "Nguồn nguyên liệu", "card_class": "card2", "card_title": "🌾 Lúa nếp non", "paragraphs": ["Nguyên liệu chính là lúa nếp non được chọn lọc kỹ lưỡng.", "Lúa được sàng lọc, loại bỏ hạt lép trước khi rang và giã để tạo nên hạt cốm dẻo thơm."]},
     "khuvuc": {"title": "Khu vực sản xuất", "card_class": "card2", "card_title": "📍 Làng Vòng - Hà Nội", "paragraphs": ["Sản phẩm được sản xuất tại làng nghề truyền thống Làng Vòng.", "Đây là địa danh nổi tiếng với nghề làm cốm lâu đời của Hà Nội."]},
