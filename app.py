@@ -173,11 +173,11 @@ footer {visibility: hidden;}
     .hero-content p { font-size: clamp(12px, 3.4vw, 14px); }
     .hero-btn { font-size: clamp(9px, 2.7vw, 11px); padding: 6px 8px; }
     .page-title {
-        font-size: min(4vw, 16px);
+        font-size: min(3.6vw, 15px);
         white-space: nowrap;
         width: 100%;
         display: block;
-        transform: scaleX(0.92);
+        transform: scaleX(0.7);
         transform-origin: center;
         letter-spacing: -0.3px;
     }
