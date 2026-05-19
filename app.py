@@ -35,7 +35,7 @@ def image_to_data_uri(file_name):
 
 CERTIFICATES = [
     {
-        "image": 'Chung nhan an toan thuc pham.jpg',
+        "image": 'CBSP.jpg',
         "title": 'Tự công bố sản phẩm',
         "desc": 'Giấy xác nhận tự công bố sản phẩm Cốm Làng Vòng theo quy định an toàn thực phẩm.',
     },
