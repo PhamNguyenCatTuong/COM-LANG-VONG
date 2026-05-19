@@ -569,35 +569,36 @@ def render_products():
     st.markdown(html, unsafe_allow_html=True)
 
 def render_products():
-    cols = st.columns(2)
+    html = "<div class='product-grid'>"
 
-    for index, product in enumerate(PRODUCTS):
+    for product in PRODUCTS:
+        html += f"""
+        <div class="product-card">
+            <img src="{image_to_data_uri(product['image'])}" alt="{product['name']}">
 
-        with cols[index % 2]:
+            <div class="product-info">
+                <h3>{product['name']}</h3>
 
-            image_path = resolve_asset_path(product["image"])
+                <p>{product['desc']}</p>
 
-            if image_path.exists():
-                st.image(str(image_path), use_container_width=True)
+                <p class="product-weight">
+                    ⚖️ Định lượng: {product['weight']}
+                </p>
 
-            st.markdown(f"### {product['name']}")
+                <div class="product-price">
+                    💰 {product['price']}
+                </div>
 
-            st.markdown(product["desc"])
+                <a href="tel:0385437503" class="buy-btn">
+                    Đặt hàng
+                </a>
+            </div>
+        </div>
+        """
 
-            st.markdown(
-                f"**⚖️ Định lượng:** {product['weight']}"
-            )
+    html += "</div>"
 
-            st.markdown(
-                f"## 💰 {product['price']}"
-            )
-
-            st.markdown(
-                "<a href='tel:0385437503' class='buy-btn'>Đặt hàng</a>",
-                unsafe_allow_html=True
-            )
-
-            st.markdown("---")
+    st.markdown(html, unsafe_allow_html=True)
     
 def render_page(page_data):
     special_titles = [
