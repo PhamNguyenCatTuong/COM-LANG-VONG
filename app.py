@@ -631,22 +631,22 @@ def render_page(page_data):
                 """, unsafe_allow_html=True)
     
             else:
+               html = f"<div class='{child_data.get('card_class', 'card')}'>"
+
+                if child_data.get("card_title"):
+                    html += f"<h3>{child_data['card_title']}</h3>"
     
-                st.markdown(f"""
-                <div class="{child_data.get('card_class', 'card')}">
+                for name, value in child_data.get("fields", []):
+                    html += f"<p><b>{name}:</b> {value}</p>"
     
-                    <h3>{child_data.get('card_title', '')}</h3>
+                for p in child_data.get("paragraphs", []):
+                    html += f"<p>{p}</p>"
     
-                    {''.join([f"<p><b>{name}:</b> {value}</p>" for name, value in child_data.get('fields', [])])}
+                html += f"<p><a href='?page={child_page_id}' target='_self'>Xem chi tiết →</a></p>"
     
-                    {''.join([f"<p>{p}</p>" for p in child_data.get('paragraphs', [])])}
+                html += "</div>"
     
-                    <a href="?page={child_page_id}" target="_self">
-                        Xem chi tiết →
-                    </a>
-    
-                </div>
-                """, unsafe_allow_html=True)
+                st.markdown(html, unsafe_allow_html=True)
     
         return
     if page_data["type"] == "products":
