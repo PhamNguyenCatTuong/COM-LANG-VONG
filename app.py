@@ -187,9 +187,10 @@ footer {visibility: hidden;}
         letter-spacing: -0.3px;
     }
     .page-title.small-title {
-        font-size: min(4vw, 17px);
         white-space: nowrap;
-        text-align: center;
+        transform: scaleX(0.93);
+        transform-origin: center;
+        letter-spacing: -0.4px;
     }
 }
 </style>
@@ -351,8 +352,8 @@ def render_content_card(page_data, detail_link=None):
 
 def render_page(page_data):
     special_titles = [
-        "Chất lượng & chứng nhận",
-        "Nội dung truyền thông"
+    "Chất lượng & chứng nhận",
+    "Nội dung truyền thông"
     ]
     
     title_class = "page-title small-title" if page_data["title"] in special_titles else "page-title"
