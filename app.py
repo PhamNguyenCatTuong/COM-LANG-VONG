@@ -187,11 +187,14 @@ footer {visibility: hidden;}
         white-space: nowrap;
         letter-spacing: 0;
         width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        margin: 0 auto;
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        left: 0;
+        right: 0;
+        position: relative;
     }
 }
 </style>
