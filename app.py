@@ -699,13 +699,29 @@ footer {visibility: hidden;}
     .block-container { max-width: 100% !important; }
     .topbar { margin: 6px auto; padding: 10px; }
     .dropdown-content {
-        display: none !important;
+        display: block !important;
         position: relative;
         width: 100%;
         min-width: 0;
         box-shadow: none;
+        border-radius: 0 0 8px 8px;
+        margin-top: 0;
     }
-    .dropdown:hover .dropdown-content { display: block !important; }
+
+    .dropdown-content a {
+        background: #f7fff5;
+        color: #2e7d32;
+        padding-left: 24px;
+        font-weight: 600;
+    }
+
+    .dropdown-content a:hover {
+        background: #e8f5e9;
+    }
+
+    .dropdown {
+        margin-bottom: 6px;
+    }
     .hero-banner { min-height: clamp(300px, 86vw, 380px); margin-top: 10px; }
     .hero-content { width: 78%; padding-left: 22px; padding-top: 140px; }
     .hero-content h1 { font-size: clamp(34px, 9vw, 48px); white-space: nowrap; line-height: 1; }
