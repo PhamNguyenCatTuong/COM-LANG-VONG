@@ -198,6 +198,27 @@ PRODUCTS = [
 
 ]
 
+add_cart = params.get("add_cart", None)
+
+if "cart" not in st.session_state:
+    st.session_state.cart = {}
+
+add_cart = params.get("add_cart", None)
+
+if add_cart is not None:
+    try:
+        product_index = str(int(add_cart))
+
+        if 0 <= int(product_index) < len(PRODUCTS):
+            st.session_state.cart[product_index] = st.session_state.cart.get(product_index, 0) + 1
+
+            st.query_params.clear()
+            st.query_params["page"] = "sanpham"
+            st.rerun()
+
+    except:
+        pass
+
 # Giỏ hàng lưu tạm theo từng phiên truy cập.
 if "cart" not in st.session_state:
     st.session_state.cart = []
@@ -214,7 +235,7 @@ if add_cart is not None:
     except (TypeError, ValueError):
         pass
 
-cart_count = len(st.session_state.cart)
+cart_count = sum(st.session_state.cart.values()) if "cart" in st.session_state else 0
 
 PAGE_DATABASE = {
     "gioithieu": {
@@ -629,6 +650,26 @@ footer {visibility: hidden;}
     font-weight: 800;
     font-size: 13px;
 }
+
+.product-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.cart-btn {
+    width: fit-content;
+    background: #ff9800;
+    color: white !important;
+    padding: 10px 16px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+}
+
 .cart-add-btn { background:#f59e0b; }
 .cart-link {
     text-decoration:none;
@@ -767,6 +808,7 @@ st.markdown(
 <div class="dropdown"><a href="?page=sanpham_main" target="_self" style="text-decoration:none;"><button class="dropbtn">Sản phẩm</button></a><div class="dropdown-content"><a href="?page=sanpham" target="_self">Danh sách sản phẩm</a><a href="?page=thuonghieu" target="_self">Thương hiệu</a><a href="?page=tensp_masp" target="_self">Tên & mã sản phẩm</a></div></div>
 <div class="dropdown"><a href="?page=chatluong" target="_self" style="text-decoration:none;"><button class="dropbtn">Chất lượng</button></a></div>
 <div class="dropdown"><a href="?page=baobi_main" target="_self" style="text-decoration:none;"><button class="dropbtn">Bao bì & bảo quản</button></a><div class="dropdown-content"><a href="?page=muc_giay" target="_self">Mực & giấy bao bì</a><a href="?page=thuhoi" target="_self">Chính sách thu hồi</a></div></div>
+<a href="?page=giohang" target="_self" class="cart-menu-btn">🛒 Giỏ hàng</a>
 </div>
 </div>
 <section class="hero-banner">
@@ -1025,7 +1067,7 @@ def render_products():
                 f'<div class="product-price">💰 {product["price"]}</div>'
                 f'<div class="product-actions">'
                 f'<a href="tel:0385437503" class="buy-btn">Đặt hàng</a>'
-                f'<a href="?page=sanpham&add_cart={index}" target="_self" class="cart-add-btn">+ Giỏ hàng</a>'
+                f'<a href="?page=sanpham&add_cart={index}" target="_self" class="cart-btn">+ Giỏ hàng</a>'
                 f'</div>'
                 f'</div>'
                 f'</div>'
@@ -1037,22 +1079,32 @@ def render_products():
 
 
 def render_cart_page():
-    cart_items = [PRODUCTS[i] for i in st.session_state.cart if 0 <= i < len(PRODUCTS)]
+    st.markdown("<h1 class='page-title'>🛒 Giỏ hàng</h1>", unsafe_allow_html=True)
 
-    if not cart_items:
-        st.markdown("<div class='card'><h3>🛒 Giỏ hàng đang trống</h3><p>Hãy quay lại danh sách sản phẩm để thêm món yêu thích.</p><p><a href='?page=sanpham' target='_self'>Xem sản phẩm →</a></p></div>", unsafe_allow_html=True)
+    if "cart" not in st.session_state or not st.session_state.cart:
+        st.info("Giỏ hàng của bạn đang trống.")
         return
 
-    html = "<div class='card'><h3>🛒 Sản phẩm đã thêm vào giỏ</h3><div class='cart-list'>"
+    html = '<div class="product-grid">'
 
-    for item in cart_items:
+    for product_index, quantity in st.session_state.cart.items():
+        product = PRODUCTS[int(product_index)]
+
         html += (
-            f"<div class='cart-item'><b>{item['name']}</b>"
-            f"<br>Định lượng: {item['weight']}"
-            f"<br>Giá: {item['price']}</div>"
+            f'<div class="product-card">'
+            f'{render_product_image(product)}'
+            f'<div class="product-info">'
+            f'<h3>{product["name"]}</h3>'
+            f'<p>{product["desc"]}</p>'
+            f'<p class="product-weight">⚖️ {product["weight"]}</p>'
+            f'<div class="product-price">💰 {product["price"]}</div>'
+            f'<p><b>Số lượng:</b> {quantity}</p>'
+            f'<a href="tel:0385437503" class="buy-btn">Đặt hàng</a>'
+            f'</div>'
+            f'</div>'
         )
 
-    html += "</div><p style='margin-top:16px;'><a href='tel:0385437503' class='buy-btn'>Gọi đặt hàng</a> <a href='https://zalo.me/0385437503' target='_blank' class='cart-add-btn'>Gửi qua Zalo</a></p></div>"
+    html += "</div>"
     st.markdown(html, unsafe_allow_html=True)
 
 
@@ -1125,12 +1177,16 @@ def render_page(page_data):
 conn = create_database()
 current_page = fetch_page(conn, page)
 
-if current_page:
+if page == "giohang":
+    render_cart_page()
+
+elif current_page:
     render_page(current_page)
+
 else:
     st.markdown("<h1 class='page-title'>Trang không tồn tại</h1>", unsafe_allow_html=True)
     st.write("Vui lòng chọn lại mục trong menu.")
-
+    
 st.markdown(
     """
 <div class="floating-contact">
