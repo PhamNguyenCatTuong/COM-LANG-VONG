@@ -68,6 +68,7 @@ CERTIFICATES = [
 
 PRODUCTS = [
     {
+        "category": "Cốm truyền thống",
         "name": "Bánh Cốm Truyền Thống",
         "price": "65.000đ",
         "weight": "250g / hộp",
@@ -75,6 +76,7 @@ PRODUCTS = [
         "desc": "Lớp vỏ cốm xanh mềm dẻo ôm trọn phần nhân đậu xanh sên nhuyễn cùng dừa nạo. Khi thưởng thức cảm nhận rõ vị ngọt thanh, thơm mùi lúa non đặc trưng của mùa thu Hà Nội.",
     },
     {
+        "category": "Cốm đặc biệt",
         "name": "Bánh Chưng Cốm",
         "price": "180.000đ",
         "weight": "700g",
@@ -82,6 +84,7 @@ PRODUCTS = [
         "desc": "Nếp dẻo kết hợp cốm non tạo nên hương thơm dịu nhẹ rất riêng. Nhân đậu xanh và thịt được nêm vừa vị, mang cảm giác ấm áp và đậm chất truyền thống.",
     },
     {
+        "category": "Cốm đặc biệt",
         "name": "Bánh Trung Thu Cốm",
         "price": "95.000đ",
         "weight": "180g",
@@ -89,6 +92,7 @@ PRODUCTS = [
         "desc": "Phần nhân cốm mềm mịn hòa quyện cùng vị béo nhẹ của hạt sen và dừa sợi. Vỏ bánh nướng thơm bơ tạo hậu vị thanh tao, không quá ngọt.",
     },
     {
+        "category": "Cốm truyền thống",
         "name": "Bánh Xu Xê Cốm",
         "price": "55.000đ",
         "weight": "6 cái / hộp",
@@ -96,6 +100,7 @@ PRODUCTS = [
         "desc": "Bánh có lớp vỏ trong dẻo dai cùng nhân đậu xanh cốm thơm nhẹ. Khi ăn cảm nhận độ mềm mát và vị ngọt thanh rất dễ chịu.",
     },
     {
+        "category": "Cốm đặc biệt",
         "name": "Bia Cốm Hà Nội",
         "price": "35.000đ",
         "weight": "330ml",
@@ -103,6 +108,7 @@ PRODUCTS = [
         "desc": "Dòng bia thủ công mang hương thơm thoang thoảng của cốm non. Vị bia nhẹ, hậu vị mượt và dễ uống, thích hợp cho những buổi gặp gỡ cuối tuần.",
     },
     {
+        "category": "Cốm truyền thống",
         "name": "Cốm Mộc",
         "price": "120.000đ",
         "weight": "500g",
@@ -110,6 +116,7 @@ PRODUCTS = [
         "desc": "Những hạt cốm xanh mềm được làm từ nếp non tuyển chọn, giữ trọn độ dẻo và hương thơm tự nhiên. Khi nhai cảm nhận vị ngọt dịu lan tỏa rất đặc trưng.",
     },
     {
+        "category": "Cốm truyền thống",
         "name": "Cốm Xào Dừa",
         "price": "85.000đ",
         "weight": "300g",
@@ -117,6 +124,7 @@ PRODUCTS = [
         "desc": "Cốm được xào cùng dừa non và đường phèn tạo độ dẻo béo hấp dẫn. Mùi thơm của lá sen và cốm quyện lại mang cảm giác rất Hà Nội.",
     },
     {
+        "category": "Cốm đặc biệt",
         "name": "Mochi Cốm",
         "price": "75.000đ",
         "weight": "6 bánh / hộp",
@@ -124,6 +132,7 @@ PRODUCTS = [
         "desc": "Lớp mochi mềm dai kết hợp nhân kem cốm béo nhẹ tạo cảm giác mát lạnh khi thưởng thức. Hương cốm thanh thoát giúp món bánh không bị ngấy.",
     },
     {
+        "category": "Cốm đặc biệt",
         "name": "Sữa Chua Cốm",
         "price": "45.000đ",
         "weight": "4 hũ",
@@ -131,6 +140,7 @@ PRODUCTS = [
         "desc": "Sữa chua mịn kết hợp cốm non tạo vị chua ngọt hài hòa. Từng muỗng mang hương thơm dịu nhẹ và cảm giác thanh mát rất dễ ăn.",
     },
     {
+        "category": "Cốm đặc biệt",
         "name": "Tôm Tẩm Cốm",
         "price": "140.000đ",
         "weight": "500g",
@@ -138,6 +148,7 @@ PRODUCTS = [
         "desc": "Tôm tươi được phủ lớp cốm xanh rồi chiên vàng giòn. Khi ăn cảm nhận lớp vỏ thơm bùi hòa cùng vị ngọt tự nhiên của tôm.",
     },
     {
+        "category": "Cốm đặc biệt",
         "name": "Trà Sen Cốm",
         "price": "160.000đ",
         "weight": "200g",
@@ -145,13 +156,65 @@ PRODUCTS = [
         "desc": "Trà được ướp cùng sen và hương cốm tạo mùi thơm thanh tao đặc trưng. Nước trà dịu nhẹ, hậu vị ngọt và rất thư giãn.",
     },
     {
+        "category": "Cốm truyền thống",
         "name": "Xôi Cốm",
         "price": "50.000đ",
         "weight": "1 suất",
         "image": "xoi com.jpg",
         "desc": "Xôi được nấu từ cốm non dẻo mềm kết hợp đậu xanh và dừa sợi. Hương thơm bùi béo hòa quyện tạo cảm giác vừa dân dã vừa tinh tế.",
     },
+    {
+        "category": "Các đặc sản khác của Hà Nội",
+        "name": "Ô Mai Sấu Hà Nội",
+        "price": "70.000đ",
+        "weight": "250g / hộp",
+        "image": "omai sau.jpg",
+        "desc": "Ô mai sấu có vị chua ngọt hài hòa, thơm mùi gừng nhẹ và rất hợp dùng làm quà Hà Nội.",
+    },
+    {
+        "category": "Các đặc sản khác của Hà Nội",
+        "name": "Trà Sen Tây Hồ",
+        "price": "220.000đ",
+        "weight": "100g",
+        "image": "tra sen tay ho.jpg",
+        "desc": "Trà sen ướp hương thanh tao, hậu vị dịu ngọt, phù hợp thưởng thức cùng các món bánh truyền thống.",
+    },
+    {
+        "category": "Các đặc sản khác của Hà Nội",
+        "name": "Bánh Tôm Hồ Tây",
+        "price": "90.000đ",
+        "weight": "1 phần",
+        "image": "banh tom ho tay.jpg",
+        "desc": "Bánh tôm giòn rụm, thơm béo, là món ăn gắn với ký ức ẩm thực Hồ Tây.",
+    },
+    {
+        "category": "Các đặc sản khác của Hà Nội",
+        "name": "Chả Cá Lã Vọng",
+        "price": "180.000đ",
+        "weight": "1 phần",
+        "image": "cha ca la vong.jpg",
+        "desc": "Chả cá thơm nghệ, ăn cùng thì là, hành và bún, mang hương vị đặc trưng của Hà Nội.",
+    },
+
 ]
+
+# Giỏ hàng lưu tạm theo từng phiên truy cập.
+if "cart" not in st.session_state:
+    st.session_state.cart = []
+
+add_cart = params.get("add_cart")
+if add_cart is not None:
+    try:
+        product_index = int(add_cart)
+        if 0 <= product_index < len(PRODUCTS):
+            st.session_state.cart.append(product_index)
+            st.query_params.clear()
+            st.query_params["page"] = page
+            st.rerun()
+    except (TypeError, ValueError):
+        pass
+
+cart_count = len(st.session_state.cart)
 
 PAGE_DATABASE = {
     "gioithieu": {
@@ -173,6 +236,10 @@ PAGE_DATABASE = {
         "title": "Bao bì & bảo quản",
         "type": "group",
         "items": ["muc_giay", "thuhoi"],
+    },
+    "giohang": {
+        "title": "Giỏ hàng",
+        "type": "custom_cart",
     },
 
     # Legacy groups kept for old links.
@@ -487,11 +554,17 @@ footer {visibility: hidden;}
     margin-top: 0;
 }
 
+.product-section { margin-top: 28px; }
+.product-section-title {
+    font-size: 26px;
+    color: #2e7d32;
+    margin: 18px 0 12px;
+}
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 22px;
-    margin-top: 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 10px;
 }
 
 .product-card {
@@ -504,15 +577,22 @@ footer {visibility: hidden;}
     height: 100%;
 }
 
-.product-card img {
+.product-card img, .product-image-placeholder {
     width: 100%;
-    height: 260px;
+    height: 170px;
     object-fit: cover;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f8e9;
+    color: #2e7d32;
+    font-weight: 800;
+    text-align: center;
+    padding: 10px;
 }
 
 .product-info {
-    padding: 16px;
+    padding: 12px;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -521,7 +601,7 @@ footer {visibility: hidden;}
 .product-info h3 {
     margin: 0 0 8px 0;
     color: #1f2937;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 .product-info p {
@@ -532,21 +612,41 @@ footer {visibility: hidden;}
 .product-weight { margin-top: auto; font-weight: 600; }
 
 .product-price {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 900;
     color: #1f2937;
     margin: 8px 0 12px;
 }
 
-.buy-btn {
+.product-actions { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+.buy-btn, .cart-add-btn {
     width: fit-content;
     background: #2e7d32;
     color: white !important;
-    padding: 10px 20px;
+    padding: 9px 14px;
     border-radius: 999px;
     text-decoration: none;
     font-weight: 800;
+    font-size: 13px;
 }
+.cart-add-btn { background:#f59e0b; }
+.cart-link {
+    text-decoration:none;
+    color:#2e7d32;
+    font-weight:900;
+    font-size:22px;
+    white-space:nowrap;
+}
+.cart-badge {
+    background:#f59e0b;
+    color:white;
+    border-radius:999px;
+    padding:2px 7px;
+    font-size:12px;
+    vertical-align:top;
+}
+.cart-list { display:grid; gap:10px; margin-top:16px; }
+.cart-item { background:#f1f8e9; border-radius:14px; padding:12px 14px; }
 
 .floating-contact {
     position: fixed;
@@ -599,29 +699,13 @@ footer {visibility: hidden;}
     .block-container { max-width: 100% !important; }
     .topbar { margin: 6px auto; padding: 10px; }
     .dropdown-content {
-        display: block !important;
+        display: none !important;
         position: relative;
         width: 100%;
         min-width: 0;
         box-shadow: none;
-        border-radius: 0 0 8px 8px;
-        margin-top: 0;
     }
-
-    .dropdown-content a {
-        background: #f7fff5;
-        color: #2e7d32;
-        padding-left: 24px;
-        font-weight: 600;
-    }
-
-    .dropdown-content a:hover {
-        background: #e8f5e9;
-    }
-
-    .dropdown {
-        margin-bottom: 6px;
-    }
+    .dropdown:hover .dropdown-content { display: block !important; }
     .hero-banner { min-height: clamp(300px, 86vw, 380px); margin-top: 10px; }
     .hero-content { width: 78%; padding-left: 22px; padding-top: 140px; }
     .hero-content h1 { font-size: clamp(34px, 9vw, 48px); white-space: nowrap; line-height: 1; }
@@ -640,8 +724,12 @@ footer {visibility: hidden;}
         padding-right: 0 !important;
         position: relative;
     }
-    .product-grid { grid-template-columns: 1fr; }
-    .product-card img { height: 230px; }
+    .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .product-card img, .product-image-placeholder { height: 135px; }
+    .product-info h3 { font-size: 15px; }
+    .product-info p { font-size: 12px; }
+    .product-price { font-size: 17px; }
+    .buy-btn, .cart-add-btn { font-size: 12px; padding: 8px 10px; }
 }
 </style>
 """.replace("__BANNER_IMAGE__", image_to_data_uri("Banner com.jpg")),
@@ -654,6 +742,7 @@ st.markdown(
 <input type="checkbox" id="menu-toggle">
 <div class="top-row">
 <div class="logo">🌾 Cốm Làng Vòng</div>
+<a href="?page=giohang" target="_self" class="cart-link">🛒 <span class="cart-badge">__CART_COUNT__</span></a>
 <label for="menu-toggle" class="hamburger">☰</label>
 </div>
 <div class="menu">
@@ -675,7 +764,7 @@ st.markdown(
 </div>
 </div>
 </section>
-""",
+""".replace("__CART_COUNT__", str(cart_count)),
     unsafe_allow_html=True,
 )
 
@@ -878,24 +967,76 @@ html, body { margin:0; padding:0; overflow:hidden; font-family:Arial, sans-serif
     components.html(html, height=440, scrolling=False)
 
 
-def render_products():
-    html = '<div class="product-grid">'
+def render_product_image(product):
+    image_path = resolve_asset_path(product["image"])
 
-    for product in PRODUCTS:
+    if image_path.exists():
+        return f'<img src="{image_to_data_uri(product["image"])}" alt="{product["name"]}">'
+
+    return f'<div class="product-image-placeholder">{product["name"]}</div>'
+
+
+def render_products():
+    categories = [
+        "Cốm truyền thống",
+        "Cốm đặc biệt",
+        "Các đặc sản khác của Hà Nội",
+    ]
+
+    html = ""
+
+    for category in categories:
+        category_products = [
+            (index, product)
+            for index, product in enumerate(PRODUCTS)
+            if product.get("category") == category
+        ]
+
+        if not category_products:
+            continue
+
+        html += f'<section class="product-section"><h2 class="product-section-title">{category}</h2>'
+        html += '<div class="product-grid">'
+
+        for index, product in category_products:
+            html += (
+                f'<div class="product-card">'
+                f'{render_product_image(product)}'
+                f'<div class="product-info">'
+                f'<h3>{product["name"]}</h3>'
+                f'<p>{product["desc"]}</p>'
+                f'<p class="product-weight">⚖️ {product["weight"]}</p>'
+                f'<div class="product-price">💰 {product["price"]}</div>'
+                f'<div class="product-actions">'
+                f'<a href="tel:0385437503" class="buy-btn">Đặt hàng</a>'
+                f'<a href="?page=sanpham&add_cart={index}" target="_self" class="cart-add-btn">+ Giỏ hàng</a>'
+                f'</div>'
+                f'</div>'
+                f'</div>'
+            )
+
+        html += "</div></section>"
+
+    st.markdown(html, unsafe_allow_html=True)
+
+
+def render_cart_page():
+    cart_items = [PRODUCTS[i] for i in st.session_state.cart if 0 <= i < len(PRODUCTS)]
+
+    if not cart_items:
+        st.markdown("<div class='card'><h3>🛒 Giỏ hàng đang trống</h3><p>Hãy quay lại danh sách sản phẩm để thêm món yêu thích.</p><p><a href='?page=sanpham' target='_self'>Xem sản phẩm →</a></p></div>", unsafe_allow_html=True)
+        return
+
+    html = "<div class='card'><h3>🛒 Sản phẩm đã thêm vào giỏ</h3><div class='cart-list'>"
+
+    for item in cart_items:
         html += (
-            f'<div class="product-card">'
-            f'<img src="{image_to_data_uri(product["image"])}" alt="{product["name"]}">'
-            f'<div class="product-info">'
-            f'<h3>{product["name"]}</h3>'
-            f'<p>{product["desc"]}</p>'
-            f'<p class="product-weight">⚖️ Định lượng: {product["weight"]}</p>'
-            f'<div class="product-price">💰 {product["price"]}</div>'
-            f'<a href="tel:0385437503" class="buy-btn">Đặt hàng</a>'
-            f"</div>"
-            f"</div>"
+            f"<div class='cart-item'><b>{item['name']}</b>"
+            f"<br>Định lượng: {item['weight']}"
+            f"<br>Giá: {item['price']}</div>"
         )
 
-    html += "</div>"
+    html += "</div><p style='margin-top:16px;'><a href='tel:0385437503' class='buy-btn'>Gọi đặt hàng</a> <a href='https://zalo.me/0385437503' target='_blank' class='cart-add-btn'>Gửi qua Zalo</a></p></div>"
     st.markdown(html, unsafe_allow_html=True)
 
 
@@ -943,6 +1084,10 @@ def render_page(page_data):
 
     if page_data["type"] == "custom_video":
         render_video_page()
+        return
+
+    if page_data["type"] == "custom_cart":
+        render_cart_page()
         return
 
     if page_data["type"] == "images":
