@@ -476,7 +476,7 @@ PAGE_DATABASE = {
     "truyenthong": {"title": "Nội dung truyền thông", "type": "group", "items": ["cauchuyen", "hinhanh", "video"]},
     "cauchuyen": {"title": "Câu chuyện sản phẩm", "card_class": "card", "card_title": "🍃 Câu chuyện Cốm Làng Vòng", "paragraphs": ["Cốm Làng Vòng là một phần ký ức mùa thu Hà Nội.", "Mỗi hạt cốm là kết quả của quá trình chọn lúa, rang, giã và sàng sảy công phu."]},
     "hinhanh": {"title": "Hình ảnh", "type": "images", "intro": "Hình ảnh sản phẩm:", "images": ["Com tong quan.jpg", "Com tong quan 1.jpg", "Com tong quan 2.jpg"]},
-    "video": {"title": "Video giới thiệu", "card_class": "card", "card_title": "🎬 Video giới thiệu", "paragraphs": ["Khu vực hiển thị video giới thiệu sản phẩm.", "Bạn có thể thay nội dung này bằng st.video('link_youtube') khi có video chính thức."]},
+    "video": {"title": "Video giới thiệu", "card_class": "card", "card_title": "🎬 Video giới thiệu", "videos": ["https://www.youtube.com/watch?v=_q38xqZFuKE"]},
     "baobi": {"title": "Thông tin bao bì", "type": "group", "items": ["muc_giay", "thuhoi"]},
     "muc_giay": {"title": "Mực & giấy bao bì", "card_class": "card2", "card_title": "📦 Thông tin chất liệu bao bì", "paragraphs": ["Bao bì sử dụng giấy sạch, chắc chắn và phù hợp với thực phẩm.", "Mực in cần rõ nét, bền màu, thể hiện đầy đủ tên sản phẩm, mã lô hàng, hạn sử dụng và thông tin truy xuất.", "Thiết kế nên dùng màu xanh cốm, họa tiết lá sen để tăng khả năng nhận diện thương hiệu."]},
     "thuhoi": {"title": "Chính sách thu hồi", "card_class": "card2", "card_title": "♻️ Chính sách thu hồi", "paragraphs": ["Khuyến khích phân loại và tái chế bao bì sau sử dụng."], "bullets": ["Không vứt bao bì ra môi trường.", "Phân loại bao bì giấy, túi, hộp sau khi dùng.", "Ưu tiên sử dụng bao bì thân thiện với môi trường."]}
@@ -653,6 +653,12 @@ def render_page(page_data):
     if page_data["type"] == "products":
         render_products()
         return
+    if page_data["type"] == "videos":
+
+    for video in page_data["videos"]:
+        st.video(video)
+
+    return
     if page_data["type"] == "images":
         st.write(page_data["intro"])
         for image_path in page_data["images"]:
