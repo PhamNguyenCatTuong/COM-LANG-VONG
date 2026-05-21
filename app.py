@@ -654,11 +654,9 @@ def render_page(page_data):
         render_products()
         return
     if page_data["type"] == "videos":
-
-    for video in page_data["videos"]:
-        st.video(video)
-
-    return
+        for video in page_data["videos"]:
+            st.video(video)
+        return
     if page_data["type"] == "images":
         st.write(page_data["intro"])
         for image_path in page_data["images"]:
