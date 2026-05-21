@@ -680,7 +680,7 @@ st.markdown("""
 <div class="footer-full" id="dathang">
     <div class="footer-content">
         <h3>🌾 Cốm Làng Vòng</h3>
-        <p>📍 Địa chỉ: 44 Trần Thái Tông, Dịch Vọng Hậu, Cầu Giấy, Hà Nội</p>
+        <p>📍 Địa chỉ: Số 36, ngõ 63 Xuân Thủy, Cầu Giấy, Hà Nội</p>
         <p>📞 <a href="tel:0385437503">0385 437 503</a></p>
         <p>💬 <a href="https://zalo.me/0385437503" target="_blank">Chat Zalo</a></p>
         <p style="margin-top:15px; font-size:13px; color:#ccc;">© 2026 Cốm Làng Vòng. All rights reserved.</p>
