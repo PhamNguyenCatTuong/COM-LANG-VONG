@@ -68,7 +68,7 @@ CERTIFICATES = [
 
 PRODUCTS = [
     {
-        "category": "Cốm truyền thống",
+        "category": "Sản phẩm phổ biến",
         "name": "Bánh Cốm Truyền Thống",
         "price": "65.000đ",
         "weight": "250g / hộp",
@@ -76,7 +76,7 @@ PRODUCTS = [
         "desc": "Lớp vỏ cốm xanh mềm dẻo ôm trọn phần nhân đậu xanh sên nhuyễn cùng dừa nạo. Khi thưởng thức cảm nhận rõ vị ngọt thanh, thơm mùi lúa non đặc trưng của mùa thu Hà Nội.",
     },
     {
-        "category": "Cốm đặc biệt",
+        "category": "Sản phẩm đặc biệt",
         "name": "Bánh Chưng Cốm",
         "price": "180.000đ",
         "weight": "700g",
@@ -84,7 +84,7 @@ PRODUCTS = [
         "desc": "Nếp dẻo kết hợp cốm non tạo nên hương thơm dịu nhẹ rất riêng. Nhân đậu xanh và thịt được nêm vừa vị, mang cảm giác ấm áp và đậm chất truyền thống.",
     },
     {
-        "category": "Cốm đặc biệt",
+        "category": "Sản phẩm đặc biệt",
         "name": "Bánh Trung Thu Cốm",
         "price": "95.000đ",
         "weight": "180g",
@@ -92,7 +92,7 @@ PRODUCTS = [
         "desc": "Phần nhân cốm mềm mịn hòa quyện cùng vị béo nhẹ của hạt sen và dừa sợi. Vỏ bánh nướng thơm bơ tạo hậu vị thanh tao, không quá ngọt.",
     },
     {
-        "category": "Cốm truyền thống",
+        "category": "Sản phẩm phổ biến",
         "name": "Bánh Xu Xê Cốm",
         "price": "55.000đ",
         "weight": "6 cái / hộp",
@@ -100,7 +100,7 @@ PRODUCTS = [
         "desc": "Bánh có lớp vỏ trong dẻo dai cùng nhân đậu xanh cốm thơm nhẹ. Khi ăn cảm nhận độ mềm mát và vị ngọt thanh rất dễ chịu.",
     },
     {
-        "category": "Cốm đặc biệt",
+        "category": "Sản phẩm đặc biệt",
         "name": "Bia Cốm Hà Nội",
         "price": "35.000đ",
         "weight": "330ml",
@@ -108,7 +108,7 @@ PRODUCTS = [
         "desc": "Dòng bia thủ công mang hương thơm thoang thoảng của cốm non. Vị bia nhẹ, hậu vị mượt và dễ uống, thích hợp cho những buổi gặp gỡ cuối tuần.",
     },
     {
-        "category": "Cốm truyền thống",
+        "category": "Sản phẩm phổ biến",
         "name": "Cốm Mộc",
         "price": "120.000đ",
         "weight": "500g",
@@ -116,7 +116,7 @@ PRODUCTS = [
         "desc": "Những hạt cốm xanh mềm được làm từ nếp non tuyển chọn, giữ trọn độ dẻo và hương thơm tự nhiên. Khi nhai cảm nhận vị ngọt dịu lan tỏa rất đặc trưng.",
     },
     {
-        "category": "Cốm truyền thống",
+        "category": "Sản phẩm phổ biến",
         "name": "Cốm Xào Dừa",
         "price": "85.000đ",
         "weight": "300g",
@@ -124,7 +124,7 @@ PRODUCTS = [
         "desc": "Cốm được xào cùng dừa non và đường phèn tạo độ dẻo béo hấp dẫn. Mùi thơm của lá sen và cốm quyện lại mang cảm giác rất Hà Nội.",
     },
     {
-        "category": "Cốm đặc biệt",
+        "category": "Sản phẩm phổ biến",
         "name": "Mochi Cốm",
         "price": "75.000đ",
         "weight": "6 bánh / hộp",
@@ -132,7 +132,7 @@ PRODUCTS = [
         "desc": "Lớp mochi mềm dai kết hợp nhân kem cốm béo nhẹ tạo cảm giác mát lạnh khi thưởng thức. Hương cốm thanh thoát giúp món bánh không bị ngấy.",
     },
     {
-        "category": "Cốm đặc biệt",
+        "category": "Sản phẩm phổ biến",
         "name": "Sữa Chua Cốm",
         "price": "45.000đ",
         "weight": "4 hũ",
@@ -140,7 +140,7 @@ PRODUCTS = [
         "desc": "Sữa chua mịn kết hợp cốm non tạo vị chua ngọt hài hòa. Từng muỗng mang hương thơm dịu nhẹ và cảm giác thanh mát rất dễ ăn.",
     },
     {
-        "category": "Cốm đặc biệt",
+        "category": "Sản phẩm phổ biến",
         "name": "Tôm Tẩm Cốm",
         "price": "140.000đ",
         "weight": "500g",
@@ -148,15 +148,7 @@ PRODUCTS = [
         "desc": "Tôm tươi được phủ lớp cốm xanh rồi chiên vàng giòn. Khi ăn cảm nhận lớp vỏ thơm bùi hòa cùng vị ngọt tự nhiên của tôm.",
     },
     {
-        "category": "Cốm đặc biệt",
-        "name": "Trà Sen Cốm",
-        "price": "160.000đ",
-        "weight": "200g",
-        "image": "tra sen.jpg",
-        "desc": "Trà được ướp cùng sen và hương cốm tạo mùi thơm thanh tao đặc trưng. Nước trà dịu nhẹ, hậu vị ngọt và rất thư giãn.",
-    },
-    {
-        "category": "Cốm truyền thống",
+        "category": "Sản phẩm phổ biến",
         "name": "Xôi Cốm",
         "price": "50.000đ",
         "weight": "1 suất",
@@ -176,7 +168,7 @@ PRODUCTS = [
         "name": "Trà Sen Tây Hồ",
         "price": "220.000đ",
         "weight": "100g",
-        "image": "tra sen tay ho.jpg",
+        "image": "tra sen.jpg",
         "desc": "Trà sen ướp hương thanh tao, hậu vị dịu ngọt, phù hợp thưởng thức cùng các món bánh truyền thống.",
     },
     {
@@ -211,28 +203,16 @@ if add_cart is not None:
             key = str(product_index)
             st.session_state.cart[key] = st.session_state.cart.get(key, 0) + 1
 
-        st.query_params["page"] = "sanpham"
+        st.query_params.clear()
+        st.query_params["page"] = page or "sanpham"
+        if page == "chitietsp":
+            st.query_params["product"] = str(product_index)
+        st.rerun()
 
-    except:
-        pass
-
-# Giỏ hàng lưu tạm theo từng phiên truy cập.
-if "cart" not in st.session_state:
-    st.session_state.cart = []
-
-add_cart = params.get("add_cart")
-if add_cart is not None:
-    try:
-        product_index = int(add_cart)
-        if 0 <= product_index < len(PRODUCTS):
-            st.session_state.cart.append(product_index)
-            st.query_params.clear()
-            st.query_params["page"] = page
-            st.rerun()
     except (TypeError, ValueError):
         pass
 
-cart_count = sum(st.session_state.cart.values()) if "cart" in st.session_state else 0
+cart_count = sum(st.session_state.cart.values())
 
 PAGE_DATABASE = {
     "gioithieu": {
@@ -243,7 +223,7 @@ PAGE_DATABASE = {
     "quytrinh": {
         "title": "Quy trình & nguồn gốc",
         "type": "group",
-        "items": ["nguyenlieu", "khuvuc", "malo"],
+        "items": ["nguyenlieu", "khuvuc"],
     },
     "sanpham_main": {
         "title": "Sản phẩm",
@@ -297,10 +277,6 @@ PAGE_DATABASE = {
             "Hinh 1.jpg",
         ],
 
-        "paragraphs": [
-            "Cốm Làng Vòng là một thức quà truyền thống gắn liền với mùa thu Hà Nội.",
-        ],
-
         "bullets": [
             "Nguồn cảm hứng từ làng nghề Cốm Làng Vòng lâu đời.",
             "Giữ tinh thần thủ công, mộc mạc và tinh tế.",
@@ -352,21 +328,21 @@ PAGE_DATABASE = {
         "title": "Nguồn nguyên liệu",
         "card_class": "card2",
         "card_title": "🌾 Nguồn nguyên liệu làm cốm",
+        "paragraphs": [
+            "Cốm Làng Vòng được tạo nên từ những hạt lúa nếp non còn ngậm sữa, được thu hoạch đúng thời điểm để giữ độ dẻo mềm và hương thơm tự nhiên.",
+            "Người làm cốm phải chọn lọc kỹ từng bó lúa, loại bỏ hạt lép, hạt sâu và tạp chất để giữ lại phần nguyên liệu đạt chất lượng tốt nhất.",
+            "Lúa sau khi thu hoạch cần được đưa vào sơ chế sớm để giữ màu xanh non, vị ngọt thanh và mùi thơm đặc trưng của cốm Hà Nội.",
+        ],
+        "bullets": [
+            "Chọn hạt lúa nếp non đạt độ sữa thích hợp.",
+            "Ưu tiên nguyên liệu canh tác an toàn.",
+            "Thu hoạch đúng mùa để giữ độ dẻo và màu xanh.",
+            "Sơ chế nhanh để bảo toàn hương thơm tự nhiên.",
+        ],
         "images": [
             "Com tong quan 3.jpg",
             "hat com tuoi.jpg",
             "me com lang vong.jpg",
-        ],
-        "paragraphs": [
-            "Cốm được làm từ lúa nếp non, thường chọn khi hạt lúa vừa đủ sữa, còn mềm và có hương thơm tự nhiên.",
-            "Nguyên liệu cần được chọn lọc kỹ, loại bỏ hạt lép, hạt sâu, tạp chất và phần lúa không đạt chất lượng.",
-            "Lúa sau khi thu hoạch nên được đưa vào sơ chế sớm để giữ được độ tươi, màu xanh và mùi thơm đặc trưng của cốm.",
-        ],
-        "bullets": [
-            "Nguyên liệu chính: lúa nếp non.",
-            "Yêu cầu: hạt đều, còn sữa, không mốc, không lẫn tạp chất.",
-            "Ưu tiên vùng trồng có quy trình canh tác an toàn.",
-            "Không sử dụng nguyên liệu có dấu hiệu hư hỏng hoặc tồn dư hóa chất vượt quy định.",
         ],
     },
 
@@ -391,27 +367,6 @@ PAGE_DATABASE = {
         },
     },
 
-    "malo": {
-        "title": "Mã lô hàng",
-        "card_class": "card2",
-        "card_title": "🏷️ Mã lô & truy xuất sản phẩm",
-        "paragraphs": [
-            "Mỗi lô sản phẩm cần có mã lô riêng để người tiêu dùng dễ dàng kiểm tra thông tin sản xuất, ngày đóng gói và hạn sử dụng.",
-            "Mã lô giúp cơ sở sản xuất quản lý chất lượng, truy xuất nguyên liệu và xử lý nhanh nếu phát sinh vấn đề về sản phẩm.",
-            "Người tiêu dùng nên kiểm tra mã lô, ngày sản xuất, hạn sử dụng và tình trạng bao bì trước khi mua hoặc sử dụng.",
-        ],
-        "fields": {
-            "Mã lô mẫu": "LV-2026-001",
-            "Ngày sản xuất": "In trực tiếp trên bao bì",
-            "Hạn sử dụng": "Theo từng loại sản phẩm",
-            "Thông tin truy xuất": "Tên sản phẩm, nơi sản xuất, ngày đóng gói, hạn sử dụng, số điện thoại liên hệ",
-        },
-        "bullets": [
-            "Không sử dụng sản phẩm nếu bao bì rách, phồng, mốc hoặc có mùi lạ.",
-            "Bảo quản sản phẩm theo hướng dẫn trên bao bì.",
-            "Liên hệ cơ sở sản xuất khi cần kiểm tra thông tin lô hàng.",
-        ],
-    },
     "chatluong": {
         "title": "Chất lượng & chứng nhận",
         "type": "custom_cert",
@@ -663,6 +618,62 @@ footer {visibility: hidden;}
     padding: 10px;
 }
 
+
+.product-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+.product-card-link:hover h3 { color: #2e7d32; }
+.product-card:hover { transform: translateY(-2px); transition: transform .2s ease, box-shadow .2s ease; box-shadow: 0 8px 22px rgba(0,0,0,0.12); }
+.product-detail {
+    display: grid;
+    grid-template-columns: minmax(280px, 46%) 1fr;
+    gap: 28px;
+    background: #fffdf4;
+    border-radius: 22px;
+    padding: 20px;
+    margin-top: 18px;
+    align-items: start;
+}
+.product-detail-image img, .product-detail-image .product-image-placeholder {
+    width: 100%;
+    height: 430px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+}
+.product-detail-info h2 { margin: 0 0 10px; color: #17351f; font-size: clamp(26px, 4vw, 42px); }
+.product-detail-price { font-size: 30px; font-weight: 900; color: #1f2937; margin: 10px 0 16px; }
+.product-summary { background:#f1f8e9; border-radius:16px; padding:14px 16px; margin:14px 0; }
+.product-summary p { margin: 6px 0; }
+.detail-block { background: #f1f8e9; border-radius: 16px; padding: 18px 20px; margin-top: 18px; }
+.detail-block h3 { margin: 0 0 10px; color: #2e7d32; font-size: 22px; }
+.detail-block ul, .detail-block ol { margin: 0; padding-left: 22px; }
+.detail-block li { margin: 6px 0; }
+.back-products { display:inline-block; margin-top:16px; color:#2e7d32; font-weight:900; text-decoration:none; }
+.process-sketch { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; margin:14px 0 18px; }
+.process-step { background:white; border:2px dashed #9ccc65; border-radius:16px; padding:14px 10px; text-align:center; min-height:128px; display:flex; flex-direction:column; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,.06); }
+.process-icon { font-size:34px; line-height:1.1; margin-bottom:8px; }
+.process-label { font-size:13px; font-weight:800; color:#244128; }
+.product-tabs-title { color:#14782e; font-size:22px; border-bottom:3px solid #14782e; padding-bottom:8px; margin:24px 0 16px; text-transform:uppercase; }
+.compact-product-grid { display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap:16px; margin-bottom:20px; }
+.compact-product-card { text-decoration:none; color:inherit; display:block; }
+.compact-product-card img, .compact-product-card .product-image-placeholder { width:100%; height:180px; object-fit:cover; border-radius:0; box-shadow:none; }
+.compact-product-card h4 { color:#14782e; margin:8px 0 4px; font-size:15px; }
+.compact-product-card .compact-price { color:red; font-weight:900; margin-bottom:8px; }
+.compact-actions { display:flex; gap:6px; flex-wrap:wrap; }
+.compact-actions a { text-decoration:none; color:white !important; background:#f97316; padding:8px 12px; font-size:12px; font-weight:800; }
+.compact-actions a:last-child { background:#14782e; }
+
+@media (max-width: 768px) {
+    .product-detail { grid-template-columns: 1fr; padding: 12px; gap: 14px; }
+    .product-detail-image img, .product-detail-image .product-image-placeholder { height: 260px; }
+    .process-sketch { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .compact-product-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; }
+    .compact-product-card img, .compact-product-card .product-image-placeholder { height:135px; }
+}
+
 .product-info {
     padding: 12px;
     display: flex;
@@ -737,6 +748,14 @@ footer {visibility: hidden;}
     font-size:12px;
     vertical-align:top;
 }
+.cart-menu-btn {
+    text-decoration:none;
+    color:#2e7d32;
+    font-weight:900;
+    padding: 9px 12px;
+    white-space: nowrap;
+}
+
 .cart-list { display:grid; gap:10px; margin-top:16px; }
 .cart-item { background:#f1f8e9; border-radius:14px; padding:12px 14px; }
 
@@ -884,15 +903,21 @@ footer {visibility: hidden;}
 .origin-gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    gap: 16px;
+    margin-top: 18px;
 }
 
 .origin-gallery img {
     width: 100%;
-    height: 230px;
+    aspect-ratio: 1/1;   /* ảnh vuông, đều nhau */
     object-fit: cover;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-radius: 18px;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+    transition: transform 0.3s ease;
+}
+
+.origin-gallery img:hover {
+    transform: translateY(-4px);
 }
 
 @media (max-width: 768px) {
@@ -911,11 +936,13 @@ footer {visibility: hidden;}
     }
 
     .origin-gallery {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr); /* 3 cột trên điện thoại */
+        gap: 8px;
     }
 
     .origin-gallery img {
-        height: 150px;
+        height: auto;
+        border-radius: 12px;
     }
 }
 
@@ -991,22 +1018,51 @@ footer {visibility: hidden;}
 @media (max-width: 768px) {
 
     .story-layout {
-        grid-template-columns: 1fr;
-        gap: 26px;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 10px;
+        padding: 14px 4px;
+        align-items: center;
     }
 
     .story-left h1 {
-        font-size: 42px;
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .story-mini-badge {
+        font-size: 11px;
+        padding: 6px 10px;
+        margin-bottom: 10px;
+    }
+
+    .story-desc {
+        font-size: 13px;
+        line-height: 1.55;
+        margin-bottom: 12px;
     }
 
     .story-features {
         grid-template-columns: 1fr;
+        gap: 7px;
+        margin-bottom: 12px;
+    }
+
+    .story-feature {
+        font-size: 12px;
+        padding: 8px;
+        border-radius: 12px;
+    }
+
+    .story-quote {
+        font-size: 13px;
+        line-height: 1.5;
+        padding-left: 10px;
     }
 
     .story-right img {
-        height: 380px;
+        height: 360px;
+        border-radius: 18px;
     }
-
 }
 
 </style>
@@ -1025,11 +1081,11 @@ st.markdown(
 </div>
 <div class="menu">
 <div class="dropdown"><a href="?page=gioithieu" target="_self" style="text-decoration:none;"><button class="dropbtn">Giới thiệu</button></a><div class="dropdown-content"><a href="?page=cauchuyen" target="_self">Câu chuyện Cốm Làng Vòng</a><a href="?page=video" target="_self">Hành trình hương cốm</a></div></div>
-<div class="dropdown"><a href="?page=quytrinh" target="_self" style="text-decoration:none;"><button class="dropbtn">Quy trình & nguồn gốc</button></a><div class="dropdown-content"><a href="?page=nguyenlieu" target="_self">Nguồn nguyên liệu</a><a href="?page=khuvuc" target="_self">Khu vực sản xuất</a><a href="?page=malo" target="_self">Mã lô hàng</a></div></div>
+<div class="dropdown"><a href="?page=quytrinh" target="_self" style="text-decoration:none;"><button class="dropbtn">Quy trình & nguồn gốc</button></a><div class="dropdown-content"><a href="?page=nguyenlieu" target="_self">Nguồn nguyên liệu</a><a href="?page=khuvuc" target="_self">Khu vực sản xuất</a></div></div>
 <div class="dropdown"><a href="?page=sanpham_main" target="_self" style="text-decoration:none;"><button class="dropbtn">Sản phẩm</button></a><div class="dropdown-content"><a href="?page=sanpham" target="_self">Danh sách sản phẩm</a><a href="?page=thuonghieu" target="_self">Thương hiệu</a><a href="?page=tensp_masp" target="_self">Tên & mã sản phẩm</a></div></div>
 <div class="dropdown"><a href="?page=chatluong" target="_self" style="text-decoration:none;"><button class="dropbtn">Chất lượng</button></a></div>
 <div class="dropdown"><a href="?page=baobi_main" target="_self" style="text-decoration:none;"><button class="dropbtn">Bao bì & bảo quản</button></a><div class="dropdown-content"><a href="?page=muc_giay" target="_self">Mực & giấy bao bì</a><a href="?page=thuhoi" target="_self">Chính sách thu hồi</a></div></div>
-<a href="?page=giohang" target="_self" class="cart-menu-btn">🛒 Giỏ hàng ({cart_count})</a>
+<a href="?page=giohang" target="_self" class="cart-menu-btn">🛒 Giỏ hàng (__CART_COUNT__)</a>
 </div>
 </div>
 <section class="hero-banner">
@@ -1189,7 +1245,7 @@ def fetch_page(conn, page_id):
     return page_data
 
 
-def render_content_card(page_data, detail_link=None):
+def render_content_card(page_data, detail_link=None, show_full=False):
     html = f"<div class='{page_data.get('card_class', 'card')}'>"
 
     if page_data.get("card_title"):
@@ -1200,27 +1256,27 @@ def render_content_card(page_data, detail_link=None):
     for name, value in page_data.get("fields", []):
         html += f"<p><b>{name}:</b> {value}</p>"
 
-    for paragraph in page_data.get("paragraphs", []):
-        html += f"<p>{paragraph}</p>"
+    if show_full:
 
-    for image in page_data.get("images", []):
-        html += f"""
-        <img src="{image_to_data_uri(image)}"
-            style="
-                width:100%;
-                border-radius:16px;
-                margin-top:14px;
-                margin-bottom:14px;
-                object-fit:cover;
-            ">
-        """
+        for paragraph in page_data.get("paragraphs", []):
+            html += f"<p>{paragraph}</p>"
 
-    if page_data.get("bullets"):
-        html += "<ul>" + "".join([f"<li>{b}</li>" for b in page_data["bullets"]]) + "</ul>"
+        if page_data.get("images"):
 
-    if detail_link:
-        html += f"<p><a href='?page={detail_link}' target='_self'>Xem chi tiết →</a></p>"
+            html += '<div class="origin-gallery">'
 
+            for image in page_data.get("images", []):
+                html += f'<img src="{image_to_data_uri(image)}">'
+
+            html += '</div>'
+
+        if page_data.get("bullets"):
+            html += "<ul>"
+
+            for bullet in page_data["bullets"]:
+                html += f"<li>{bullet}</li>"
+
+            html += "</ul>"
     html += "</div>"
     st.markdown(html, unsafe_allow_html=True)
 
@@ -1293,10 +1349,81 @@ def render_product_image(product):
     return f'<div class="product-image-placeholder">{product["name"]}</div>'
 
 
+def build_product_story(product):
+    """Return a short storytelling paragraph for each product detail page."""
+    name = product.get("name", "sản phẩm")
+
+    stories = {
+        "Bánh Cốm Truyền Thống": "Bánh cốm truyền thống gợi nhớ những hộp bánh xanh được gói ghém cẩn thận trong các dịp cưới hỏi, lễ Tết và những lần người Hà Nội mang quà đi xa. Mỗi chiếc bánh là sự gặp gỡ giữa hạt cốm non dẻo thơm và nhân đậu xanh ngọt bùi, giữ lại nét thanh nhã của mùa thu Hà Nội.",
+        "Bánh Chưng Cốm": "Bánh chưng cốm là cách kể mới của món bánh ngày Tết. Sắc xanh của cốm làm chiếc bánh trở nên mềm mại hơn, vừa quen thuộc như mâm cơm sum họp, vừa có hương thơm rất riêng của làng nghề Hà Nội.",
+        "Bánh Trung Thu Cốm": "Bánh trung thu cốm mang hương mùa thu vào đêm rằm. Khi cắt bánh, mùi cốm dịu nhẹ hòa cùng vị ngọt của nhân tạo cảm giác ấm áp, như một món quà dành cho gia đình trong khoảnh khắc đoàn viên.",
+        "Bánh Xu Xê Cốm": "Bánh xu xê cốm thường gắn với lời chúc trọn vẹn, đủ đầy. Lớp vỏ dẻo trong ôm lấy nhân cốm đậu xanh, tượng trưng cho sự hòa hợp và ngọt ngào trong những dịp vui.",
+        "Bia Cốm Hà Nội": "Bia cốm Hà Nội là một biến tấu trẻ trung từ hương vị truyền thống. Vị bia nhẹ kết hợp hương cốm thoảng qua, tạo cảm giác vừa hiện đại vừa thân quen trong những cuộc gặp gỡ bạn bè.",
+        "Cốm Mộc": "Cốm mộc là hình ảnh nguyên bản nhất của làng Vòng. Từ những hạt lúa nếp non được rang, giã và sàng bằng sự kiên nhẫn, cốm mộc giữ lại vị ngọt thanh và mùi thơm tự nhiên của đồng lúa Hà Nội.",
+        "Cốm Xào Dừa": "Cốm xào dừa là món quà của sự khéo léo. Hạt cốm được xào chậm để giữ độ dẻo, quyện cùng dừa non béo nhẹ, tạo nên món ăn dân dã nhưng rất dễ khiến người thưởng thức nhớ lâu.",
+        "Mochi Cốm": "Mochi cốm là cuộc gặp giữa cảm hứng Á Đông hiện đại và hương cốm Hà Nội. Lớp bánh mềm dai, nhân mát lạnh và mùi cốm nhẹ khiến sản phẩm phù hợp với những người trẻ muốn tìm một hương vị truyền thống theo cách mới.",
+        "Sữa Chua Cốm": "Sữa chua cốm kể câu chuyện về sự tươi mát. Vị chua nhẹ của sữa chua làm nổi bật hương cốm non, tạo nên món tráng miệng gần gũi, dễ ăn và phù hợp với nhịp sống hiện đại.",
+        "Tôm Tẩm Cốm": "Tôm tẩm cốm biến hạt cốm thành lớp áo giòn thơm cho món mặn. Khi chiên vàng, cốm ôm lấy vị ngọt của tôm, tạo nên món ăn vừa lạ miệng vừa mang dấu ấn ẩm thực Hà Nội.",
+        "Trà Sen Cốm": "Trà sen cốm là câu chuyện của sự thư thái. Hương sen thanh tao gặp mùi cốm non dịu nhẹ, tạo nên chén trà thích hợp cho những lúc chậm lại và cảm nhận nét tinh tế của Hà Nội.",
+        "Xôi Cốm": "Xôi cốm thường xuất hiện trong những buổi sáng se lạnh hoặc mâm lễ truyền thống. Vị dẻo của cốm, bùi của đậu xanh và béo của dừa gợi cảm giác ấm áp, thân thuộc như một phần ký ức phố cổ.",
+        "Ô Mai Sấu Hà Nội": "Ô mai sấu Hà Nội gắn với những gói quà nhỏ mang vị chua, cay, mặn, ngọt hài hòa. Mỗi miếng ô mai như lưu lại chút nắng gió phố phường và thói quen nhâm nhi rất riêng của người Hà Nội.",
+        "Trà Sen Tây Hồ": "Trà sen Tây Hồ là thức trà của sự cầu kỳ. Từng lớp hương sen được ướp vào trà để tạo mùi thơm sâu, dịu và sang, phù hợp để tiếp khách hoặc dùng cùng bánh truyền thống.",
+        "Bánh Tôm Hồ Tây": "Bánh tôm Hồ Tây gợi nhớ những buổi chiều bên mặt nước, khi chiếc bánh vừa chiên xong còn giòn rụm và thơm nóng. Đây là món ăn mang màu sắc phố phường, vui vẻ và rất Hà Nội.",
+        "Chả Cá Lã Vọng": "Chả cá Lã Vọng là câu chuyện về một món ăn lâu đời của Hà Nội. Hương nghệ, thì là và cá nóng trên chảo tạo nên trải nghiệm đậm đà, thường được nhớ đến trong những bữa ăn quây quần.",
+    }
+
+    return stories.get(
+        name,
+        f"{name} được phát triển từ cảm hứng gìn giữ hương vị truyền thống Hà Nội, kết hợp nguyên liệu quen thuộc với cách chế biến phù hợp hơn với người tiêu dùng hiện đại."
+    )
+
+
+def build_product_details(product):
+    category = product.get("category", "")
+    name = product.get("name", "")
+
+    if "Bánh" in name:
+        ingredients = ["Cốm non", "Đậu xanh", "Đường", "Dừa nạo hoặc nguyên liệu phối hợp theo từng dòng bánh", "Lá sen hoặc bao bì thực phẩm sạch"]
+        process = ["Chọn cốm non và sơ chế nguyên liệu.", "Sên nhân đến khi mềm, dẻo và có mùi thơm.", "Tạo hình bánh, định lượng theo từng hộp hoặc từng chiếc.", "Đóng gói sạch, dán nhãn và bảo quản nơi khô mát."]
+    elif "Trà" in name:
+        ingredients = ["Trà chất lượng tốt", "Hương sen", "Hương cốm hoặc cốm non", "Bao bì kín mùi"]
+        process = ["Chọn trà và nguyên liệu tạo hương.", "Ướp trà theo từng lớp để hương thấm đều.", "Sấy hoặc hong nhẹ để ổn định độ ẩm.", "Đóng gói kín để giữ hương thơm."]
+    elif "Sữa Chua" in name:
+        ingredients = ["Sữa chua", "Cốm non", "Đường hoặc siro nhẹ", "Hũ đựng thực phẩm"]
+        process = ["Chuẩn bị sữa chua mịn và cốm non.", "Phối trộn cốm với sữa chua theo tỷ lệ phù hợp.", "Chiết vào hũ sạch.", "Bảo quản lạnh trước khi giao khách."]
+    elif "Tôm" in name:
+        ingredients = ["Tôm tươi", "Cốm xanh", "Bột áo", "Gia vị", "Dầu chiên"]
+        process = ["Làm sạch tôm và ướp gia vị nhẹ.", "Phủ bột áo rồi lăn qua cốm xanh.", "Chiên vàng ở nhiệt độ phù hợp.", "Đóng gói hoặc dùng ngay khi còn nóng giòn."]
+    elif "Bia" in name:
+        ingredients = ["Nước", "Malt", "Hoa bia", "Men bia", "Hương cốm"]
+        process = ["Nấu dịch malt.", "Ủ lên men với men bia.", "Tạo hương cốm nhẹ.", "Lọc, đóng chai/lon và bảo quản mát."]
+    elif "Ô Mai" in name:
+        ingredients = ["Quả sấu", "Đường", "Gừng", "Muối", "Gia vị ô mai"]
+        process = ["Chọn sấu, làm sạch và sơ chế.", "Ướp đường, gừng và gia vị.", "Sên hoặc hong đến khi đạt độ dẻo.", "Đóng hộp kín để bảo quản."]
+    elif "Chả Cá" in name:
+        ingredients = ["Cá tươi", "Nghệ", "Thì là", "Hành", "Gia vị"]
+        process = ["Sơ chế cá và thái miếng vừa ăn.", "Ướp cá với nghệ và gia vị.", "Nướng hoặc áp chảo sơ.", "Hoàn thiện cùng thì là, hành và dùng nóng."]
+    elif "Bánh Tôm" in name:
+        ingredients = ["Tôm", "Bột", "Khoai hoặc nguyên liệu tạo độ giòn", "Gia vị", "Dầu chiên"]
+        process = ["Sơ chế tôm và nguyên liệu đi kèm.", "Pha bột có độ sánh phù hợp.", "Tạo hình bánh cùng tôm.", "Chiên vàng giòn và dùng nóng."]
+    else:
+        ingredients = ["Cốm non", "Đường", "Dừa", "Lá sen", "Nguyên liệu phụ theo từng sản phẩm"]
+        process = ["Chọn cốm non đạt độ dẻo và hương thơm.", "Sơ chế nguyên liệu sạch.", "Chế biến theo phương pháp truyền thống hoặc hiện đại tùy sản phẩm.", "Định lượng, đóng gói và bảo quản đúng điều kiện."]
+
+    if category == "Cốm truyền thống":
+        storage = "Nên dùng sớm trong ngày hoặc bảo quản mát để giữ độ dẻo thơm của cốm."
+    elif "đặc sản" in category.lower():
+        storage = "Bảo quản theo đặc tính từng món; ưu tiên dùng khi còn tươi ngon."
+    else:
+        storage = "Bảo quản nơi khô mát hoặc ngăn mát tùy sản phẩm, tránh ánh nắng trực tiếp."
+
+    return ingredients, process, storage
+
+
 def render_products():
     categories = [
-        "Cốm truyền thống",
-        "Cốm đặc biệt",
+        "Sản phẩm phổ biến",
+        "Sản phẩm đặc biệt",
         "Các đặc sản khác của Hà Nội",
     ]
 
@@ -1316,14 +1443,17 @@ def render_products():
         html += '<div class="product-grid">'
 
         for index, product in category_products:
+            detail_url = f"?page=chitietsp&product={index}"
             html += (
                 f'<div class="product-card">'
+                f'<a href="{detail_url}" target="_self" class="product-card-link">'
                 f'{render_product_image(product)}'
                 f'<div class="product-info">'
                 f'<h3>{product["name"]}</h3>'
-                f'<p>{product["desc"]}</p>'
-                f'<p class="product-weight">⚖️ {product["weight"]}</p>'
                 f'<div class="product-price">💰 {product["price"]}</div>'
+                f'</div>'
+                f'</a>'
+                f'<div class="product-info" style="padding-top:0;">'
                 f'<div class="product-actions">'
                 f'<a href="tel:0385437503" class="buy-btn">Đặt hàng</a>'
                 f'<a href="?page=sanpham&add_cart={index}" target="_self" class="cart-btn">+ Giỏ hàng</a>'
@@ -1336,71 +1466,199 @@ def render_products():
 
     st.markdown(html, unsafe_allow_html=True)
 
+
+def build_product_notes(product):
+    name = product.get("name", "sản phẩm")
+    return [
+        f"Chọn nguyên liệu tươi, sạch để giữ đúng mùi vị của {name}.",
+        "Không chế biến ở nhiệt quá cao trong thời gian dài để tránh mất hương cốm.",
+        "Dụng cụ tiếp xúc thực phẩm cần được vệ sinh và để khô trước khi dùng.",
+        "Nên dùng sớm sau khi mở bao bì để sản phẩm giữ được độ thơm ngon.",
+    ]
+
+
+def build_product_nutrition(product):
+    name = product.get("name", "sản phẩm")
+    if "Bia" in name:
+        return ["Cung cấp năng lượng nhẹ từ malt.", "Có hương cốm dễ uống, nên dùng điều độ.", "Không phù hợp cho trẻ em và người cần kiêng đồ uống có cồn."]
+    if "Trà" in name:
+        return ["Ít năng lượng.", "Hương trà và sen giúp tạo cảm giác thư giãn.", "Có thể dùng cùng bánh cốm hoặc các món ngọt truyền thống."]
+    if "Sữa Chua" in name:
+        return ["Bổ sung lợi khuẩn từ sữa chua.", "Có vị chua ngọt dễ ăn.", "Phù hợp dùng lạnh như món tráng miệng."]
+    if any(k in name for k in ["Tôm", "Chả Cá", "Bánh Tôm"]):
+        return ["Có chất đạm từ nguyên liệu chính.", "Nên dùng kèm rau hoặc đồ chua để cân bằng vị.", "Món chiên/rán nên dùng vừa phải để tránh cảm giác ngấy."]
+    return ["Cung cấp năng lượng từ tinh bột của cốm/nếp.", "Có vị ngọt dịu, phù hợp dùng làm món quà hoặc món ăn nhẹ.", "Nên dùng lượng vừa phải nếu cần kiểm soát đường hoặc tinh bột."]
+
+
+def build_process_sketch(process):
+    icons = ["🌾", "🥣", "🔥", "📦", "🍃", "✅"]
+    labels = []
+    for i, step in enumerate(process[:4]):
+        short = step.split(".")[0]
+        labels.append((icons[i % len(icons)], short))
+    return "".join(
+        f"<div class='process-step'><div class='process-icon'>{icon}</div><div class='process-label'>Bước {idx}: {label}</div></div>"
+        for idx, (icon, label) in enumerate(labels, start=1)
+    )
+
+
+def render_compact_product_grid(indexes):
+    html = '<div class="compact-product-grid">'
+    for index in indexes:
+        product = PRODUCTS[index]
+        html += (
+            f'<div class="compact-product-card">'
+            f'<a href="?page=chitietsp&product={index}" target="_self" class="compact-product-card">'
+            f'{render_product_image(product)}'
+            f'<h4>{product["name"]}</h4>'
+            f'<div class="compact-price">{product["price"]}</div>'
+            f'</a>'
+            f'<div class="compact-actions">'
+            f'<a href="tel:0385437503">MUA NGAY</a>'
+            f'<a href="?page=chitietsp&product={index}&add_cart={index}" target="_self">THÊM GIỎ HÀNG</a>'
+            f'</div>'
+            f'</div>'
+        )
+    html += '</div>'
+    st.markdown(html, unsafe_allow_html=True)
+
+
+def render_product_detail_page():
+    product_param = params.get("product", "0")
+
+    try:
+        product_index = int(product_param)
+    except (TypeError, ValueError):
+        product_index = 0
+
+    if product_index < 0 or product_index >= len(PRODUCTS):
+        st.markdown("<h1 class='page-title'>Không tìm thấy sản phẩm</h1>", unsafe_allow_html=True)
+        st.write("Vui lòng quay lại danh sách sản phẩm.")
+        return
+
+    if "viewed_products" not in st.session_state:
+        st.session_state.viewed_products = []
+    st.session_state.viewed_products = [i for i in st.session_state.viewed_products if i != product_index]
+    st.session_state.viewed_products.insert(0, product_index)
+    st.session_state.viewed_products = st.session_state.viewed_products[:8]
+
+    product = PRODUCTS[product_index]
+    ingredients, process, storage = build_product_details(product)
+    story = build_product_story(product)
+    notes = build_product_notes(product)
+    nutrition = build_product_nutrition(product)
+
+    ingredients_html = "".join(f"<li>{item}</li>" for item in ingredients)
+    process_html = "".join(f"<li>{item}</li>" for item in process)
+    notes_html = "".join(f"<li>{item}</li>" for item in notes)
+    nutrition_html = "".join(f"<li>{item}</li>" for item in nutrition)
+    sketch_html = build_process_sketch(process)
+
+    html = (
+        f"<a href='?page=sanpham' target='_self' class='back-products'>← Quay lại danh sách sản phẩm</a>"
+        f"<div class='product-detail'>"
+        f"<div class='product-detail-image'>{render_product_image(product)}</div>"
+        f"<div class='product-detail-info'>"
+        f"<h2>{product['name']}</h2>"
+        f"<div class='product-detail-price'>💰 {product['price']}</div>"
+        f"<div class='product-summary'>"
+        f"<p><b>Danh mục:</b> {product['category']}</p>"
+        f"<p><b>Định lượng:</b> {product['weight']}</p>"
+        f"<p><b>Bảo quản:</b> {storage}</p>"
+        f"</div>"
+        f"<div class='product-actions'>"
+        f"<a href='tel:0385437503' class='buy-btn'>Đặt hàng</a>"
+        f"<a href='?page=chitietsp&product={product_index}&add_cart={product_index}' target='_self' class='cart-btn'>+ Giỏ hàng</a>"
+        f"</div>"
+        f"</div></div>"
+        f"<div class='detail-block'><h3>Mô tả sản phẩm</h3><p>{story}</p><p>{product['desc']}</p></div>"
+        f"<div class='detail-block'><h3>Cách làm {product['name']}</h3>"
+        f"<h4>Nguyên liệu</h4><ul>{ingredients_html}</ul>"
+        f"<h4>Các bước làm minh họa</h4><div class='process-sketch'>{sketch_html}</div>"
+        f"<ol>{process_html}</ol></div>"
+        f"<div class='detail-block'><h3>Các lưu ý khi làm {product['name']}</h3><ul>{notes_html}</ul></div>"
+        f"<div class='detail-block'><h3>Giá trị dinh dưỡng của {product['name']}</h3><ul>{nutrition_html}</ul></div>"
+    )
+
+    st.markdown(html, unsafe_allow_html=True)
+
+    same_category = [
+        index for index, item in enumerate(PRODUCTS)
+        if item.get("category") == product.get("category") and index != product_index
+    ][:4]
+    viewed = [index for index in st.session_state.viewed_products if index != product_index][:4]
+
+    tab_related, tab_viewed = st.tabs(["Sản phẩm cùng chuyên mục", "Sản phẩm đã xem"])
+
+    with tab_related:
+        st.markdown("<h3 class='product-tabs-title'>Sản phẩm cùng chuyên mục</h3>", unsafe_allow_html=True)
+        if same_category:
+            render_compact_product_grid(same_category)
+        else:
+            st.info("Chưa có sản phẩm cùng chuyên mục.")
+
+    with tab_viewed:
+        st.markdown("<h3 class='product-tabs-title'>Sản phẩm đã xem</h3>", unsafe_allow_html=True)
+        if viewed:
+            render_compact_product_grid(viewed)
+        else:
+            st.info("Bạn chưa xem thêm sản phẩm nào khác.")
+
+
 def render_origin_process_page():
+    render_ingredient_page()
+    render_production_area_page()
+def render_ingredient_page():
 
-    html = f"""
-    <div class="origin-page">
+    # Nguồn nguyên liệu
+    img1 = image_to_data_uri("Com tong quan 3.jpg")
+    img2 = image_to_data_uri("hat com tuoi.jpg")
+    img3 = image_to_data_uri("me com lang vong.jpg")
 
-        <section class="origin-row">
+    html = f"""<section class="origin-row">
+<div class="origin-text">
+<h2>🌾 Nguồn nguyên liệu làm cốm</h2>
+<h4>Tinh túy từ hạt lúa nếp non</h4>
+<p>Cốm Làng Vòng được tạo nên từ những hạt lúa nếp non còn ngậm sữa...</p>
+<ul>
+<li>🌾 Chọn lọc kỹ hạt lúa nếp non</li>
+<li>🌿 Ưu tiên nguyên liệu an toàn</li>
+<li>⏰ Thu hoạch đúng mùa</li>
+<li>🍃 Sơ chế nhanh</li>
+</ul>
+</div>
+<div class="origin-gallery">
+<img src="{img1}">
+<img src="{img2}">
+<img src="{img3}">
+</div>
+</section>"""
 
-            <div class="origin-text">
-                <h2>🌾 1. Nguồn nguyên liệu</h2>
+    st.markdown(html, unsafe_allow_html=True)
 
-                <h4>Tinh túy từ hạt lúa nếp non</h4>
+def render_production_area_page():
+    img4 = image_to_data_uri("rang com.jpg")
+    img5 = image_to_data_uri("gia com.jpg")
+    img6 = image_to_data_uri("sang com.jpg")
 
-                <p>
-                Cốm được làm từ lúa nếp non,
-                chọn khi hạt còn mềm,
-                thơm tự nhiên và có màu xanh non đặc trưng.
-                </p>
-
-                <ul>
-                    <li>Chọn lọc kỹ hạt lúa nếp non</li>
-                    <li>Canh tác an toàn</li>
-                    <li>Thu hoạch đúng thời điểm</li>
-                    <li>Sơ chế nhanh để giữ màu xanh và hương thơm</li>
-                </ul>
-            </div>
-
-            <div class="origin-gallery">
-                <img src="{image_to_data_uri('Com tong quan 3.jpg')}">
-                <img src="{image_to_data_uri('hat com tuoi.jpg')}">
-                <img src="{image_to_data_uri('me com lang vong.jpg')}">
-            </div>
-
-        </section>
-
-
-        <section class="origin-row">
-
-            <div class="origin-text">
-                <h2>📍 2. Khu vực sản xuất</h2>
-
-                <h4>Làng Vòng – nơi lưu giữ hương vị truyền thống</h4>
-
-                <p>
-                Sản phẩm được chế biến theo phương pháp truyền thống,
-                kết hợp kiểm soát vệ sinh an toàn thực phẩm.
-                </p>
-
-                <ul>
-                    <li>Rang cốm</li>
-                    <li>Giã cốm</li>
-                    <li>Sàng cốm</li>
-                    <li>Đóng gói thành phẩm</li>
-                </ul>
-            </div>
-
-            <div class="origin-gallery">
-                <img src="{image_to_data_uri('rang com.jpg')}">
-                <img src="{image_to_data_uri('gia com.jpg')}">
-                <img src="{image_to_data_uri('sang com.jpg')}">
-            </div>
-
-        </section>
-
-    </div>
-    """
+    html = f"""<section class="origin-row">
+<div class="origin-text">
+<h2>📍 Khu vực sản xuất & chế biến</h2>
+<h4>Làng Vòng – nơi lưu giữ hương vị truyền thống</h4>
+<p>Các công đoạn rang, giã, sàng được thực hiện cẩn thận...</p>
+<ul>
+<li>🔥 Rang cốm thủ công</li>
+<li>🥢 Giã cốm đều tay</li>
+<li>🍃 Sàng sảy kỹ</li>
+<li>📦 Đóng gói sạch</li>
+</ul>
+</div>
+<div class="origin-gallery">
+<img src="{img4}">
+<img src="{img5}">
+<img src="{img6}">
+</div>
+</section>"""
 
     st.markdown(html, unsafe_allow_html=True)
 
@@ -1463,26 +1721,25 @@ def render_page(page_data):
     if page_data["page_id"] == "quytrinh":
         render_origin_process_page()
         return
-
+    if page_data["page_id"] == "nguyenlieu":
+        render_ingredient_page()
+        return
+    if page_data["page_id"] == "khuvuc":
+        render_production_area_page()
+        return
     if page_data["type"] == "custom_cert":
         render_certificate_page()
         return
 
-    if page_data["type"] == "group":
+    if page_data["type"] in ["group", "full_content"]:
+        for child_page_id in page_data.get("group_items", []):
 
-        for child_page_id in page_data["group_items"]:
             child_data = fetch_page(conn, child_page_id)
 
             if not child_data:
                 continue
 
-            preview_html = f"""<div class="{child_data.get('card_class', 'card')}">
-            <h3>{child_data.get('card_title', child_data.get('title', ''))}</h3>
-            <p>{child_data.get('paragraphs', [''])[0]}</p>
-            <a href="?page={child_page_id}" target="_self">Xem chi tiết →</a>
-            </div>"""
-
-            st.markdown(preview_html, unsafe_allow_html=True)
+            render_content_card(child_data, show_full=True)
 
         return
     if page_data["type"] == "products":
@@ -1510,7 +1767,15 @@ def render_page(page_data):
 
         return
 
-    render_content_card(page_data)
+    if page_data["page_id"] == "nguyenlieu":
+        render_origin_process_page()
+        return
+    
+    if page_data["page_id"] == "khuvuc":
+        render_production_area_page()
+        return
+
+    render_content_card(page_data, show_full=True)
 
 
 conn = create_database()
@@ -1518,6 +1783,9 @@ current_page = fetch_page(conn, page)
 
 if page == "giohang":
     render_cart_page()
+
+elif page == "chitietsp":
+    render_product_detail_page()
 
 elif current_page:
     render_page(current_page)
