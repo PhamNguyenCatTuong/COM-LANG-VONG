@@ -198,8 +198,6 @@ PRODUCTS = [
 
 ]
 
-add_cart = params.get("add_cart", None)
-
 if "cart" not in st.session_state:
     st.session_state.cart = {}
 
@@ -207,14 +205,13 @@ add_cart = params.get("add_cart", None)
 
 if add_cart is not None:
     try:
-        product_index = str(int(add_cart))
+        product_index = int(add_cart)
 
-        if 0 <= int(product_index) < len(PRODUCTS):
-            st.session_state.cart[product_index] = st.session_state.cart.get(product_index, 0) + 1
+        if 0 <= product_index < len(PRODUCTS):
+            key = str(product_index)
+            st.session_state.cart[key] = st.session_state.cart.get(key, 0) + 1
 
-            st.query_params.clear()
-            st.query_params["page"] = "sanpham"
-            st.rerun()
+        st.query_params["page"] = "sanpham"
 
     except:
         pass
@@ -336,30 +333,66 @@ PAGE_DATABASE = {
     "nguyenlieu": {
         "title": "Nguồn nguyên liệu",
         "card_class": "card2",
-        "card_title": "🌾 Lúa nếp non",
+        "card_title": "🌾 Nguồn nguyên liệu làm cốm",
+        "images": [
+            "Com tong quan 3.jpg",
+            "hat com tuoi.jpg",
+            "me com lang vong.jpg",
+        ],
         "paragraphs": [
-            "Nguyên liệu chính là lúa nếp non được chọn lọc kỹ lưỡng.",
-            "Lúa được sàng lọc, loại bỏ hạt lép trước khi rang và giã để tạo nên hạt cốm dẻo thơm.",
+            "Cốm được làm từ lúa nếp non, thường chọn khi hạt lúa vừa đủ sữa, còn mềm và có hương thơm tự nhiên.",
+            "Nguyên liệu cần được chọn lọc kỹ, loại bỏ hạt lép, hạt sâu, tạp chất và phần lúa không đạt chất lượng.",
+            "Lúa sau khi thu hoạch nên được đưa vào sơ chế sớm để giữ được độ tươi, màu xanh và mùi thơm đặc trưng của cốm.",
+        ],
+        "bullets": [
+            "Nguyên liệu chính: lúa nếp non.",
+            "Yêu cầu: hạt đều, còn sữa, không mốc, không lẫn tạp chất.",
+            "Ưu tiên vùng trồng có quy trình canh tác an toàn.",
+            "Không sử dụng nguyên liệu có dấu hiệu hư hỏng hoặc tồn dư hóa chất vượt quy định.",
         ],
     },
+
     "khuvuc": {
         "title": "Khu vực sản xuất",
         "card_class": "card2",
-        "card_title": "📍 Làng Vòng - Hà Nội",
-        "paragraphs": [
-            "Sản phẩm được sản xuất tại làng nghề truyền thống Làng Vòng.",
-            "Đây là địa danh nổi tiếng với nghề làm cốm lâu đời của Hà Nội.",
+        "card_title": "📍 Khu vực sản xuất & chế biến",
+        "images": [
+            "rang com.jpg",
+            "gia com.jpg",
+            "sang com.jpg",
         ],
+        "paragraphs": [
+            "Sản phẩm được chế biến theo phương pháp truyền thống gắn với nghề làm cốm Làng Vòng, Hà Nội.",
+            "Khu vực sản xuất cần đảm bảo sạch sẽ, khô thoáng, tách biệt với nguồn ô nhiễm và có dụng cụ chuyên dùng cho thực phẩm.",
+            "Các công đoạn rang, giã, sàng, đóng gói được kiểm soát nhằm giữ hương vị cốm và đảm bảo an toàn cho người tiêu dùng.",
+        ],
+        "fields": {
+            "Khu vực": "Làng Vòng - Cầu Giấy - Hà Nội",
+            "Hình thức sản xuất": "Kết hợp phương pháp truyền thống và kiểm soát vệ sinh an toàn thực phẩm",
+            "Điều kiện sản xuất": "Sạch sẽ, khô thoáng, dụng cụ tiếp xúc thực phẩm được vệ sinh định kỳ",
+        },
     },
+
     "malo": {
         "title": "Mã lô hàng",
         "card_class": "card2",
-        "card_title": "🏷️ Thông tin lô hàng",
+        "card_title": "🏷️ Mã lô & truy xuất sản phẩm",
+        "paragraphs": [
+            "Mỗi lô sản phẩm cần có mã lô riêng để người tiêu dùng dễ dàng kiểm tra thông tin sản xuất, ngày đóng gói và hạn sử dụng.",
+            "Mã lô giúp cơ sở sản xuất quản lý chất lượng, truy xuất nguyên liệu và xử lý nhanh nếu phát sinh vấn đề về sản phẩm.",
+            "Người tiêu dùng nên kiểm tra mã lô, ngày sản xuất, hạn sử dụng và tình trạng bao bì trước khi mua hoặc sử dụng.",
+        ],
         "fields": {
-            "Mã lô": "LV-2026-001",
-            "Ngày sản xuất": "Cập nhật trên bao bì sản phẩm",
-            "Hạn sử dụng": "Cập nhật theo từng loại sản phẩm",
+            "Mã lô mẫu": "LV-2026-001",
+            "Ngày sản xuất": "In trực tiếp trên bao bì",
+            "Hạn sử dụng": "Theo từng loại sản phẩm",
+            "Thông tin truy xuất": "Tên sản phẩm, nơi sản xuất, ngày đóng gói, hạn sử dụng, số điện thoại liên hệ",
         },
+        "bullets": [
+            "Không sử dụng sản phẩm nếu bao bì rách, phồng, mốc hoặc có mùi lạ.",
+            "Bảo quản sản phẩm theo hướng dẫn trên bao bì.",
+            "Liên hệ cơ sở sản xuất khi cần kiểm tra thông tin lô hàng.",
+        ],
     },
     "chatluong": {
         "title": "Chất lượng & chứng nhận",
@@ -788,6 +821,85 @@ footer {visibility: hidden;}
     .product-price { font-size: 17px; }
     .buy-btn, .cart-add-btn { font-size: 12px; padding: 8px 10px; }
 }
+.origin-page {
+    background: #fffdf4;
+    border-radius: 22px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.origin-row {
+    display: grid;
+    grid-template-columns: 330px 1fr;
+    gap: 22px;
+    padding: 26px 0;
+    border-bottom: 1px solid #d9e5d0;
+}
+
+.origin-row:last-child {
+    border-bottom: none;
+}
+
+.origin-text h2 {
+    color: #1b5e20;
+    margin: 0 0 8px;
+    font-size: 28px;
+}
+
+.origin-text h4 {
+    color: #2e7d32;
+    font-style: italic;
+    margin: 0 0 16px;
+    font-size: 18px;
+}
+
+.origin-text p,
+.origin-text li {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.origin-text ul {
+    padding-left: 20px;
+}
+
+.origin-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.origin-gallery img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 768px) {
+    .origin-page {
+        padding: 12px;
+    }
+
+    .origin-row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 20px 0;
+    }
+
+    .origin-text h2 {
+        font-size: 22px;
+    }
+
+    .origin-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .origin-gallery img {
+        height: 150px;
+    }
+}
 </style>
 """.replace("__BANNER_IMAGE__", image_to_data_uri("Banner com.jpg")),
     unsafe_allow_html=True,
@@ -808,7 +920,7 @@ st.markdown(
 <div class="dropdown"><a href="?page=sanpham_main" target="_self" style="text-decoration:none;"><button class="dropbtn">Sản phẩm</button></a><div class="dropdown-content"><a href="?page=sanpham" target="_self">Danh sách sản phẩm</a><a href="?page=thuonghieu" target="_self">Thương hiệu</a><a href="?page=tensp_masp" target="_self">Tên & mã sản phẩm</a></div></div>
 <div class="dropdown"><a href="?page=chatluong" target="_self" style="text-decoration:none;"><button class="dropbtn">Chất lượng</button></a></div>
 <div class="dropdown"><a href="?page=baobi_main" target="_self" style="text-decoration:none;"><button class="dropbtn">Bao bì & bảo quản</button></a><div class="dropdown-content"><a href="?page=muc_giay" target="_self">Mực & giấy bao bì</a><a href="?page=thuhoi" target="_self">Chính sách thu hồi</a></div></div>
-<a href="?page=giohang" target="_self" class="cart-menu-btn">🛒 Giỏ hàng</a>
+<a href="?page=giohang" target="_self" class="cart-menu-btn">🛒 Giỏ hàng ({cart_count})</a>
 </div>
 </div>
 <section class="hero-banner">
@@ -1077,6 +1189,73 @@ def render_products():
 
     st.markdown(html, unsafe_allow_html=True)
 
+def render_origin_process_page():
+
+    html = f"""
+    <div class="origin-page">
+
+        <section class="origin-row">
+
+            <div class="origin-text">
+                <h2>🌾 1. Nguồn nguyên liệu</h2>
+
+                <h4>Tinh túy từ hạt lúa nếp non</h4>
+
+                <p>
+                Cốm được làm từ lúa nếp non,
+                chọn khi hạt còn mềm,
+                thơm tự nhiên và có màu xanh non đặc trưng.
+                </p>
+
+                <ul>
+                    <li>Chọn lọc kỹ hạt lúa nếp non</li>
+                    <li>Canh tác an toàn</li>
+                    <li>Thu hoạch đúng thời điểm</li>
+                    <li>Sơ chế nhanh để giữ màu xanh và hương thơm</li>
+                </ul>
+            </div>
+
+            <div class="origin-gallery">
+                <img src="{image_to_data_uri('Com tong quan 3.jpg')}">
+                <img src="{image_to_data_uri('hat com tuoi.jpg')}">
+                <img src="{image_to_data_uri('me com lang vong.jpg')}">
+            </div>
+
+        </section>
+
+
+        <section class="origin-row">
+
+            <div class="origin-text">
+                <h2>📍 2. Khu vực sản xuất</h2>
+
+                <h4>Làng Vòng – nơi lưu giữ hương vị truyền thống</h4>
+
+                <p>
+                Sản phẩm được chế biến theo phương pháp truyền thống,
+                kết hợp kiểm soát vệ sinh an toàn thực phẩm.
+                </p>
+
+                <ul>
+                    <li>Rang cốm</li>
+                    <li>Giã cốm</li>
+                    <li>Sàng cốm</li>
+                    <li>Đóng gói thành phẩm</li>
+                </ul>
+            </div>
+
+            <div class="origin-gallery">
+                <img src="{image_to_data_uri('rang com.jpg')}">
+                <img src="{image_to_data_uri('gia com.jpg')}">
+                <img src="{image_to_data_uri('sang com.jpg')}">
+            </div>
+
+        </section>
+
+    </div>
+    """
+
+    st.markdown(html, unsafe_allow_html=True)
 
 def render_cart_page():
     st.markdown("<h1 class='page-title'>🛒 Giỏ hàng</h1>", unsafe_allow_html=True)
@@ -1130,6 +1309,10 @@ def render_page(page_data):
 
     title_class = "page-title small-title" if page_data["title"] in special_titles else "page-title"
     st.markdown(f"<h1 class='{title_class}'>{page_data['title']}</h1>", unsafe_allow_html=True)
+
+    if page_data["page_id"] == "quytrinh":
+        render_origin_process_page()
+        return
 
     if page_data["type"] == "custom_cert":
         render_certificate_page()
@@ -1186,7 +1369,7 @@ elif current_page:
 else:
     st.markdown("<h1 class='page-title'>Trang không tồn tại</h1>", unsafe_allow_html=True)
     st.write("Vui lòng chọn lại mục trong menu.")
-    
+
 st.markdown(
     """
 <div class="floating-contact">
