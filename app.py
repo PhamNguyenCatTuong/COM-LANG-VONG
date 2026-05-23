@@ -919,97 +919,95 @@ footer {visibility: hidden;}
     }
 }
 
-.story-hero {
-    position: relative;
-    border-radius: 28px;
-    overflow: hidden;
-    min-height: 520px;
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 18px 45px rgba(0,0,0,0.18);
-    margin-top: 22px;
+.story-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 42px;
+    align-items: center;
+    padding: 30px 10px;
 }
 
-.story-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, rgba(8,45,18,.88), rgba(8,45,18,.48), rgba(255,255,255,.05));
+.story-left {
+    padding-right: 10px;
 }
 
-.story-content {
-    position: relative;
-    z-index: 2;
-    max-width: 560px;
-    padding: 56px 42px;
-    color: white;
-}
-
-.story-badge {
+.story-mini-badge {
     display: inline-block;
-    background: rgba(255,255,255,.18);
-    border: 1px solid rgba(255,255,255,.32);
+    background: #e6f4ea;
+    color: #2e7d32;
     padding: 8px 16px;
     border-radius: 999px;
     font-weight: 800;
-    margin-bottom: 18px;
-    backdrop-filter: blur(8px);
+    margin-bottom: 20px;
 }
 
-.story-content h2 {
-    font-size: clamp(34px, 5vw, 58px);
+.story-left h1 {
+    font-size: clamp(42px, 5vw, 70px);
     line-height: 1.05;
-    margin: 0 0 18px;
+    color: #17351f;
+    margin-bottom: 24px;
 }
 
-.story-content p {
-    font-size: 17px;
-    line-height: 1.75;
+.story-desc {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #425344;
+    margin-bottom: 30px;
 }
 
-.story-points {
+.story-features {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 14px;
-    margin-top: 24px;
+    margin-bottom: 30px;
 }
 
-.story-point {
-    background: rgba(255,255,255,.16);
-    border: 1px solid rgba(255,255,255,.24);
+.story-feature {
+    background: #f4f8f1;
     border-radius: 18px;
-    padding: 14px;
+    padding: 16px;
     font-weight: 700;
-    backdrop-filter: blur(8px);
+    color: #244128;
+    border: 1px solid #dce8d8;
 }
 
 .story-quote {
-    background: #fffdf4;
-    border-left: 6px solid #2e7d32;
-    border-radius: 18px;
-    padding: 22px;
-    margin-top: 24px;
-    font-size: 19px;
+    border-left: 5px solid #2e7d32;
+    padding-left: 18px;
+    font-size: 20px;
     line-height: 1.7;
-    color: #1f3b1f;
+    color: #29432d;
+    font-style: italic;
+}
+
+.story-right img {
+    width: 100%;
+    height: 720px;
+    object-fit: cover;
+    border-radius: 28px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
 }
 
 @media (max-width: 768px) {
-    .story-hero {
-        min-height: auto;
+
+    .story-layout {
+        grid-template-columns: 1fr;
+        gap: 26px;
     }
 
-    .story-overlay {
-        background: linear-gradient(180deg, rgba(8,45,18,.86), rgba(8,45,18,.50));
+    .story-left h1 {
+        font-size: 42px;
     }
 
-    .story-content {
-        padding: 34px 20px;
-    }
-
-    .story-points {
+    .story-features {
         grid-template-columns: 1fr;
     }
-} 
+
+    .story-right img {
+        height: 380px;
+    }
+
+}
 
 </style>
 """.replace("__BANNER_IMAGE__", image_to_data_uri("Banner com.jpg")),
@@ -1229,26 +1227,25 @@ def render_content_card(page_data, detail_link=None):
 def render_story_page():
     story_image = image_to_data_uri("Hinh 1.jpg")
 
-    html = f"""<div class="story-hero" style="background-image:url('{story_image}')">
-<div class="story-overlay"></div>
-<div class="story-content">
-<div class="story-badge">🍃 Di sản ẩm thực Hà Nội</div>
-<h2>Câu chuyện Cốm Làng Vòng</h2>
-<p>
+    html = f"""<div class="story-layout">
+<div class="story-left">
+<div class="story-mini-badge">🍃 Di sản ẩm thực Hà Nội</div>
+<h1>Câu chuyện<br>Cốm Làng Vòng</h1>
+<p class="story-desc">
 Từ hạt lúa nếp non còn ngậm sữa, qua đôi tay người thợ làng nghề,
 cốm trở thành thức quà thanh nhã của mùa thu Hà Nội.
 </p>
-<div class="story-points">
-<div class="story-point">🌾 Lúa nếp non tuyển chọn</div>
-<div class="story-point">🔥 Rang thủ công giữ hương</div>
-<div class="story-point">🥢 Giã, sàng tỉ mỉ</div>
-<div class="story-point">🍃 Gói trong hương lá sen</div>
+<div class="story-features">
+<div class="story-feature">🌾 Lúa nếp non tuyển chọn</div>
+<div class="story-feature">🔥 Rang thủ công giữ hương</div>
+<div class="story-feature">🥢 Giã, sàng tỉ mỉ</div>
+<div class="story-feature">🍃 Gói trong hương lá sen</div>
 </div>
+<div class="story-quote">“Cốm không chỉ là món ăn, mà còn là ký ức mùa thu Hà Nội.”</div>
 </div>
+<div class="story-right">
+<img src="{story_image}">
 </div>
-
-<div class="story-quote">
-“Cốm không chỉ là một món ăn, mà là ký ức mùa thu, là nét tinh tế trong văn hóa ẩm thực Hà Nội.”
 </div>"""
 
     st.markdown(html, unsafe_allow_html=True)
