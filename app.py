@@ -283,12 +283,30 @@ PAGE_DATABASE = {
     },
 
     "cauchuyen": {
-        "title": "Câu chuyện sản phẩm",
+        "title": "Câu chuyện Cốm Làng Vòng",
         "card_class": "card",
         "card_title": "🍃 Câu chuyện Cốm Làng Vòng",
         "paragraphs": [
-            "Cốm Làng Vòng là một phần ký ức mùa thu Hà Nội.",
-            "Mỗi hạt cốm là kết quả của quá trình chọn lúa, rang, giã và sàng sảy công phu.",
+            "Cốm Làng Vòng là một thức quà truyền thống gắn liền với mùa thu Hà Nội. Hương cốm non, màu xanh dịu và vị ngọt thanh đã trở thành một phần ký ức quen thuộc của nhiều thế hệ người Việt.",
+            "Từ những hạt lúa nếp non được chọn lọc kỹ, người làm cốm phải trải qua nhiều công đoạn thủ công như rang, giã, sàng sảy và ủ lá sen. Mỗi công đoạn đều cần sự tỉ mỉ, kinh nghiệm và cảm nhận tinh tế của người thợ.",
+            "Không chỉ là một món ăn, cốm còn là biểu tượng của sự thanh nhã trong văn hóa ẩm thực Hà Nội. Cốm thường được dùng làm quà biếu, dùng trong mâm lễ, cưới hỏi hoặc thưởng thức cùng chuối chín, trà sen.",
+            "Ngày nay, Cốm Làng Vòng được phát triển thành nhiều sản phẩm mới như bánh cốm, xôi cốm, cốm xào, mochi cốm và các món quà đặc sản. Dù có nhiều biến tấu, giá trị cốt lõi vẫn là giữ được hương vị mộc mạc, dẻo thơm và tinh thần truyền thống.",
+            "Chúng tôi mong muốn đưa hương vị cốm truyền thống đến gần hơn với người tiêu dùng hiện đại, đồng thời giữ gìn nét đẹp làng nghề và câu chuyện văn hóa của Hà Nội."
+        ],
+        "images": [
+            "Hinh 1.jpg",
+        ],
+
+        "paragraphs": [
+            "Cốm Làng Vòng là một thức quà truyền thống gắn liền với mùa thu Hà Nội.",
+        ],
+
+        "bullets": [
+            "Nguồn cảm hứng từ làng nghề Cốm Làng Vòng lâu đời.",
+            "Giữ tinh thần thủ công, mộc mạc và tinh tế.",
+            "Kết hợp truyền thống với cách trình bày hiện đại.",
+            "Phù hợp làm quà biếu, quà du lịch và đặc sản Hà Nội.",
+            "Tôn trọng chất lượng, nguồn gốc và trải nghiệm của người tiêu dùng."
         ],
     },
     "video": {
@@ -900,6 +918,99 @@ footer {visibility: hidden;}
         height: 150px;
     }
 }
+
+.story-hero {
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    min-height: 520px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 18px 45px rgba(0,0,0,0.18);
+    margin-top: 22px;
+}
+
+.story-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(8,45,18,.88), rgba(8,45,18,.48), rgba(255,255,255,.05));
+}
+
+.story-content {
+    position: relative;
+    z-index: 2;
+    max-width: 560px;
+    padding: 56px 42px;
+    color: white;
+}
+
+.story-badge {
+    display: inline-block;
+    background: rgba(255,255,255,.18);
+    border: 1px solid rgba(255,255,255,.32);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-weight: 800;
+    margin-bottom: 18px;
+    backdrop-filter: blur(8px);
+}
+
+.story-content h2 {
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: 1.05;
+    margin: 0 0 18px;
+}
+
+.story-content p {
+    font-size: 17px;
+    line-height: 1.75;
+}
+
+.story-points {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.story-point {
+    background: rgba(255,255,255,.16);
+    border: 1px solid rgba(255,255,255,.24);
+    border-radius: 18px;
+    padding: 14px;
+    font-weight: 700;
+    backdrop-filter: blur(8px);
+}
+
+.story-quote {
+    background: #fffdf4;
+    border-left: 6px solid #2e7d32;
+    border-radius: 18px;
+    padding: 22px;
+    margin-top: 24px;
+    font-size: 19px;
+    line-height: 1.7;
+    color: #1f3b1f;
+}
+
+@media (max-width: 768px) {
+    .story-hero {
+        min-height: auto;
+    }
+
+    .story-overlay {
+        background: linear-gradient(180deg, rgba(8,45,18,.86), rgba(8,45,18,.50));
+    }
+
+    .story-content {
+        padding: 34px 20px;
+    }
+
+    .story-points {
+        grid-template-columns: 1fr;
+    }
+} 
+
 </style>
 """.replace("__BANNER_IMAGE__", image_to_data_uri("Banner com.jpg")),
     unsafe_allow_html=True,
@@ -1094,6 +1205,18 @@ def render_content_card(page_data, detail_link=None):
     for paragraph in page_data.get("paragraphs", []):
         html += f"<p>{paragraph}</p>"
 
+    for image in page_data.get("images", []):
+        html += f"""
+        <img src="{image_to_data_uri(image)}"
+            style="
+                width:100%;
+                border-radius:16px;
+                margin-top:14px;
+                margin-bottom:14px;
+                object-fit:cover;
+            ">
+        """
+
     if page_data.get("bullets"):
         html += "<ul>" + "".join([f"<li>{b}</li>" for b in page_data["bullets"]]) + "</ul>"
 
@@ -1101,6 +1224,33 @@ def render_content_card(page_data, detail_link=None):
         html += f"<p><a href='?page={detail_link}' target='_self'>Xem chi tiết →</a></p>"
 
     html += "</div>"
+    st.markdown(html, unsafe_allow_html=True)
+
+def render_story_page():
+    story_image = image_to_data_uri("Hinh 1.jpg")
+
+    html = f"""<div class="story-hero" style="background-image:url('{story_image}')">
+<div class="story-overlay"></div>
+<div class="story-content">
+<div class="story-badge">🍃 Di sản ẩm thực Hà Nội</div>
+<h2>Câu chuyện Cốm Làng Vòng</h2>
+<p>
+Từ hạt lúa nếp non còn ngậm sữa, qua đôi tay người thợ làng nghề,
+cốm trở thành thức quà thanh nhã của mùa thu Hà Nội.
+</p>
+<div class="story-points">
+<div class="story-point">🌾 Lúa nếp non tuyển chọn</div>
+<div class="story-point">🔥 Rang thủ công giữ hương</div>
+<div class="story-point">🥢 Giã, sàng tỉ mỉ</div>
+<div class="story-point">🍃 Gói trong hương lá sen</div>
+</div>
+</div>
+</div>
+
+<div class="story-quote">
+“Cốm không chỉ là một món ăn, mà là ký ức mùa thu, là nét tinh tế trong văn hóa ẩm thực Hà Nội.”
+</div>"""
+
     st.markdown(html, unsafe_allow_html=True)
 
 
@@ -1310,6 +1460,9 @@ def render_page(page_data):
     title_class = "page-title small-title" if page_data["title"] in special_titles else "page-title"
     st.markdown(f"<h1 class='{title_class}'>{page_data['title']}</h1>", unsafe_allow_html=True)
 
+    if page_data["page_id"] == "cauchuyen":
+        render_story_page()
+        return
     if page_data["page_id"] == "quytrinh":
         render_origin_process_page()
         return
@@ -1319,16 +1472,22 @@ def render_page(page_data):
         return
 
     if page_data["type"] == "group":
+
         for child_page_id in page_data["group_items"]:
             child_data = fetch_page(conn, child_page_id)
 
             if not child_data:
                 continue
 
-            render_content_card(child_data, detail_link=child_page_id)
+            preview_html = f"""<div class="{child_data.get('card_class', 'card')}">
+            <h3>{child_data.get('card_title', child_data.get('title', ''))}</h3>
+            <p>{child_data.get('paragraphs', [''])[0]}</p>
+            <a href="?page={child_page_id}" target="_self">Xem chi tiết →</a>
+            </div>"""
+
+            st.markdown(preview_html, unsafe_allow_html=True)
 
         return
-
     if page_data["type"] == "products":
         render_products()
         return
