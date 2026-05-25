@@ -1504,6 +1504,234 @@ footer {visibility: hidden;}
     }
 }
 
+
+/* FIX RECIPE BOOK FLIP - no JavaScript needed */
+.recipe-radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.recipe-book {
+    position: relative;
+    max-width: 920px;
+    margin: 18px auto 0;
+    min-height: 560px;
+    perspective: 1800px;
+}
+
+.recipe-page {
+    display: none !important;
+    position: relative;
+    background: linear-gradient(90deg, #fff8df 0%, #fffdf4 48%, #f8edc8 50%, #fffdf4 52%, #fff8df 100%);
+    border: 2px solid #d7b56d;
+    border-radius: 22px;
+    box-shadow: 0 14px 34px rgba(70,45,12,.22);
+    padding: 28px 66px;
+    min-height: 560px;
+    animation: pageFlip .45s ease;
+    grid-template-columns: 1fr 1fr;
+    gap: 34px;
+}
+
+#recipe-page-0:checked ~ .recipe-book .recipe-page-0,
+#recipe-page-1:checked ~ .recipe-book .recipe-page-1,
+#recipe-page-2:checked ~ .recipe-book .recipe-page-2,
+#recipe-page-3:checked ~ .recipe-book .recipe-page-3,
+#recipe-page-4:checked ~ .recipe-book .recipe-page-4,
+#recipe-page-5:checked ~ .recipe-book .recipe-page-5,
+#recipe-page-6:checked ~ .recipe-book .recipe-page-6,
+#recipe-page-7:checked ~ .recipe-book .recipe-page-7,
+#recipe-page-8:checked ~ .recipe-book .recipe-page-8,
+#recipe-page-9:checked ~ .recipe-book .recipe-page-9,
+#recipe-page-10:checked ~ .recipe-book .recipe-page-10,
+#recipe-page-11:checked ~ .recipe-book .recipe-page-11,
+#recipe-page-12:checked ~ .recipe-book .recipe-page-12,
+#recipe-page-13:checked ~ .recipe-book .recipe-page-13,
+#recipe-page-14:checked ~ .recipe-book .recipe-page-14,
+#recipe-page-15:checked ~ .recipe-book .recipe-page-15,
+#recipe-page-16:checked ~ .recipe-book .recipe-page-16,
+#recipe-page-17:checked ~ .recipe-book .recipe-page-17,
+#recipe-page-18:checked ~ .recipe-book .recipe-page-18,
+#recipe-page-19:checked ~ .recipe-book .recipe-page-19 {
+    display: grid !important;
+}
+
+.recipe-side-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #2e7d32;
+    color: white !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0,0,0,.22);
+    user-select: none;
+}
+
+.recipe-side-btn.prev {
+    left: 12px;
+}
+
+.recipe-side-btn.next {
+    right: 12px;
+}
+
+.recipe-page-number {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fffdf4;
+    color: #17351f;
+    border: 1px solid #d7b56d;
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-weight: 900;
+    font-size: 13px;
+}
+
+.recipe-controls {
+    display: none !important;
+}
+
+@media (max-width: 1024px) {
+    .recipe-book {
+        min-height: auto !important;
+        margin-top: 14px;
+    }
+
+    .recipe-page {
+        min-height: 520px !important;
+        padding: 22px 54px 48px !important;
+        background: linear-gradient(90deg, #fff8df 0%, #fffdf4 48%, #f8edc8 50%, #fffdf4 52%, #fff8df 100%) !important;
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+    }
+
+    #recipe-page-0:checked ~ .recipe-book .recipe-page-0,
+    #recipe-page-1:checked ~ .recipe-book .recipe-page-1,
+    #recipe-page-2:checked ~ .recipe-book .recipe-page-2,
+    #recipe-page-3:checked ~ .recipe-book .recipe-page-3,
+    #recipe-page-4:checked ~ .recipe-book .recipe-page-4,
+    #recipe-page-5:checked ~ .recipe-book .recipe-page-5,
+    #recipe-page-6:checked ~ .recipe-book .recipe-page-6,
+    #recipe-page-7:checked ~ .recipe-book .recipe-page-7,
+    #recipe-page-8:checked ~ .recipe-book .recipe-page-8,
+    #recipe-page-9:checked ~ .recipe-book .recipe-page-9,
+    #recipe-page-10:checked ~ .recipe-book .recipe-page-10,
+    #recipe-page-11:checked ~ .recipe-book .recipe-page-11,
+    #recipe-page-12:checked ~ .recipe-book .recipe-page-12,
+    #recipe-page-13:checked ~ .recipe-book .recipe-page-13,
+    #recipe-page-14:checked ~ .recipe-book .recipe-page-14,
+    #recipe-page-15:checked ~ .recipe-book .recipe-page-15,
+    #recipe-page-16:checked ~ .recipe-book .recipe-page-16,
+    #recipe-page-17:checked ~ .recipe-book .recipe-page-17,
+    #recipe-page-18:checked ~ .recipe-book .recipe-page-18,
+    #recipe-page-19:checked ~ .recipe-book .recipe-page-19 {
+        display: grid !important;
+    }
+
+    .recipe-page-left {
+        border-bottom: 1px dashed #d7b56d;
+        padding-bottom: 12px;
+        margin-bottom: 4px;
+    }
+
+    .recipe-side-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 22px;
+    }
+
+    .recipe-side-btn.prev {
+        left: 6px;
+    }
+
+    .recipe-side-btn.next {
+        right: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .recipe-page {
+        padding: 18px 46px 46px !important;
+        min-height: 560px !important;
+        border-radius: 18px !important;
+    }
+
+    .recipe-page h3 {
+        font-size: 21px !important;
+    }
+
+    .recipe-page h4 {
+        font-size: 16px !important;
+        margin: 10px 0 6px !important;
+    }
+
+    .recipe-page li {
+        font-size: 13px !important;
+        margin: 5px 0 !important;
+    }
+
+    .recipe-open-detail {
+        padding: 9px 12px !important;
+        font-size: 13px !important;
+    }
+}
+
+
+.recipe-image-page {
+    width: 100%;
+    height: 100%;
+    min-height: 520px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #f7f1dc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recipe-image-page img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.recipe-image-placeholder {
+    width: 100%;
+    height: 520px;
+    border: 3px dashed #d7b56d;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8a6a2f;
+    font-size: 22px;
+    font-weight: 800;
+    background: rgba(255,255,255,0.45);
+    text-align: center;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .recipe-image-page,
+    .recipe-image-placeholder {
+        height: 460px;
+        min-height: 460px;
+    }
+}
+
 </style>
 """.replace("__BANNER_IMAGE__", image_to_data_uri("Banner com.jpg")),
     unsafe_allow_html=True,
@@ -1934,76 +2162,38 @@ def render_products():
 
 
 def render_recipe_book_page():
-    """Render recipe menu as a book with flip pages and quick access links."""
-    quick_html = (
+    """Render recipe book with blank image pages for user-provided recipe images."""
+    total_pages = len(PRODUCTS)
+
+    html = (
         "<div class='recipe-shell'>"
         "<h2 class='recipe-quick-title'>📖 Sổ tay công thức món ăn</h2>"
-        "<p>Ấn vào tên món để mở ngay trang công thức chi tiết, hoặc lật từng trang sách bên dưới để xem nhanh nguyên liệu và cách làm.</p>"
-        "<h3>🔎 Mở nhanh công thức</h3>"
-        "<div class='recipe-quick-grid'>"
+        "<p>Bấm mũi tên hai bên quyển sách để lật trang. Mỗi trang đang để trống để bạn thay bằng hình công thức theo thứ tự.</p>"
     )
 
-    for index, product in enumerate(PRODUCTS):
-        quick_html += (
-            f"<a class='recipe-quick-card' href='?page=chitietsp&product={index}' target='_self'>"
-            f"{escape(product['name'])}<span>Xem công thức chi tiết →</span></a>"
-        )
+    for index in range(total_pages):
+        checked = " checked" if index == 0 else ""
+        html += f"<input class='recipe-radio' type='radio' name='recipe-pages' id='recipe-page-{index}'{checked}>"
 
-    quick_html += "</div>"
+    html += "<div class='recipe-book'>"
 
-    pages_html = "<div class='recipe-book' id='recipeBook'>"
+    for index in range(total_pages):
+        prev_index = (index - 1) % total_pages
+        next_index = (index + 1) % total_pages
 
-    for index, product in enumerate(PRODUCTS):
-        ingredient_data = get_recipe_ingredient_data(product)
-        ingredients_html = "".join(
-            f"<li><b>{escape(item_name)}</b> {escape(amount)} {escape(note)}</li>"
-            for item_name, amount, note in ingredient_data["items"]
-        )
-        _, process, _ = build_product_details(product)
-        process_html = "".join(f"<li>{escape(step)}</li>" for step in process)
-
-        active_class = " active" if index == 0 else ""
-        pages_html += (
-            f"<article class='recipe-page{active_class}'>"
-            f"<div class='recipe-page-left'>"
-            f"<h3>{escape(product['name'])}</h3>"
-            f"<div class='recipe-serving'>👥 {escape(ingredient_data['serving'])}</div>"
-            f"<h4>Nguyên liệu</h4>"
-            f"<ul>{ingredients_html}</ul>"
+        html += (
+            f"<article class='recipe-page recipe-page-{index}'>"
+            f"<label class='recipe-side-btn prev' for='recipe-page-{prev_index}'>‹</label>"
+            f"<label class='recipe-side-btn next' for='recipe-page-{next_index}'>›</label>"
+            f"<div class='recipe-image-page'>"
+            f"<div class='recipe-image-placeholder'>Trang sách {index + 1}<br>Thay bằng hình ảnh của bạn</div>"
             f"</div>"
-            f"<div class='recipe-page-right'>"
-            f"<h4>Cách làm</h4>"
-            f"<ol>{process_html}</ol>"
-            f"<a class='recipe-open-detail' href='?page=chitietsp&product={index}' target='_self'>Mở trang công thức món này</a>"
-            f"</div>"
+            f"<div class='recipe-page-number'>Trang {index + 1} / {total_pages}</div>"
             f"</article>"
         )
 
-    pages_html += "</div>"
-
-    controls_html = (
-        "<div class='recipe-controls'>"
-        "<button type='button' onclick='prevRecipePage()'>← Trang trước</button>"
-        "<span class='recipe-counter' id='recipeCounter'>Trang 1 / " + str(len(PRODUCTS)) + "</span>"
-        "<button type='button' onclick='nextRecipePage()'>Trang sau →</button>"
-        "</div>"
-        "</div>"
-        "<script>"
-        "let recipePageIndex = 0;"
-        "const recipePages = document.querySelectorAll('.recipe-page');"
-        "const recipeCounter = document.getElementById('recipeCounter');"
-        "function showRecipePage(i) {"
-        "  recipePages[recipePageIndex].classList.remove('active');"
-        "  recipePageIndex = (i + recipePages.length) % recipePages.length;"
-        "  recipePages[recipePageIndex].classList.add('active');"
-        "  recipeCounter.textContent = 'Trang ' + (recipePageIndex + 1) + ' / ' + recipePages.length;"
-        "}"
-        "function nextRecipePage() { showRecipePage(recipePageIndex + 1); }"
-        "function prevRecipePage() { showRecipePage(recipePageIndex - 1); }"
-        "</script>"
-    )
-
-    st.markdown(quick_html + pages_html + controls_html, unsafe_allow_html=True)
+    html += "</div></div>"
+    st.markdown(html, unsafe_allow_html=True)
 
 
 def render_recipe_index_page():
@@ -2439,11 +2629,8 @@ def render_product_detail_page():
     notes = build_product_notes(product)
     nutrition = build_product_nutrition(product)
 
-    ingredients_html = build_ingredients_card(product)
-    process_html = "".join(f"<li>{item}</li>" for item in process)
-    notes_html = "".join(f"<li>{item}</li>" for item in notes)
-    nutrition_html = "".join(f"<li>{item}</li>" for item in nutrition)
-    sketch_html = build_process_sketch(process)
+    # Trang chi tiết sản phẩm chỉ hiển thị thông tin mua hàng và giới thiệu.
+    # Phần công thức/cách làm được giữ riêng trong menu "Công thức & Cách làm món ăn".
 
     html = (
         f"<a href='?page=sanpham' target='_self' class='back-products'>← Quay lại danh sách sản phẩm</a>"
@@ -2463,12 +2650,6 @@ def render_product_detail_page():
         f"</div>"
         f"</div></div>"
         f"<div class='detail-block'><h3>Giới thiệu sản phẩm</h3><p>{story}</p><p>{product.get('desc', '')}</p></div>"
-        f"<div class='detail-block'><h3>Cách làm {product['name']}</h3>"
-        f"{ingredients_html}"
-        f"<h4>Các bước làm minh họa</h4><div class='process-sketch'>{sketch_html}</div>"
-        f"<ol>{process_html}</ol></div>"
-        f"<div class='detail-block'><h3>Các lưu ý khi làm {product['name']}</h3><ul>{notes_html}</ul></div>"
-        f"<div class='detail-block'><h3>Giá trị dinh dưỡng của {product['name']}</h3><ul>{nutrition_html}</ul></div>"
     )
 
     st.markdown(html, unsafe_allow_html=True)
