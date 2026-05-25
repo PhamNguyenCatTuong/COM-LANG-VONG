@@ -2867,6 +2867,93 @@ def render_origin_process_page():
     img3 = image_to_data_uri("rang com.jpg")
 
     html = f"""
+<style>
+* {{ box-sizing: border-box; }}
+body {{ margin: 0; font-family: Arial, sans-serif; background: transparent; color: #17351f; }}
+.process-map-page {{
+    width: 100%;
+    background: #fffdf4;
+    border-radius: 24px;
+    padding: 22px;
+    overflow: hidden;
+}}
+.process-map-head {{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 18px;
+    align-items: stretch;
+    margin-bottom: 22px;
+}}
+.process-map-intro,
+.process-note-card {{
+    background: #f1f8e9;
+    border-radius: 18px;
+    padding: 18px 20px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.06);
+}}
+.process-map-intro h2 {{ margin: 0 0 10px; color: #1b5e20; font-size: 28px; }}
+.process-map-intro p,
+.process-note-card p {{ margin: 0; line-height: 1.65; font-size: 15px; color: #425344; }}
+.process-note-card h3 {{ margin: 0 0 8px; color: #2e7d32; }}
+.process-flow {{
+    display: grid;
+    grid-template-columns: 1fr 58px 1fr 58px 1fr;
+    gap: 14px;
+    align-items: center;
+    margin-top: 10px;
+}}
+.flow-card {{
+    background: white;
+    border: 2px solid #dce8d8;
+    border-radius: 18px;
+    padding: 16px;
+    min-height: 145px;
+    box-shadow: 0 6px 16px rgba(0,0,0,.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}}
+.flow-icon {{ font-size: 32px; margin-bottom: 8px; }}
+.flow-card h3 {{ margin: 0 0 8px; color: #1b5e20; font-size: 21px; }}
+.flow-card p {{ margin: 0; color: #425344; line-height: 1.45; font-size: 14px; }}
+.flow-arrow {{
+    font-size: 34px;
+    font-weight: 900;
+    text-align: center;
+    color: #2e7d32;
+}}
+.flow-card.wide {{ grid-column: span 1; }}
+.process-gallery-mini {{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 22px;
+}}
+.process-gallery-mini img {{
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.12);
+}}
+.process-bottom-note {{
+    margin-top: 18px;
+    background: #e8f5e9;
+    border-left: 5px solid #2e7d32;
+    border-radius: 14px;
+    padding: 14px 16px;
+    color: #29432d;
+    font-size: 18px;
+    font-style: italic;
+}}
+@media (max-width: 900px) {{
+    .process-map-head {{ grid-template-columns: 1fr; }}
+    .process-flow {{ grid-template-columns: 1fr; }}
+    .flow-arrow {{ transform: rotate(90deg); font-size: 28px; }}
+    .process-gallery-mini {{ grid-template-columns: 1fr; }}
+    .process-gallery-mini img {{ height: 210px; }}
+}}
+</style>
 <div class="process-map-page">
     <div class="process-map-head">
         <div class="process-map-intro">
@@ -2875,52 +2962,26 @@ def render_origin_process_page():
         </div>
         <div class="process-note-card">
             <h3>Ghi chú nhanh</h3>
-            <p>Sơ đồ bên dưới mô phỏng quy trình theo bản phác thảo: từ chọn lọc nguyên liệu đến đóng gói thành phẩm.</p>
+            <p>Sơ đồ mô phỏng theo bản phác thảo: chọn lọc, thu hoạch, sơ chế, rang, giã, sàng và đóng gói.</p>
         </div>
     </div>
 
     <div class="process-flow">
-        <div class="flow-card">
-            <div class="flow-icon">🌾</div>
-            <h3>Chọn lọc kỹ</h3>
-            <p>Chọn hạt lúa nếp non đạt độ sữa, loại bỏ hạt lép và tạp chất.</p>
-        </div>
+        <div class="flow-card"><div class="flow-icon">🌾</div><h3>Chọn lọc kỹ</h3><p>Chọn hạt lúa nếp non đạt độ sữa, loại bỏ hạt lép và tạp chất.</p></div>
         <div class="flow-arrow">→</div>
-        <div class="flow-card">
-            <div class="flow-icon">⏰</div>
-            <h3>Thu hoạch đúng mùa</h3>
-            <p>Thu hoạch khi hạt còn non để giữ màu xanh, vị ngọt và mùi thơm.</p>
-        </div>
-        <div class="flow-arrow down">↓</div>
+        <div class="flow-card"><div class="flow-icon">⏰</div><h3>Thu hoạch đúng mùa</h3><p>Thu hoạch khi hạt còn non để giữ màu xanh, vị ngọt và mùi thơm.</p></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-card"><div class="flow-icon">🍃</div><h3>Sơ chế nhanh</h3><p>Làm sạch nguyên liệu sớm sau thu hoạch để bảo toàn độ tươi.</p></div>
 
-        <div class="flow-card">
-            <div class="flow-icon">🥢</div>
-            <h3>Giã</h3>
-            <p>Giã đều tay để hạt mềm dẻo, sạch vỏ và không bị nát.</p>
-        </div>
+        <div class="flow-card"><div class="flow-icon">🥢</div><h3>Giã</h3><p>Giã đều tay để hạt mềm dẻo, sạch vỏ và không bị nát.</p></div>
         <div class="flow-arrow">←</div>
-        <div class="flow-card">
-            <div class="flow-icon">🔥</div>
-            <h3>Rang</h3>
-            <p>Rang từng mẻ với lửa đều để giữ hương thơm tự nhiên.</p>
-        </div>
-        <div class="flow-card">
-            <div class="flow-icon">🍃</div>
-            <h3>Sơ chế nhanh</h3>
-            <p>Làm sạch nguyên liệu sớm sau thu hoạch để bảo toàn độ tươi.</p>
-        </div>
+        <div class="flow-card"><div class="flow-icon">🔥</div><h3>Rang</h3><p>Rang từng mẻ với lửa đều để giữ hương thơm tự nhiên.</p></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-card"><div class="flow-icon">✅</div><h3>Sàng</h3><p>Sàng sảy kỹ để loại bỏ trấu, hạt vỡ và dị vật.</p></div>
 
-        <div class="flow-card">
-            <div class="flow-icon">✅</div>
-            <h3>Sàng</h3>
-            <p>Sàng sảy kỹ để loại bỏ trấu, hạt vỡ và dị vật.</p>
-        </div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-card">
-            <div class="flow-icon">📦</div>
-            <h3>Đóng gói</h3>
-            <p>Cân định lượng, đóng gói sạch và bảo quản nơi khô mát.</p>
-        </div>
+        <div></div><div></div>
+        <div class="flow-card"><div class="flow-icon">📦</div><h3>Đóng gói</h3><p>Cân định lượng, đóng gói sạch và bảo quản nơi khô mát.</p></div>
+        <div></div><div></div>
     </div>
 
     <div class="process-gallery-mini">
@@ -2932,7 +2993,7 @@ def render_origin_process_page():
     <div class="process-bottom-note">Giữ trọn vẹn hương vị mùa thu của Hà Nội qua từng công đoạn thủ công.</div>
 </div>
 """
-    st.markdown(html, unsafe_allow_html=True)
+    components.html(html, height=980, scrolling=True)
 
 def render_ingredient_page():
 
