@@ -163,6 +163,20 @@ PRODUCTS = [
         "weight": "1 phần",
         "image": "cha ca la vong.jpg",
     },
+    {
+        "category": "Các đặc sản khác của Hà Nội",
+        "name": "Bánh chả",
+        "price": "55.000đ",
+        "weight": "200gr",
+        "image": "Banh cha.jpeg",
+    },
+    {
+        "category": "Các đặc sản khác của Hà Nội",
+        "name": "Chè lam",
+        "price": "50.000đ",
+        "weight": "1 hooojp 450gr",
+        "image": "Che lam.jpg",
+    },
 
 ]
 
@@ -1219,6 +1233,88 @@ footer {visibility: hidden;}
     .story-right img {
         height: 360px;
         border-radius: 18px;
+    }
+}
+
+
+/* FIX MOBILE/ANDROID MENU */
+@media (max-width: 1024px) {
+    .topbar {
+        overflow: visible !important;
+        padding: 10px 12px !important;
+    }
+
+    .top-row {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) auto auto !important;
+        align-items: center !important;
+        gap: 8px !important;
+        width: 100% !important;
+    }
+
+    .logo {
+        min-width: 0 !important;
+        font-size: clamp(24px, 7vw, 34px) !important;
+        line-height: 1.1 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .cart-link {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 22px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .hamburger {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 30px !important;
+        color: #2e7d32 !important;
+        cursor: pointer !important;
+        flex-shrink: 0 !important;
+        z-index: 10001 !important;
+    }
+
+    .menu {
+        display: none !important;
+        width: 100% !important;
+        margin-top: 10px !important;
+    }
+
+    #menu-toggle:checked ~ .menu {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .dropdown-content {
+        display: block !important;
+        position: relative !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        box-shadow: none !important;
+    }
+}
+
+@media (max-width: 430px) {
+    .logo {
+        font-size: clamp(22px, 6.6vw, 30px) !important;
+    }
+
+    .cart-link {
+        font-size: 20px !important;
+    }
+
+    .hamburger {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 28px !important;
     }
 }
 
