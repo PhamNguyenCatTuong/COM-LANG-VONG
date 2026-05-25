@@ -2865,135 +2865,240 @@ def render_origin_process_page():
     img1 = image_to_data_uri("Com tong quan 3.jpg")
     img2 = image_to_data_uri("hat com tuoi.jpg")
     img3 = image_to_data_uri("rang com.jpg")
+    img4 = image_to_data_uri("gia com.jpg")
+    img5 = image_to_data_uri("sang com.jpg")
 
     html = f"""
 <style>
 * {{ box-sizing: border-box; }}
-body {{ margin: 0; font-family: Arial, sans-serif; background: transparent; color: #17351f; }}
-.process-map-page {{
+body {{ margin: 0; font-family: Arial, sans-serif; color: #17351f; background: transparent; }}
+.process-page {{
     width: 100%;
-    background: #fffdf4;
-    border-radius: 24px;
-    padding: 22px;
+    background: linear-gradient(180deg, #fffdf4 0%, #f4f8ef 100%);
+    border-radius: 28px;
+    padding: 28px;
     overflow: hidden;
 }}
-.process-map-head {{
+.process-hero {{
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 300px;
-    gap: 18px;
-    align-items: stretch;
-    margin-bottom: 22px;
-}}
-.process-map-intro,
-.process-note-card {{
-    background: #f1f8e9;
-    border-radius: 18px;
-    padding: 18px 20px;
-    box-shadow: 0 4px 14px rgba(0,0,0,.06);
-}}
-.process-map-intro h2 {{ margin: 0 0 10px; color: #1b5e20; font-size: 28px; }}
-.process-map-intro p,
-.process-note-card p {{ margin: 0; line-height: 1.65; font-size: 15px; color: #425344; }}
-.process-note-card h3 {{ margin: 0 0 8px; color: #2e7d32; }}
-.process-flow {{
-    display: grid;
-    grid-template-columns: 1fr 58px 1fr 58px 1fr;
-    gap: 14px;
+    grid-template-columns: 1.08fr .92fr;
+    gap: 26px;
     align-items: center;
-    margin-top: 10px;
+    margin-bottom: 34px;
 }}
-.flow-card {{
-    background: white;
-    border: 2px solid #dce8d8;
-    border-radius: 18px;
-    padding: 16px;
-    min-height: 145px;
-    box-shadow: 0 6px 16px rgba(0,0,0,.08);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}}
-.flow-icon {{ font-size: 32px; margin-bottom: 8px; }}
-.flow-card h3 {{ margin: 0 0 8px; color: #1b5e20; font-size: 21px; }}
-.flow-card p {{ margin: 0; color: #425344; line-height: 1.45; font-size: 14px; }}
-.flow-arrow {{
-    font-size: 34px;
-    font-weight: 900;
-    text-align: center;
+.process-kicker {{
+    display: inline-block;
+    background: #e5f3df;
     color: #2e7d32;
+    padding: 8px 15px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: .2px;
 }}
-.flow-card.wide {{ grid-column: span 1; }}
-.process-gallery-mini {{
+.process-hero h2 {{
+    margin: 16px 0 12px;
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: 1.04;
+    color: #17351f;
+}}
+.process-hero p {{
+    margin: 0;
+    color: #4b5b4d;
+    font-size: 17px;
+    line-height: 1.75;
+}}
+.process-photo-stack {{
+    position: relative;
+    min-height: 355px;
+}}
+.process-photo {{
+    position: absolute;
+    object-fit: cover;
+    border: 8px solid white;
+    border-radius: 28px;
+    box-shadow: 0 18px 38px rgba(31, 53, 31, .18);
+}}
+.process-photo.one {{ width: 74%; height: 245px; right: 0; top: 0; }}
+.process-photo.two {{ width: 55%; height: 185px; left: 0; bottom: 14px; }}
+.process-photo.three {{ width: 44%; height: 150px; right: 24px; bottom: 0; }}
+.process-section-title {{
+    text-align: center;
+    margin: 4px 0 24px;
+}}
+.process-section-title h3 {{
+    margin: 0;
+    color: #1b5e20;
+    font-size: 30px;
+}}
+.process-section-title p {{
+    margin: 8px auto 0;
+    max-width: 640px;
+    color: #5d6b60;
+    line-height: 1.6;
+}}
+.process-steps {{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 12px;
+    align-items: start;
+    padding: 26px 0 8px;
+}}
+.process-steps::before {{
+    content: "";
+    position: absolute;
+    top: 58px;
+    left: 6%;
+    right: 6%;
+    height: 4px;
+    background: linear-gradient(90deg, #9ccc65, #2e7d32);
+    border-radius: 99px;
+    opacity: .72;
+}}
+.step-card {{
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, .96);
+    border: 1px solid #dce8d8;
+    border-radius: 22px;
+    padding: 64px 14px 18px;
+    min-height: 205px;
+    box-shadow: 0 12px 24px rgba(23, 53, 31, .09);
+    transition: transform .2s ease, box-shadow .2s ease;
+}}
+.step-card:hover {{
+    transform: translateY(-5px);
+    box-shadow: 0 18px 34px rgba(23, 53, 31, .14);
+}}
+.step-number {{
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: #2e7d32;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 900;
+    border: 5px solid #eff8e8;
+    box-shadow: 0 8px 18px rgba(46, 125, 50, .28);
+}}
+.step-card h4 {{
+    margin: 0 0 8px;
+    color: #17351f;
+    font-size: 17px;
+    text-align: center;
+}}
+.step-card p {{
+    margin: 0;
+    color: #4f5f52;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+}}
+.process-note {{
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}}
+.note-box {{
+    background: #eaf5e6;
+    border-radius: 22px;
+    padding: 20px 22px;
+    border: 1px solid #d6e8ce;
+}}
+.note-box h4 {{ margin: 0 0 8px; color: #1b5e20; font-size: 20px; }}
+.note-box p {{ margin: 0; color: #425344; line-height: 1.65; }}
+.process-gallery {{
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
-    margin-top: 22px;
+    gap: 16px;
+    margin-top: 28px;
 }}
-.process-gallery-mini img {{
+.process-gallery img {{
     width: 100%;
-    height: 180px;
+    height: 190px;
     object-fit: cover;
-    border-radius: 18px;
-    box-shadow: 0 6px 18px rgba(0,0,0,.12);
+    border-radius: 22px;
+    box-shadow: 0 12px 26px rgba(0,0,0,.12);
 }}
-.process-bottom-note {{
-    margin-top: 18px;
-    background: #e8f5e9;
-    border-left: 5px solid #2e7d32;
-    border-radius: 14px;
-    padding: 14px 16px;
-    color: #29432d;
-    font-size: 18px;
+.process-quote {{
+    margin-top: 24px;
+    padding: 18px 22px;
+    background: #17351f;
+    color: #fffdf4;
+    border-radius: 22px;
+    font-size: 20px;
+    line-height: 1.55;
+    text-align: center;
     font-style: italic;
 }}
-@media (max-width: 900px) {{
-    .process-map-head {{ grid-template-columns: 1fr; }}
-    .process-flow {{ grid-template-columns: 1fr; }}
-    .flow-arrow {{ transform: rotate(90deg); font-size: 28px; }}
-    .process-gallery-mini {{ grid-template-columns: 1fr; }}
-    .process-gallery-mini img {{ height: 210px; }}
+@media (max-width: 980px) {{
+    .process-page {{ padding: 18px; }}
+    .process-hero {{ grid-template-columns: 1fr; }}
+    .process-photo-stack {{ min-height: 280px; }}
+    .process-steps {{ grid-template-columns: 1fr; gap: 16px; padding-top: 8px; }}
+    .process-steps::before {{ left: 31px; right: auto; top: 0; bottom: 0; width: 4px; height: auto; }}
+    .step-card {{ min-height: auto; padding: 18px 18px 18px 82px; }}
+    .step-number {{ left: 31px; top: 18px; transform: none; width: 48px; height: 48px; }}
+    .step-card h4, .step-card p {{ text-align: left; }}
+    .process-note {{ grid-template-columns: 1fr; }}
+    .process-gallery {{ grid-template-columns: 1fr; }}
+    .process-gallery img {{ height: 220px; }}
 }}
 </style>
-<div class="process-map-page">
-    <div class="process-map-head">
-        <div class="process-map-intro">
-            <h2>🌾 Nguồn nguyên liệu & khu vực sản xuất</h2>
-            <p>Cốm Làng Vòng được tạo nên từ những hạt lúa nếp non còn ngậm sữa. Nguyên liệu được chọn lọc kỹ, thu hoạch đúng mùa và đưa vào các công đoạn rang, giã, sàng, đóng gói cẩn thận để giữ trọn hương vị mùa thu Hà Nội.</p>
+
+<div class="process-page">
+    <section class="process-hero">
+        <div>
+            <div class="process-kicker">Nguồn nguyên liệu & khu vực sản xuất</div>
+            <h2>Từ hạt nếp non đến hương cốm Hà Nội</h2>
+            <p>Cốm Làng Vòng bắt đầu từ những hạt lúa nếp non còn ngậm sữa. Nguyên liệu được chọn lọc, thu hoạch đúng mùa rồi đi qua các công đoạn thủ công như sơ chế, rang, giã, sàng và đóng gói để giữ màu xanh, độ dẻo và mùi thơm tự nhiên.</p>
         </div>
-        <div class="process-note-card">
-            <h3>Ghi chú nhanh</h3>
-            <p>Sơ đồ mô phỏng theo bản phác thảo: chọn lọc, thu hoạch, sơ chế, rang, giã, sàng và đóng gói.</p>
+        <div class="process-photo-stack">
+            <img class="process-photo one" src="{img1}" alt="Nguyên liệu cốm">
+            <img class="process-photo two" src="{img2}" alt="Hạt nếp non">
+            <img class="process-photo three" src="{img3}" alt="Rang cốm">
         </div>
+    </section>
+
+    <div class="process-section-title">
+        <h3>Quy trình sản xuất</h3>
+        <p>Bố cục được làm lại gọn và hiện đại hơn nhưng vẫn bám theo bản phác thảo: chọn lọc → thu hoạch → sơ chế → rang → giã → sàng → đóng gói.</p>
     </div>
 
-    <div class="process-flow">
-        <div class="flow-card"><div class="flow-icon">🌾</div><h3>Chọn lọc kỹ</h3><p>Chọn hạt lúa nếp non đạt độ sữa, loại bỏ hạt lép và tạp chất.</p></div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-card"><div class="flow-icon">⏰</div><h3>Thu hoạch đúng mùa</h3><p>Thu hoạch khi hạt còn non để giữ màu xanh, vị ngọt và mùi thơm.</p></div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-card"><div class="flow-icon">🍃</div><h3>Sơ chế nhanh</h3><p>Làm sạch nguyên liệu sớm sau thu hoạch để bảo toàn độ tươi.</p></div>
+    <section class="process-steps">
+        <article class="step-card"><div class="step-number">1</div><h4>Chọn lọc kỹ</h4><p>Chọn hạt lúa nếp non đạt độ sữa, loại bỏ hạt lép, hạt sâu và tạp chất.</p></article>
+        <article class="step-card"><div class="step-number">2</div><h4>Thu hoạch đúng mùa</h4><p>Thu hoạch khi hạt còn non để giữ vị ngọt thanh, màu xanh và hương thơm.</p></article>
+        <article class="step-card"><div class="step-number">3</div><h4>Sơ chế nhanh</h4><p>Làm sạch nguyên liệu sớm sau thu hoạch để bảo toàn độ tươi của hạt nếp.</p></article>
+        <article class="step-card"><div class="step-number">4</div><h4>Rang</h4><p>Rang từng mẻ với lửa đều để hạt chín tới, thơm mà không bị cháy cạnh.</p></article>
+        <article class="step-card"><div class="step-number">5</div><h4>Giã</h4><p>Giã đều tay để hạt mềm dẻo, sạch vỏ và không bị nát.</p></article>
+        <article class="step-card"><div class="step-number">6</div><h4>Sàng</h4><p>Sàng sảy kỹ để loại bỏ trấu, hạt vỡ và dị vật còn sót lại.</p></article>
+        <article class="step-card"><div class="step-number">7</div><h4>Đóng gói</h4><p>Cân định lượng, đóng gói sạch và bảo quản nơi khô mát trước khi giao khách.</p></article>
+    </section>
 
-        <div class="flow-card"><div class="flow-icon">🥢</div><h3>Giã</h3><p>Giã đều tay để hạt mềm dẻo, sạch vỏ và không bị nát.</p></div>
-        <div class="flow-arrow">←</div>
-        <div class="flow-card"><div class="flow-icon">🔥</div><h3>Rang</h3><p>Rang từng mẻ với lửa đều để giữ hương thơm tự nhiên.</p></div>
-        <div class="flow-arrow">↓</div>
-        <div class="flow-card"><div class="flow-icon">✅</div><h3>Sàng</h3><p>Sàng sảy kỹ để loại bỏ trấu, hạt vỡ và dị vật.</p></div>
+    <section class="process-note">
+        <div class="note-box"><h4>Khu vực sản xuất</h4><p>Các công đoạn rang, giã, sàng và đóng gói được bố trí theo luồng một chiều, hạn chế lẫn tạp chất và giữ vệ sinh cho thành phẩm.</p></div>
+        <div class="note-box"><h4>Điểm nhấn truyền thống</h4><p>Quy trình thủ công giúp cốm giữ được độ dẻo, mùi thơm nhẹ và cảm giác thanh nhã đặc trưng của mùa thu Hà Nội.</p></div>
+    </section>
 
-        <div></div><div></div>
-        <div class="flow-card"><div class="flow-icon">📦</div><h3>Đóng gói</h3><p>Cân định lượng, đóng gói sạch và bảo quản nơi khô mát.</p></div>
-        <div></div><div></div>
-    </div>
-
-    <div class="process-gallery-mini">
-        <img src="{img1}" alt="Nguồn nguyên liệu cốm">
-        <img src="{img2}" alt="Hạt cốm tươi">
+    <div class="process-gallery">
         <img src="{img3}" alt="Rang cốm">
+        <img src="{img4}" alt="Giã cốm">
+        <img src="{img5}" alt="Sàng cốm">
     </div>
 
-    <div class="process-bottom-note">Giữ trọn vẹn hương vị mùa thu của Hà Nội qua từng công đoạn thủ công.</div>
+    <div class="process-quote">“Giữ trọn vẹn hương vị mùa thu Hà Nội qua từng công đoạn thủ công.”</div>
 </div>
 """
-    components.html(html, height=980, scrolling=True)
+    components.html(html, height=1120, scrolling=True)
 
 def render_ingredient_page():
 
