@@ -301,7 +301,7 @@ PAGE_DATABASE = {
     "sanpham_main": {
         "title": "Sản phẩm",
         "type": "group",
-        "items": ["sanpham", "thuonghieu", "tensp_masp"],
+        "items": ["sanpham", "congthuc"],
     },
     "baobi_main": {
         "title": "Bao bì & bảo quản",
@@ -317,7 +317,7 @@ PAGE_DATABASE = {
     "thongtinsp": {
         "title": "Thông tin sản phẩm",
         "type": "group",
-        "items": ["sanpham", "thuonghieu", "tensp_masp"],
+        "items": ["sanpham", "congthuc"],
     },
     "truyxuat": {
         "title": "Truy xuất nguồn gốc",
@@ -374,13 +374,18 @@ PAGE_DATABASE = {
             "Khám phá các sản phẩm đặc sản từ cốm Làng Vòng, kèm giá bán và định lượng."
         ],
     },
-    "thuonghieu": {
-        "title": "Thương hiệu",
+    "congthuc": {
+        "title": "Công thức & Cách làm món ăn",
         "card_class": "card",
-        "card_title": "🌿 Thương hiệu Cốm Làng Vòng",
+        "card_title": "🍽️ Công thức & Cách làm món ăn",
         "paragraphs": [
-            "Cốm Làng Vòng là thương hiệu gắn với làng nghề truyền thống Hà Nội.",
-            "Sản phẩm đại diện cho nét tinh tế và văn hóa ẩm thực Thủ đô.",
+            "Chọn một sản phẩm trong danh sách để xem công thức, nguyên liệu chi tiết, các bước làm minh họa và lưu ý khi chế biến.",
+            "Các công thức được trình bày theo từng món để khách hàng dễ theo dõi và thực hiện tại nhà.",
+        ],
+        "bullets": [
+            "Bánh cốm, bánh xu xê cốm, bánh chưng cốm, bánh trung thu cốm.",
+            "Cốm xào dừa, mochi cốm, sữa chua cốm, xôi cốm.",
+            "Tôm tẩm cốm và các món đặc sản khác.",
         ],
     },
     "tensp_masp": {
@@ -1318,6 +1323,187 @@ footer {visibility: hidden;}
     }
 }
 
+
+.recipe-shell {
+    background: #fffdf4;
+    border-radius: 24px;
+    padding: 22px;
+    margin-top: 18px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+
+.recipe-quick-title {
+    color: #17351f;
+    font-size: 26px;
+    margin: 0 0 14px;
+}
+
+.recipe-quick-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.recipe-quick-card {
+    display: block;
+    background: white;
+    border: 1px solid #dce8d8;
+    border-radius: 16px;
+    padding: 12px 14px;
+    text-decoration: none;
+    color: #17351f !important;
+    font-weight: 800;
+    box-shadow: 0 4px 12px rgba(0,0,0,.06);
+}
+
+.recipe-quick-card span {
+    display: block;
+    color: #2e7d32;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.recipe-book {
+    position: relative;
+    max-width: 920px;
+    margin: 8px auto 0;
+    min-height: 560px;
+    perspective: 1800px;
+}
+
+.recipe-page {
+    display: none;
+    background: linear-gradient(90deg, #fff8df 0%, #fffdf4 48%, #f8edc8 50%, #fffdf4 52%, #fff8df 100%);
+    border: 2px solid #d7b56d;
+    border-radius: 22px;
+    box-shadow: 0 14px 34px rgba(70,45,12,.22);
+    padding: 28px;
+    min-height: 560px;
+    animation: pageFlip .45s ease;
+}
+
+.recipe-page.active {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 34px;
+}
+
+@keyframes pageFlip {
+    from { transform: rotateY(-8deg); opacity: .55; }
+    to { transform: rotateY(0deg); opacity: 1; }
+}
+
+.recipe-page-left,
+.recipe-page-right {
+    min-width: 0;
+}
+
+.recipe-page h3 {
+    color: #1b5e20;
+    font-size: 26px;
+    margin: 0 0 10px;
+}
+
+.recipe-page h4 {
+    color: #7a4b00;
+    font-size: 18px;
+    margin: 16px 0 8px;
+}
+
+.recipe-page ul,
+.recipe-page ol {
+    margin: 0;
+    padding-left: 22px;
+}
+
+.recipe-page li {
+    margin: 7px 0;
+    line-height: 1.45;
+}
+
+.recipe-serving {
+    display: inline-block;
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.recipe-open-detail {
+    display: inline-block;
+    background: #2e7d32;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 999px;
+    padding: 10px 16px;
+    font-weight: 900;
+    margin-top: 14px;
+}
+
+.recipe-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.recipe-controls button {
+    border: none;
+    background: #2e7d32;
+    color: white;
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.recipe-counter {
+    font-weight: 900;
+    color: #17351f;
+}
+
+@media (max-width: 1024px) {
+    .recipe-quick-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .recipe-book {
+        min-height: auto;
+    }
+
+    .recipe-page,
+    .recipe-page.active {
+        display: block;
+        min-height: auto;
+        padding: 20px;
+        background: #fffdf4;
+    }
+
+    .recipe-page-left {
+        border-bottom: 1px dashed #d7b56d;
+        padding-bottom: 16px;
+        margin-bottom: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .recipe-shell {
+        padding: 14px;
+    }
+
+    .recipe-quick-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .recipe-page h3 {
+        font-size: 22px;
+    }
+}
+
 </style>
 """.replace("__BANNER_IMAGE__", image_to_data_uri("Banner com.jpg")),
     unsafe_allow_html=True,
@@ -1335,7 +1521,7 @@ st.markdown(
 <div class="menu">
 <div class="dropdown"><a href="?page=gioithieu" target="_self" style="text-decoration:none;"><button class="dropbtn">Giới thiệu</button></a><div class="dropdown-content"><a href="?page=cauchuyen" target="_self">Câu chuyện Cốm Làng Vòng</a><a href="?page=video" target="_self">Hành trình hương cốm</a></div></div>
 <div class="dropdown"><a href="?page=quytrinh" target="_self" style="text-decoration:none;"><button class="dropbtn">Quy trình & nguồn gốc</button></a><div class="dropdown-content"><a href="?page=nguyenlieu" target="_self">Nguồn nguyên liệu</a><a href="?page=khuvuc" target="_self">Khu vực sản xuất</a></div></div>
-<div class="dropdown"><a href="?page=sanpham_main" target="_self" style="text-decoration:none;"><button class="dropbtn">Sản phẩm</button></a><div class="dropdown-content"><a href="?page=sanpham" target="_self">Danh sách sản phẩm</a><a href="?page=thuonghieu" target="_self">Thương hiệu</a><a href="?page=tensp_masp" target="_self">Tên & mã sản phẩm</a></div></div>
+<div class="dropdown"><a href="?page=sanpham_main" target="_self" style="text-decoration:none;"><button class="dropbtn">Sản phẩm</button></a><div class="dropdown-content"><a href="?page=sanpham" target="_self">Danh sách sản phẩm</a><a href="?page=congthuc" target="_self">Công thức & Cách làm món ăn</a></div></div>
 <div class="dropdown"><a href="?page=chatluong" target="_self" style="text-decoration:none;"><button class="dropbtn">Chất lượng</button></a></div>
 <div class="dropdown"><a href="?page=baobi_main" target="_self" style="text-decoration:none;"><button class="dropbtn">Bao bì & bảo quản</button></a><div class="dropdown-content"><a href="?page=muc_giay" target="_self">Mực & giấy bao bì</a><a href="?page=thuhoi" target="_self">Chính sách thu hồi</a></div></div>
 <a href="?page=giohang" target="_self" class="cart-menu-btn">🛒 Giỏ hàng (__CART_COUNT__)</a>
@@ -1746,6 +1932,109 @@ def render_products():
     st.markdown(html, unsafe_allow_html=True)
 
 
+
+def render_recipe_book_page():
+    """Render recipe menu as a book with flip pages and quick access links."""
+    quick_html = (
+        "<div class='recipe-shell'>"
+        "<h2 class='recipe-quick-title'>📖 Sổ tay công thức món ăn</h2>"
+        "<p>Ấn vào tên món để mở ngay trang công thức chi tiết, hoặc lật từng trang sách bên dưới để xem nhanh nguyên liệu và cách làm.</p>"
+        "<h3>🔎 Mở nhanh công thức</h3>"
+        "<div class='recipe-quick-grid'>"
+    )
+
+    for index, product in enumerate(PRODUCTS):
+        quick_html += (
+            f"<a class='recipe-quick-card' href='?page=chitietsp&product={index}' target='_self'>"
+            f"{escape(product['name'])}<span>Xem công thức chi tiết →</span></a>"
+        )
+
+    quick_html += "</div>"
+
+    pages_html = "<div class='recipe-book' id='recipeBook'>"
+
+    for index, product in enumerate(PRODUCTS):
+        ingredient_data = get_recipe_ingredient_data(product)
+        ingredients_html = "".join(
+            f"<li><b>{escape(item_name)}</b> {escape(amount)} {escape(note)}</li>"
+            for item_name, amount, note in ingredient_data["items"]
+        )
+        _, process, _ = build_product_details(product)
+        process_html = "".join(f"<li>{escape(step)}</li>" for step in process)
+
+        active_class = " active" if index == 0 else ""
+        pages_html += (
+            f"<article class='recipe-page{active_class}'>"
+            f"<div class='recipe-page-left'>"
+            f"<h3>{escape(product['name'])}</h3>"
+            f"<div class='recipe-serving'>👥 {escape(ingredient_data['serving'])}</div>"
+            f"<h4>Nguyên liệu</h4>"
+            f"<ul>{ingredients_html}</ul>"
+            f"</div>"
+            f"<div class='recipe-page-right'>"
+            f"<h4>Cách làm</h4>"
+            f"<ol>{process_html}</ol>"
+            f"<a class='recipe-open-detail' href='?page=chitietsp&product={index}' target='_self'>Mở trang công thức món này</a>"
+            f"</div>"
+            f"</article>"
+        )
+
+    pages_html += "</div>"
+
+    controls_html = (
+        "<div class='recipe-controls'>"
+        "<button type='button' onclick='prevRecipePage()'>← Trang trước</button>"
+        "<span class='recipe-counter' id='recipeCounter'>Trang 1 / " + str(len(PRODUCTS)) + "</span>"
+        "<button type='button' onclick='nextRecipePage()'>Trang sau →</button>"
+        "</div>"
+        "</div>"
+        "<script>"
+        "let recipePageIndex = 0;"
+        "const recipePages = document.querySelectorAll('.recipe-page');"
+        "const recipeCounter = document.getElementById('recipeCounter');"
+        "function showRecipePage(i) {"
+        "  recipePages[recipePageIndex].classList.remove('active');"
+        "  recipePageIndex = (i + recipePages.length) % recipePages.length;"
+        "  recipePages[recipePageIndex].classList.add('active');"
+        "  recipeCounter.textContent = 'Trang ' + (recipePageIndex + 1) + ' / ' + recipePages.length;"
+        "}"
+        "function nextRecipePage() { showRecipePage(recipePageIndex + 1); }"
+        "function prevRecipePage() { showRecipePage(recipePageIndex - 1); }"
+        "</script>"
+    )
+
+    st.markdown(quick_html + pages_html + controls_html, unsafe_allow_html=True)
+
+
+def render_recipe_index_page():
+    """Render a recipe index so the menu item Công thức & Cách làm món ăn has a useful page."""
+    html = (
+        "<div class='card'>"
+        "<h3>🍽️ Công thức & Cách làm món ăn</h3>"
+        "<p>Chọn món bên dưới để xem nguyên liệu chi tiết, cách làm minh họa, lưu ý chế biến và giá trị dinh dưỡng.</p>"
+        "</div>"
+    )
+
+    html += "<section class='product-section'><div class='product-grid'>"
+
+    for index, product in enumerate(PRODUCTS):
+        detail_url = f"?page=chitietsp&product={index}"
+        html += (
+            f"<div class='product-card'>"
+            f"<a href='{detail_url}' target='_self' class='product-card-link'>"
+            f"{render_product_image(product)}"
+            f"<div class='product-info'>"
+            f"<h3>{product['name']}</h3>"
+            f"<p>Xem công thức và cách làm chi tiết</p>"
+            f"</div>"
+            f"</a>"
+            f"</div>"
+        )
+
+    html += "</div></section>"
+    st.markdown(html, unsafe_allow_html=True)
+
+
 def build_product_notes(product):
     name = product.get("name", "sản phẩm")
     return [
@@ -1800,6 +2089,148 @@ def render_compact_product_grid(indexes):
         )
     html += '</div>'
     st.markdown(html, unsafe_allow_html=True)
+
+
+
+def get_recipe_ingredient_data(product):
+    """Return detailed ingredient data for recipe views."""
+    name = product.get("name", "sản phẩm")
+
+    ingredient_data = {
+        "Bánh Cốm Truyền Thống": {
+            "serving": "Cho 10 cái",
+            "items": [
+                ("Cốm khô", "300 gram", ""),
+                ("Đậu xanh", "50 gram", "(đã cà vỏ ngâm mềm)"),
+                ("Đường cát", "80 gram", "(có thể tăng giảm tùy khẩu vị)"),
+                ("Bột nếp", "3 muỗng canh", ""),
+                ("Dầu ăn", "1 muỗng canh", ""),
+                ("Lá dứa", "20 gram", "(4 lá)"),
+                ("Nước hoa bưởi", "10 ml", ""),
+            ],
+        },
+        "Bánh Xu Xê Cốm": {
+            "serving": "Cho 33 - 35 viên bánh",
+            "items": [
+                ("Bột năng", "200 gr", ""),
+                ("Cốm khô", "200 gr", ""),
+                ("Dừa non nạo sợi", "200 gr", ""),
+                ("Nước cốt dừa", "100 gr", ""),
+                ("Đường", "210 gr", ""),
+                ("Lá dứa", "14 lá", "(lá nếp)"),
+                ("Muối", "1 ít", ""),
+                ("Tinh chất lá dứa", "1 ít", "(tùy chọn)"),
+                ("Vừng rang", "1 ít", ""),
+                ("Dầu ăn", "2 thìa cà phê", ""),
+            ],
+        },
+        "Bánh Chưng Cốm": {
+            "serving": "Cho 10 cái",
+            "items": [
+                ("Gạo nếp", "2 kg", ""),
+                ("Cốm dẹp", "1 kg", ""),
+                ("Thịt ba chỉ", "800 gr", ""),
+                ("Đậu xanh", "800 gr", "(cà vỏ)"),
+                ("Dầu ăn", "7 muỗng canh", ""),
+                ("Gia vị thông dụng", "1 ít", "(muối/ tiêu/ bột ngọt)"),
+            ],
+        },
+        "Bánh Trung Thu Cốm": {
+            "serving": "Cho 7 chiếc bánh 150gr",
+            "items": [
+                ("Bột mì đa dụng", "300 gr", ""),
+                ("Cốm khô", "150 gr", ""),
+                ("Dừa tươi bào sợi", "150 gr", ""),
+                ("Nước đường làm bánh nướng", "200 gr", ""),
+                ("Đường", "60 gr", ""),
+                ("Dầu ăn", "45 gr", ""),
+                ("Nước dừa tươi", "150 gr", "(có thể thay bằng nước lọc)"),
+                ("Nước cốt dừa", "50 gr", ""),
+                ("Lòng đỏ trứng gà", "2 quả", ""),
+                ("Rượu mai quế lộ", "1 muỗng canh", ""),
+                ("Bơ đậu phộng", "1 muỗng cà phê", ""),
+                ("Hương cốm", "5 gr", ""),
+                ("Nước", "1 muỗng canh", "(hoặc sữa tươi)"),
+                ("Dầu mè", "1 muỗng cà phê", ""),
+            ],
+        },
+        "Cốm Xào Dừa": {
+            "serving": "Cho 2 người",
+            "items": [
+                ("Cốm dẹp", "150 gr", ""),
+                ("Nước dừa", "200 ml", ""),
+                ("Dừa nạo", "25 gr", ""),
+                ("Đường", "4 muỗng canh", ""),
+            ],
+        },
+        "Mochi Cốm": {
+            "serving": "Cho 8 chiếc bánh",
+            "items": [
+                ("Cốm tươi", "150 gr", "(hoặc 100 gram cốm khô)"),
+                ("Đậu xanh khô", "100 gr", "(loại đã tách vỏ)"),
+                ("Nước cốt dừa", "180 gr", "(100gr dùng làm vỏ bánh và 80gr sên nhân)"),
+                ("Nước dừa tươi", "120 gr", ""),
+                ("Đường vàng", "60 gr", ""),
+                ("Dầu ăn", "42 gr", ""),
+                ("Tinh chất lá dứa", "1 ít", "(khoảng 2 hoặc 3 giọt)"),
+                ("Màu thực phẩm vàng", "1 ít", "(có thể bỏ qua)"),
+                ("Muối", "1 ít", ""),
+                ("Cơm dừa sấy khô", "1 ít", ""),
+            ],
+        },
+        "Sữa Chua Cốm": {
+            "serving": "Cho 50 hũ",
+            "items": [
+                ("Cốm xanh", "300 gr", "(hạt tròn)"),
+                ("Sữa chua không đường", "2 hộp", ""),
+                ("Sữa đặc", "380 gr", ""),
+                ("Sữa tươi không đường", "1 lít", ""),
+                ("Bột kem béo", "300 gr", ""),
+                ("Bột năng", "120 gr", ""),
+                ("Lá dứa", "3 cái", ""),
+                ("Đường", "600 gr", ""),
+                ("Muối", "2 gr", ""),
+            ],
+        },
+        "Tôm Tẩm Cốm": {
+            "serving": "Cho 2 người",
+            "items": [
+                ("Tôm", "500 gr", ""),
+                ("Cốm dẹp", "200 gr", ""),
+                ("Bột chiên giòn", "150 gr", ""),
+                ("Trứng gà", "2 quả", ""),
+                ("Tỏi băm", "1 muỗng cà phê", ""),
+                ("Dầu ăn", "30 ml", ""),
+                ("Gia vị thông dụng", "1 ít", "(tiêu/ đường/ hạt nêm/ bột ngọt)"),
+            ],
+        },
+        "Xôi Cốm": {
+            "serving": "Cho 1 món xôi cốm",
+            "items": [
+                ("Cốm tươi", "400g", "(chọn cốm màu xanh nhẹ, hơi ngả vàng, loại mỏng nhưng dẻo và chắc)"),
+                ("Đậu xanh", "100g", ""),
+                ("Hạt sen", "100g", ""),
+                ("Dừa sợi", "120g", ""),
+                ("Nước cốt dừa", "vừa đủ", ""),
+                ("Lá nếp thơm", "vừa đủ", "(lá dứa)"),
+                ("Gia vị", "Muối, đường", ""),
+                ("Dụng cụ", "Xửng hấp, lá sen", "(nếu có)"),
+            ],
+        },
+    }
+
+    return ingredient_data.get(
+        name,
+        {
+            "serving": "Cho 4 phần",
+            "items": [
+                ("Nguyên liệu chính", "vừa đủ", ""),
+                ("Gia vị", "vừa đủ", ""),
+                ("Nguyên liệu phụ", "tùy sản phẩm", ""),
+                ("Bao bì thực phẩm sạch", "vừa đủ", ""),
+            ],
+        },
+    )
 
 
 def build_ingredients_card(product):
@@ -2202,6 +2633,10 @@ def render_page(page_data):
             render_content_card(child_data, show_full=True)
 
         return
+    if page_data["page_id"] == "congthuc":
+        render_recipe_book_page()
+        return
+
     if page_data["type"] == "products":
         render_products()
         return
