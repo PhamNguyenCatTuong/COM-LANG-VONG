@@ -140,7 +140,7 @@ PRODUCTS = [
         "name": "Ô Mai Sấu Hà Nội",
         "price": "70.000đ",
         "weight": "250g / hộp",
-        "image": "o mai sau.jpg",
+        "image": "omai sau.jpg",
     },
     {
         "category": "Các đặc sản khác của Hà Nội",
@@ -151,25 +151,19 @@ PRODUCTS = [
     },
     {
         "category": "Các đặc sản khác của Hà Nội",
+        "name": "Bánh Tôm Hồ Tây",
+        "price": "90.000đ",
+        "weight": "1 phần",
+        "image": "banh tom ho tay.jpg",
+    },
+    {
+        "category": "Các đặc sản khác của Hà Nội",
         "name": "Chả Cá Lã Vọng",
         "price": "180.000đ",
         "weight": "1 phần",
-        "image": "Cha ca la vong.jpg",
+        "image": "cha ca la vong.jpg",
     },
-    {
-        "category": "Các đặc sản khác của Hà Nội",
-        "name": "Bánh chả",
-        "price": "55.000đ",
-        "weight": "200gr",
-        "image": "Banh cha.jpeg",
-    },
-    {
-        "category": "Các đặc sản khác của Hà Nội",
-        "name": "Chè lam",
-        "price": "50.000đ",
-        "weight": "1 hooojp 450gr",
-        "image": "Che lam.jpg",
-    },
+
 ]
 
 PRODUCTION_AREAS = [
@@ -491,8 +485,9 @@ footer {visibility: hidden;}
     border-radius: 15px;
     margin: 10px auto;
     width: 100%;
-    z-index: 999;
+    z-index: 10000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    overflow: visible;
 }
 
 .top-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
@@ -507,10 +502,22 @@ footer {visibility: hidden;}
 .hamburger { font-size: clamp(22px, 5vw, 28px); cursor: pointer; }
 #menu-toggle { display: none; }
 
-.menu { display: none; flex-direction: column; gap: 5px; margin-top: 10px; }
+.menu {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+    overflow: visible;
+    width: 100%;
+}
 #menu-toggle:checked ~ .menu { display: flex; }
 
-.dropdown { position: relative; background: white; border-radius: 8px; overflow: hidden; }
+.dropdown {
+    position: relative;
+    background: white;
+    border-radius: 8px;
+    overflow: visible;
+}
 
 .dropbtn {
     background: #2e7d32;
@@ -529,9 +536,9 @@ footer {visibility: hidden;}
     background: white;
     min-width: 230px;
     border-radius: 0 0 8px 8px;
-    overflow: hidden;
+    overflow: visible;
     box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-    z-index: 9999;
+    z-index: 10000;
 }
 
 .dropdown-content a {
@@ -545,7 +552,10 @@ footer {visibility: hidden;}
 }
 
 .dropdown-content a:hover { background: #f1f8e9; }
-.dropdown:hover .dropdown-content { display: block; }
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+    display: block;
+}
 
 .hero-banner {
     width: 100%;
@@ -786,7 +796,7 @@ footer {visibility: hidden;}
 .compact-actions a { text-decoration:none; color:white !important; background:#f97316; padding:8px 12px; font-size:12px; font-weight:800; }
 .compact-actions a:last-child { background:#14782e; }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .product-detail { grid-template-columns: 1fr; padding: 12px; gap: 14px; }
     .product-detail-image img, .product-detail-image .product-image-placeholder { height: 260px; }
     .process-sketch { grid-template-columns: repeat(2, minmax(0,1fr)); }
@@ -917,18 +927,38 @@ footer {visibility: hidden;}
 .footer-content { max-width: 850px; margin: auto; text-align: center; }
 .footer-content a { color: white; text-decoration: none; }
 
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
     .topbar { display: flex; align-items: center; gap: 20px; }
     .hamburger { display: none; }
     .menu { display: flex !important; flex-direction: row; flex-wrap: wrap; margin-top: 0; }
     .dropbtn { width: auto; text-align: center; border-radius: 8px; }
-    .dropdown-content { position: absolute; border-radius: 10px; }
+    .dropdown-content {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        border-radius: 10px;
+    }
+
+    .dropdown:hover .dropdown-content,
+    .dropdown:focus-within .dropdown-content {
+        display: block;
+    }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .logo { font-size: 34px; }
     .block-container { max-width: 100% !important; }
     .topbar { margin: 6px auto; padding: 10px; }
+    .menu {
+        display: none !important;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #menu-toggle:checked ~ .menu {
+        display: flex !important;
+    }
+
     .dropdown-content {
         display: block !important;
         position: relative;
@@ -937,6 +967,7 @@ footer {visibility: hidden;}
         box-shadow: none;
         border-radius: 0 0 8px 8px;
         margin-top: 0;
+        overflow: visible;
     }
 
     .dropdown-content a {
@@ -952,6 +983,12 @@ footer {visibility: hidden;}
 
     .dropdown {
         margin-bottom: 6px;
+        width: 100%;
+        overflow: visible;
+    }
+
+    .dropbtn {
+        width: 100%;
     }
     .hero-banner { min-height: clamp(300px, 86vw, 380px); margin-top: 10px; }
     .hero-content { width: 78%; padding-left: 22px; padding-top: 140px; }
@@ -1040,7 +1077,7 @@ footer {visibility: hidden;}
     transform: translateY(-4px);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .origin-page {
         padding: 12px;
     }
@@ -1135,7 +1172,7 @@ footer {visibility: hidden;}
     box-shadow: 0 12px 40px rgba(0,0,0,0.12);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
 
     .story-layout {
         grid-template-columns: 1.05fr 0.95fr;
