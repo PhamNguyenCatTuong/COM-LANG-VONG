@@ -2,6 +2,7 @@ import base64
 import mimetypes
 import sqlite3
 from pathlib import Path
+from html import escape
 
 import streamlit as st
 import streamlit.components.v1 as components
@@ -35,32 +36,22 @@ def image_to_data_uri(file_name):
 
 CERTIFICATES = [
     {
-        "image": "CBSP.jpg",
+        "image": "CBSP.PNG",
         "title": "Tự công bố sản phẩm",
         "desc": "Giấy xác nhận tự công bố sản phẩm Cốm Làng Vòng theo quy định an toàn thực phẩm.",
     },
     {
-        "image": "KQKN.jpg",
+        "image": "KQKN.PNG",
         "title": "Phiếu kiểm nghiệm",
         "desc": "Kết quả kiểm nghiệm các chỉ tiêu an toàn thực phẩm của sản phẩm.",
     },
     {
-        "image": "OCOP.JPEG",
+        "image": "OCOP.PNG",
         "title": "Chứng nhận OCOP 4 sao",
         "desc": "Chứng nhận sản phẩm OCOP đạt 4 sao năm 2022.",
     },
     {
-        "image": "HACCP.JPEG",
-        "title": "Chứng nhận HACCP",
-        "desc": "Chứng nhận hệ thống phân tích mối nguy và kiểm soát điểm tới hạn.",
-    },
-    {
-        "image": "GMP.jpg",
-        "title": "Chứng nhận GMP",
-        "desc": "Chứng nhận thực hành sản xuất tốt trong sản xuất thực phẩm.",
-    },
-    {
-        "image": "ATTP.JPEG",
+        "image": "ATTP.PNG",
         "title": "Chứng nhận an toàn thực phẩm",
         "desc": "Chứng nhận cơ sở đủ điều kiện an toàn thực phẩm.",
     },
@@ -73,7 +64,6 @@ PRODUCTS = [
         "price": "65.000đ",
         "weight": "250g / hộp",
         "image": "Banh com.jpg",
-        "desc": "Lớp vỏ cốm xanh mềm dẻo ôm trọn phần nhân đậu xanh sên nhuyễn cùng dừa nạo. Khi thưởng thức cảm nhận rõ vị ngọt thanh, thơm mùi lúa non đặc trưng của mùa thu Hà Nội.",
     },
     {
         "category": "Sản phẩm đặc biệt",
@@ -81,7 +71,6 @@ PRODUCTS = [
         "price": "180.000đ",
         "weight": "700g",
         "image": "banh trung com.jpg",
-        "desc": "Nếp dẻo kết hợp cốm non tạo nên hương thơm dịu nhẹ rất riêng. Nhân đậu xanh và thịt được nêm vừa vị, mang cảm giác ấm áp và đậm chất truyền thống.",
     },
     {
         "category": "Sản phẩm đặc biệt",
@@ -89,7 +78,6 @@ PRODUCTS = [
         "price": "95.000đ",
         "weight": "180g",
         "image": "Banh trung thu com.jpg",
-        "desc": "Phần nhân cốm mềm mịn hòa quyện cùng vị béo nhẹ của hạt sen và dừa sợi. Vỏ bánh nướng thơm bơ tạo hậu vị thanh tao, không quá ngọt.",
     },
     {
         "category": "Sản phẩm phổ biến",
@@ -97,7 +85,6 @@ PRODUCTS = [
         "price": "55.000đ",
         "weight": "6 cái / hộp",
         "image": "Banh xu xe com.jpg",
-        "desc": "Bánh có lớp vỏ trong dẻo dai cùng nhân đậu xanh cốm thơm nhẹ. Khi ăn cảm nhận độ mềm mát và vị ngọt thanh rất dễ chịu.",
     },
     {
         "category": "Sản phẩm đặc biệt",
@@ -105,7 +92,6 @@ PRODUCTS = [
         "price": "35.000đ",
         "weight": "330ml",
         "image": "bia com.jpg",
-        "desc": "Dòng bia thủ công mang hương thơm thoang thoảng của cốm non. Vị bia nhẹ, hậu vị mượt và dễ uống, thích hợp cho những buổi gặp gỡ cuối tuần.",
     },
     {
         "category": "Sản phẩm phổ biến",
@@ -113,7 +99,6 @@ PRODUCTS = [
         "price": "120.000đ",
         "weight": "500g",
         "image": "com moc.jpg",
-        "desc": "Những hạt cốm xanh mềm được làm từ nếp non tuyển chọn, giữ trọn độ dẻo và hương thơm tự nhiên. Khi nhai cảm nhận vị ngọt dịu lan tỏa rất đặc trưng.",
     },
     {
         "category": "Sản phẩm phổ biến",
@@ -121,7 +106,6 @@ PRODUCTS = [
         "price": "85.000đ",
         "weight": "300g",
         "image": "com xao dua.jpg",
-        "desc": "Cốm được xào cùng dừa non và đường phèn tạo độ dẻo béo hấp dẫn. Mùi thơm của lá sen và cốm quyện lại mang cảm giác rất Hà Nội.",
     },
     {
         "category": "Sản phẩm phổ biến",
@@ -129,7 +113,6 @@ PRODUCTS = [
         "price": "75.000đ",
         "weight": "6 bánh / hộp",
         "image": "mochi com.png",
-        "desc": "Lớp mochi mềm dai kết hợp nhân kem cốm béo nhẹ tạo cảm giác mát lạnh khi thưởng thức. Hương cốm thanh thoát giúp món bánh không bị ngấy.",
     },
     {
         "category": "Sản phẩm phổ biến",
@@ -137,7 +120,6 @@ PRODUCTS = [
         "price": "45.000đ",
         "weight": "4 hũ",
         "image": "sua chua com.png",
-        "desc": "Sữa chua mịn kết hợp cốm non tạo vị chua ngọt hài hòa. Từng muỗng mang hương thơm dịu nhẹ và cảm giác thanh mát rất dễ ăn.",
     },
     {
         "category": "Sản phẩm phổ biến",
@@ -145,7 +127,6 @@ PRODUCTS = [
         "price": "140.000đ",
         "weight": "500g",
         "image": "tom tam com.jpg",
-        "desc": "Tôm tươi được phủ lớp cốm xanh rồi chiên vàng giòn. Khi ăn cảm nhận lớp vỏ thơm bùi hòa cùng vị ngọt tự nhiên của tôm.",
     },
     {
         "category": "Sản phẩm phổ biến",
@@ -153,15 +134,13 @@ PRODUCTS = [
         "price": "50.000đ",
         "weight": "1 suất",
         "image": "xoi com.jpg",
-        "desc": "Xôi được nấu từ cốm non dẻo mềm kết hợp đậu xanh và dừa sợi. Hương thơm bùi béo hòa quyện tạo cảm giác vừa dân dã vừa tinh tế.",
     },
     {
         "category": "Các đặc sản khác của Hà Nội",
         "name": "Ô Mai Sấu Hà Nội",
         "price": "70.000đ",
         "weight": "250g / hộp",
-        "image": "omai sau.jpg",
-        "desc": "Ô mai sấu có vị chua ngọt hài hòa, thơm mùi gừng nhẹ và rất hợp dùng làm quà Hà Nội.",
+        "image": "o mai sau.jpg",
     },
     {
         "category": "Các đặc sản khác của Hà Nội",
@@ -169,25 +148,111 @@ PRODUCTS = [
         "price": "220.000đ",
         "weight": "100g",
         "image": "tra sen.jpg",
-        "desc": "Trà sen ướp hương thanh tao, hậu vị dịu ngọt, phù hợp thưởng thức cùng các món bánh truyền thống.",
-    },
-    {
-        "category": "Các đặc sản khác của Hà Nội",
-        "name": "Bánh Tôm Hồ Tây",
-        "price": "90.000đ",
-        "weight": "1 phần",
-        "image": "banh tom ho tay.jpg",
-        "desc": "Bánh tôm giòn rụm, thơm béo, là món ăn gắn với ký ức ẩm thực Hồ Tây.",
     },
     {
         "category": "Các đặc sản khác của Hà Nội",
         "name": "Chả Cá Lã Vọng",
         "price": "180.000đ",
         "weight": "1 phần",
-        "image": "cha ca la vong.jpg",
-        "desc": "Chả cá thơm nghệ, ăn cùng thì là, hành và bún, mang hương vị đặc trưng của Hà Nội.",
+        "image": "Cha ca la vong.jpg",
     },
+    {
+        "category": "Các đặc sản khác của Hà Nội",
+        "name": "Bánh chả",
+        "price": "55.000đ",
+        "weight": "200gr",
+        "image": "Banh cha.jpeg",
+    },
+    {
+        "category": "Các đặc sản khác của Hà Nội",
+        "name": "Chè lam",
+        "price": "50.000đ",
+        "weight": "1 hooojp 450gr",
+        "image": "Che lam.jpg",
+    },
+]
 
+PRODUCTION_AREAS = [
+    {
+        "area_id": "tiep_nhan",
+        "title": "Khu tiếp nhận nguyên liệu",
+        "subtitle": "Kiểm tra lúa nếp non trước khi sơ chế",
+        "images": ["Com tong quan 3.jpg", "hat com tuoi.jpg"],
+        "description": [
+            "Nguyên liệu được tiếp nhận trong khu vực sạch, khô thoáng và tách biệt với khu đóng gói thành phẩm.",
+            "Lúa nếp non được kiểm tra màu sắc, độ non, mùi thơm và loại bỏ tạp chất trước khi đưa vào quy trình làm cốm."
+        ],
+        "fields": {
+            "Chức năng": "Tiếp nhận, phân loại và kiểm tra nguyên liệu đầu vào",
+            "Yêu cầu vệ sinh": "Nền khô, dụng cụ sạch, có khay hoặc mẹt riêng cho nguyên liệu",
+            "Điểm kiểm soát": "Loại bỏ hạt lép, hạt sâu, tạp chất và nguyên liệu không đạt"
+        },
+        "bullets": ["Kiểm tra độ non của hạt lúa", "Phân loại nguyên liệu trước khi rang", "Không để nguyên liệu tiếp xúc trực tiếp với nền", "Ghi nhận thời gian tiếp nhận để đảm bảo độ tươi"],
+    },
+    {
+        "area_id": "rang_com",
+        "title": "Khu rang cốm",
+        "subtitle": "Giữ hương thơm và màu xanh tự nhiên",
+        "images": ["rang com.jpg"],
+        "description": [
+            "Khu rang là nơi quyết định mùi thơm ban đầu của cốm. Người thợ cần kiểm soát lửa đều để hạt cốm chín tới mà không bị cháy.",
+            "Dụng cụ rang phải được vệ sinh trước và sau mỗi mẻ để tránh lẫn tạp chất hoặc mùi lạ."
+        ],
+        "fields": {
+            "Chức năng": "Rang lúa nếp non theo phương pháp truyền thống",
+            "Yêu cầu vệ sinh": "Bếp, chảo rang và dụng cụ đảo cốm sạch, không bám mùi lạ",
+            "Điểm kiểm soát": "Nhiệt độ, thời gian rang và độ chín của hạt"
+        },
+        "bullets": ["Rang từng mẻ vừa đủ để cốm chín đều", "Đảo liên tục để tránh cháy cạnh", "Không dùng dụng cụ bị gỉ sét hoặc bám dầu mỡ", "Tách riêng nguyên liệu sống và nguyên liệu đã rang"],
+    },
+    {
+        "area_id": "gia_sang",
+        "title": "Khu giã và sàng sảy",
+        "subtitle": "Tạo độ dẻo, sạch vỏ và đều hạt",
+        "images": ["gia com.jpg", "sang com.jpg"],
+        "description": [
+            "Sau khi rang, cốm được giã và sàng nhiều lần để tách vỏ trấu, làm hạt mềm dẻo và đều hơn.",
+            "Đây là công đoạn cần sự tỉ mỉ vì lực giã quá mạnh có thể làm nát hạt, còn quá nhẹ sẽ khó tách vỏ."
+        ],
+        "fields": {
+            "Chức năng": "Giã, sàng và làm sạch cốm sau khi rang",
+            "Yêu cầu vệ sinh": "Cối, chày, nia, sàng được làm sạch và để khô trước khi dùng",
+            "Điểm kiểm soát": "Độ dẻo, độ sạch vỏ và kích thước hạt"
+        },
+        "bullets": ["Giã đều tay theo từng mẻ nhỏ", "Sàng bỏ trấu và hạt vỡ", "Không để cốm lẫn dị vật trong quá trình sàng", "Kiểm tra cảm quan trước khi chuyển sang đóng gói"],
+    },
+    {
+        "area_id": "dong_goi",
+        "title": "Khu đóng gói thành phẩm",
+        "subtitle": "Bảo vệ hương cốm trước khi đến tay khách hàng",
+        "images": ["Banh com.jpg", "com moc.jpg"],
+        "description": [
+            "Thành phẩm được đóng gói trong khu vực sạch, hạn chế bụi và côn trùng, giúp giữ hương thơm cũng như chất lượng sản phẩm.",
+            "Bao bì cần có thông tin sản phẩm, định lượng, ngày sản xuất, hạn sử dụng và hướng dẫn bảo quản."
+        ],
+        "fields": {
+            "Chức năng": "Cân định lượng, đóng gói, dán nhãn và hoàn thiện sản phẩm",
+            "Yêu cầu vệ sinh": "Bàn đóng gói sạch, nhân sự dùng găng tay hoặc dụng cụ tiếp xúc thực phẩm",
+            "Điểm kiểm soát": "Khối lượng, nhãn sản phẩm, bao bì kín và nguyên vẹn"
+        },
+        "bullets": ["Cân đúng định lượng từng sản phẩm", "Kiểm tra bao bì trước khi đóng gói", "Dán nhãn đầy đủ thông tin", "Tách riêng sản phẩm lỗi hoặc bao bì hỏng"],
+    },
+    {
+        "area_id": "bao_quan",
+        "title": "Khu bảo quản và xuất hàng",
+        "subtitle": "Giữ sản phẩm khô mát, sạch và dễ truy xuất",
+        "images": ["OCOP.JPEG", "ATTP.JPEG"],
+        "description": [
+            "Sản phẩm sau đóng gói được bảo quản ở nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp và nguồn nhiệt cao.",
+            "Khu xuất hàng cần sắp xếp theo lô để dễ kiểm soát hạn sử dụng và truy xuất khi cần."
+        ],
+        "fields": {
+            "Chức năng": "Lưu kho tạm, kiểm tra đơn hàng và xuất sản phẩm",
+            "Yêu cầu vệ sinh": "Kệ bảo quản sạch, sản phẩm không đặt trực tiếp xuống nền",
+            "Điểm kiểm soát": "Hạn sử dụng, mã lô, tình trạng bao bì và điều kiện nhiệt độ"
+        },
+        "bullets": ["Sắp xếp theo nguyên tắc nhập trước - xuất trước", "Tránh để gần hóa chất hoặc nguồn mùi mạnh", "Kiểm tra bao bì trước khi giao hàng", "Lưu thông tin lô hàng để hỗ trợ truy xuất"],
+    },
 ]
 
 if "cart" not in st.session_state:
@@ -651,6 +716,61 @@ footer {visibility: hidden;}
 .detail-block h3 { margin: 0 0 10px; color: #2e7d32; font-size: 22px; }
 .detail-block ul, .detail-block ol { margin: 0; padding-left: 22px; }
 .detail-block li { margin: 6px 0; }
+
+.ingredient-card {
+    background: white;
+    border-radius: 18px;
+    padding: 22px 24px;
+    margin: 12px 0 18px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.06);
+}
+.ingredient-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.ingredient-head h3 {
+    margin: 0 !important;
+    color: #17351f !important;
+    font-size: 26px !important;
+    font-weight: 900 !important;
+}
+.ingredient-serving {
+    font-size: 18px;
+    color: #666;
+    font-weight: 700;
+}
+.ingredient-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.ingredient-main {
+    font-size: 18px;
+    color: #111827;
+}
+.ingredient-dot {
+    font-size: 24px;
+    margin-right: 6px;
+}
+.ingredient-name {
+    font-weight: 600;
+}
+.ingredient-amount {
+    color: #666;
+    font-size: 14px;
+    margin-left: 8px;
+}
+.ingredient-note {
+    padding-left: 30px;
+    color: #666;
+    margin-top: 2px;
+    font-size: 14px;
+    line-height: 1.3;
+}
 .back-products { display:inline-block; margin-top:16px; color:#2e7d32; font-weight:900; text-decoration:none; }
 .process-sketch { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; margin:14px 0 18px; }
 .process-step { background:white; border:2px dashed #9ccc65; border-radius:16px; padding:14px 10px; text-align:center; min-height:128px; display:flex; flex-direction:column; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,.06); }
@@ -1148,6 +1268,32 @@ def create_database():
             sort_order INTEGER
         )"""
     )
+    conn.execute(
+        """CREATE TABLE production_areas (
+            area_id TEXT PRIMARY KEY,
+            title TEXT,
+            subtitle TEXT,
+            description TEXT,
+            function_text TEXT,
+            hygiene_text TEXT,
+            control_text TEXT,
+            sort_order INTEGER
+        )"""
+    )
+    conn.execute(
+        """CREATE TABLE production_area_bullets (
+            area_id TEXT,
+            content TEXT,
+            sort_order INTEGER
+        )"""
+    )
+    conn.execute(
+        """CREATE TABLE production_area_images (
+            area_id TEXT,
+            image_path TEXT,
+            sort_order INTEGER
+        )"""
+    )
 
     for page_id, data in PAGE_DATABASE.items():
         conn.execute(
@@ -1354,10 +1500,10 @@ def build_product_story(product):
     name = product.get("name", "sản phẩm")
 
     stories = {
-        "Bánh Cốm Truyền Thống": "Bánh cốm truyền thống gợi nhớ những hộp bánh xanh được gói ghém cẩn thận trong các dịp cưới hỏi, lễ Tết và những lần người Hà Nội mang quà đi xa. Mỗi chiếc bánh là sự gặp gỡ giữa hạt cốm non dẻo thơm và nhân đậu xanh ngọt bùi, giữ lại nét thanh nhã của mùa thu Hà Nội.",
+        "Bánh Cốm Truyền Thống": "Bánh cốm ra đời từ thế kỷ 19, khi làng nghề làm cốm tại Hà Nội – đặc biệt là làng Vòng và làng Mễ Trì – bắt đầu nổi tiếng. Ban đầu, cốm được gói trong lá sen để ăn trực tiếp, nhưng với sự sáng tạo của người dân, món bánh cốm ra đời, kết hợp cốm với nhân đậu xanh ngọt bùi, trở thành món quà cưới hỏi không thể thiếu của người Việt.",
         "Bánh Chưng Cốm": "Bánh chưng cốm là cách kể mới của món bánh ngày Tết. Sắc xanh của cốm làm chiếc bánh trở nên mềm mại hơn, vừa quen thuộc như mâm cơm sum họp, vừa có hương thơm rất riêng của làng nghề Hà Nội.",
         "Bánh Trung Thu Cốm": "Bánh trung thu cốm mang hương mùa thu vào đêm rằm. Khi cắt bánh, mùi cốm dịu nhẹ hòa cùng vị ngọt của nhân tạo cảm giác ấm áp, như một món quà dành cho gia đình trong khoảnh khắc đoàn viên.",
-        "Bánh Xu Xê Cốm": "Bánh xu xê cốm thường gắn với lời chúc trọn vẹn, đủ đầy. Lớp vỏ dẻo trong ôm lấy nhân cốm đậu xanh, tượng trưng cho sự hòa hợp và ngọt ngào trong những dịp vui.",
+        "Bánh Xu Xê Cốm": "Bánh xu xê (hay phu thê) là loại bánh ngọt cổ truyền mang ý nghĩa gắn kết tình cảm lứa đôi. Tại Làng Vòng (Hà Nội), món ăn này được biến tấu đầy tinh tế khi kết hợp vỏ bánh dẻo dai từ lá dứa cùng phần nhân cốm tươi, dừa sợi thơm lừng.",
         "Bia Cốm Hà Nội": "Bia cốm Hà Nội là một biến tấu trẻ trung từ hương vị truyền thống. Vị bia nhẹ kết hợp hương cốm thoảng qua, tạo cảm giác vừa hiện đại vừa thân quen trong những cuộc gặp gỡ bạn bè.",
         "Cốm Mộc": "Cốm mộc là hình ảnh nguyên bản nhất của làng Vòng. Từ những hạt lúa nếp non được rang, giã và sàng bằng sự kiên nhẫn, cốm mộc giữ lại vị ngọt thanh và mùi thơm tự nhiên của đồng lúa Hà Nội.",
         "Cốm Xào Dừa": "Cốm xào dừa là món quà của sự khéo léo. Hạt cốm được xào chậm để giữ độ dẻo, quyện cùng dừa non béo nhẹ, tạo nên món ăn dân dã nhưng rất dễ khiến người thưởng thức nhớ lâu.",
@@ -1523,6 +1669,187 @@ def render_compact_product_grid(indexes):
     st.markdown(html, unsafe_allow_html=True)
 
 
+def build_ingredients_card(product):
+    """Return an HTML ingredients card rendered like a recipe box."""
+    name = product.get("name", "sản phẩm")
+
+    ingredient_data = {
+        "Bánh Cốm Truyền Thống": {
+            "serving": "Cho 10 cái",
+            "items": [
+                ("Cốm khô", "300 gram", ""),
+                ("Đậu xanh", "50 gram", "(đã cà vỏ ngâm mềm)"),
+                ("Đường cát", "80 gram", "(có thể tăng giảm tùy khẩu vị)"),
+                ("Bột nếp", "3 muỗng canh", ""),
+                ("Dầu ăn", "1 muỗng canh", ""),
+                ("Lá dứa", "20 gram", "(4 lá)"),
+                ("Nước hoa bưởi", "10 ml", ""),
+            ],
+        },
+        "Bánh Xu Xê Cốm": {
+            "serving": "Cho 33 - 35 viên bánh",
+            "items": [
+                ("Bột năng", "200 gr", ""),
+                ("Cốm khô", "200 gr", ""),
+                ("Dừa non nạo sợi", "200 gr", ""),
+                ("Nước cốt dừa", "100 gr", ""),
+                ("Đường", "210 gr", ""),
+                ("Lá dứa", "14 lá", "(lá nếp)"),
+                ("Muối", "1 ít", ""),
+                ("Tinh chất lá dứa", "1 ít", "(tùy chọn)"),
+                ("Vừng rang", "1 ít", ""),
+                ("Dầu ăn", "2 thìa cà phê", ""),
+            ],
+        },
+        "Bánh Chưng Cốm": {
+            "serving": "Cho 10 cái",
+            "items": [
+                ("Gạo nếp", "2 kg", ""),
+                ("Cốm dẹp", "1 kg", ""),
+                ("Thịt ba chỉ", "800 gr", ""),
+                ("Đậu xanh", "800 gr", "(cà vỏ)"),
+                ("Dầu ăn", "7 muỗng canh", ""),
+                ("Gia vị thông dụng", "1 ít", "(muối/ tiêu/ bột ngọt)"),
+            ],
+        },
+        "Bánh Trung Thu Cốm": {
+            "serving": "Cho 7 chiếc bánh 150gr",
+            "items": [
+                ("Bột mì đa dụng", "300 gr", ""),
+                ("Cốm khô", "150 gr", ""),
+                ("Dừa tươi bào sợi", "150 gr", ""),
+                ("Nước đường làm bánh nướng", "200 gr", ""),
+                ("Đường", "60 gr", ""),
+                ("Dầu ăn", "45 gr", ""),
+                ("Nước dừa tươi", "150 gr", "(có thể thay bằng nước lọc)"),
+                ("Nước cốt dừa", "50 gr", ""),
+                ("Lòng đỏ trứng gà", "2 quả", ""),
+                ("Rượu mai quế lộ", "1 muỗng canh", ""),
+                ("Bơ đậu phộng", "1 muỗng cà phê", ""),
+                ("Hương cốm", "5 gr", ""),
+                ("Nước", "1 muỗng canh", "(hoặc sữa tươi)"),
+                ("Dầu mè", "1 muỗng cà phê", ""),
+            ],
+        },
+        "Cốm Mộc": {
+            "serving": "Cho 500 gram",
+            "items": [
+                ("Lúa nếp non", "1 kg", ""),
+                ("Lá sen", "vài lá", "(dùng để ủ và gói cốm)"),
+                ("Nước sạch", "vừa đủ", ""),
+            ],
+        },
+        "Cốm Xào Dừa": {
+            "serving": "Cho 2 người",
+            "items": [
+                ("Cốm dẹp", "150 gr", ""),
+                ("Nước dừa", "200 ml", ""),
+                ("Dừa nạo", "25 gr", ""),
+                ("Đường", "4 muỗng canh", ""),
+            ],
+        },
+        "Mochi Cốm": {
+            "serving": "Cho 8 chiếc bánh",
+            "items": [
+                ("Cốm tươi", "150 gr", "(hoặc 100 gram cốm khô)"),
+                ("Đậu xanh khô", "100 gr", "(loại đã tách vỏ)"),
+                ("Nước cốt dừa", "180 gr", "(100gr dùng làm vỏ bánh và 80gr sên nhân)"),
+                ("Nước dừa tươi", "120 gr", ""),
+                ("Đường vàng", "60 gr", ""),
+                ("Dầu ăn", "42 gr", ""),
+                ("Tinh chất lá dứa", "1 ít", "(khoảng 2 hoặc 3 giọt)"),
+                ("Màu thực phẩm vàng", "1 ít", "(có thể bỏ qua)"),
+                ("Muối", "1 ít", ""),
+                ("Cơm dừa sấy khô", "1 ít", ""),
+            ],
+        },
+        "Sữa Chua Cốm": {
+            "serving": "Cho 50 hũ",
+            "items": [
+                ("Cốm xanh", "300 gr", "(hạt tròn)"),
+                ("Sữa chua không đường", "2 hộp", ""),
+                ("Sữa đặc", "380 gr", ""),
+                ("Sữa tươi không đường", "1 lít", ""),
+                ("Bột kem béo", "300 gr", ""),
+                ("Bột năng", "120 gr", ""),
+                ("Lá dứa", "3 cái", ""),
+                ("Đường", "600 gr", ""),
+                ("Muối", "2 gr", ""),
+            ],
+        },
+        "Tôm Tẩm Cốm": {
+            "serving": "Cho 2 người",
+            "items": [
+                ("Tôm", "500 gr", ""),
+                ("Cốm dẹp", "200 gr", ""),
+                ("Bột chiên giòn", "150 gr", ""),
+                ("Trứng gà", "2 quả", ""),
+                ("Tỏi băm", "1 muỗng cà phê", ""),
+                ("Dầu ăn", "30 ml", ""),
+                ("Gia vị thông dụng", "1 ít", "(tiêu/ đường/ hạt nêm/ bột ngọt)"),
+            ],
+        },
+        "Bia Cốm Hà Nội": {
+            "serving": "Cho 1 mẻ nhỏ",
+            "items": [
+                ("Malt", "theo công thức", ""),
+                ("Hoa bia", "vừa đủ", ""),
+                ("Men bia", "vừa đủ", ""),
+                ("Nước", "theo dung tích nấu", ""),
+                ("Hương cốm", "vừa đủ", ""),
+            ],
+        },
+        "Xôi Cốm": {
+            "serving": "Cho 1 món xôi cốm",
+            "items": [
+                ("Cốm tươi", "400g", "(chọn cốm màu xanh nhẹ, hơi ngả vàng, loại mỏng nhưng dẻo và chắc)"),
+                ("Đậu xanh", "100g", ""),
+                ("Hạt sen", "100g", ""),
+                ("Dừa sợi", "120g", ""),
+                ("Nước cốt dừa", "vừa đủ", ""),
+                ("Lá nếp thơm", "vừa đủ", "(lá dứa)"),
+                ("Gia vị", "Muối, đường", ""),
+                ("Dụng cụ", "Xửng hấp, lá sen", "(nếu có)"),
+            ],
+        },
+    }
+
+    data = ingredient_data.get(
+        name,
+        {
+            "serving": "Cho 4 phần",
+            "items": [
+                ("Nguyên liệu chính", "vừa đủ", ""),
+                ("Gia vị", "vừa đủ", ""),
+                ("Nguyên liệu phụ", "tùy sản phẩm", ""),
+                ("Bao bì thực phẩm sạch", "vừa đủ", ""),
+            ],
+        },
+    )
+
+    rows = ""
+    for item_name, amount, note in data["items"]:
+        rows += (
+            "<div class='ingredient-row'>"
+            f"<div class='ingredient-main'><span class='ingredient-dot'>•</span> "
+            f"<span class='ingredient-name'>{escape(item_name)}</span> "
+            f"<span class='ingredient-amount'>{escape(amount)}</span></div>"
+        )
+        if note:
+            rows += f"<div class='ingredient-note'>{escape(note)}</div>"
+        rows += "</div>"
+
+    return (
+        "<div class='ingredient-card'>"
+        "<div class='ingredient-head'>"
+        f"<h3>Nguyên liệu làm {escape(name)}</h3>"
+        f"<div class='ingredient-serving'>👥 {escape(data['serving'])}</div>"
+        "</div>"
+        f"<div class='ingredient-list'>{rows}</div>"
+        "</div>"
+    )
+
+
 def render_product_detail_page():
     product_param = params.get("product", "0")
 
@@ -1548,7 +1875,7 @@ def render_product_detail_page():
     notes = build_product_notes(product)
     nutrition = build_product_nutrition(product)
 
-    ingredients_html = "".join(f"<li>{item}</li>" for item in ingredients)
+    ingredients_html = build_ingredients_card(product)
     process_html = "".join(f"<li>{item}</li>" for item in process)
     notes_html = "".join(f"<li>{item}</li>" for item in notes)
     nutrition_html = "".join(f"<li>{item}</li>" for item in nutrition)
@@ -1571,9 +1898,9 @@ def render_product_detail_page():
         f"<a href='?page=chitietsp&product={product_index}&add_cart={product_index}' target='_self' class='cart-btn'>+ Giỏ hàng</a>"
         f"</div>"
         f"</div></div>"
-        f"<div class='detail-block'><h3>Mô tả sản phẩm</h3><p>{story}</p><p>{product['desc']}</p></div>"
+        f"<div class='detail-block'><h3>Giới thiệu sản phẩm</h3><p>{story}</p><p>{product.get('desc', '')}</p></div>"
         f"<div class='detail-block'><h3>Cách làm {product['name']}</h3>"
-        f"<h4>Nguyên liệu</h4><ul>{ingredients_html}</ul>"
+        f"{ingredients_html}"
         f"<h4>Các bước làm minh họa</h4><div class='process-sketch'>{sketch_html}</div>"
         f"<ol>{process_html}</ol></div>"
         f"<div class='detail-block'><h3>Các lưu ý khi làm {product['name']}</h3><ul>{notes_html}</ul></div>"
@@ -1679,7 +2006,7 @@ def render_cart_page():
             f'{render_product_image(product)}'
             f'<div class="product-info">'
             f'<h3>{product["name"]}</h3>'
-            f'<p>{product["desc"]}</p>'
+            f'<p>{product.get("desc", "")}</p>'
             f'<p class="product-weight">⚖️ {product["weight"]}</p>'
             f'<div class="product-price">💰 {product["price"]}</div>'
             f'<p><b>Số lượng:</b> {quantity}</p>'
