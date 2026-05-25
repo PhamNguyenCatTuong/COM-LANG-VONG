@@ -140,7 +140,7 @@ PRODUCTS = [
         "name": "Ô Mai Sấu Hà Nội",
         "price": "70.000đ",
         "weight": "250g / hộp",
-        "image": "omai sau.jpg",
+        "image": "o mai sau.jpg",
     },
     {
         "category": "Các đặc sản khác của Hà Nội",
@@ -151,17 +151,10 @@ PRODUCTS = [
     },
     {
         "category": "Các đặc sản khác của Hà Nội",
-        "name": "Bánh Tôm Hồ Tây",
-        "price": "90.000đ",
-        "weight": "1 phần",
-        "image": "banh tom ho tay.jpg",
-    },
-    {
-        "category": "Các đặc sản khác của Hà Nội",
         "name": "Chả Cá Lã Vọng",
         "price": "180.000đ",
         "weight": "1 phần",
-        "image": "cha ca la vong.jpg",
+        "image": "Cha ca la vong.jpg",
     },
     {
         "category": "Các đặc sản khác của Hà Nội",
