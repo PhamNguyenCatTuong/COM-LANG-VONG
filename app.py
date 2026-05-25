@@ -66,6 +66,13 @@ PRODUCTS = [
         "image": "Banh com.jpg",
     },
     {
+        "category": "Sản phẩm phổ biến",
+        "name": "Chả cốm",
+        "price": "100.000đ",
+        "weight": "500g",
+        "image": "Cha com.jpg",
+    },
+    {
         "category": "Sản phẩm đặc biệt",
         "name": "Bánh Chưng Cốm",
         "price": "180.000đ",
@@ -140,7 +147,7 @@ PRODUCTS = [
         "name": "Ô Mai Sấu Hà Nội",
         "price": "70.000đ",
         "weight": "250g / hộp",
-        "image": "o mai sau.jpg",
+        "image": "omai sau.jpg",
     },
     {
         "category": "Các đặc sản khác của Hà Nội",
@@ -151,10 +158,17 @@ PRODUCTS = [
     },
     {
         "category": "Các đặc sản khác của Hà Nội",
+        "name": "Bánh Tôm Hồ Tây",
+        "price": "90.000đ",
+        "weight": "1 phần",
+        "image": "banh tom ho tay.jpg",
+    },
+    {
+        "category": "Các đặc sản khác của Hà Nội",
         "name": "Chả Cá Lã Vọng",
         "price": "180.000đ",
         "weight": "1 phần",
-        "image": "Cha ca la vong.jpg",
+        "image": "cha ca la vong.jpg",
     },
     {
         "category": "Các đặc sản khác của Hà Nội",
@@ -273,12 +287,53 @@ if add_cart is not None:
         st.query_params["page"] = page or "sanpham"
         if page == "chitietsp":
             st.query_params["product"] = str(product_index)
+        viewed_query = get_current_viewed_query()
+        if viewed_query:
+            st.query_params["viewed"] = viewed_query
         st.rerun()
 
     except (TypeError, ValueError):
         pass
 
 cart_count = sum(st.session_state.cart.values())
+
+
+def get_viewed_products_from_url():
+    """Lấy danh sách sản phẩm đã xem từ URL query params."""
+    viewed_param = params.get("viewed", "")
+    viewed_items = []
+
+    for item in str(viewed_param).split(","):
+        item = item.strip()
+        if item.isdigit():
+            idx = int(item)
+            if 0 <= idx < len(PRODUCTS) and idx not in viewed_items:
+                viewed_items.append(idx)
+
+    return viewed_items
+
+
+def get_current_viewed_query():
+    """Trả về chuỗi viewed hiện tại để gắn vào tất cả link sản phẩm."""
+    viewed_items = st.session_state.get("viewed_products", []) or get_viewed_products_from_url()
+    return ",".join(str(i) for i in viewed_items if 0 <= int(i) < len(PRODUCTS))
+
+
+def page_url(page_id, product_index=None, add_cart=None):
+    """Tạo URL nội bộ và luôn giữ lại lịch sử sản phẩm đã xem."""
+    parts = [f"page={page_id}"]
+
+    if product_index is not None:
+        parts.append(f"product={product_index}")
+
+    if add_cart is not None:
+        parts.append(f"add_cart={add_cart}")
+
+    viewed_query = get_current_viewed_query()
+    if viewed_query:
+        parts.append(f"viewed={viewed_query}")
+
+    return "?" + "&".join(parts)
 
 PAGE_DATABASE = {
     "gioithieu": {
@@ -1725,6 +1780,126 @@ footer {visibility: hidden;}
     }
 }
 
+
+/* SKETCH STYLE FOR QUY TRINH & NGUON GOC */
+.process-map-page {
+    background: #fffdf4;
+    border-radius: 26px;
+    padding: clamp(18px, 4vw, 34px);
+    margin-top: 20px;
+    box-shadow: 0 10px 28px rgba(0,0,0,.08);
+    border: 1px solid #e3ead8;
+}
+.process-map-head {
+    display: grid;
+    grid-template-columns: minmax(240px, 1fr) minmax(220px, 360px);
+    gap: 20px;
+    align-items: start;
+    margin-bottom: 24px;
+}
+.process-map-intro h2 {
+    margin: 0 0 10px;
+    color: #17351f;
+    font-size: clamp(26px, 4vw, 42px);
+    line-height: 1.08;
+}
+.process-map-intro p {
+    color: #425344;
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 0;
+}
+.process-note-card {
+    background: #f1f8e9;
+    border-radius: 18px;
+    padding: 16px 18px;
+    border-left: 5px solid #2e7d32;
+}
+.process-note-card h3 {
+    margin: 0 0 8px;
+    color: #2e7d32;
+    font-size: 20px;
+}
+.process-note-card p {
+    margin: 0;
+    line-height: 1.55;
+}
+.process-flow {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px 26px;
+    align-items: center;
+    margin: 26px 0;
+}
+.flow-card {
+    min-height: 126px;
+    background: white;
+    border: 2px solid #9ccc65;
+    border-radius: 18px;
+    padding: 16px 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 7px 18px rgba(0,0,0,.08);
+    position: relative;
+}
+.flow-card .flow-icon {
+    font-size: 34px;
+    line-height: 1;
+    margin-bottom: 9px;
+}
+.flow-card h3 {
+    margin: 0 0 6px;
+    color: #17351f;
+    font-size: 18px;
+}
+.flow-card p {
+    margin: 0;
+    color: #4b604d;
+    font-size: 13px;
+    line-height: 1.35;
+}
+.flow-arrow {
+    font-size: 34px;
+    color: #2e7d32;
+    text-align: center;
+    font-weight: 900;
+}
+.flow-arrow.down {
+    grid-column: 4;
+}
+.process-bottom-note {
+    margin-top: 24px;
+    font-size: 20px;
+    line-height: 1.65;
+    color: #29432d;
+    font-style: italic;
+    border-top: 1px dashed #b6cfa7;
+    padding-top: 18px;
+}
+.process-gallery-mini {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+}
+.process-gallery-mini img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.12);
+}
+@media (max-width: 1024px) {
+    .process-map-head { grid-template-columns: 1fr; }
+    .process-flow { grid-template-columns: 1fr; gap: 10px; }
+    .flow-arrow, .flow-arrow.down { grid-column: auto; transform: rotate(90deg); }
+    .flow-card { min-height: 110px; }
+    .process-gallery-mini { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .process-bottom-note { font-size: 16px; }
+}
+
 </style>
 """.replace("__BANNER_IMAGE__", image_to_data_uri("Banner com.jpg")),
     unsafe_allow_html=True,
@@ -1741,7 +1916,7 @@ st.markdown(
 </div>
 <div class="menu">
 <div class="dropdown"><a href="?page=gioithieu" target="_self" style="text-decoration:none;"><button class="dropbtn">Giới thiệu</button></a><div class="dropdown-content"><a href="?page=cauchuyen" target="_self">Câu chuyện Cốm Làng Vòng</a><a href="?page=video" target="_self">Hành trình hương cốm</a></div></div>
-<div class="dropdown"><a href="?page=quytrinh" target="_self" style="text-decoration:none;"><button class="dropbtn">Quy trình & nguồn gốc</button></a><div class="dropdown-content"><a href="?page=nguyenlieu" target="_self">Nguồn nguyên liệu</a><a href="?page=khuvuc" target="_self">Khu vực sản xuất</a></div></div>
+<div class="dropdown"><a href="?page=quytrinh" target="_self" style="text-decoration:none;"><button class="dropbtn">Quy trình & nguồn gốc</button></a></div>
 <div class="dropdown"><a href="?page=sanpham_main" target="_self" style="text-decoration:none;"><button class="dropbtn">Sản phẩm</button></a><div class="dropdown-content"><a href="?page=sanpham" target="_self">Danh sách sản phẩm</a><a href="?page=congthuc" target="_self">Công thức & Cách làm món ăn</a></div></div>
 <div class="dropdown"><a href="?page=chatluong" target="_self" style="text-decoration:none;"><button class="dropbtn">Chất lượng</button></a></div>
 <div class="dropdown"><a href="?page=baobi_main" target="_self" style="text-decoration:none;"><button class="dropbtn">Bao bì & bảo quản</button></a><div class="dropdown-content"><a href="?page=muc_giay" target="_self">Mực & giấy bao bì</a><a href="?page=thuhoi" target="_self">Chính sách thu hồi</a></div></div>
@@ -2129,7 +2304,7 @@ def render_products():
         html += '<div class="product-grid">'
 
         for index, product in category_products:
-            detail_url = f"?page=chitietsp&product={index}"
+            detail_url = page_url("chitietsp", product_index=index)
             html += (
                 f'<div class="product-card">'
                 f'<a href="{detail_url}" target="_self" class="product-card-link">'
@@ -2201,7 +2376,7 @@ def render_recipe_index_page():
     html += "<section class='product-section'><div class='product-grid'>"
 
     for index, product in enumerate(PRODUCTS):
-        detail_url = f"?page=chitietsp&product={index}"
+        detail_url = page_url("chitietsp", product_index=index)
         html += (
             f"<div class='product-card'>"
             f"<a href='{detail_url}' target='_self' class='product-card-link'>"
@@ -2259,14 +2434,14 @@ def render_compact_product_grid(indexes):
         product = PRODUCTS[index]
         html += (
             f'<div class="compact-product-card">'
-            f'<a href="?page=chitietsp&product={index}" target="_self" class="compact-product-card">'
+            f'<a href="{page_url("chitietsp", product_index=index)}" target="_self" class="compact-product-card">'
             f'{render_product_image(product)}'
             f'<h4>{product["name"]}</h4>'
             f'<div class="compact-price">{product["price"]}</div>'
             f'</a>'
             f'<div class="compact-actions">'
             f'<a href="tel:0385437503">MUA NGAY</a>'
-            f'<a href="?page=chitietsp&product={index}&add_cart={index}" target="_self">THÊM GIỎ HÀNG</a>'
+            f'<a href="{page_url("chitietsp", product_index=index, add_cart=index)}" target="_self">THÊM GIỎ HÀNG</a>'
             f'</div>'
             f'</div>'
         )
@@ -2610,11 +2785,27 @@ def render_product_detail_page():
         st.write("Vui lòng quay lại danh sách sản phẩm.")
         return
 
+    # Lưu sản phẩm đã xem vào cả session_state và URL.
+    # Quan trọng: mọi link nội bộ đều phải giữ tham số viewed, nếu không Streamlit có thể mất lịch sử khi chuyển trang.
     if "viewed_products" not in st.session_state:
         st.session_state.viewed_products = []
-    st.session_state.viewed_products = [i for i in st.session_state.viewed_products if i != product_index]
-    st.session_state.viewed_products.insert(0, product_index)
+
+    url_viewed = get_viewed_products_from_url()
+    merged_viewed = []
+    for i in st.session_state.viewed_products + url_viewed:
+        if i not in merged_viewed and 0 <= i < len(PRODUCTS):
+            merged_viewed.append(i)
+
+    old_viewed = [i for i in merged_viewed if i != product_index]
+    st.session_state.viewed_products = [product_index] + old_viewed
     st.session_state.viewed_products = st.session_state.viewed_products[:8]
+
+    new_viewed_param = ",".join(str(i) for i in st.session_state.viewed_products)
+    if params.get("viewed", "") != new_viewed_param:
+        st.query_params["page"] = "chitietsp"
+        st.query_params["product"] = str(product_index)
+        st.query_params["viewed"] = new_viewed_param
+        st.rerun()
 
     product = PRODUCTS[product_index]
     ingredients, process, storage = build_product_details(product)
@@ -2626,7 +2817,7 @@ def render_product_detail_page():
     # Phần công thức/cách làm được giữ riêng trong menu "Công thức & Cách làm món ăn".
 
     html = (
-        f"<a href='?page=sanpham' target='_self' class='back-products'>← Quay lại danh sách sản phẩm</a>"
+        f"<a href='{page_url('sanpham')}' target='_self' class='back-products'>← Quay lại danh sách sản phẩm</a>"
         f"<div class='product-detail'>"
         f"<div class='product-detail-image'>{render_product_image(product)}</div>"
         f"<div class='product-detail-info'>"
@@ -2639,7 +2830,7 @@ def render_product_detail_page():
         f"</div>"
         f"<div class='product-actions'>"
         f"<a href='tel:0385437503' class='buy-btn'>Đặt hàng</a>"
-        f"<a href='?page=chitietsp&product={product_index}&add_cart={product_index}' target='_self' class='cart-btn'>+ Giỏ hàng</a>"
+        f"<a href='{page_url('chitietsp', product_index=product_index, add_cart=product_index)}' target='_self' class='cart-btn'>+ Giỏ hàng</a>"
         f"</div>"
         f"</div></div>"
         f"<div class='detail-block'><h3>Giới thiệu sản phẩm</h3><p>{story}</p><p>{product.get('desc', '')}</p></div>"
@@ -2671,8 +2862,78 @@ def render_product_detail_page():
 
 
 def render_origin_process_page():
-    render_ingredient_page()
-    render_production_area_page()
+    img1 = image_to_data_uri("Com tong quan 3.jpg")
+    img2 = image_to_data_uri("hat com tuoi.jpg")
+    img3 = image_to_data_uri("rang com.jpg")
+
+    html = f"""
+<div class="process-map-page">
+    <div class="process-map-head">
+        <div class="process-map-intro">
+            <h2>🌾 Nguồn nguyên liệu & khu vực sản xuất</h2>
+            <p>Cốm Làng Vòng được tạo nên từ những hạt lúa nếp non còn ngậm sữa. Nguyên liệu được chọn lọc kỹ, thu hoạch đúng mùa và đưa vào các công đoạn rang, giã, sàng, đóng gói cẩn thận để giữ trọn hương vị mùa thu Hà Nội.</p>
+        </div>
+        <div class="process-note-card">
+            <h3>Ghi chú nhanh</h3>
+            <p>Sơ đồ bên dưới mô phỏng quy trình theo bản phác thảo: từ chọn lọc nguyên liệu đến đóng gói thành phẩm.</p>
+        </div>
+    </div>
+
+    <div class="process-flow">
+        <div class="flow-card">
+            <div class="flow-icon">🌾</div>
+            <h3>Chọn lọc kỹ</h3>
+            <p>Chọn hạt lúa nếp non đạt độ sữa, loại bỏ hạt lép và tạp chất.</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-card">
+            <div class="flow-icon">⏰</div>
+            <h3>Thu hoạch đúng mùa</h3>
+            <p>Thu hoạch khi hạt còn non để giữ màu xanh, vị ngọt và mùi thơm.</p>
+        </div>
+        <div class="flow-arrow down">↓</div>
+
+        <div class="flow-card">
+            <div class="flow-icon">🥢</div>
+            <h3>Giã</h3>
+            <p>Giã đều tay để hạt mềm dẻo, sạch vỏ và không bị nát.</p>
+        </div>
+        <div class="flow-arrow">←</div>
+        <div class="flow-card">
+            <div class="flow-icon">🔥</div>
+            <h3>Rang</h3>
+            <p>Rang từng mẻ với lửa đều để giữ hương thơm tự nhiên.</p>
+        </div>
+        <div class="flow-card">
+            <div class="flow-icon">🍃</div>
+            <h3>Sơ chế nhanh</h3>
+            <p>Làm sạch nguyên liệu sớm sau thu hoạch để bảo toàn độ tươi.</p>
+        </div>
+
+        <div class="flow-card">
+            <div class="flow-icon">✅</div>
+            <h3>Sàng</h3>
+            <p>Sàng sảy kỹ để loại bỏ trấu, hạt vỡ và dị vật.</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-card">
+            <div class="flow-icon">📦</div>
+            <h3>Đóng gói</h3>
+            <p>Cân định lượng, đóng gói sạch và bảo quản nơi khô mát.</p>
+        </div>
+    </div>
+
+    <div class="process-gallery-mini">
+        <img src="{img1}" alt="Nguồn nguyên liệu cốm">
+        <img src="{img2}" alt="Hạt cốm tươi">
+        <img src="{img3}" alt="Rang cốm">
+    </div>
+
+    <div class="process-bottom-note">Giữ trọn vẹn hương vị mùa thu của Hà Nội qua từng công đoạn thủ công.</div>
+</div>
+"""
+    st.markdown(html, unsafe_allow_html=True)
+
 def render_ingredient_page():
 
     # Nguồn nguyên liệu
