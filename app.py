@@ -1752,8 +1752,9 @@ footer {visibility: hidden;}
 .recipe-image-page img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
+    background: #efe6d6;
 }
 
 .recipe-image-placeholder {
@@ -1778,6 +1779,64 @@ footer {visibility: hidden;}
         height: 460px;
         min-height: 460px;
     }
+}
+
+
+.recipe-jump-box {
+    margin-top: 22px;
+    background: #f1f8e9;
+    border: 1px solid #d6e8ce;
+    border-radius: 22px;
+    padding: 18px 20px;
+}
+.recipe-jump-box h3 {
+    margin: 0 0 6px;
+    color: #1b5e20;
+    font-size: 22px;
+}
+.recipe-jump-box p {
+    margin: 0 0 14px;
+    color: #4b604d;
+}
+.recipe-jump-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+.recipe-jump-item {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    border: 1px solid #cfe3c7;
+    border-radius: 999px;
+    padding: 10px 12px;
+    color: #17351f;
+    font-weight: 800;
+    box-shadow: 0 4px 10px rgba(0,0,0,.06);
+    transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+}
+.recipe-jump-item:hover {
+    transform: translateY(-2px);
+    background: #e8f5e9;
+    box-shadow: 0 8px 16px rgba(0,0,0,.10);
+}
+.recipe-jump-number {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #2e7d32;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 30px;
+    font-size: 14px;
+}
+@media (max-width: 768px) {
+    .recipe-jump-grid { grid-template-columns: 1fr; }
+    .recipe-jump-item { border-radius: 16px; }
 }
 
 
@@ -2330,39 +2389,126 @@ def render_products():
 
 
 def render_recipe_book_page():
-    """Render recipe book with blank image pages for user-provided recipe images."""
-    total_pages = len(PRODUCTS)
+    """Render recipe book with Streamlit controls and quick jump buttons."""
+    recipe_pages = [
+        {"image": "1.jpg", "title": "Chuyện bếp mùa cốm"},
+        {"image": "2.jpg", "title": "Chè cốm"},
+        {"image": "3.jpg", "title": "Chả cốm"},
+        {"image": "4.jpg", "title": "Cốm xào dừa / Tôm tẩm cốm"},
+        {"image": "5.jpg", "title": "Bánh cốm ngũ hương"},
+        {"image": "6.jpg", "title": "Bánh xu xê cốm"},
+        {"image": "7.jpg", "title": "Sữa chua cốm"},
+        {"image": "8.jpg", "title": "Xôi cốm"},
+        {"image": "9.jpg", "title": "Mochi cốm"},
+        {"image": "10.jpg", "title": "Bánh trung thu cốm"},
+        {"image": "11.jpg", "title": "Bánh chưng cốm"},
+    ]
+    total_pages = len(recipe_pages)
 
-    html = (
-        "<div class='recipe-shell'>"
-        "<h2 class='recipe-quick-title'>📖 Sổ tay công thức món ăn</h2>"
-        "<p>Bấm mũi tên hai bên quyển sách để lật trang. Mỗi trang đang để trống để bạn thay bằng hình công thức theo thứ tự.</p>"
+    if "recipe_book_page" not in st.session_state:
+        st.session_state.recipe_book_page = 0
+
+    # Giữ chỉ số trang luôn hợp lệ.
+    st.session_state.recipe_book_page = max(
+        0,
+        min(st.session_state.recipe_book_page, total_pages - 1),
     )
 
-    for index in range(total_pages):
-        checked = " checked" if index == 0 else ""
-        html += f"<input class='recipe-radio' type='radio' name='recipe-pages' id='recipe-page-{index}'{checked}>"
+    current_index = st.session_state.recipe_book_page
+    current_page = recipe_pages[current_index]
+    current_image_path = resolve_asset_path(current_page["image"])
 
-    html += "<div class='recipe-book'>"
+    st.markdown(
+        """
+<div class="recipe-shell-fixed">
+    <h2 class="recipe-quick-title">📖 Sổ tay công thức món ăn</h2>
+    <p class="recipe-help-text">Bấm mũi tên để lật trang, hoặc chọn món ở mục <b>Thao tác nhanh</b> bên dưới để mở đúng trang.</p>
+</div>
+<style>
+.recipe-shell-fixed {
+    background: #fffdf4;
+    border-radius: 24px;
+    padding: 22px;
+    margin-top: 18px;
+    margin-bottom: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+.recipe-help-text {
+    margin: 0;
+    color: #425344;
+    line-height: 1.6;
+}
+.recipe-viewer-box {
+    background: linear-gradient(90deg, #fff8df 0%, #fffdf4 48%, #f8edc8 50%, #fffdf4 52%, #fff8df 100%);
+    border: 2px solid #d7b56d;
+    border-radius: 24px;
+    padding: 18px;
+    box-shadow: 0 14px 34px rgba(70,45,12,.18);
+    margin-bottom: 18px;
+}
+.recipe-viewer-title {
+    text-align: center;
+    color: #17351f;
+    font-weight: 900;
+    margin: 0 0 12px;
+    font-size: 18px;
+}
+.recipe-jump-title {
+    margin: 20px 0 8px;
+    color: #17351f;
+    font-size: 24px;
+    font-weight: 900;
+}
+.recipe-jump-subtitle {
+    margin: 0 0 12px;
+    color: #55675a;
+}
+div[data-testid="stButton"] > button {
+    border-radius: 999px;
+    font-weight: 800;
+}
+</style>
+""",
+        unsafe_allow_html=True,
+    )
 
-    for index in range(total_pages):
-        prev_index = (index - 1) % total_pages
-        next_index = (index + 1) % total_pages
+    left_col, image_col, right_col = st.columns([0.7, 8.6, 0.7])
 
-        html += (
-            f"<article class='recipe-page recipe-page-{index}'>"
-            f"<label class='recipe-side-btn prev' for='recipe-page-{prev_index}'>‹</label>"
-            f"<label class='recipe-side-btn next' for='recipe-page-{next_index}'>›</label>"
-            f"<div class='recipe-image-page'>"
-            f"<div class='recipe-image-placeholder'>Trang sách {index + 1}<br>Thay bằng hình ảnh của bạn</div>"
-            f"</div>"
-            f"<div class='recipe-page-number'>Trang {index + 1} / {total_pages}</div>"
-            f"</article>"
+    with left_col:
+        st.write("")
+        st.write("")
+        if st.button("‹", key="recipe_prev_btn", use_container_width=True):
+            st.session_state.recipe_book_page = (current_index - 1) % total_pages
+            st.rerun()
+
+    with image_col:
+        st.markdown(
+            f"<div class='recipe-viewer-box'><div class='recipe-viewer-title'>Trang {current_index + 1} / {total_pages} · {escape(current_page['title'])}</div>",
+            unsafe_allow_html=True,
         )
+        if current_image_path.exists():
+            st.image(str(current_image_path), use_container_width=True)
+        else:
+            st.error(f"Không tìm thấy ảnh: {current_page['image']}. Hãy đặt ảnh cùng cấp với file app.py.")
+        st.markdown("</div>", unsafe_allow_html=True)
 
-    html += "</div></div>"
-    st.markdown(html, unsafe_allow_html=True)
+    with right_col:
+        st.write("")
+        st.write("")
+        if st.button("›", key="recipe_next_btn", use_container_width=True):
+            st.session_state.recipe_book_page = (current_index + 1) % total_pages
+            st.rerun()
 
+    st.markdown("<div class='recipe-jump-title'>⚡ Thao tác nhanh</div>", unsafe_allow_html=True)
+    st.markdown("<p class='recipe-jump-subtitle'>Chọn món muốn xem, sách sẽ nhảy thẳng đến trang đó.</p>", unsafe_allow_html=True)
+
+    cols = st.columns(3)
+    for index, page_item in enumerate(recipe_pages):
+        with cols[index % 3]:
+            label = f"Trang {index + 1} · {page_item['title']}"
+            if st.button(label, key=f"recipe_jump_{index}", use_container_width=True):
+                st.session_state.recipe_book_page = index
+                st.rerun()
 
 def render_recipe_index_page():
     """Render a recipe index so the menu item Công thức & Cách làm món ăn has a useful page."""
