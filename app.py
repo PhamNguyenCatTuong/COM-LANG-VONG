@@ -147,7 +147,7 @@ PRODUCTS = [
         "name": "Ô Mai Sấu Hà Nội",
         "price": "70.000đ",
         "weight": "250g / hộp",
-        "image": "omai sau.jpg",
+        "image": "o mai sau.jpg",
     },
     {
         "category": "Các đặc sản khác của Hà Nội",
@@ -158,17 +158,10 @@ PRODUCTS = [
     },
     {
         "category": "Các đặc sản khác của Hà Nội",
-        "name": "Bánh Tôm Hồ Tây",
-        "price": "90.000đ",
-        "weight": "1 phần",
-        "image": "banh tom ho tay.jpg",
-    },
-    {
-        "category": "Các đặc sản khác của Hà Nội",
         "name": "Chả Cá Lã Vọng",
         "price": "180.000đ",
         "weight": "1 phần",
-        "image": "cha ca la vong.jpg",
+        "image": "Cha ca la vong.jpg",
     },
     {
         "category": "Các đặc sản khác của Hà Nội",
@@ -2331,9 +2324,7 @@ def render_products():
 
 
 def render_recipe_book_page():
-    """Render a Heyzine-like flipbook with page-turn animation, sound, and quick navigation."""
-    import json
-
+    """Render a lightweight luxury-vintage recipe book with quick navigation."""
     recipe_pages = [
         {"name": "Bánh cốm truyền thống", "file": "1.jpg"},
         {"name": "Chả cốm", "file": "2.jpg"},
@@ -2347,415 +2338,284 @@ def render_recipe_book_page():
         {"name": "Tôm tẩm cốm", "file": "10.jpg"},
         {"name": "Xôi cốm", "file": "11.jpg"},
     ]
+    total_pages = len(recipe_pages)
 
-    pages_payload = []
-    for item in recipe_pages:
-        image_path = resolve_asset_path(item["file"])
-        pages_payload.append(
-            {
-                "name": item["name"],
-                "file": item["file"],
-                "src": image_to_data_uri(item["file"]) if image_path.exists() else "",
-                "exists": image_path.exists(),
-            }
+    if "recipe_current_page" not in st.session_state:
+        st.session_state.recipe_current_page = 1
+
+    if st.session_state.recipe_current_page < 1:
+        st.session_state.recipe_current_page = 1
+    if st.session_state.recipe_current_page > total_pages:
+        st.session_state.recipe_current_page = total_pages
+
+    current_page = st.session_state.recipe_current_page
+    current_recipe = recipe_pages[current_page - 1]
+
+    st.markdown(
+        """
+<style>
+.recipe-lux-shell {
+    background:
+        radial-gradient(circle at top left, rgba(241,248,233,.95), transparent 34%),
+        linear-gradient(135deg, #17351f 0%, #244a2a 42%, #101f16 100%);
+    border-radius: 30px;
+    padding: clamp(18px, 4vw, 34px);
+    margin-top: 18px;
+    box-shadow: 0 18px 45px rgba(0,0,0,.18);
+    color: #fffdf4;
+    overflow: hidden;
+    position: relative;
+}
+.recipe-lux-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 38px 38px;
+    pointer-events: none;
+}
+.recipe-lux-inner { position: relative; z-index: 1; }
+.recipe-lux-header { text-align: center; margin-bottom: 20px; }
+.recipe-lux-kicker {
+    display: inline-block;
+    background: rgba(242, 215, 143, .16);
+    border: 1px solid rgba(242, 215, 143, .35);
+    color: #f4dfaa;
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-weight: 900;
+    font-size: 13px;
+    letter-spacing: .2px;
+}
+.recipe-lux-title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(32px, 5vw, 56px);
+    margin: 12px 0 6px;
+    line-height: 1.05;
+    color: #fff8df;
+    text-shadow: 0 5px 20px rgba(0,0,0,.25);
+}
+.recipe-lux-subtitle {
+    color: rgba(255, 248, 223, .82);
+    font-size: 16px;
+    margin: 0 auto;
+    max-width: 680px;
+    line-height: 1.6;
+}
+.recipe-book-stage {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr) 120px;
+    gap: 18px;
+    align-items: center;
+    margin-top: 22px;
+}
+.recipe-nav-card {
+    background: rgba(255, 253, 244, .10);
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 22px;
+    padding: 14px;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+}
+.recipe-book-frame {
+    background: linear-gradient(135deg, #f8efd5 0%, #fffdf4 45%, #ead49b 100%);
+    border-radius: 28px;
+    padding: clamp(12px, 2.6vw, 24px);
+    box-shadow:
+        0 24px 55px rgba(0,0,0,.38),
+        inset 0 0 0 1px rgba(123, 93, 34, .22),
+        inset 0 0 35px rgba(123, 93, 34, .08);
+    position: relative;
+}
+.recipe-book-frame::after {
+    content: "";
+    position: absolute;
+    top: 18px;
+    bottom: 18px;
+    left: 50%;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(91,64,23,.25), transparent);
+    opacity: .7;
+}
+.recipe-page-photo {
+    background: #efe2bd;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: inset 0 0 18px rgba(0,0,0,.08);
+}
+.recipe-page-photo img {
+    width: 100%;
+    max-height: 690px;
+    object-fit: contain;
+    display: block;
+    border-radius: 15px;
+    background: #fffaf0;
+}
+.recipe-missing {
+    min-height: 420px;
+    border: 2px dashed #b99549;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #795b1e;
+    font-weight: 900;
+    text-align: center;
+    background: rgba(255,255,255,.38);
+}
+.recipe-page-pill {
+    margin: 16px auto 0;
+    width: fit-content;
+    background: rgba(23, 53, 31, .92);
+    color: #f8efd5;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-weight: 900;
+    box-shadow: 0 8px 20px rgba(0,0,0,.18);
+}
+.recipe-current-name {
+    text-align: center;
+    margin-top: 12px;
+    color: #17351f;
+    font-size: 20px;
+    font-weight: 900;
+}
+.recipe-quick-panel {
+    margin-top: 26px;
+    background: rgba(255, 253, 244, .12);
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 26px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+}
+.recipe-quick-panel h3 {
+    color: #fff8df;
+    margin: 0 0 6px;
+    font-size: 25px;
+    text-align: center;
+}
+.recipe-quick-panel p {
+    text-align: center;
+    margin: 0 0 16px;
+    color: rgba(255, 248, 223, .78);
+}
+.recipe-small-note {
+    text-align: center;
+    color: rgba(255,248,223,.72);
+    margin-top: 14px;
+    font-size: 13px;
+}
+.recipe-lux-shell div.stButton > button {
+    border-radius: 16px !important;
+    border: 1px solid rgba(244,223,170,.35) !important;
+    background: linear-gradient(135deg, #2e7d32 0%, #456b4c 100%) !important;
+    color: #fffdf4 !important;
+    font-weight: 900 !important;
+    min-height: 44px !important;
+    box-shadow: 0 8px 18px rgba(0,0,0,.16) !important;
+    transition: transform .18s ease, box-shadow .18s ease, filter .18s ease !important;
+}
+.recipe-lux-shell div.stButton > button:hover {
+    transform: translateY(-2px) !important;
+    filter: brightness(1.06) !important;
+    box-shadow: 0 12px 22px rgba(0,0,0,.22) !important;
+}
+.recipe-lux-shell div.stButton > button:disabled {
+    opacity: .38 !important;
+    transform: none !important;
+}
+@media (max-width: 768px) {
+    .recipe-book-stage { grid-template-columns: 1fr; }
+    .recipe-nav-card { min-height: auto; padding: 0; background: transparent; border: 0; }
+    .recipe-book-frame::after { display: none; }
+    .recipe-page-photo img { max-height: 560px; }
+}
+</style>
+""",
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        """
+<div class="recipe-lux-shell">
+<div class="recipe-lux-inner">
+    <div class="recipe-lux-header">
+        <div class="recipe-lux-kicker">Luxury Vintage Recipe Book</div>
+        <h2 class="recipe-lux-title">📖 Sổ Tay Công Thức Cốm</h2>
+        <p class="recipe-lux-subtitle">Chọn món ở phần thao tác nhanh để mở thẳng đúng trang, hoặc dùng nút chuyển trang để xem lần lượt.</p>
+    </div>
+""",
+        unsafe_allow_html=True,
+    )
+
+    left_col, book_col, right_col = st.columns([1, 6, 1])
+
+    with left_col:
+        st.markdown('<div class="recipe-nav-card">', unsafe_allow_html=True)
+        if st.button("‹ Trang trước", disabled=current_page <= 1, key="recipe_prev_btn"):
+            st.session_state.recipe_current_page -= 1
+            st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
+
+    with right_col:
+        st.markdown('<div class="recipe-nav-card">', unsafe_allow_html=True)
+        if st.button("Trang sau ›", disabled=current_page >= total_pages, key="recipe_next_btn"):
+            st.session_state.recipe_current_page += 1
+            st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
+
+    with book_col:
+        image_path = resolve_asset_path(current_recipe["file"])
+        if not image_path.exists():
+            # Cho phép dùng png/jpeg/webp nếu người dùng đổi đuôi file.
+            stem = str(current_page)
+            for ext in [".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG", ".PNG", ".WEBP"]:
+                candidate = resolve_asset_path(stem + ext)
+                if candidate.exists():
+                    image_path = candidate
+                    break
+
+        st.markdown('<div class="recipe-book-frame"><div class="recipe-page-photo">', unsafe_allow_html=True)
+        if image_path.exists():
+            st.image(str(image_path), use_container_width=True)
+        else:
+            st.markdown(
+                f'<div class="recipe-missing">Không tìm thấy ảnh trang {current_page}<br>Hãy đặt file {current_page}.jpg cùng cấp với app.py</div>',
+                unsafe_allow_html=True,
+            )
+        st.markdown(
+            f'</div><div class="recipe-page-pill">Trang {current_page} / {total_pages}</div>'
+            f'<div class="recipe-current-name">{escape(current_recipe["name"])}</div></div>',
+            unsafe_allow_html=True,
         )
 
-    pages_json = json.dumps(pages_payload, ensure_ascii=False)
+    st.markdown(
+        """
+    <div class="recipe-quick-panel">
+        <h3>⚡ Thao tác nhanh</h3>
+        <p>Bấm vào món muốn xem để nhảy thẳng tới trang công thức.</p>
+""",
+        unsafe_allow_html=True,
+    )
 
-    html = f"""
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {{ box-sizing: border-box; }}
-html, body {{
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background: transparent;
-    color: #fff8df;
-}}
-.flip-wrap {{
-    width: 100%;
-    min-height: 980px;
-    border-radius: 32px;
-    overflow: hidden;
-    padding: clamp(18px, 4vw, 36px);
-    background:
-        radial-gradient(circle at 20% 0%, rgba(245, 225, 169, .25), transparent 34%),
-        radial-gradient(circle at 90% 8%, rgba(149, 196, 115, .18), transparent 30%),
-        linear-gradient(135deg, #152a1c 0%, #244128 45%, #0e1912 100%);
-    box-shadow: 0 22px 50px rgba(0,0,0,.22);
-}}
-.flip-header {{ text-align: center; margin-bottom: 22px; }}
-.flip-badge {{
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    border-radius: 999px;
-    background: rgba(255, 248, 223, .1);
-    border: 1px solid rgba(244, 223, 170, .3);
-    color: #f4dfaa;
-    font-size: 13px;
-    font-weight: 900;
-}}
-.flip-title {{
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: clamp(34px, 5vw, 58px);
-    line-height: 1.03;
-    margin: 13px 0 8px;
-    color: #fff8df;
-    text-shadow: 0 8px 26px rgba(0,0,0,.28);
-}}
-.flip-subtitle {{
-    margin: 0 auto;
-    max-width: 720px;
-    color: rgba(255,248,223,.78);
-    line-height: 1.65;
-    font-size: 16px;
-}}
-.stage {{
-    position: relative;
-    max-width: 880px;
-    margin: 0 auto;
-    perspective: 2200px;
-}}
-.book-frame {{
-    position: relative;
-    min-height: 620px;
-    border-radius: 30px;
-    padding: clamp(12px, 2.5vw, 24px);
-    background:
-        linear-gradient(90deg, rgba(63, 43, 20, .28), transparent 12%, transparent 88%, rgba(63, 43, 20, .28)),
-        linear-gradient(135deg, #f3e6c8 0%, #fff8df 46%, #e7d0a1 100%);
-    box-shadow:
-        0 26px 55px rgba(0,0,0,.34),
-        inset 0 0 0 1px rgba(107, 75, 30, .16),
-        inset 0 18px 40px rgba(255,255,255,.25);
-    overflow: hidden;
-}}
-.book-frame::before {{
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 30px;
-    transform: translateX(-50%);
-    background: linear-gradient(90deg, transparent, rgba(92,61,27,.24), rgba(255,255,255,.18), transparent);
-    pointer-events: none;
-    z-index: 5;
-}}
-.book-frame::after {{
-    content: "";
-    position: absolute;
-    inset: 14px;
-    border-radius: 22px;
-    border: 1px solid rgba(120, 85, 35, .18);
-    pointer-events: none;
-    z-index: 6;
-}}
-.page-sheet {{
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    min-height: 570px;
-    border-radius: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background:
-        linear-gradient(90deg, #fffaf0 0%, #fffdf6 49%, #f2dfb6 50%, #fffaf0 51%, #fffdf6 100%);
-    transform-style: preserve-3d;
-    transform-origin: left center;
-    overflow: hidden;
-    box-shadow: inset 0 0 24px rgba(132, 92, 38, .14);
-}}
-.page-sheet.flip-next {{ animation: flipNext .55s ease-in-out; }}
-.page-sheet.flip-prev {{ animation: flipPrev .55s ease-in-out; }}
-@keyframes flipNext {{
-    0% {{ transform: rotateY(0deg); filter: brightness(1); }}
-    47% {{ transform: rotateY(-82deg) skewY(-1.5deg); filter: brightness(.9); }}
-    100% {{ transform: rotateY(0deg); filter: brightness(1); }}
-}}
-@keyframes flipPrev {{
-    0% {{ transform: rotateY(0deg); filter: brightness(1); }}
-    47% {{ transform: rotateY(82deg) skewY(1.5deg); filter: brightness(.9); }}
-    100% {{ transform: rotateY(0deg); filter: brightness(1); }}
-}}
-.page-img {{
-    max-width: 100%;
-    max-height: 570px;
-    width: auto;
-    height: auto;
-    display: block;
-    border-radius: 16px;
-    box-shadow: 0 12px 26px rgba(53, 34, 12, .18);
-    background: #f8edcf;
-}}
-.missing {{
-    min-height: 450px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #7a4b00;
-    font-weight: 900;
-    font-size: 20px;
-    padding: 30px;
-}}
-.nav {{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 20;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    border: 1px solid rgba(255,248,223,.4);
-    background: rgba(31, 68, 38, .94);
-    color: #fff8df;
-    font-size: 34px;
-    font-weight: 900;
-    cursor: pointer;
-    box-shadow: 0 12px 26px rgba(0,0,0,.28);
-    transition: .18s ease;
-}}
-.nav:hover {{ transform: translateY(-50%) scale(1.06); background: #2e7d32; }}
-.nav:disabled {{ opacity: .34; cursor: not-allowed; transform: translateY(-50%); }}
-.nav.prev {{ left: -22px; }}
-.nav.next {{ right: -22px; }}
-.meta-bar {{
-    max-width: 880px;
-    margin: 16px auto 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-    flex-wrap: wrap;
-}}
-.current-name {{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #fff8df;
-    font-weight: 900;
-    font-size: 18px;
-}}
-.page-pill {{
-    background: rgba(255,248,223,.1);
-    border: 1px solid rgba(244,223,170,.28);
-    color: #f4dfaa;
-    padding: 9px 14px;
-    border-radius: 999px;
-    font-weight: 900;
-}}
-.progress {{
-    width: 100%;
-    height: 8px;
-    background: rgba(255,255,255,.12);
-    border-radius: 999px;
-    overflow: hidden;
-    margin-top: 12px;
-}}
-.progress span {{
-    display: block;
-    width: 9%;
-    height: 100%;
-    background: linear-gradient(90deg, #e7c873, #8bc34a);
-    border-radius: 999px;
-    transition: width .25s ease;
-}}
-.quick-panel {{
-    max-width: 980px;
-    margin: 28px auto 0;
-    padding: 20px;
-    border-radius: 26px;
-    background: rgba(255,248,223,.1);
-    border: 1px solid rgba(244,223,170,.22);
-    backdrop-filter: blur(8px);
-}}
-.quick-title {{
-    text-align: center;
-    color: #fff8df;
-    font-size: 24px;
-    font-weight: 900;
-    margin-bottom: 16px;
-}}
-.quick-grid {{
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 10px;
-}}
-.quick-btn {{
-    border: none;
-    min-height: 58px;
-    border-radius: 18px;
-    padding: 10px 12px;
-    background: rgba(255,253,244,.92);
-    color: #17351f;
-    font-weight: 900;
-    cursor: pointer;
-    box-shadow: 0 8px 18px rgba(0,0,0,.12);
-    transition: .18s ease;
-}}
-.quick-btn:hover {{ transform: translateY(-3px); background: #f5e6bb; }}
-.quick-btn.active {{
-    background: linear-gradient(135deg, #2e7d32, #8bc34a);
-    color: white;
-}}
-.sound-note {{
-    margin-top: 12px;
-    text-align: center;
-    color: rgba(255,248,223,.64);
-    font-size: 13px;
-}}
-@media (max-width: 760px) {{
-    .flip-wrap {{ padding: 14px; min-height: 920px; }}
-    .book-frame {{ min-height: 500px; padding: 10px; }}
-    .page-sheet {{ min-height: 480px; }}
-    .page-img {{ max-height: 480px; }}
-    .nav {{ width: 46px; height: 46px; font-size: 28px; }}
-    .nav.prev {{ left: 6px; }}
-    .nav.next {{ right: 6px; }}
-    .quick-grid {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
-    .meta-bar {{ justify-content: center; text-align: center; }}
-}}
-</style>
-</head>
-<body>
-<div class="flip-wrap">
-    <div class="flip-header">
-        <div class="flip-badge">🍃 Luxury Vintage Flipbook</div>
-        <h2 class="flip-title">Sổ Tay Công Thức Cốm</h2>
-        <p class="flip-subtitle">Lật trang bằng nút hai bên hoặc chọn nhanh món ăn bên dưới. Mỗi lần lật sẽ có hiệu ứng giấy và âm thanh lật sách nhẹ.</p>
-    </div>
+    quick_cols = st.columns(3)
+    for idx, recipe in enumerate(recipe_pages, start=1):
+        with quick_cols[(idx - 1) % 3]:
+            label = f"Trang {idx} · {recipe['name']}"
+            if st.button(label, key=f"recipe_quick_{idx}"):
+                st.session_state.recipe_current_page = idx
+                st.rerun()
 
-    <div class="stage">
-        <button class="nav prev" id="prevBtn" title="Trang trước">‹</button>
-        <div class="book-frame">
-            <div class="page-sheet" id="pageSheet"></div>
-        </div>
-        <button class="nav next" id="nextBtn" title="Trang sau">›</button>
-    </div>
-
-    <div class="meta-bar">
-        <div class="current-name" id="currentName">📖 Đang tải...</div>
-        <div class="page-pill" id="pageInfo">Trang 1 / 11</div>
-        <div class="progress"><span id="progressBar"></span></div>
-    </div>
-
-    <div class="quick-panel">
-        <div class="quick-title">⚡ Thao tác nhanh</div>
-        <div class="quick-grid" id="quickGrid"></div>
-        <div class="sound-note">Âm thanh chỉ phát sau thao tác bấm của người dùng. Nếu trình duyệt tắt âm, hiệu ứng hình vẫn hoạt động bình thường.</div>
-    </div>
-</div>
-
-<script>
-const pages = {pages_json};
-let current = 0;
-let isFlipping = false;
-const sheet = document.getElementById('pageSheet');
-const currentName = document.getElementById('currentName');
-const pageInfo = document.getElementById('pageInfo');
-const progressBar = document.getElementById('progressBar');
-const quickGrid = document.getElementById('quickGrid');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-
-function playFlipSound() {{
-    try {{
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        const ctx = new AudioContext();
-        const duration = 0.22;
-        const bufferSize = ctx.sampleRate * duration;
-        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-        const data = buffer.getChannelData(0);
-        for (let i = 0; i < bufferSize; i++) {{
-            const t = i / bufferSize;
-            data[i] = (Math.random() * 2 - 1) * (1 - t) * 0.32;
-        }}
-        const noise = ctx.createBufferSource();
-        noise.buffer = buffer;
-        const filter = ctx.createBiquadFilter();
-        filter.type = 'bandpass';
-        filter.frequency.setValueAtTime(1200, ctx.currentTime);
-        filter.frequency.exponentialRampToValueAtTime(280, ctx.currentTime + duration);
-        const gain = ctx.createGain();
-        gain.gain.setValueAtTime(0.001, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.22, ctx.currentTime + 0.025);
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
-        noise.connect(filter);
-        filter.connect(gain);
-        gain.connect(ctx.destination);
-        noise.start();
-        noise.stop(ctx.currentTime + duration);
-    }} catch (err) {{}}
-}}
-
-function renderPage() {{
-    const page = pages[current];
-    if (page.exists && page.src) {{
-        sheet.innerHTML = `<img class="page-img" src="${{page.src}}" alt="${{page.name}}">`;
-    }} else {{
-        sheet.innerHTML = `<div class="missing">Không tìm thấy ảnh ${{page.file}}<br>Hãy đặt ảnh cùng cấp với file app.py</div>`;
-    }}
-    currentName.innerHTML = `📖 ${{page.name}}`;
-    pageInfo.textContent = `Trang ${{current + 1}} / ${{pages.length}}`;
-    progressBar.style.width = `${{((current + 1) / pages.length) * 100}}%`;
-    prevBtn.disabled = current === 0;
-    nextBtn.disabled = current === pages.length - 1;
-    document.querySelectorAll('.quick-btn').forEach((btn, idx) => {{
-        btn.classList.toggle('active', idx === current);
-    }});
-}}
-
-function goToPage(target, direction) {{
-    if (isFlipping || target < 0 || target >= pages.length || target === current) return;
-    isFlipping = true;
-    playFlipSound();
-    const cls = direction === 'prev' ? 'flip-prev' : 'flip-next';
-    sheet.classList.add(cls);
-    setTimeout(() => {{
-        current = target;
-        renderPage();
-    }}, 255);
-    setTimeout(() => {{
-        sheet.classList.remove(cls);
-        isFlipping = false;
-    }}, 570);
-}}
-
-prevBtn.addEventListener('click', () => goToPage(current - 1, 'prev'));
-nextBtn.addEventListener('click', () => goToPage(current + 1, 'next'));
-
-document.addEventListener('keydown', (event) => {{
-    if (event.key === 'ArrowLeft') goToPage(current - 1, 'prev');
-    if (event.key === 'ArrowRight') goToPage(current + 1, 'next');
-}});
-
-pages.forEach((page, idx) => {{
-    const btn = document.createElement('button');
-    btn.className = 'quick-btn';
-    btn.textContent = page.name;
-    btn.addEventListener('click', () => goToPage(idx, idx < current ? 'prev' : 'next'));
-    quickGrid.appendChild(btn);
-}});
-
-renderPage();
-</script>
-</body>
-</html>
-"""
-
-    components.html(html, height=1040, scrolling=True)
-
-
+    st.markdown(
+        '<div class="recipe-small-note">Ảnh cần đặt cùng thư mục với file app.py và đặt tên 1.jpg, 2.jpg, ..., 11.jpg.</div>'
+        '</div></div></div>',
+        unsafe_allow_html=True,
+    )
 
 def render_recipe_index_page():
     """Render a recipe index so the menu item Công thức & Cách làm món ăn has a useful page."""
