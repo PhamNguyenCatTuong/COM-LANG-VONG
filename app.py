@@ -2333,7 +2333,7 @@ def render_products():
 
 
 def render_recipe_book_page():
-    """Render a realistic single-page flipbook: the turning sheet has front/back images, so content does not pop in."""
+    """Render a realistic single-page flipbook with images filling the full 16:9 book frame."""
     import json
 
     recipe_pages = [
@@ -2419,15 +2419,15 @@ html, body {
 }
 .stage {
     position: relative;
-    max-width: 920px;
+    max-width: 1120px;
     margin: 0 auto;
     perspective: 2800px;
 }
 .book-frame {
     position: relative;
-    min-height: 640px;
+    min-height: auto;
     border-radius: 32px;
-    padding: clamp(12px, 2.5vw, 24px);
+    padding: 10px;
     background:
         linear-gradient(90deg, rgba(63,43,20,.35), transparent 12%, transparent 88%, rgba(63,43,20,.35)),
         linear-gradient(135deg, #f1dfba 0%, #fff8df 47%, #e2c78f 100%);
@@ -2440,7 +2440,7 @@ html, body {
 .book-frame::before {
     content: "";
     position: absolute;
-    inset: 18px;
+    inset: 10px;
     border-radius: 24px;
     border: 1px solid rgba(113,74,31,.18);
     z-index: 12;
@@ -2450,8 +2450,8 @@ html, body {
     content: "";
     position: absolute;
     left: 50%;
-    top: 24px;
-    bottom: 24px;
+    top: 14px;
+    bottom: 14px;
     width: 28px;
     transform: translateX(-50%);
     background: linear-gradient(90deg, transparent, rgba(95,63,28,.22), rgba(255,255,255,.2), transparent);
@@ -2462,7 +2462,8 @@ html, body {
     position: relative;
     z-index: 2;
     width: 100%;
-    min-height: 592px;
+    aspect-ratio: 16 / 9;
+    min-height: 0;
     border-radius: 24px;
     background:
         linear-gradient(90deg, #fff9ea 0%, #fffdf7 48%, #f2dfb6 50%, #fffaf0 52%, #fffdf8 100%);
@@ -2476,7 +2477,7 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 16px;
+    padding: 0;
     border-radius: 24px;
     background:
         radial-gradient(circle at 10% 15%, rgba(255,255,255,.8), transparent 22%),
@@ -2489,13 +2490,15 @@ html, body {
 }
 .next-underlay.show { opacity: 1; }
 .page-img {
-    max-width: 100%;
-    max-height: 560px;
-    width: auto;
-    height: auto;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    object-fit: cover;
+    object-position: center center;
     display: block;
-    border-radius: 16px;
-    box-shadow: 0 13px 28px rgba(53,34,12,.18);
+    border-radius: 20px;
+    box-shadow: none;
     background: #f8edcf;
     user-select: none;
     pointer-events: none;
@@ -2529,7 +2532,7 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 16px;
+    padding: 0;
     border-radius: 24px;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -2677,9 +2680,9 @@ html, body {
 }
 @media (max-width: 760px) {
     .flip-wrap { padding: 14px; min-height: 970px; }
-    .book-frame { min-height: 520px; padding: 10px; }
-    .page-area { min-height: 500px; }
-    .page-img { max-height: 470px; }
+    .book-frame { min-height: auto; padding: 8px; }
+    .page-area { min-height: 0; aspect-ratio: 16 / 9; }
+    .page-img { width: 100%; height: 100%; max-height: none; }
     .nav { width: 46px; height: 46px; font-size: 28px; }
     .nav.prev { left: 6px; }
     .nav.next { right: 6px; }
@@ -3827,7 +3830,7 @@ st.markdown(
 </div>
 <div class="footer-full" id="dathang">
 <div class="footer-content">
-<h3>🌾 Cốm Làng Vòng Bà Hoản</h3>
+<h3>🌾 Cốm Làng Vòng</h3>
 <p>📍 Địa chỉ: Số 36, ngõ 63 Xuân Thủy, Cầu Giấy, Hà Nội</p>
 <p>📞 <a href="tel:0385437503">0385 437 503</a></p>
 <p>💬 <a href="https://zalo.me/0385437503" target="_blank">Chat Zalo</a></p>
