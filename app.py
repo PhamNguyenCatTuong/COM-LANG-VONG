@@ -2461,7 +2461,7 @@ html, body {
     width: min(100%, 980px);
     height: 390px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
 }
 .book-shell::before {
@@ -2500,7 +2500,7 @@ html, body {
 .page img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     display: block;
     background: #fbf6e8;
     user-select: none;
