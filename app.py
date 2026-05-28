@@ -2327,6 +2327,11 @@ def render_products():
 def render_recipe_book_page():
     """Render a Heyzine-like flipbook viewer using StPageFlip when available."""
     import json
+    from urllib.parse import quote
+
+    # Avoid Streamlit WebSocket errors by not embedding all flipbook pages as base64.
+    # The page images are loaded from the public GitHub raw URL instead.
+    raw_asset_base = "https://raw.githubusercontent.com/PhamNguyenCatTuong/COM-LANG-VONG/main/"
 
     recipe_pages = [
         {"name": "Bánh cốm truyền thống", "file": "1.jpg"},
@@ -2349,7 +2354,7 @@ def render_recipe_book_page():
             {
                 "name": item["name"],
                 "file": item["file"],
-                "src": image_to_data_uri(item["file"]) if image_path.exists() else "",
+                "src": raw_asset_base + quote(item["file"]) if image_path.exists() else "",
                 "exists": image_path.exists(),
             }
         )
