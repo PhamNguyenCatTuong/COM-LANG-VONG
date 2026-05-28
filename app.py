@@ -2679,53 +2679,60 @@ html, body {
     font-size: 13px;
 }
 @media (max-width: 768px) {
+
     .flip-wrap {
-        padding: 8px !important;
-        min-height: auto !important;
+        padding: 10px !important;
     }
 
     .stage {
-        max-width: 100vw !important;
-        width: 100vw !important;
-        margin-left: calc(50% - 50vw) !important;
+        width: 92vw !important;
+        max-width: 92vw !important;
+        margin: auto !important;
     }
 
     .book-frame {
-        width: 100vw !important;
-        min-height: 760px !important;
-        padding: 6px !important;
-        border-radius: 0 !important;
+        width: 92vw !important;
+        min-height: 420px !important;
+        padding: 8px !important;
+        border-radius: 22px !important;
     }
 
     .page-area {
-        min-height: 720px !important;
+        min-height: 390px !important;
         border-radius: 18px !important;
     }
 
     .page-img {
         width: 100% !important;
-        max-width: none !important;
-        max-height: none !important;
         height: auto !important;
         object-fit: contain !important;
     }
 
     .turn-face {
-        padding: 4px !important;
+        padding: 8px !important;
+    }
+
+    .nav {
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 26px !important;
     }
 
     .nav.prev {
-        left: 8px !important;
+        left: 4px !important;
     }
 
     .nav.next {
-        right: 8px !important;
+        right: 4px !important;
     }
 
     .quick-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    .meta-bar { justify-content: center; text-align: center; 
+
+    .meta-bar {
+        justify-content: center;
+        text-align: center;
     }
 }
 </style>
