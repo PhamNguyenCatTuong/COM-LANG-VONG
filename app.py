@@ -161,7 +161,7 @@ PRODUCTS = [
         "name": "Chả Cá Lã Vọng",
         "price": "180.000đ",
         "weight": "1 phần",
-        "image": "cha ca la vong.jpg",
+        "image": "Cha ca la vong.jpg",
     },
     {
         "category": "Các đặc sản khác của Hà Nội",
@@ -2336,15 +2336,15 @@ def render_recipe_book_page():
     recipe_pages = [
         {"name": "Bánh cốm truyền thống", "file": "1.jpg"},
         {"name": "Chè cốm", "file": "2.jpg"},
-        {"name": "Bánh chưng cốm", "file": "3.jpg"},
-        {"name": "Bánh trung thu cốm", "file": "4.jpg"},
-        {"name": "Bánh xu xê cốm", "file": "5.jpg"},
-        {"name": "Cốm mộc", "file": "6.jpg"},
-        {"name": "Cốm xào dừa", "file": "7.jpg"},
-        {"name": "Mochi cốm", "file": "8.jpg"},
-        {"name": "Sữa chua cốm", "file": "9.jpg"},
-        {"name": "Tôm tẩm cốm", "file": "10.jpg"},
-        {"name": "Xôi cốm", "file": "11.jpg"},
+        {"name": "Chả cốm", "file": "3.jpg"},
+        {"name": "Cốm xào dừa/Tôm tẩm cốm chiên giòn", "file": "4.jpg"},
+        {"name": "Bánh cốm nếp nương", "file": "5.jpg"},
+        {"name": "Bánh xu xê cốm", "file": "6.jpg"},
+        {"name": "Sữa chua cốm", "file": "7.jpg"},
+        {"name": "Xôi cốm", "file": "8.jpg"},
+        {"name": "Mochi cốm", "file": "9.jpg"},
+        {"name": "Bánh trung thu nhân cốm", "file": "10.jpg"},
+        {"name": "Bánh chưng nhân cốm", "file": "11.jpg"},
     ]
 
     pages_payload = []
