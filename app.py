@@ -2736,11 +2736,8 @@ html, body {
         </div>
         <div class="toolbar">
             <button class="tool-btn" id="firstBtn" title="Trang đầu">⏮</button>
-            <button class="tool-btn" id="prevBtnTop" title="Trang trước">‹</button>
-            <button class="tool-btn" id="soundBtn" title="Bật/tắt âm">🔊</button>
             <button class="tool-btn" id="zoomBtn" title="Phóng to">＋</button>
             <button class="tool-btn" id="fullBtn" title="Toàn màn hình">⛶</button>
-            <button class="tool-btn" id="nextBtnTop" title="Trang sau">›</button>
             <button class="tool-btn" id="lastBtn" title="Trang cuối">⏭</button>
         </div>
     </div>
