@@ -581,7 +581,7 @@ footer {visibility: hidden;}
 
 .dropbtn {
     background: #2e7d32;
-    color: white;
+    color: #17351f;
     border: none;
     cursor: pointer;
     width: 100%;
@@ -638,7 +638,7 @@ footer {visibility: hidden;}
     padding-left: clamp(24px, 6vw, 60px);
     padding-right: 6px;
     padding-top: 120px;
-    color: white;
+    color: #17351f;
 }
 
 .hero-small {
@@ -676,7 +676,7 @@ footer {visibility: hidden;}
     white-space: nowrap;
 }
 
-.hero-btn.order { background: #2e7d32; color: white; }
+.hero-btn.order { background: #2e7d32; color: #17351f; }
 .hero-btn.call { background: white; color: #2e7d32; }
 
 .content {
@@ -895,7 +895,7 @@ footer {visibility: hidden;}
 .buy-btn, .cart-add-btn {
     width: fit-content;
     background: #2e7d32;
-    color: white !important;
+    color: #17351f !important;
     padding: 9px 14px;
     border-radius: 999px;
     text-decoration: none;
@@ -913,7 +913,7 @@ footer {visibility: hidden;}
 .cart-btn {
     width: fit-content;
     background: #ff9800;
-    color: white !important;
+    color: #17351f !important;
     padding: 10px 16px;
     border-radius: 999px;
     text-decoration: none;
@@ -978,14 +978,14 @@ footer {visibility: hidden;}
 .footer-full {
     width: 100%;
     background: #000;
-    color: white;
+    color: #17351f;
     padding: 10px;
     margin-top: 40px;
     border-radius: 0;
 }
 
 .footer-content { max-width: 850px; margin: auto; text-align: center; }
-.footer-content a { color: white; text-decoration: none; }
+.footer-content a { color: #17351f; text-decoration: none; }
 
 @media (min-width: 1025px) {
     .topbar { display: flex; align-items: center; gap: 20px; }
@@ -1476,7 +1476,7 @@ footer {visibility: hidden;}
 .recipe-open-detail {
     display: inline-block;
     background: #2e7d32;
-    color: white !important;
+    color: #17351f !important;
     text-decoration: none;
     border-radius: 999px;
     padding: 10px 16px;
@@ -1495,7 +1495,7 @@ footer {visibility: hidden;}
 .recipe-controls button {
     border: none;
     background: #2e7d32;
-    color: white;
+    color: #17351f;
     border-radius: 999px;
     padding: 10px 18px;
     font-weight: 900;
@@ -1607,7 +1607,7 @@ footer {visibility: hidden;}
     height: 46px;
     border-radius: 50%;
     background: #2e7d32;
-    color: white !important;
+    color: #17351f !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2383,7 +2383,7 @@ html, body {
     padding: 8px 10px 10px;
     border-radius: 28px;
     background: transparent !important;
-    color: #f5f0df;
+    color: #17351f;
     position: relative;
     box-shadow: none !important;
 }
@@ -2403,11 +2403,11 @@ html, body {
     font-family: Georgia, 'Times New Roman', serif;
     font-size: clamp(22px, 3.4vw, 34px);
     line-height: 1;
-    color: #fff7df;
+    color: #17351f;
 }
 .viewer-title p {
     margin: 1px 0 0;
-    color: rgba(255,247,223,.62);
+    color: rgba(23,53,31,.72);
     font-size: 13px;
 }
 .toolbar {
@@ -2426,7 +2426,7 @@ html, body {
     border: 0;
     border-radius: 50%;
     background: rgba(255,255,255,.12);
-    color: #fff7df;
+    color: #17351f;
     font-size: 18px;
     font-weight: 900;
     cursor: pointer;
@@ -2533,7 +2533,7 @@ html, body {
     border: 0;
     border-radius: 50%;
     background: rgba(15,17,18,.72);
-    color: white;
+    color: #17351f;
     font-size: 30px;
     font-weight: 800;
     cursor: pointer;
@@ -2562,12 +2562,12 @@ html, body {
     align-items: center;
     justify-content: space-between;
     gap: 6px;
-    color: rgba(255,247,223,.78);
+    color: rgba(23,53,31,.82);
     font-size: 13px;
     font-weight: 800;
 }
 .page-label {
-    color: #fff7df;
+    color: #17351f;
     max-width: 56%;
     white-space: nowrap;
     overflow: hidden;
@@ -2579,7 +2579,7 @@ html, body {
     padding: 4px 10px;
     background: rgba(255,255,255,.08);
     border: 1px solid rgba(255,255,255,.12);
-    color: #fff7df;
+    color: #17351f;
 }
 .progress {
     max-width: 1040px;
@@ -2636,7 +2636,7 @@ html, body {
     box-shadow: 0 0 0 3px rgba(214,177,94,.18);
 }
 .thumb.missing-thumb {
-    color: #fff7df;
+    color: #17351f;
     font-size: 11px;
     font-weight: 800;
 }
@@ -2645,7 +2645,7 @@ html, body {
     inset: 0;
     display: grid;
     place-items: center;
-    color: #fff7df;
+    color: #17351f;
     font-weight: 900;
     letter-spacing: .2px;
     z-index: 60;
@@ -2765,6 +2765,46 @@ html, body {
 }
 .submenu-item .desc{
     line-height:1.1 !important;
+}
+
+
+/* FIX READABILITY ON WHITE BACKGROUND */
+.viewer,
+.viewer-title h2,
+.viewer-title p,
+.tool-btn,
+.page-label,
+.counter-pill,
+.status-row,
+.thumb.missing-thumb,
+.loading {
+    color: #17351f !important;
+}
+
+.toolbar {
+    background: rgba(46,125,50,.08) !important;
+    border: 1px solid rgba(46,125,50,.18) !important;
+}
+
+.tool-btn {
+    background: rgba(46,125,50,.12) !important;
+}
+
+.tool-btn:hover {
+    background: rgba(46,125,50,.2) !important;
+}
+
+.counter-pill {
+    background: rgba(46,125,50,.08) !important;
+    border: 1px solid rgba(46,125,50,.18) !important;
+}
+
+.status-row {
+    color: #17351f !important;
+}
+
+.progress {
+    background: rgba(46,125,50,.16) !important;
 }
 
 </style>
@@ -3690,7 +3730,7 @@ body {{ margin: 0; font-family: Arial, sans-serif; color: #17351f; background: t
     height: 54px;
     border-radius: 50%;
     background: #2e7d32;
-    color: white;
+    color: #17351f;
     display: flex;
     align-items: center;
     justify-content: center;
