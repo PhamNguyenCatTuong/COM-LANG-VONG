@@ -2681,7 +2681,8 @@ html, body {
     }
     .book-shell {
         width: 100%;
-        height: 310px;
+        aspect-ratio: 12 / 7;
+        height: auto;
     }
     .side-nav {
         width: 44px;
