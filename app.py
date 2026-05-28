@@ -2678,16 +2678,55 @@ html, body {
     color: rgba(255,248,223,.64);
     font-size: 13px;
 }
-@media (max-width: 760px) {
-    .flip-wrap { padding: 14px; min-height: 970px; }
-    .book-frame { min-height: auto; padding: 8px; }
-    .page-area { min-height: 0; aspect-ratio: 16 / 9; }
-    .page-img { width: 100%; height: 100%; max-height: none; }
-    .nav { width: 46px; height: 46px; font-size: 28px; }
-    .nav.prev { left: 6px; }
-    .nav.next { right: 6px; }
-    .quick-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .meta-bar { justify-content: center; text-align: center; }
+@media (max-width: 768px) {
+    .flip-wrap {
+        padding: 8px !important;
+        min-height: auto !important;
+    }
+
+    .stage {
+        max-width: 100vw !important;
+        width: 100vw !important;
+        margin-left: calc(50% - 50vw) !important;
+    }
+
+    .book-frame {
+        width: 100vw !important;
+        min-height: 760px !important;
+        padding: 6px !important;
+        border-radius: 0 !important;
+    }
+
+    .page-area {
+        min-height: 720px !important;
+        border-radius: 18px !important;
+    }
+
+    .page-img {
+        width: 100% !important;
+        max-width: none !important;
+        max-height: none !important;
+        height: auto !important;
+        object-fit: contain !important;
+    }
+
+    .turn-face {
+        padding: 4px !important;
+    }
+
+    .nav.prev {
+        left: 8px !important;
+    }
+
+    .nav.next {
+        right: 8px !important;
+    }
+
+    .quick-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .meta-bar { justify-content: center; text-align: center; 
+    }
 }
 </style>
 </head>
