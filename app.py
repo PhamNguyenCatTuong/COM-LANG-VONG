@@ -36,7 +36,7 @@ def image_to_data_uri(file_name):
 
 CERTIFICATES = [
     {
-        "image": "CBSP.png",
+        "image": "CBSP.PNG",
         "title": "Tự công bố sản phẩm",
         "desc": "Giấy xác nhận tự công bố sản phẩm Cốm Làng Vòng theo quy định an toàn thực phẩm.",
     },
@@ -46,12 +46,12 @@ CERTIFICATES = [
         "desc": "Kết quả kiểm nghiệm các chỉ tiêu an toàn thực phẩm của sản phẩm.",
     },
     {
-        "image": "OCOP.png",
+        "image": "OCOP.PNG",
         "title": "Chứng nhận OCOP 4 sao",
         "desc": "Chứng nhận sản phẩm OCOP đạt 4 sao năm 2022.",
     },
     {
-        "image": "ATTP.png",
+        "image": "ATTP.PNG",
         "title": "Chứng nhận an toàn thực phẩm",
         "desc": "Chứng nhận cơ sở đủ điều kiện an toàn thực phẩm.",
     },
@@ -263,17 +263,6 @@ PRODUCTION_AREAS = [
     },
 ]
 
-
-# Parent menu pages are no longer standalone pages.
-# Old parent URLs redirect to the first detailed submenu page.
-PARENT_PAGE_REDIRECTS = {
-    "gioithieu": "cauchuyen",
-    "sanpham_main": "sanpham",
-    "baobi_main": "muc_giay",
-}
-if page in PARENT_PAGE_REDIRECTS:
-    st.query_params["page"] = PARENT_PAGE_REDIRECTS[page]
-    st.rerun()
 
 if "cart" not in st.session_state:
     st.session_state.cart = {}
