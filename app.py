@@ -2334,7 +2334,7 @@ def render_recipe_book_page():
     raw_asset_base = "https://raw.githubusercontent.com/PhamNguyenCatTuong/COM-LANG-VONG/main/"
 
     recipe_pages = [
-        {"file": "1.jpg"},
+        {"name": "Chuyện bếp mùa Cốm", "file": "1.jpg"},
         {"name": "Chè cốm", "file": "2.jpg"},
         {"name": "Chả cốm", "file": "3.jpg"},
         {"name": "Cốm xào dừa/Tôm tẩm cốm chiên giòn", "file": "4.jpg"},
