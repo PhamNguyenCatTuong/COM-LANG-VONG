@@ -2458,14 +2458,18 @@ html, body {
 }
 .book-shell {
     position: relative;
+
     width: min(100%, 980px);
 
-    aspect-ratio: 12 / 7;
+    aspect-ratio: 2400 / 1400;
+
     height: auto;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    overflow: hidden;
 }
 .book-shell::before {
     content: "";
@@ -2681,7 +2685,7 @@ html, body {
     }
     .book-shell {
         width: 100%;
-        aspect-ratio: 12 / 7;
+        aspect-ratio: 2400 / 1400;
         height: auto;
     }
     .side-nav {
