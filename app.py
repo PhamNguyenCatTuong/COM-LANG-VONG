@@ -900,7 +900,7 @@ footer {visibility: hidden;}
     border-radius: 999px;
     text-decoration: none;
     font-weight: 800;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .product-actions {
@@ -1556,7 +1556,7 @@ footer {visibility: hidden;}
 .recipe-book {
     position: relative;
     max-width: 920px;
-    margin: 8px auto 0;
+    margin: 18px auto 0;
     min-height: 560px;
     perspective: 1800px;
 }
@@ -2379,8 +2379,8 @@ html, body {
 }
 .viewer {
     width: 100%;
-    min-height: 720px;
-    padding: 8px 10px 10px;
+    min-height: 1040px;
+    padding: 18px 18px 24px;
     border-radius: 28px;
     background:
         radial-gradient(circle at 16% 0%, rgba(255,255,255,.12), transparent 34%),
@@ -2391,7 +2391,7 @@ html, body {
 }
 .viewer-top {
     max-width: 1040px;
-    margin: 0 auto 4px;
+    margin: 0 auto 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -2403,28 +2403,28 @@ html, body {
 .viewer-title h2 {
     margin: 0;
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: clamp(22px, 3.4vw, 34px);
-    line-height: 1;
+    font-size: clamp(24px, 4vw, 40px);
+    line-height: 1.05;
     color: #fff7df;
 }
 .viewer-title p {
-    margin: 1px 0 0;
+    margin: 5px 0 0;
     color: rgba(255,247,223,.62);
     font-size: 13px;
 }
 .toolbar {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    padding: 4px;
+    gap: 8px;
+    padding: 8px;
     border-radius: 999px;
     background: rgba(255,255,255,.08);
     border: 1px solid rgba(255,255,255,.12);
     box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
 }
 .tool-btn {
-    width: 30px;
-    height: 30px;
+    width: 38px;
+    height: 38px;
     border: 0;
     border-radius: 50%;
     background: rgba(255,255,255,.12);
@@ -2449,7 +2449,7 @@ html, body {
 .book-stage {
     max-width: 1040px;
     margin: 0 auto;
-    min-height: 285px;
+    min-height: 430px;
     position: relative;
     display: flex;
     align-items: center;
@@ -2538,13 +2538,13 @@ html, body {
     top: 50%;
     transform: translateY(-50%);
     z-index: 30;
-    width: 42px;
-    height: 42px;
+    width: 52px;
+    height: 52px;
     border: 0;
     border-radius: 50%;
     background: rgba(15,17,18,.72);
     color: white;
-    font-size: 30px;
+    font-size: 36px;
     font-weight: 800;
     cursor: pointer;
     box-shadow: 0 12px 30px rgba(0,0,0,.38);
@@ -2567,13 +2567,13 @@ html, body {
 .side-nav.next { right: 0; }
 .status-row {
     max-width: 1040px;
-    margin: 6px auto 0;
+    margin: 12px auto 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 6px;
+    gap: 14px;
     color: rgba(255,247,223,.78);
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 800;
 }
 .page-label {
@@ -2586,7 +2586,7 @@ html, body {
 .counter-pill {
     flex-shrink: 0;
     border-radius: 999px;
-    padding: 4px 10px;
+    padding: 8px 13px;
     background: rgba(255,255,255,.08);
     border: 1px solid rgba(255,255,255,.12);
     color: #fff7df;
@@ -2594,7 +2594,7 @@ html, body {
 .progress {
     max-width: 1040px;
     height: 6px;
-    margin: 6px auto 0;
+    margin: 12px auto 0;
     border-radius: 999px;
     background: rgba(255,255,255,.12);
     overflow: hidden;
@@ -2609,11 +2609,11 @@ html, body {
 }
 .thumb-strip {
     max-width: 1040px;
-    margin: 8px auto 0;
+    margin: 18px auto 0;
     display: flex;
     gap: 10px;
     overflow-x: auto;
-    padding: 3px 4px 6px;
+    padding: 5px 4px 12px;
     scroll-snap-type: x proximity;
 }
 .thumb-strip::-webkit-scrollbar { height: 6px; }
@@ -2622,8 +2622,8 @@ html, body {
     border-radius: 999px;
 }
 .thumb {
-    flex: 0 0 68px;
-    height: 48px;
+    flex: 0 0 86px;
+    height: 62px;
     border: 2px solid transparent;
     border-radius: 10px;
     padding: 0;
@@ -2671,22 +2671,22 @@ html, body {
 .viewer.fullscreen .book-shell { height: calc(100vh - 240px); max-height: 820px; }
 @media (max-width: 760px) {
     .viewer {
-        min-height: 650px;
-        padding: 6px;
+        min-height: 930px;
+        padding: 12px;
         border-radius: 22px;
     }
     .viewer-top {
         flex-direction: column;
         align-items: stretch;
         text-align: center;
-        margin-bottom: 2px;
+        margin-bottom: 8px;
     }
     .toolbar {
         align-self: center;
-        transform: scale(.86);
+        transform: scale(.94);
     }
     .book-stage {
-        min-height: 245px;
+        min-height: 340px;
     }
     .book-shell {
         width: 100%;
@@ -2711,7 +2711,7 @@ html, body {
         max-width: 100%;
         flex-basis: 100%;
     }
-    .thumb { flex-basis: 58px; height: 42px; }
+    .thumb { flex-basis: 74px; height: 54px; }
 }
 @media (max-width: 420px) {
     .book-shell {
@@ -2719,31 +2719,9 @@ html, body {
         aspect-ratio: 2400 / 1400;
         height: auto;
     }
-    .book-stage { min-height: 230px; }
-    .viewer { min-height: 620px; }
+    .book-stage { min-height: 300px; }
+    .viewer { min-height: 760px; }
 }
-
-/* COMPACT MOBILE FLIPBOOK SPACING */
-.viewer-top { line-height: 1.05; }
-.viewer-title h2 { margin-bottom: 0 !important; }
-.viewer-title p { line-height: 1.15 !important; }
-.toolbar { margin-top: 2px !important; margin-bottom: 2px !important; }
-.book-stage { margin-top: 4px !important; margin-bottom: 4px !important; }
-.status-row { margin-top: 6px !important; line-height: 1.1 !important; }
-.progress { margin-top: 6px !important; }
-.thumb-strip { margin-top: 8px !important; padding-bottom: 4px !important; }
-
-@media (max-width: 760px) {
-    .viewer-top { gap: 4px !important; }
-    .viewer-title h2 { font-size: 30px !important; line-height: 1 !important; }
-    .viewer-title p { font-size: 14px !important; margin-top: 2px !important; }
-    .toolbar { transform: scale(.82) !important; transform-origin: center top !important; }
-    .book-stage { min-height: 235px !important; }
-    .status-row { margin-top: 4px !important; }
-    .page-label { font-size: 18px !important; }
-    .counter-pill { font-size: 16px !important; padding: 3px 9px !important; }
-}
-
 </style>
 </head>
 <body>
@@ -3049,7 +3027,7 @@ initPageFlip();
 </html>
 """.replace("__PAGES_JSON__", pages_json)
 
-    components.html(html, height=620, scrolling=False)
+    components.html(html, height=760, scrolling=False)
 
 def render_recipe_index_page():
     """Render a recipe index so the menu item Công thức & Cách làm món ăn has a useful page."""
