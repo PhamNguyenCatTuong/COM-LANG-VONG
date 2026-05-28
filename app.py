@@ -1600,7 +1600,7 @@ footer {visibility: hidden;}
 
 .recipe-side-btn {
     position: absolute;
-    top: 50%;
+    top: 62%;
     transform: translateY(-50%);
     z-index: 20;
     width: 46px;
@@ -2533,16 +2533,19 @@ html, body {
 }
 .side-nav {
     position: absolute;
-    top: 50%;
+    top: 62%;
     transform: translateY(-50%);
     z-index: 30;
     width: 44px;
     height: 44px;
     border: 0;
     border-radius: 50%;
-    background: rgba(46,125,50,.72);
-    color: white;
-    font-size: 30px;
+    background: rgba(255,255,255,.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1.6px solid rgba(255,255,255,.38);
+    color: rgba(255,255,255,.92);
+    font-size: 28px;
     font-weight: 800;
     cursor: pointer;
     box-shadow: 0 12px 30px rgba(0,0,0,.38);
@@ -2553,6 +2556,8 @@ html, body {
     transition: .16s ease;
 }
 .side-nav:hover {
+    background: rgba(255,255,255,.16);
+    border-color: rgba(255,255,255,.58);
     background: rgba(46,125,50,.92);
     transform: translateY(-50%) scale(1.04);
 }
@@ -2692,9 +2697,9 @@ html, body {
         height: auto;
     }
     .side-nav {
-        width: 38px;
-        height: 38px;
-        font-size: 26px;
+        width: 36px;
+        height: 36px;
+        font-size: 22px;
         background: rgba(46,125,50,.72);
     }
     .side-nav.prev { left: -8px; }
