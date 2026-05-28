@@ -2383,7 +2383,7 @@ html, body {
     padding: 8px 10px 10px;
     border-radius: 28px;
     background: transparent !important;
-    color: #f5f0df;
+    
     position: relative;
     box-shadow: none !important;
 }
@@ -2403,11 +2403,11 @@ html, body {
     font-family: Georgia, 'Times New Roman', serif;
     font-size: clamp(22px, 3.4vw, 34px);
     line-height: 1;
-    color: #fff7df;
+    
 }
 .viewer-title p {
     margin: 1px 0 0;
-    color: rgba(255,247,223,.62);
+    
     font-size: 13px;
 }
 .toolbar {
@@ -2426,7 +2426,7 @@ html, body {
     border: 0;
     border-radius: 50%;
     background: rgba(255,255,255,.12);
-    color: #fff7df;
+    
     font-size: 18px;
     font-weight: 900;
     cursor: pointer;
@@ -2562,12 +2562,12 @@ html, body {
     align-items: center;
     justify-content: space-between;
     gap: 6px;
-    color: rgba(255,247,223,.78);
+    
     font-size: 13px;
     font-weight: 800;
 }
 .page-label {
-    color: #fff7df;
+    
     max-width: 56%;
     white-space: nowrap;
     overflow: hidden;
@@ -2579,7 +2579,7 @@ html, body {
     padding: 4px 10px;
     background: rgba(255,255,255,.08);
     border: 1px solid rgba(255,255,255,.12);
-    color: #fff7df;
+    
 }
 .progress {
     max-width: 1040px;
@@ -2636,7 +2636,7 @@ html, body {
     box-shadow: 0 0 0 3px rgba(214,177,94,.18);
 }
 .thumb.missing-thumb {
-    color: #fff7df;
+    
     font-size: 11px;
     font-weight: 800;
 }
@@ -2645,7 +2645,7 @@ html, body {
     inset: 0;
     display: grid;
     place-items: center;
-    color: #fff7df;
+    
     font-weight: 900;
     letter-spacing: .2px;
     z-index: 60;
@@ -2759,6 +2759,27 @@ html, body {
     min-height:34px !important;
     padding:8px 14px !important;
     margin-bottom:4px !important;
+}
+
+
+/* FIX PALE TEXT */
+.viewer-title,
+.viewer-title h1,
+.viewer-title h2,
+.viewer-subtitle,
+.page-caption,
+.page-label,
+.counter-pill,
+.toolbar,
+.status-row{
+    color:#17351f !important;
+}
+
+/* submenu text only */
+.submenu-item,
+.submenu-item .title,
+.submenu-item .desc{
+    color:#17351f !important;
 }
 
 </style>
