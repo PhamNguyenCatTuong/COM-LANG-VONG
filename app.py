@@ -2535,31 +2535,20 @@ html, body {
     position: absolute;
     top: 62%;
     transform: translateY(-50%);
-    z-index: 30;
-    width: 44px;
-    height: 44px;
-    border: 0;
-    border-radius: 50%;
-    background: rgba(255,255,255,.08);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1.6px solid rgba(255,255,255,.38);
+    border: none;
+    background: transparent;
     color: rgba(255,255,255,.92);
-    font-size: 28px;
-    font-weight: 800;
+    font-size: 54px;
     cursor: pointer;
-    box-shadow: 0 12px 30px rgba(0,0,0,.38);
-    backdrop-filter: blur(8px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: .16s ease;
+    z-index: 50;
+    transition: .22s ease;
 }
 .side-nav:hover {
     background: rgba(255,255,255,.16);
     border-color: rgba(255,255,255,.58);
     background: rgba(46,125,50,.92);
-    transform: translateY(-50%) scale(1.04);
+    transform: translateY(-50%) scale(1.12);
+    color: white;
 }
 .side-nav:disabled {
     opacity: .28;
@@ -2725,7 +2714,7 @@ html, body {
     .book-stage { min-height: 300px; }
     .viewer { min-height: 760px; }
 }
-</style>
+</style
 </head>
 <body>
 <div class="viewer" id="viewer">
@@ -2736,22 +2725,19 @@ html, body {
         </div>
         <div class="toolbar">
             <button class="tool-btn" id="firstBtn" title="Trang đầu">⏮</button>
-            <button class="tool-btn" id="prevBtnTop" title="Trang trước">‹</button>
-            <button class="tool-btn" id="soundBtn" title="Bật/tắt âm">🔊</button>
             <button class="tool-btn" id="zoomBtn" title="Phóng to">＋</button>
             <button class="tool-btn" id="fullBtn" title="Toàn màn hình">⛶</button>
-            <button class="tool-btn" id="nextBtnTop" title="Trang sau">›</button>
             <button class="tool-btn" id="lastBtn" title="Trang cuối">⏭</button>
         </div>
     </div>
 
     <div class="book-stage">
-        <button class="side-nav prev" id="prevBtn">‹</button>
+        <button class="side-nav prev" id="prevBtn">❮</button>
         <div class="book-shell" id="bookShell">
             <div id="book"></div>
             <div class="loading" id="loading">Đang tải sách...</div>
         </div>
-        <button class="side-nav next" id="nextBtn">›</button>
+        <button class="side-nav next" id="nextBtn">❯</button>
     </div>
 
     <div class="status-row">
