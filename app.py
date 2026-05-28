@@ -977,7 +977,7 @@ footer {visibility: hidden;}
 
 .footer-full {
     width: 100%;
-    background: #000;
+    background: transparent !important;
     color: white;
     padding: 10px;
     margin-top: 40px;
@@ -3976,3 +3976,24 @@ st.markdown(
 )
 
 # viewer background updated to soft green
+
+
+
+/* Remove dark background under the flipbook */
+.viewer,
+.book-stage,
+.book-shell,
+.flipbook-wrap,
+.flipbook,
+main,
+body {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Remove shadows creating dark base */
+.book-shell,
+.flipbook,
+.page {
+    box-shadow: none !important;
+}
