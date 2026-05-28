@@ -1600,7 +1600,7 @@ footer {visibility: hidden;}
 
 .recipe-side-btn {
     position: absolute;
-    top: 50%;
+    top: 62%;
     transform: translateY(-50%);
     z-index: 20;
     width: 46px;
@@ -2382,12 +2382,10 @@ html, body {
     min-height: 1040px;
     padding: 18px 18px 24px;
     border-radius: 28px;
-    background:
-        radial-gradient(circle at 16% 0%, rgba(255,255,255,.12), transparent 34%),
-        linear-gradient(135deg, #181b1d 0%, #24282b 48%, #111315 100%);
-    color: #f5f0df;
+    background: transparent !important;
+    color: #17351f;
     position: relative;
-    box-shadow: 0 28px 70px rgba(0,0,0,.35);
+    box-shadow: none;
 }
 .viewer-top {
     max-width: 1040px;
@@ -2405,11 +2403,11 @@ html, body {
     font-family: Georgia, 'Times New Roman', serif;
     font-size: clamp(24px, 4vw, 40px);
     line-height: 1.05;
-    color: #fff7df;
+    color: #17351f;
 }
 .viewer-title p {
     margin: 5px 0 0;
-    color: rgba(255,247,223,.62);
+    color: rgba(23,53,31,.68);
     font-size: 13px;
 }
 .toolbar {
@@ -2428,7 +2426,7 @@ html, body {
     border: 0;
     border-radius: 50%;
     background: rgba(255,255,255,.12);
-    color: #fff7df;
+    color: #17351f;
     font-size: 18px;
     font-weight: 900;
     cursor: pointer;
@@ -2529,22 +2527,25 @@ html, body {
     padding: 30px;
     text-align: center;
     color: #7b5b2d;
-    background: #fbf6e8;
+    background: transparent !important;
     font-weight: 900;
     line-height: 1.5;
 }
 .side-nav {
     position: absolute;
-    top: 50%;
+    top: 62%;
     transform: translateY(-50%);
     z-index: 30;
-    width: 52px;
-    height: 52px;
+    width: 44px;
+    height: 44px;
     border: 0;
     border-radius: 50%;
-    background: rgba(15,17,18,.72);
-    color: white;
-    font-size: 36px;
+    background: rgba(255,255,255,.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1.6px solid rgba(255,255,255,.38);
+    color: rgba(255,255,255,.92);
+    font-size: 28px;
     font-weight: 800;
     cursor: pointer;
     box-shadow: 0 12px 30px rgba(0,0,0,.38);
@@ -2555,6 +2556,8 @@ html, body {
     transition: .16s ease;
 }
 .side-nav:hover {
+    background: rgba(255,255,255,.16);
+    border-color: rgba(255,255,255,.58);
     background: rgba(46,125,50,.92);
     transform: translateY(-50%) scale(1.04);
 }
@@ -2563,8 +2566,8 @@ html, body {
     cursor: not-allowed;
     transform: translateY(-50%);
 }
-.side-nav.prev { left: 0; }
-.side-nav.next { right: 0; }
+.side-nav.prev { left: -66px; }
+.side-nav.next { right: -66px; }
 .status-row {
     max-width: 1040px;
     margin: 12px auto 0;
@@ -2572,12 +2575,12 @@ html, body {
     align-items: center;
     justify-content: space-between;
     gap: 14px;
-    color: rgba(255,247,223,.78);
+    color: rgba(23,53,31,.78);
     font-size: 14px;
     font-weight: 800;
 }
 .page-label {
-    color: #fff7df;
+    color: #17351f;
     max-width: 56%;
     white-space: nowrap;
     overflow: hidden;
@@ -2589,7 +2592,7 @@ html, body {
     padding: 8px 13px;
     background: rgba(255,255,255,.08);
     border: 1px solid rgba(255,255,255,.12);
-    color: #fff7df;
+    color: #17351f;
 }
 .progress {
     max-width: 1040px;
@@ -2646,7 +2649,7 @@ html, body {
     box-shadow: 0 0 0 3px rgba(214,177,94,.18);
 }
 .thumb.missing-thumb {
-    color: #fff7df;
+    color: #17351f;
     font-size: 11px;
     font-weight: 800;
 }
@@ -2655,11 +2658,11 @@ html, body {
     inset: 0;
     display: grid;
     place-items: center;
-    color: #fff7df;
+    color: #17351f;
     font-weight: 900;
     letter-spacing: .2px;
     z-index: 60;
-    background: rgba(12,14,15,.38);
+    background: rgba(255,255,255,.18);
     backdrop-filter: blur(3px);
 }
 .viewer.fullscreen {
@@ -2694,13 +2697,13 @@ html, body {
         height: auto;
     }
     .side-nav {
-        width: 44px;
-        height: 44px;
-        font-size: 30px;
-        background: rgba(15,17,18,.56);
+        width: 36px;
+        height: 36px;
+        font-size: 22px;
+        background: rgba(46,125,50,.72);
     }
-    .side-nav.prev { left: 4px; }
-    .side-nav.next { right: 4px; }
+    .side-nav.prev { left: -8px; }
+    .side-nav.next { right: -8px; }
     .status-row {
         justify-content: center;
         flex-wrap: wrap;
