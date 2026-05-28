@@ -147,7 +147,7 @@ PRODUCTS = [
         "name": "Ô Mai Sấu Hà Nội",
         "price": "70.000đ",
         "weight": "250g / hộp",
-        "image": "omai sau.jpg",
+        "image": "o mai sau.jpg",
     },
     {
         "category": "Các đặc sản khác của Hà Nội",
@@ -155,13 +155,6 @@ PRODUCTS = [
         "price": "220.000đ",
         "weight": "100g",
         "image": "tra sen.jpg",
-    },
-    {
-        "category": "Các đặc sản khác của Hà Nội",
-        "name": "Bánh Tôm Hồ Tây",
-        "price": "90.000đ",
-        "weight": "1 phần",
-        "image": "banh tom ho tay.jpg",
     },
     {
         "category": "Các đặc sản khác của Hà Nội",
@@ -2332,7 +2325,7 @@ def render_products():
 
 
 def render_recipe_book_page():
-    """Render a more realistic flipbook with curved page animation, shadow, sound, and quick navigation."""
+    """Render a Heyzine-like flipbook viewer using StPageFlip when available."""
     import json
 
     recipe_pages = [
@@ -2369,551 +2362,650 @@ def render_recipe_book_page():
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
 <style>
 * { box-sizing: border-box; }
 html, body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background: transparent;
-    color: #fff8df;
-}
-.flip-wrap {
-    width: 100%;
-    min-height: 1060px;
-    border-radius: 32px;
     overflow: hidden;
-    padding: clamp(18px, 4vw, 36px);
-    background:
-        radial-gradient(circle at 18% 0%, rgba(246, 224, 166, .23), transparent 34%),
-        radial-gradient(circle at 90% 12%, rgba(139, 195, 74, .16), transparent 30%),
-        linear-gradient(135deg, #122619 0%, #244128 45%, #0d1710 100%);
-    box-shadow: 0 22px 50px rgba(0,0,0,.22);
+    background: transparent;
+    font-family: Arial, Helvetica, sans-serif;
 }
-.flip-header { text-align: center; margin-bottom: 22px; }
-.flip-badge {
+.viewer {
+    width: 100%;
+    min-height: 1040px;
+    padding: 18px 18px 24px;
+    border-radius: 28px;
+    background:
+        radial-gradient(circle at 16% 0%, rgba(255,255,255,.12), transparent 34%),
+        linear-gradient(135deg, #181b1d 0%, #24282b 48%, #111315 100%);
+    color: #f5f0df;
+    position: relative;
+    box-shadow: 0 28px 70px rgba(0,0,0,.35);
+}
+.viewer-top {
+    max-width: 1040px;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+.viewer-title {
+    min-width: 0;
+}
+.viewer-title h2 {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(24px, 4vw, 40px);
+    line-height: 1.05;
+    color: #fff7df;
+}
+.viewer-title p {
+    margin: 5px 0 0;
+    color: rgba(255,247,223,.62);
+    font-size: 13px;
+}
+.toolbar {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 16px;
+    padding: 8px;
     border-radius: 999px;
-    background: rgba(255, 248, 223, .1);
-    border: 1px solid rgba(244, 223, 170, .3);
-    color: #f4dfaa;
-    font-size: 13px;
-    font-weight: 900;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
 }
-.flip-title {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: clamp(34px, 5vw, 58px);
-    line-height: 1.03;
-    margin: 13px 0 8px;
-    color: #fff8df;
-    text-shadow: 0 8px 26px rgba(0,0,0,.28);
-}
-.flip-subtitle {
-    margin: 0 auto;
-    max-width: 720px;
-    color: rgba(255,248,223,.78);
-    line-height: 1.65;
-    font-size: 16px;
-}
-.stage {
-    position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-    perspective: 2600px;
-}
-.book-frame {
-    position: relative;
-    min-height: 650px;
-    border-radius: 32px;
-    padding: clamp(12px, 2.5vw, 24px);
-    background:
-        linear-gradient(90deg, rgba(61, 40, 18, .28), transparent 12%, transparent 88%, rgba(61, 40, 18, .28)),
-        linear-gradient(135deg, #efe0bb 0%, #fff8df 46%, #dec590 100%);
-    box-shadow:
-        0 28px 58px rgba(0,0,0,.36),
-        inset 0 0 0 1px rgba(107, 75, 30, .18),
-        inset 0 18px 40px rgba(255,255,255,.28);
-    overflow: hidden;
-}
-.book-frame::before {
-    content: "";
-    position: absolute;
-    top: 12px;
-    bottom: 12px;
-    left: 50%;
-    width: 34px;
-    transform: translateX(-50%);
-    background: linear-gradient(90deg, transparent, rgba(92,61,27,.26), rgba(255,255,255,.2), transparent);
-    pointer-events: none;
-    z-index: 12;
-    opacity: .75;
-}
-.book-frame::after {
-    content: "";
-    position: absolute;
-    inset: 14px;
-    border-radius: 23px;
-    border: 1px solid rgba(120, 85, 35, .18);
-    pointer-events: none;
-    z-index: 15;
-}
-.book-shadow {
-    position: absolute;
-    left: 7%;
-    right: 7%;
-    bottom: 12px;
+.tool-btn {
+    width: 38px;
     height: 38px;
+    border: 0;
     border-radius: 50%;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,.38), transparent 70%);
-    filter: blur(5px);
-    z-index: 0;
-}
-.page-stage {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    min-height: 600px;
-    border-radius: 24px;
-    transform-style: preserve-3d;
-    overflow: hidden;
-    background:
-        linear-gradient(90deg, #fffaf0 0%, #fffdf6 49%, #ecd5a8 50%, #fffaf0 51%, #fffdf6 100%);
-    box-shadow:
-        inset 0 0 24px rgba(132, 92, 38, .14),
-        0 12px 28px rgba(60, 38, 13, .13);
-}
-.page-base,
-.page-next,
-.turning-page {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: clamp(14px, 2.6vw, 26px);
-    background:
-        linear-gradient(90deg, #fffaf0 0%, #fffdf6 49%, #ecd5a8 50%, #fffaf0 51%, #fffdf6 100%);
-}
-.page-next { opacity: 0; z-index: 1; }
-.page-base { z-index: 2; }
-.turning-page {
-    z-index: 9;
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
-    will-change: transform, filter;
-    pointer-events: none;
-    opacity: 0;
-}
-.turning-page::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0;
-    background:
-        linear-gradient(90deg, rgba(0,0,0,.24), transparent 18%, transparent 74%, rgba(255,255,255,.4));
-}
-.turning-page::after {
-    content: "";
-    position: absolute;
-    top: 4%;
-    bottom: 4%;
-    width: 42px;
-    border-radius: 50%;
-    filter: blur(8px);
-    background: rgba(0,0,0,.28);
-    opacity: 0;
-    pointer-events: none;
-}
-.turning-page.next {
-    transform-origin: left center;
-    clip-path: inset(0 0 0 50%);
-}
-.turning-page.next::after { left: 47%; }
-.turning-page.prev {
-    transform-origin: right center;
-    clip-path: inset(0 50% 0 0);
-}
-.turning-page.prev::after { right: 47%; }
-.turning-page.turn-next {
-    opacity: 1;
-    animation: realisticNext .92s cubic-bezier(.18,.72,.25,1) forwards;
-}
-.turning-page.turn-prev {
-    opacity: 1;
-    animation: realisticPrev .92s cubic-bezier(.18,.72,.25,1) forwards;
-}
-.turning-page.turn-next::before,
-.turning-page.turn-prev::before {
-    animation: shadeSweep .92s ease forwards;
-}
-.turning-page.turn-next::after,
-.turning-page.turn-prev::after {
-    animation: foldShadow .92s ease forwards;
-}
-@keyframes realisticNext {
-    0% {
-        transform: rotateY(0deg) translateZ(2px) skewY(0deg);
-        filter: brightness(1);
-    }
-    18% {
-        transform: rotateY(-24deg) translateZ(18px) skewY(-.5deg);
-        filter: brightness(.98);
-        border-radius: 24px 36px 36px 24px;
-    }
-    48% {
-        transform: rotateY(-104deg) translateZ(34px) skewY(-2.2deg);
-        filter: brightness(.86);
-        border-radius: 24px 54px 54px 24px;
-    }
-    72% {
-        transform: rotateY(-154deg) translateZ(18px) skewY(-.8deg);
-        filter: brightness(.93);
-    }
-    100% {
-        transform: rotateY(-180deg) translateZ(0) skewY(0deg);
-        filter: brightness(1);
-    }
-}
-@keyframes realisticPrev {
-    0% {
-        transform: rotateY(0deg) translateZ(2px) skewY(0deg);
-        filter: brightness(1);
-    }
-    18% {
-        transform: rotateY(24deg) translateZ(18px) skewY(.5deg);
-        filter: brightness(.98);
-        border-radius: 36px 24px 24px 36px;
-    }
-    48% {
-        transform: rotateY(104deg) translateZ(34px) skewY(2.2deg);
-        filter: brightness(.86);
-        border-radius: 54px 24px 24px 54px;
-    }
-    72% {
-        transform: rotateY(154deg) translateZ(18px) skewY(.8deg);
-        filter: brightness(.93);
-    }
-    100% {
-        transform: rotateY(180deg) translateZ(0) skewY(0deg);
-        filter: brightness(1);
-    }
-}
-@keyframes shadeSweep {
-    0% { opacity: .05; }
-    35% { opacity: .42; }
-    65% { opacity: .28; }
-    100% { opacity: 0; }
-}
-@keyframes foldShadow {
-    0% { opacity: 0; transform: scaleX(.4); }
-    40% { opacity: .55; transform: scaleX(1.2); }
-    78% { opacity: .22; transform: scaleX(.8); }
-    100% { opacity: 0; transform: scaleX(.3); }
-}
-.page-img {
-    max-width: 100%;
-    max-height: 560px;
-    width: auto;
-    height: auto;
-    display: block;
-    border-radius: 16px;
-    box-shadow: 0 14px 28px rgba(53, 34, 12, .18);
-    background: #f8edcf;
-    user-select: none;
-}
-.missing {
-    min-height: 450px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #7a4b00;
+    background: rgba(255,255,255,.12);
+    color: #fff7df;
+    font-size: 18px;
     font-weight: 900;
-    font-size: 20px;
-    padding: 30px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .16s ease, background .16s ease, opacity .16s ease;
 }
-.nav {
+.tool-btn:hover {
+    background: rgba(255,255,255,.22);
+    transform: translateY(-1px);
+}
+.tool-btn:disabled {
+    opacity: .34;
+    cursor: not-allowed;
+    transform: none;
+}
+.book-stage {
+    max-width: 1040px;
+    margin: 0 auto;
+    min-height: 710px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 2800px;
+}
+.book-shell {
+    position: relative;
+    width: min(100%, 980px);
+    height: 650px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.book-shell::before {
+    content: "";
+    position: absolute;
+    left: 6%;
+    right: 6%;
+    bottom: -18px;
+    height: 42px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,.6), transparent 72%);
+    filter: blur(8px);
+    pointer-events: none;
+}
+#book {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.page {
+    background: #fbf6e8;
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(91,63,27,.08);
+}
+.page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, rgba(255,255,255,.25), transparent 20%, transparent 80%, rgba(0,0,0,.055)),
+        radial-gradient(ellipse at 50% 50%, rgba(0,0,0,.035), transparent 44%);
+    mix-blend-mode: multiply;
+    opacity: .36;
+}
+.page img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    background: #fbf6e8;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+.page.cover img {
+    object-fit: contain;
+}
+.page-placeholder {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    padding: 30px;
+    text-align: center;
+    color: #7b5b2d;
+    background: #fbf6e8;
+    font-weight: 900;
+    line-height: 1.5;
+}
+.side-nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 20;
-    width: 56px;
-    height: 56px;
+    z-index: 30;
+    width: 52px;
+    height: 52px;
+    border: 0;
     border-radius: 50%;
-    border: 1px solid rgba(255,248,223,.4);
-    background: rgba(31, 68, 38, .94);
-    color: #fff8df;
-    font-size: 34px;
-    font-weight: 900;
+    background: rgba(15,17,18,.72);
+    color: white;
+    font-size: 36px;
+    font-weight: 800;
     cursor: pointer;
-    box-shadow: 0 12px 26px rgba(0,0,0,.28);
-    transition: .18s ease;
+    box-shadow: 0 12px 30px rgba(0,0,0,.38);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .16s ease;
 }
-.nav:hover { transform: translateY(-50%) scale(1.06); background: #2e7d32; }
-.nav:disabled { opacity: .34; cursor: not-allowed; transform: translateY(-50%); }
-.nav.prev { left: -22px; }
-.nav.next { right: -22px; }
-.meta-bar {
-    max-width: 900px;
-    margin: 16px auto 0;
+.side-nav:hover {
+    background: rgba(46,125,50,.92);
+    transform: translateY(-50%) scale(1.04);
+}
+.side-nav:disabled {
+    opacity: .28;
+    cursor: not-allowed;
+    transform: translateY(-50%);
+}
+.side-nav.prev { left: 0; }
+.side-nav.next { right: 0; }
+.status-row {
+    max-width: 1040px;
+    margin: 12px auto 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 14px;
-    flex-wrap: wrap;
+    color: rgba(255,247,223,.78);
+    font-size: 14px;
+    font-weight: 800;
 }
-.current-name {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #fff8df;
-    font-weight: 900;
-    font-size: 18px;
+.page-label {
+    color: #fff7df;
+    max-width: 56%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.page-pill {
-    background: rgba(255,248,223,.1);
-    border: 1px solid rgba(244,223,170,.28);
-    color: #f4dfaa;
-    padding: 9px 14px;
+.counter-pill {
+    flex-shrink: 0;
     border-radius: 999px;
-    font-weight: 900;
+    padding: 8px 13px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+    color: #fff7df;
 }
 .progress {
-    width: 100%;
-    height: 8px;
-    background: rgba(255,255,255,.12);
+    max-width: 1040px;
+    height: 6px;
+    margin: 12px auto 0;
     border-radius: 999px;
+    background: rgba(255,255,255,.12);
     overflow: hidden;
-    margin-top: 12px;
 }
 .progress span {
     display: block;
-    width: 9%;
+    width: 0%;
     height: 100%;
-    background: linear-gradient(90deg, #e7c873, #8bc34a);
     border-radius: 999px;
-    transition: width .25s ease;
+    background: linear-gradient(90deg, #d6b15e, #8bc34a);
+    transition: width .32s ease;
 }
-.quick-panel {
-    max-width: 980px;
-    margin: 28px auto 0;
-    padding: 20px;
-    border-radius: 26px;
-    background: rgba(255,248,223,.1);
-    border: 1px solid rgba(244,223,170,.22);
-    backdrop-filter: blur(8px);
-}
-.quick-title {
-    text-align: center;
-    color: #fff8df;
-    font-size: 24px;
-    font-weight: 900;
-    margin-bottom: 16px;
-}
-.quick-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+.thumb-strip {
+    max-width: 1040px;
+    margin: 18px auto 0;
+    display: flex;
     gap: 10px;
+    overflow-x: auto;
+    padding: 5px 4px 12px;
+    scroll-snap-type: x proximity;
 }
-.quick-btn {
-    border: none;
-    min-height: 58px;
-    border-radius: 18px;
-    padding: 10px 12px;
-    background: rgba(255,253,244,.92);
-    color: #17351f;
-    font-weight: 900;
+.thumb-strip::-webkit-scrollbar { height: 6px; }
+.thumb-strip::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,.25);
+    border-radius: 999px;
+}
+.thumb {
+    flex: 0 0 86px;
+    height: 62px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 0;
+    background: rgba(255,255,255,.1);
+    overflow: hidden;
     cursor: pointer;
-    box-shadow: 0 8px 18px rgba(0,0,0,.12);
-    transition: .18s ease;
+    scroll-snap-align: center;
+    opacity: .65;
+    transition: .16s ease;
 }
-.quick-btn:hover { transform: translateY(-3px); background: #f5e6bb; }
-.quick-btn.active {
-    background: linear-gradient(135deg, #2e7d32, #8bc34a);
-    color: white;
+.thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
-.sound-note {
-    margin-top: 12px;
-    text-align: center;
-    color: rgba(255,248,223,.64);
-    font-size: 13px;
+.thumb.active {
+    opacity: 1;
+    border-color: #d6b15e;
+    box-shadow: 0 0 0 3px rgba(214,177,94,.18);
 }
+.thumb.missing-thumb {
+    color: #fff7df;
+    font-size: 11px;
+    font-weight: 800;
+}
+.loading {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: #fff7df;
+    font-weight: 900;
+    letter-spacing: .2px;
+    z-index: 60;
+    background: rgba(12,14,15,.38);
+    backdrop-filter: blur(3px);
+}
+.viewer.fullscreen {
+    min-height: 100vh;
+    height: 100vh;
+    border-radius: 0;
+}
+.viewer.fullscreen .book-stage { min-height: calc(100vh - 190px); }
+.viewer.fullscreen .book-shell { height: calc(100vh - 240px); max-height: 820px; }
 @media (max-width: 760px) {
-    .flip-wrap { padding: 14px; min-height: 960px; }
-    .book-frame { min-height: 520px; padding: 10px; }
-    .page-stage { min-height: 500px; }
-    .page-img { max-height: 470px; }
-    .nav { width: 46px; height: 46px; font-size: 28px; }
-    .nav.prev { left: 6px; }
-    .nav.next { right: 6px; }
-    .quick-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .meta-bar { justify-content: center; text-align: center; }
+    .viewer {
+        min-height: 930px;
+        padding: 12px;
+        border-radius: 22px;
+    }
+    .viewer-top {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+    .toolbar {
+        align-self: center;
+        transform: scale(.94);
+    }
+    .book-stage {
+        min-height: 560px;
+    }
+    .book-shell {
+        width: 100%;
+        height: 520px;
+    }
+    .side-nav {
+        width: 44px;
+        height: 44px;
+        font-size: 30px;
+        background: rgba(15,17,18,.56);
+    }
+    .side-nav.prev { left: 4px; }
+    .side-nav.next { right: 4px; }
+    .status-row {
+        justify-content: center;
+        flex-wrap: wrap;
+        text-align: center;
+        gap: 8px;
+    }
+    .page-label {
+        max-width: 100%;
+        flex-basis: 100%;
+    }
+    .thumb { flex-basis: 74px; height: 54px; }
+}
+@media (max-width: 420px) {
+    .book-shell { height: 480px; }
+    .book-stage { min-height: 520px; }
+    .viewer { min-height: 900px; }
 }
 </style>
 </head>
 <body>
-<div class="flip-wrap">
-    <div class="flip-header">
-        <div class="flip-badge">🍃 Luxury Vintage Flipbook</div>
-        <h2 class="flip-title">Sổ Tay Công Thức Cốm</h2>
-        <p class="flip-subtitle">Hiệu ứng lật trang đã được làm lại: trang có độ cong, nếp gấp, bóng đổ và đổi ảnh ở giữa chuyển động để giống thao tác lật sách thật hơn.</p>
-    </div>
-
-    <div class="stage">
-        <button class="nav prev" id="prevBtn" title="Trang trước">‹</button>
-        <div class="book-frame">
-            <div class="book-shadow"></div>
-            <div class="page-stage" id="pageStage">
-                <div class="page-next" id="pageNext"></div>
-                <div class="page-base" id="pageBase"></div>
-                <div class="turning-page" id="turningPage"></div>
-            </div>
+<div class="viewer" id="viewer">
+    <div class="viewer-top">
+        <div class="viewer-title">
+            <h2>Sổ Tay Công Thức Cốm</h2>
+            <p>Kéo mép trang hoặc bấm mũi tên để lật sách</p>
         </div>
-        <button class="nav next" id="nextBtn" title="Trang sau">›</button>
+        <div class="toolbar">
+            <button class="tool-btn" id="firstBtn" title="Trang đầu">⏮</button>
+            <button class="tool-btn" id="prevBtnTop" title="Trang trước">‹</button>
+            <button class="tool-btn" id="soundBtn" title="Bật/tắt âm">🔊</button>
+            <button class="tool-btn" id="zoomBtn" title="Phóng to">＋</button>
+            <button class="tool-btn" id="fullBtn" title="Toàn màn hình">⛶</button>
+            <button class="tool-btn" id="nextBtnTop" title="Trang sau">›</button>
+            <button class="tool-btn" id="lastBtn" title="Trang cuối">⏭</button>
+        </div>
     </div>
 
-    <div class="meta-bar">
-        <div class="current-name" id="currentName">📖 Đang tải...</div>
-        <div class="page-pill" id="pageInfo">Trang 1 / 11</div>
-        <div class="progress"><span id="progressBar"></span></div>
+    <div class="book-stage">
+        <button class="side-nav prev" id="prevBtn">‹</button>
+        <div class="book-shell" id="bookShell">
+            <div id="book"></div>
+            <div class="loading" id="loading">Đang tải sách...</div>
+        </div>
+        <button class="side-nav next" id="nextBtn">›</button>
     </div>
 
-    <div class="quick-panel">
-        <div class="quick-title">⚡ Thao tác nhanh</div>
-        <div class="quick-grid" id="quickGrid"></div>
-        <div class="sound-note">Âm thanh chỉ phát sau thao tác bấm của người dùng. Nếu trình duyệt tắt âm, hiệu ứng hình vẫn hoạt động bình thường.</div>
+    <div class="status-row">
+        <div class="page-label" id="pageName">Đang tải...</div>
+        <div class="counter-pill" id="pageInfo">Trang 1 / 1</div>
     </div>
+    <div class="progress"><span id="progressBar"></span></div>
+    <div class="thumb-strip" id="thumbStrip"></div>
 </div>
 
 <script>
 const pages = __PAGES_JSON__;
+const viewer = document.getElementById("viewer");
+const bookEl = document.getElementById("book");
+const bookShell = document.getElementById("bookShell");
+const loading = document.getElementById("loading");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const prevBtnTop = document.getElementById("prevBtnTop");
+const nextBtnTop = document.getElementById("nextBtnTop");
+const firstBtn = document.getElementById("firstBtn");
+const lastBtn = document.getElementById("lastBtn");
+const soundBtn = document.getElementById("soundBtn");
+const zoomBtn = document.getElementById("zoomBtn");
+const fullBtn = document.getElementById("fullBtn");
+const pageName = document.getElementById("pageName");
+const pageInfo = document.getElementById("pageInfo");
+const progressBar = document.getElementById("progressBar");
+const thumbStrip = document.getElementById("thumbStrip");
+
+let pageFlip = null;
 let current = 0;
-let isFlipping = false;
-const pageBase = document.getElementById('pageBase');
-const pageNext = document.getElementById('pageNext');
-const turningPage = document.getElementById('turningPage');
-const currentName = document.getElementById('currentName');
-const pageInfo = document.getElementById('pageInfo');
-const progressBar = document.getElementById('progressBar');
-const quickGrid = document.getElementById('quickGrid');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
+let soundEnabled = true;
+let zoomed = false;
+let isFallback = false;
 
-function pageHTML(page) {
+function makePageHTML(page, idx) {
+    const coverClass = idx === 0 ? " cover" : "";
     if (page.exists && page.src) {
-        return `<img class="page-img" src="${page.src}" alt="${page.name}">`;
+        return `<div class="page${coverClass}" data-page="${idx}"><img src="${page.src}" alt="${page.name}"></div>`;
     }
-    return `<div class="missing">Không tìm thấy ảnh ${page.file}<br>Hãy đặt ảnh cùng cấp với file app.py</div>`;
+    return `<div class="page${coverClass}" data-page="${idx}"><div class="page-placeholder">Không tìm thấy ảnh ${page.file}<br>Hãy đặt ảnh cùng cấp file app.py</div></div>`;
 }
 
-function playFlipSound() {
-    try {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        const ctx = new AudioContext();
-        const duration = 0.34;
-        const bufferSize = ctx.sampleRate * duration;
-        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-        const data = buffer.getChannelData(0);
-        for (let i = 0; i < bufferSize; i++) {
-            const t = i / bufferSize;
-            const envelope = Math.pow(1 - t, 2.1);
-            data[i] = (Math.random() * 2 - 1) * envelope * 0.26;
+function renderPages() {
+    bookEl.innerHTML = pages.map(makePageHTML).join("");
+    thumbStrip.innerHTML = "";
+    pages.forEach((page, idx) => {
+        const btn = document.createElement("button");
+        btn.className = "thumb";
+        btn.title = page.name;
+        if (page.exists && page.src) {
+            btn.innerHTML = `<img src="${page.src}" alt="${page.name}">`;
+        } else {
+            btn.classList.add("missing-thumb");
+            btn.textContent = idx + 1;
         }
-        const noise = ctx.createBufferSource();
-        noise.buffer = buffer;
-
-        const filter = ctx.createBiquadFilter();
-        filter.type = 'bandpass';
-        filter.frequency.setValueAtTime(1550, ctx.currentTime);
-        filter.frequency.exponentialRampToValueAtTime(260, ctx.currentTime + duration);
-
-        const gain = ctx.createGain();
-        gain.gain.setValueAtTime(0.001, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.18, ctx.currentTime + 0.045);
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
-
-        noise.connect(filter);
-        filter.connect(gain);
-        gain.connect(ctx.destination);
-        noise.start();
-        noise.stop(ctx.currentTime + duration);
-    } catch (err) {}
-}
-
-function updateMeta() {
-    const page = pages[current];
-    currentName.innerHTML = `📖 ${page.name}`;
-    pageInfo.textContent = `Trang ${current + 1} / ${pages.length}`;
-    progressBar.style.width = `${((current + 1) / pages.length) * 100}%`;
-    prevBtn.disabled = current === 0;
-    nextBtn.disabled = current === pages.length - 1;
-    document.querySelectorAll('.quick-btn').forEach((btn, idx) => {
-        btn.classList.toggle('active', idx === current);
+        btn.addEventListener("click", () => {
+            if (pageFlip && !isFallback) {
+                pageFlip.flip(idx, "top");
+            } else {
+                fallbackGo(idx);
+            }
+        });
+        thumbStrip.appendChild(btn);
     });
 }
 
-function renderInitial() {
-    pageBase.innerHTML = pageHTML(pages[current]);
-    updateMeta();
+function playFlipSound() {
+    if (!soundEnabled) return;
+    try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        const ctx = new AudioContext();
+        if (ctx.state === "suspended") ctx.resume();
+
+        const duration = 0.42;
+        const bufferSize = Math.floor(ctx.sampleRate * duration);
+        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+
+        for (let i = 0; i < bufferSize; i++) {
+            const t = i / bufferSize;
+            const paper = (Math.random() * 2 - 1) * Math.pow(1 - t, 2.6);
+            const brush = Math.sin(t * Math.PI * 58) * Math.pow(1 - t, 4);
+            data[i] = (paper * 0.22) + (brush * 0.018);
+        }
+
+        const source = ctx.createBufferSource();
+        const filter = ctx.createBiquadFilter();
+        const gain = ctx.createGain();
+
+        source.buffer = buffer;
+        filter.type = "bandpass";
+        filter.frequency.setValueAtTime(1800, ctx.currentTime);
+        filter.frequency.exponentialRampToValueAtTime(330, ctx.currentTime + duration);
+
+        gain.gain.setValueAtTime(0.001, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.16, ctx.currentTime + 0.05);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+
+        source.connect(filter);
+        filter.connect(gain);
+        gain.connect(ctx.destination);
+        source.start();
+        source.stop(ctx.currentTime + duration);
+    } catch (err) {}
 }
 
-function goToPage(target, direction) {
-    if (isFlipping || target < 0 || target >= pages.length || target === current) return;
-    isFlipping = true;
+function updateUI(index) {
+    current = Math.max(0, Math.min(index, pages.length - 1));
+    const page = pages[current] || pages[0];
+
+    pageName.textContent = page ? page.name : "";
+    pageInfo.textContent = `Trang ${current + 1} / ${pages.length}`;
+    progressBar.style.width = `${((current + 1) / pages.length) * 100}%`;
+
+    const atStart = current <= 0;
+    const atEnd = current >= pages.length - 1;
+    prevBtn.disabled = atStart;
+    prevBtnTop.disabled = atStart;
+    firstBtn.disabled = atStart;
+    nextBtn.disabled = atEnd;
+    nextBtnTop.disabled = atEnd;
+    lastBtn.disabled = atEnd;
+
+    [...thumbStrip.children].forEach((btn, idx) => {
+        btn.classList.toggle("active", idx === current);
+        if (idx === current) {
+            btn.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+        }
+    });
+}
+
+function initPageFlip() {
+    renderPages();
+
+    if (!window.St || !window.St.PageFlip) {
+        initFallback();
+        return;
+    }
+
+    const mobile = window.matchMedia("(max-width: 760px)").matches;
+    const rect = bookShell.getBoundingClientRect();
+    const width = Math.max(320, Math.floor(rect.width / (mobile ? 1 : 2)));
+    const height = Math.max(430, Math.floor(rect.height));
+
+    pageFlip = new St.PageFlip(bookEl, {
+        width: width,
+        height: height,
+        size: "stretch",
+        minWidth: 280,
+        maxWidth: 560,
+        minHeight: 380,
+        maxHeight: 760,
+        drawShadow: true,
+        flippingTime: 1450,
+        usePortrait: mobile,
+        startZIndex: 10,
+        autoSize: true,
+        maxShadowOpacity: 0.42,
+        showCover: true,
+        mobileScrollSupport: false,
+        swipeDistance: 18,
+        clickEventForward: true,
+        disableFlipByClick: false
+    });
+
+    pageFlip.loadFromHTML(document.querySelectorAll(".page"));
+    pageFlip.on("flip", (event) => {
+        playFlipSound();
+        updateUI(event.data);
+    });
+    pageFlip.on("changeState", (event) => {
+        if (event.data === "flipping") playFlipSound();
+    });
+
+    setTimeout(() => {
+        loading.style.display = "none";
+        updateUI(pageFlip.getCurrentPageIndex());
+    }, 350);
+}
+
+function initFallback() {
+    isFallback = true;
+    loading.style.display = "none";
+    bookEl.classList.add("fallback-book");
+    const style = document.createElement("style");
+    style.textContent = `
+        #book.fallback-book { display:block; position:relative; width:100%; height:100%; }
+        #book.fallback-book .page { display:none; width:100%; height:100%; border-radius:18px; }
+        #book.fallback-book .page.active { display:block; animation:fallbackFade .45s ease; }
+        @keyframes fallbackFade { from { opacity:.35; transform:scale(.985); } to { opacity:1; transform:scale(1); } }
+    `;
+    document.head.appendChild(style);
+    fallbackGo(0);
+}
+
+function fallbackGo(index) {
+    current = Math.max(0, Math.min(index, pages.length - 1));
+    [...bookEl.querySelectorAll(".page")].forEach((page, idx) => {
+        page.classList.toggle("active", idx === current);
+    });
     playFlipSound();
-
-    const currentHTML = pageHTML(pages[current]);
-    const targetHTML = pageHTML(pages[target]);
-
-    pageBase.innerHTML = currentHTML;
-    pageNext.innerHTML = targetHTML;
-    pageNext.style.opacity = "1";
-
-    turningPage.innerHTML = direction === 'prev' ? targetHTML : currentHTML;
-    turningPage.className = "turning-page " + (direction === 'prev' ? "prev turn-prev" : "next turn-next");
-
-    setTimeout(() => {
-        current = target;
-        pageBase.innerHTML = targetHTML;
-        updateMeta();
-    }, 455);
-
-    setTimeout(() => {
-        turningPage.className = "turning-page";
-        turningPage.innerHTML = "";
-        pageNext.style.opacity = "0";
-        isFlipping = false;
-    }, 950);
+    updateUI(current);
 }
 
-prevBtn.addEventListener('click', () => goToPage(current - 1, 'prev'));
-nextBtn.addEventListener('click', () => goToPage(current + 1, 'next'));
+function flipPrev() {
+    if (pageFlip && !isFallback) pageFlip.flipPrev("top");
+    else fallbackGo(current - 1);
+}
+function flipNext() {
+    if (pageFlip && !isFallback) pageFlip.flipNext("top");
+    else fallbackGo(current + 1);
+}
 
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowLeft') goToPage(current - 1, 'prev');
-    if (event.key === 'ArrowRight') goToPage(current + 1, 'next');
+prevBtn.addEventListener("click", flipPrev);
+prevBtnTop.addEventListener("click", flipPrev);
+nextBtn.addEventListener("click", flipNext);
+nextBtnTop.addEventListener("click", flipNext);
+firstBtn.addEventListener("click", () => pageFlip && !isFallback ? pageFlip.flip(0, "top") : fallbackGo(0));
+lastBtn.addEventListener("click", () => pageFlip && !isFallback ? pageFlip.flip(pages.length - 1, "top") : fallbackGo(pages.length - 1));
+
+soundBtn.addEventListener("click", () => {
+    soundEnabled = !soundEnabled;
+    soundBtn.textContent = soundEnabled ? "🔊" : "🔇";
 });
 
-pages.forEach((page, idx) => {
-    const btn = document.createElement('button');
-    btn.className = 'quick-btn';
-    btn.textContent = page.name;
-    btn.addEventListener('click', () => goToPage(idx, idx < current ? 'prev' : 'next'));
-    quickGrid.appendChild(btn);
+zoomBtn.addEventListener("click", () => {
+    zoomed = !zoomed;
+    bookShell.style.transform = zoomed ? "scale(1.12)" : "scale(1)";
+    bookShell.style.transition = "transform .25s ease";
+    zoomBtn.textContent = zoomed ? "－" : "＋";
 });
 
-renderInitial();
+fullBtn.addEventListener("click", async () => {
+    try {
+        if (!document.fullscreenElement) {
+            await viewer.requestFullscreen();
+            viewer.classList.add("fullscreen");
+        } else {
+            await document.exitFullscreen();
+            viewer.classList.remove("fullscreen");
+        }
+        setTimeout(() => {
+            if (pageFlip && !isFallback) pageFlip.update();
+        }, 250);
+    } catch (err) {
+        viewer.classList.toggle("fullscreen");
+        setTimeout(() => {
+            if (pageFlip && !isFallback) pageFlip.update();
+        }, 250);
+    }
+});
+
+document.addEventListener("fullscreenchange", () => {
+    if (!document.fullscreenElement) viewer.classList.remove("fullscreen");
+});
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") flipPrev();
+    if (event.key === "ArrowRight") flipNext();
+    if (event.key === "Home") pageFlip && !isFallback ? pageFlip.flip(0, "top") : fallbackGo(0);
+    if (event.key === "End") pageFlip && !isFallback ? pageFlip.flip(pages.length - 1, "top") : fallbackGo(pages.length - 1);
+});
+
+window.addEventListener("resize", () => {
+    if (pageFlip && !isFallback) {
+        clearTimeout(window.__flipResize);
+        window.__flipResize = setTimeout(() => pageFlip.update(), 220);
+    }
+});
+
+initPageFlip();
 </script>
 </body>
 </html>
 """.replace("__PAGES_JSON__", pages_json)
 
-    components.html(html, height=1100, scrolling=True)
+    components.html(html, height=1080, scrolling=False)
 
 def render_recipe_index_page():
     """Render a recipe index so the menu item Công thức & Cách làm món ăn has a useful page."""
@@ -3850,7 +3942,7 @@ st.markdown(
 </div>
 <div class="footer-full" id="dathang">
 <div class="footer-content">
-<h3>🌾 Cốm Làng Vòng</h3>
+<h3>🌾 Cốm Làng Vòng Bà Hoản</h3>
 <p>📍 Địa chỉ: Số 36, ngõ 63 Xuân Thủy, Cầu Giấy, Hà Nội</p>
 <p>📞 <a href="tel:0385437503">0385 437 503</a></p>
 <p>💬 <a href="https://zalo.me/0385437503" target="_blank">Chat Zalo</a></p>
@@ -3860,3 +3952,5 @@ st.markdown(
 """,
     unsafe_allow_html=True,
 )
+
+# viewer background updated to soft green
