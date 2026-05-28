@@ -2535,10 +2535,11 @@ html, body {
     position: absolute;
     top: 62%;
     transform: translateY(-50%);
-    border: none;
     background: transparent;
+    border: none;
     color: rgba(255,255,255,.92);
-    font-size: 54px;
+    font-size: 56px;
+    line-height: 1;
     cursor: pointer;
     z-index: 50;
     transition: .22s ease;
