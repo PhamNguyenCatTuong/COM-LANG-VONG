@@ -2449,7 +2449,7 @@ html, body {
 .book-stage {
     max-width: 1040px;
     margin: 0 auto;
-    min-height: 430px;
+    min-height: 300px;
     position: relative;
     display: flex;
     align-items: flex-start;
@@ -2459,7 +2459,7 @@ html, body {
 .book-shell {
     position: relative;
     width: min(100%, 980px);
-    height: 390px;
+    height: 250px;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -2674,11 +2674,11 @@ html, body {
         transform: scale(.94);
     }
     .book-stage {
-        min-height: 340px;
+        min-height: 220px;
     }
     .book-shell {
         width: 100%;
-        height: 310px;
+        height: 190px;
     }
     .side-nav {
         width: 44px;
