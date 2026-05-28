@@ -2740,12 +2740,12 @@ html, body {
     </div>
 
     <div class="book-stage">
-        <button class="side-nav prev" id="prevBtn">‹</button>
+        <button class="side-nav prev">❮</button>
         <div class="book-shell" id="bookShell">
             <div id="book"></div>
             <div class="loading" id="loading">Đang tải sách...</div>
         </div>
-        <button class="side-nav next" id="nextBtn">›</button>
+        <button class="side-nav next">❯</button>
     </div>
 
     <div class="status-row">
