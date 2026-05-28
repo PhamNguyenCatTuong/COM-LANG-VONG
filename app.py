@@ -2335,7 +2335,7 @@ def render_recipe_book_page():
 
     recipe_pages = [
         {"name": "Bánh cốm truyền thống", "file": "1.jpg"},
-        {"name": "Chả cốm", "file": "2.jpg"},
+        {"name": "Chè cốm", "file": "2.jpg"},
         {"name": "Bánh chưng cốm", "file": "3.jpg"},
         {"name": "Bánh trung thu cốm", "file": "4.jpg"},
         {"name": "Bánh xu xê cốm", "file": "5.jpg"},
