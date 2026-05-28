@@ -263,6 +263,18 @@ PRODUCTION_AREAS = [
     },
 ]
 
+
+# Parent menu pages are no longer standalone pages.
+# Old parent URLs redirect to the first detailed submenu page.
+PARENT_PAGE_REDIRECTS = {
+    "gioithieu": "cauchuyen",
+    "sanpham_main": "sanpham",
+    "baobi_main": "muc_giay",
+}
+if page in PARENT_PAGE_REDIRECTS:
+    st.query_params["page"] = PARENT_PAGE_REDIRECTS[page]
+    st.rerun()
+
 if "cart" not in st.session_state:
     st.session_state.cart = {}
 
@@ -1894,6 +1906,15 @@ footer {visibility: hidden;}
     .process-bottom-note { font-size: 16px; }
 }
 
+
+/* Parent menu buttons with submenus are not direct links */
+.dropbtn.parent-only {
+    cursor: default;
+}
+.dropbtn.parent-only:focus {
+    outline: none;
+}
+
 </style>
 """.replace("__BANNER_IMAGE__", image_to_data_uri("Banner com.jpg")),
     unsafe_allow_html=True,
@@ -1909,11 +1930,11 @@ st.markdown(
 <label for="menu-toggle" class="hamburger">☰</label>
 </div>
 <div class="menu">
-<div class="dropdown"><a href="?page=gioithieu" target="_self" style="text-decoration:none;"><button class="dropbtn">Giới thiệu</button></a><div class="dropdown-content"><a href="?page=cauchuyen" target="_self">Câu chuyện Cốm Làng Vòng</a><a href="?page=video" target="_self">Hành trình hương cốm</a></div></div>
+<div class="dropdown"><button class="dropbtn parent-only" type="button">Giới thiệu</button><div class="dropdown-content"><a href="?page=cauchuyen" target="_self">Câu chuyện Cốm Làng Vòng</a><a href="?page=video" target="_self">Hành trình hương cốm</a></div></div>
 <div class="dropdown"><a href="?page=quytrinh" target="_self" style="text-decoration:none;"><button class="dropbtn">Quy trình & nguồn gốc</button></a></div>
-<div class="dropdown"><a href="?page=sanpham_main" target="_self" style="text-decoration:none;"><button class="dropbtn">Sản phẩm</button></a><div class="dropdown-content"><a href="?page=sanpham" target="_self">Danh sách sản phẩm</a><a href="?page=congthuc" target="_self">Công thức & Cách làm món ăn</a></div></div>
+<div class="dropdown"><button class="dropbtn parent-only" type="button">Sản phẩm</button><div class="dropdown-content"><a href="?page=sanpham" target="_self">Danh sách sản phẩm</a><a href="?page=congthuc" target="_self">Công thức & Cách làm món ăn</a></div></div>
 <div class="dropdown"><a href="?page=chatluong" target="_self" style="text-decoration:none;"><button class="dropbtn">Chất lượng</button></a></div>
-<div class="dropdown"><a href="?page=baobi_main" target="_self" style="text-decoration:none;"><button class="dropbtn">Bao bì & bảo quản</button></a><div class="dropdown-content"><a href="?page=muc_giay" target="_self">Mực & giấy bao bì</a><a href="?page=thuhoi" target="_self">Chính sách thu hồi</a></div></div>
+<div class="dropdown"><button class="dropbtn parent-only" type="button">Bao bì & bảo quản</button><div class="dropdown-content"><a href="?page=muc_giay" target="_self">Mực & giấy bao bì</a><a href="?page=thuhoi" target="_self">Chính sách thu hồi</a></div></div>
 <a href="?page=giohang" target="_self" class="cart-menu-btn">🛒 Giỏ hàng (__CART_COUNT__)</a>
 </div>
 </div>
