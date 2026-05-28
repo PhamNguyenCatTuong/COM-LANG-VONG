@@ -264,6 +264,14 @@ PRODUCTION_AREAS = [
 ]
 
 
+
+# Remove stale product/viewed params when not on product detail pages.
+if page != "chitietsp" and ("product" in st.query_params or "viewed" in st.query_params):
+    clean_page = page
+    st.query_params.clear()
+    st.query_params["page"] = clean_page
+    st.rerun()
+
 if "cart" not in st.session_state:
     st.session_state.cart = {}
 
@@ -308,9 +316,8 @@ def get_viewed_products_from_url():
 
 
 def get_current_viewed_query():
-    """Trả về chuỗi viewed hiện tại để gắn vào tất cả link sản phẩm."""
-    viewed_items = st.session_state.get("viewed_products", []) or get_viewed_products_from_url()
-    return ",".join(str(i) for i in viewed_items if 0 <= int(i) < len(PRODUCTS))
+    """Không tự gắn lịch sử viewed vào mọi link để tránh reload nhảy về sản phẩm cũ."""
+    return ""
 
 
 def page_url(page_id, product_index=None, add_cart=None):
@@ -3520,27 +3527,13 @@ def render_product_detail_page():
         st.write("Vui lòng quay lại danh sách sản phẩm.")
         return
 
-    # Lưu sản phẩm đã xem vào cả session_state và URL.
-    # Quan trọng: mọi link nội bộ đều phải giữ tham số viewed, nếu không Streamlit có thể mất lịch sử khi chuyển trang.
+    # Lưu sản phẩm đã xem trong session בלבד, không ghi lại URL để tránh reload nhảy về sản phẩm cũ.
     if "viewed_products" not in st.session_state:
         st.session_state.viewed_products = []
 
-    url_viewed = get_viewed_products_from_url()
-    merged_viewed = []
-    for i in st.session_state.viewed_products + url_viewed:
-        if i not in merged_viewed and 0 <= i < len(PRODUCTS):
-            merged_viewed.append(i)
-
-    old_viewed = [i for i in merged_viewed if i != product_index]
+    old_viewed = [i for i in st.session_state.viewed_products if i != product_index and 0 <= i < len(PRODUCTS)]
     st.session_state.viewed_products = [product_index] + old_viewed
     st.session_state.viewed_products = st.session_state.viewed_products[:8]
-
-    new_viewed_param = ",".join(str(i) for i in st.session_state.viewed_products)
-    if params.get("viewed", "") != new_viewed_param:
-        st.query_params["page"] = "chitietsp"
-        st.query_params["product"] = str(product_index)
-        st.query_params["viewed"] = new_viewed_param
-        st.rerun()
 
     product = PRODUCTS[product_index]
     ingredients, process, storage = build_product_details(product)
