@@ -2452,7 +2452,7 @@ html, body {
     min-height: 430px;
     position: relative;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     perspective: 2800px;
 }
