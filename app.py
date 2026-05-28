@@ -1383,7 +1383,7 @@ footer {visibility: hidden;}
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px;
-    margin-bottom: 22px;
+    margin-bottom: 10px;
 }
 
 .recipe-quick-card {
@@ -3010,7 +3010,7 @@ initPageFlip();
 </html>
 """.replace("__PAGES_JSON__", pages_json)
 
-    components.html(html, height=1080, scrolling=False)
+    components.html(html, height=760, scrolling=False)
 
 def render_recipe_index_page():
     """Render a recipe index so the menu item Công thức & Cách làm món ăn has a useful page."""
