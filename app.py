@@ -2536,13 +2536,13 @@ html, body {
     top: 50%;
     transform: translateY(-50%);
     z-index: 30;
-    width: 52px;
-    height: 52px;
+    width: 44px;
+    height: 44px;
     border: 0;
     border-radius: 50%;
-    background: rgba(46,125,50,.82);
+    background: rgba(46,125,50,.72);
     color: white;
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 800;
     cursor: pointer;
     box-shadow: 0 12px 30px rgba(0,0,0,.38);
@@ -2561,8 +2561,8 @@ html, body {
     cursor: not-allowed;
     transform: translateY(-50%);
 }
-.side-nav.prev { left: 0; }
-.side-nav.next { right: 0; }
+.side-nav.prev { left: -66px; }
+.side-nav.next { right: -66px; }
 .status-row {
     max-width: 1040px;
     margin: 12px auto 0;
@@ -2692,13 +2692,13 @@ html, body {
         height: auto;
     }
     .side-nav {
-        width: 44px;
-        height: 44px;
-        font-size: 30px;
+        width: 38px;
+        height: 38px;
+        font-size: 26px;
         background: rgba(46,125,50,.72);
     }
-    .side-nav.prev { left: 4px; }
-    .side-nav.next { right: 4px; }
+    .side-nav.prev { left: -8px; }
+    .side-nav.next { right: -8px; }
     .status-row {
         justify-content: center;
         flex-wrap: wrap;
