@@ -2489,33 +2489,38 @@ html, body {
     position: relative;
 }
 .page {
-    background: #fbf6e8;
+    background: transparent !important;
     overflow: hidden;
-    box-shadow: inset 0 0 20px rgba(91,63,27,.08);
+    box-shadow: none !important;
 }
 .page::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        linear-gradient(90deg, rgba(255,255,255,.25), transparent 20%, transparent 80%, rgba(0,0,0,.055)),
-        radial-gradient(ellipse at 50% 50%, rgba(0,0,0,.035), transparent 44%);
-    mix-blend-mode: multiply;
-    opacity: .36;
+    content: none !important;
+    display: none !important;
 }
 .page img {
     width: 100%;
     height: 100%;
     object-fit: contain;
     display: block;
-    background: #fbf6e8;
+    background: transparent !important;
     user-select: none;
     -webkit-user-drag: none;
 }
 .page.cover img {
     object-fit: contain;
 }
+
+/* Remove artificial cream/white sheet behind recipe spreads. */
+.page,
+.stf__item,
+.stf__block {
+    background: transparent !important;
+}
+
+.page img {
+    background: transparent !important;
+}
+
 .page-placeholder {
     height: 100%;
     width: 100%;
@@ -2530,8 +2535,8 @@ html, body {
 }
 .side-nav {
     position: absolute;
-    top:0;
-    transform:none;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 30;
     width: 52px;
     height: 52px;
@@ -2709,9 +2714,13 @@ html, body {
     .thumb { flex-basis: 74px; height: 54px; }
 }
 @media (max-width: 420px) {
-    .book-shell { height: 480px; }
-    .book-stage { min-height: 520px; }
-    .viewer { min-height: 900px; }
+    .book-shell {
+        width: 100%;
+        aspect-ratio: 2400 / 1400;
+        height: auto;
+    }
+    .book-stage { min-height: 300px; }
+    .viewer { min-height: 760px; }
 }
 </style>
 </head>
