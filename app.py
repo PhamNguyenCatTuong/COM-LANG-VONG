@@ -2769,15 +2769,15 @@ html, body {
 
 
 /* FIX READABILITY ON WHITE BACKGROUND */
-.viewer,
-.viewer-title h2,
-.viewer-title p,
-.tool-btn,
-.page-label,
-.counter-pill,
-.status-row,
-.thumb.missing-thumb,
-.loading {
+.flipbook-viewer,
+.flipbook-viewer .viewer-title h2,
+.flipbook-viewer .viewer-title p,
+.flipbook-viewer .tool-btn,
+.flipbook-viewer .page-label,
+.flipbook-viewer .counter-pill,
+.flipbook-viewer .status-row,
+.flipbook-viewer .thumb.missing-thumb,
+.flipbook-viewer .loading {
     color: #17351f !important;
 }
 
