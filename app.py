@@ -3979,7 +3979,7 @@ st.markdown(
 
 
 
-/* Remove dark background under the flipbook */
+# Remove dark background under the flipbook
 .viewer,
 .book-stage,
 .book-shell,
