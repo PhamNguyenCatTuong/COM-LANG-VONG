@@ -773,7 +773,7 @@ footer {visibility: hidden;}
 }
 .product-detail-image img, .product-detail-image .product-image-placeholder {
     width: 100%;
-    height: 430px;
+    height: 250px;
     object-fit: cover;
     border-radius: 20px;
     box-shadow: 0 8px 22px rgba(0,0,0,0.12);
@@ -2449,19 +2449,19 @@ html, body {
 .book-stage {
     max-width: 1040px;
     margin: 0 auto;
-    min-height: 710px;
+    min-height: 430px;
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     perspective: 2800px;
 }
 .book-shell {
     position: relative;
     width: min(100%, 980px);
-    height: 650px;
+    height: 390px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 }
 .book-shell::before {
@@ -2674,11 +2674,11 @@ html, body {
         transform: scale(.94);
     }
     .book-stage {
-        min-height: 560px;
+        min-height: 340px;
     }
     .book-shell {
         width: 100%;
-        height: 520px;
+        height: 310px;
     }
     .side-nav {
         width: 44px;
