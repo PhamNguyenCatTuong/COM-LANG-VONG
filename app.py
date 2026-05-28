@@ -1556,8 +1556,7 @@ footer {visibility: hidden;}
 /* FIX RECIPE BOOK FLIP - no JavaScript needed */
 .recipe-radio {
     position: absolute;
-    opacity: var(--fold);
-    transform: scaleX(var(--foldX));
+    opacity: 0;
     pointer-events: none;
 }
 
@@ -2333,7 +2332,7 @@ def render_products():
 
 
 def render_recipe_book_page():
-    """Render a realistic single-page flipbook with images filling the full 16:9 book frame."""
+    """Render a more realistic flipbook with curved page animation, shadow, sound, and quick navigation."""
     import json
 
     recipe_pages = [
@@ -2386,18 +2385,20 @@ html, body {
     overflow: hidden;
     padding: clamp(18px, 4vw, 36px);
     background:
-        radial-gradient(circle at 18% 0%, rgba(246,224,166,.23), transparent 34%),
-        radial-gradient(circle at 90% 12%, rgba(139,195,74,.16), transparent 30%),
+        radial-gradient(circle at 18% 0%, rgba(246, 224, 166, .23), transparent 34%),
+        radial-gradient(circle at 90% 12%, rgba(139, 195, 74, .16), transparent 30%),
         linear-gradient(135deg, #122619 0%, #244128 45%, #0d1710 100%);
     box-shadow: 0 22px 50px rgba(0,0,0,.22);
 }
 .flip-header { text-align: center; margin-bottom: 22px; }
 .flip-badge {
     display: inline-flex;
+    align-items: center;
+    gap: 8px;
     padding: 8px 16px;
     border-radius: 999px;
-    background: rgba(255,248,223,.1);
-    border: 1px solid rgba(244,223,170,.28);
+    background: rgba(255, 248, 223, .1);
+    border: 1px solid rgba(244, 223, 170, .3);
     color: #f4dfaa;
     font-size: 13px;
     font-weight: 900;
@@ -2419,93 +2420,214 @@ html, body {
 }
 .stage {
     position: relative;
-    max-width: 1120px;
+    max-width: 900px;
     margin: 0 auto;
-    perspective: 2800px;
+    perspective: 2600px;
 }
 .book-frame {
     position: relative;
-    min-height: auto;
+    min-height: 650px;
     border-radius: 32px;
-    padding: 10px;
+    padding: clamp(12px, 2.5vw, 24px);
     background:
-        linear-gradient(90deg, rgba(63,43,20,.35), transparent 12%, transparent 88%, rgba(63,43,20,.35)),
-        linear-gradient(135deg, #f1dfba 0%, #fff8df 47%, #e2c78f 100%);
+        linear-gradient(90deg, rgba(61, 40, 18, .28), transparent 12%, transparent 88%, rgba(61, 40, 18, .28)),
+        linear-gradient(135deg, #efe0bb 0%, #fff8df 46%, #dec590 100%);
     box-shadow:
-        0 30px 60px rgba(0,0,0,.36),
-        inset 0 0 0 1px rgba(107,75,30,.18),
-        inset 0 20px 45px rgba(255,255,255,.25);
+        0 28px 58px rgba(0,0,0,.36),
+        inset 0 0 0 1px rgba(107, 75, 30, .18),
+        inset 0 18px 40px rgba(255,255,255,.28);
     overflow: hidden;
 }
 .book-frame::before {
     content: "";
     position: absolute;
-    inset: 10px;
-    border-radius: 24px;
-    border: 1px solid rgba(113,74,31,.18);
-    z-index: 12;
+    top: 12px;
+    bottom: 12px;
+    left: 50%;
+    width: 34px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent, rgba(92,61,27,.26), rgba(255,255,255,.2), transparent);
     pointer-events: none;
+    z-index: 12;
+    opacity: .75;
 }
 .book-frame::after {
     content: "";
     position: absolute;
-    left: 50%;
-    top: 14px;
-    bottom: 14px;
-    width: 28px;
-    transform: translateX(-50%);
-    background: linear-gradient(90deg, transparent, rgba(95,63,28,.22), rgba(255,255,255,.2), transparent);
-    z-index: 11;
+    inset: 14px;
+    border-radius: 23px;
+    border: 1px solid rgba(120, 85, 35, .18);
     pointer-events: none;
+    z-index: 15;
 }
-.page-area {
+.book-shadow {
+    position: absolute;
+    left: 7%;
+    right: 7%;
+    bottom: 12px;
+    height: 38px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,.38), transparent 70%);
+    filter: blur(5px);
+    z-index: 0;
+}
+.page-stage {
     position: relative;
     z-index: 2;
     width: 100%;
-    aspect-ratio: 16 / 9;
-    min-height: 0;
+    min-height: 600px;
     border-radius: 24px;
-    background:
-        linear-gradient(90deg, #fff9ea 0%, #fffdf7 48%, #f2dfb6 50%, #fffaf0 52%, #fffdf8 100%);
-    overflow: hidden;
-    box-shadow: inset 0 0 28px rgba(132,92,38,.15);
     transform-style: preserve-3d;
+    overflow: hidden;
+    background:
+        linear-gradient(90deg, #fffaf0 0%, #fffdf6 49%, #ecd5a8 50%, #fffaf0 51%, #fffdf6 100%);
+    box-shadow:
+        inset 0 0 24px rgba(132, 92, 38, .14),
+        0 12px 28px rgba(60, 38, 13, .13);
 }
-.base-page, .next-underlay, .turn-page {
+.page-base,
+.page-next,
+.turning-page {
     position: absolute;
     inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
-    border-radius: 24px;
+    padding: clamp(14px, 2.6vw, 26px);
     background:
-        radial-gradient(circle at 10% 15%, rgba(255,255,255,.8), transparent 22%),
-        linear-gradient(90deg, #fff7e6, #fffdf8 48%, #f3dfb6 50%, #fffdf8 52%, #fff8ea);
+        linear-gradient(90deg, #fffaf0 0%, #fffdf6 49%, #ecd5a8 50%, #fffaf0 51%, #fffdf6 100%);
 }
-.next-underlay {
+.page-next { opacity: 0; z-index: 1; }
+.page-base { z-index: 2; }
+.turning-page {
+    z-index: 9;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    will-change: transform, filter;
+    pointer-events: none;
     opacity: 0;
-    transform: scale(.992);
-    transition: opacity .16s ease;
 }
-.next-underlay.show { opacity: 1; }
-.page-img {
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    max-height: none;
-    object-fit: cover;
-    object-position: center center;
-    display: block;
-    border-radius: 20px;
-    box-shadow: none;
-    background: #f8edcf;
-    user-select: none;
+.turning-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.24), transparent 18%, transparent 74%, rgba(255,255,255,.4));
+}
+.turning-page::after {
+    content: "";
+    position: absolute;
+    top: 4%;
+    bottom: 4%;
+    width: 42px;
+    border-radius: 50%;
+    filter: blur(8px);
+    background: rgba(0,0,0,.28);
+    opacity: 0;
     pointer-events: none;
 }
+.turning-page.next {
+    transform-origin: left center;
+    clip-path: inset(0 0 0 50%);
+}
+.turning-page.next::after { left: 47%; }
+.turning-page.prev {
+    transform-origin: right center;
+    clip-path: inset(0 50% 0 0);
+}
+.turning-page.prev::after { right: 47%; }
+.turning-page.turn-next {
+    opacity: 1;
+    animation: realisticNext .92s cubic-bezier(.18,.72,.25,1) forwards;
+}
+.turning-page.turn-prev {
+    opacity: 1;
+    animation: realisticPrev .92s cubic-bezier(.18,.72,.25,1) forwards;
+}
+.turning-page.turn-next::before,
+.turning-page.turn-prev::before {
+    animation: shadeSweep .92s ease forwards;
+}
+.turning-page.turn-next::after,
+.turning-page.turn-prev::after {
+    animation: foldShadow .92s ease forwards;
+}
+@keyframes realisticNext {
+    0% {
+        transform: rotateY(0deg) translateZ(2px) skewY(0deg);
+        filter: brightness(1);
+    }
+    18% {
+        transform: rotateY(-24deg) translateZ(18px) skewY(-.5deg);
+        filter: brightness(.98);
+        border-radius: 24px 36px 36px 24px;
+    }
+    48% {
+        transform: rotateY(-104deg) translateZ(34px) skewY(-2.2deg);
+        filter: brightness(.86);
+        border-radius: 24px 54px 54px 24px;
+    }
+    72% {
+        transform: rotateY(-154deg) translateZ(18px) skewY(-.8deg);
+        filter: brightness(.93);
+    }
+    100% {
+        transform: rotateY(-180deg) translateZ(0) skewY(0deg);
+        filter: brightness(1);
+    }
+}
+@keyframes realisticPrev {
+    0% {
+        transform: rotateY(0deg) translateZ(2px) skewY(0deg);
+        filter: brightness(1);
+    }
+    18% {
+        transform: rotateY(24deg) translateZ(18px) skewY(.5deg);
+        filter: brightness(.98);
+        border-radius: 36px 24px 24px 36px;
+    }
+    48% {
+        transform: rotateY(104deg) translateZ(34px) skewY(2.2deg);
+        filter: brightness(.86);
+        border-radius: 54px 24px 24px 54px;
+    }
+    72% {
+        transform: rotateY(154deg) translateZ(18px) skewY(.8deg);
+        filter: brightness(.93);
+    }
+    100% {
+        transform: rotateY(180deg) translateZ(0) skewY(0deg);
+        filter: brightness(1);
+    }
+}
+@keyframes shadeSweep {
+    0% { opacity: .05; }
+    35% { opacity: .42; }
+    65% { opacity: .28; }
+    100% { opacity: 0; }
+}
+@keyframes foldShadow {
+    0% { opacity: 0; transform: scaleX(.4); }
+    40% { opacity: .55; transform: scaleX(1.2); }
+    78% { opacity: .22; transform: scaleX(.8); }
+    100% { opacity: 0; transform: scaleX(.3); }
+}
+.page-img {
+    max-width: 100%;
+    max-height: 560px;
+    width: auto;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+    box-shadow: 0 14px 28px rgba(53, 34, 12, .18);
+    background: #f8edcf;
+    user-select: none;
+}
 .missing {
+    min-height: 450px;
     width: 100%;
-    min-height: 480px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2515,80 +2637,16 @@ html, body {
     font-size: 20px;
     padding: 30px;
 }
-.turn-page {
-    z-index: 8;
-    padding: 0;
-    display: none;
-    transform-style: preserve-3d;
-    will-change: transform;
-    overflow: visible;
-    background: transparent;
-    box-shadow: none;
-}
-.turn-page.active { display: block; }
-.turn-face {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    border-radius: 24px;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    overflow: hidden;
-    background:
-        radial-gradient(circle at 9% 10%, rgba(255,255,255,.82), transparent 22%),
-        linear-gradient(90deg, #fff7e6, #fffdf8 48%, #f2dfb6 50%, #fffaf0 52%, #fffdf8);
-    box-shadow: 0 22px 44px rgba(0,0,0,.22);
-}
-.turn-back { transform: rotateY(180deg); }
-.turn-page.next { transform-origin: left center; }
-.turn-page.prev { transform-origin: right center; }
-.turn-page.prev .turn-back { transform: rotateY(-180deg); }
-.curl-shadow, .paper-highlight, .edge-line {
-    position: absolute;
-    inset: 0;
-    border-radius: 24px;
-    pointer-events: none;
-    z-index: 15;
-    opacity: 0;
-}
-.curl-shadow {
-    background: linear-gradient(90deg, rgba(0,0,0,.42), rgba(0,0,0,.08) 30%, transparent 68%);
-    mix-blend-mode: multiply;
-}
-.paper-highlight {
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,.55) 48%, rgba(255,255,255,.14) 58%, transparent 76%);
-}
-.edge-line {
-    width: 10px;
-    left: auto;
-    right: 0;
-    background: linear-gradient(90deg, rgba(255,255,255,.7), rgba(75,44,15,.22));
-    box-shadow: -8px 0 18px rgba(0,0,0,.17);
-}
-.turn-page.prev .edge-line { left: 0; right: auto; transform: scaleX(-1); }
-.turn-page.prev .curl-shadow { transform: scaleX(-1); }
-.turn-page.prev .paper-highlight { transform: scaleX(-1); }
-.book-shadow {
-    position: absolute;
-    inset: auto 6% -20px 6%;
-    height: 45px;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,.35), transparent 70%);
-    filter: blur(10px);
-    z-index: 0;
-}
 .nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 30;
-    width: 58px;
-    height: 58px;
+    z-index: 20;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
     border: 1px solid rgba(255,248,223,.4);
-    background: rgba(31,68,38,.94);
+    background: rgba(31, 68, 38, .94);
     color: #fff8df;
     font-size: 34px;
     font-weight: 900;
@@ -2597,11 +2655,11 @@ html, body {
     transition: .18s ease;
 }
 .nav:hover { transform: translateY(-50%) scale(1.06); background: #2e7d32; }
-.nav:disabled { opacity: .32; cursor: not-allowed; transform: translateY(-50%); }
-.nav.prev { left: -24px; }
-.nav.next { right: -24px; }
+.nav:disabled { opacity: .34; cursor: not-allowed; transform: translateY(-50%); }
+.nav.prev { left: -22px; }
+.nav.next { right: -22px; }
 .meta-bar {
-    max-width: 920px;
+    max-width: 900px;
     margin: 16px auto 0;
     display: flex;
     align-items: center;
@@ -2610,6 +2668,9 @@ html, body {
     flex-wrap: wrap;
 }
 .current-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     color: #fff8df;
     font-weight: 900;
     font-size: 18px;
@@ -2632,6 +2693,7 @@ html, body {
 }
 .progress span {
     display: block;
+    width: 9%;
     height: 100%;
     background: linear-gradient(90deg, #e7c873, #8bc34a);
     border-radius: 999px;
@@ -2671,69 +2733,26 @@ html, body {
     transition: .18s ease;
 }
 .quick-btn:hover { transform: translateY(-3px); background: #f5e6bb; }
-.quick-btn.active { background: linear-gradient(135deg, #2e7d32, #8bc34a); color: white; }
+.quick-btn.active {
+    background: linear-gradient(135deg, #2e7d32, #8bc34a);
+    color: white;
+}
 .sound-note {
     margin-top: 12px;
     text-align: center;
     color: rgba(255,248,223,.64);
     font-size: 13px;
 }
-@media (max-width: 768px) {
-
-    .flip-wrap {
-        padding: 10px !important;
-    }
-
-    .stage {
-        width: 92vw !important;
-        max-width: 92vw !important;
-        margin: auto !important;
-    }
-
-    .book-frame {
-        width: 92vw !important;
-        min-height: 420px !important;
-        padding: 8px !important;
-        border-radius: 22px !important;
-    }
-
-    .page-area {
-        min-height: 390px !important;
-        border-radius: 18px !important;
-    }
-
-    .page-img {
-        width: 100% !important;
-        height: auto !important;
-        object-fit: contain !important;
-    }
-
-    .turn-face {
-        padding: 8px !important;
-    }
-
-    .nav {
-        width: 44px !important;
-        height: 44px !important;
-        font-size: 26px !important;
-    }
-
-    .nav.prev {
-        left: 4px !important;
-    }
-
-    .nav.next {
-        right: 4px !important;
-    }
-
-    .quick-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .meta-bar {
-        justify-content: center;
-        text-align: center;
-    }
+@media (max-width: 760px) {
+    .flip-wrap { padding: 14px; min-height: 960px; }
+    .book-frame { min-height: 520px; padding: 10px; }
+    .page-stage { min-height: 500px; }
+    .page-img { max-height: 470px; }
+    .nav { width: 46px; height: 46px; font-size: 28px; }
+    .nav.prev { left: 6px; }
+    .nav.next { right: 6px; }
+    .quick-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .meta-bar { justify-content: center; text-align: center; }
 }
 </style>
 </head>
@@ -2742,25 +2761,19 @@ html, body {
     <div class="flip-header">
         <div class="flip-badge">🍃 Luxury Vintage Flipbook</div>
         <h2 class="flip-title">Sổ Tay Công Thức Cốm</h2>
-        <p class="flip-subtitle">Nội dung trang mới nằm trên mặt sau của chính tờ giấy đang lật, nên không còn cảm giác chuyển cảnh đột ngột.</p>
+        <p class="flip-subtitle">Hiệu ứng lật trang đã được làm lại: trang có độ cong, nếp gấp, bóng đổ và đổi ảnh ở giữa chuyển động để giống thao tác lật sách thật hơn.</p>
     </div>
 
     <div class="stage">
         <button class="nav prev" id="prevBtn" title="Trang trước">‹</button>
         <div class="book-frame">
-            <div class="page-area" id="pageArea">
-                <div class="base-page" id="basePage"></div>
-                <div class="next-underlay" id="nextUnderlay"></div>
-                <div class="turn-page" id="turnPage">
-                    <div class="turn-face turn-front" id="turnFront"></div>
-                    <div class="turn-face turn-back" id="turnBack"></div>
-                    <div class="curl-shadow" id="curlShadow"></div>
-                    <div class="paper-highlight" id="paperHighlight"></div>
-                    <div class="edge-line" id="edgeLine"></div>
-                </div>
+            <div class="book-shadow"></div>
+            <div class="page-stage" id="pageStage">
+                <div class="page-next" id="pageNext"></div>
+                <div class="page-base" id="pageBase"></div>
+                <div class="turning-page" id="turningPage"></div>
             </div>
         </div>
-        <div class="book-shadow"></div>
         <button class="nav next" id="nextBtn" title="Trang sau">›</button>
     </div>
 
@@ -2773,7 +2786,7 @@ html, body {
     <div class="quick-panel">
         <div class="quick-title">⚡ Thao tác nhanh</div>
         <div class="quick-grid" id="quickGrid"></div>
-        <div class="sound-note">Âm thanh chỉ phát sau thao tác bấm. Nếu trình duyệt tắt âm, hiệu ứng hình vẫn hoạt động bình thường.</div>
+        <div class="sound-note">Âm thanh chỉ phát sau thao tác bấm của người dùng. Nếu trình duyệt tắt âm, hiệu ứng hình vẫn hoạt động bình thường.</div>
     </div>
 </div>
 
@@ -2781,15 +2794,9 @@ html, body {
 const pages = __PAGES_JSON__;
 let current = 0;
 let isFlipping = false;
-
-const basePage = document.getElementById('basePage');
-const nextUnderlay = document.getElementById('nextUnderlay');
-const turnPage = document.getElementById('turnPage');
-const turnFront = document.getElementById('turnFront');
-const turnBack = document.getElementById('turnBack');
-const curlShadow = document.getElementById('curlShadow');
-const paperHighlight = document.getElementById('paperHighlight');
-const edgeLine = document.getElementById('edgeLine');
+const pageBase = document.getElementById('pageBase');
+const pageNext = document.getElementById('pageNext');
+const turningPage = document.getElementById('turningPage');
 const currentName = document.getElementById('currentName');
 const pageInfo = document.getElementById('pageInfo');
 const progressBar = document.getElementById('progressBar');
@@ -2797,36 +2804,39 @@ const quickGrid = document.getElementById('quickGrid');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 
-function pageHtml(page) {
-    if (page && page.exists && page.src) {
+function pageHTML(page) {
+    if (page.exists && page.src) {
         return `<img class="page-img" src="${page.src}" alt="${page.name}">`;
     }
-    return `<div class="missing">Không tìm thấy ảnh ${page ? page.file : ''}<br>Hãy đặt ảnh cùng cấp với file app.py</div>`;
+    return `<div class="missing">Không tìm thấy ảnh ${page.file}<br>Hãy đặt ảnh cùng cấp với file app.py</div>`;
 }
 
 function playFlipSound() {
     try {
         const AudioContext = window.AudioContext || window.webkitAudioContext;
         const ctx = new AudioContext();
-        const duration = 0.30;
+        const duration = 0.34;
         const bufferSize = ctx.sampleRate * duration;
         const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
         const data = buffer.getChannelData(0);
         for (let i = 0; i < bufferSize; i++) {
             const t = i / bufferSize;
-            const burst = Math.sin(t * Math.PI);
-            data[i] = (Math.random() * 2 - 1) * burst * (1 - t) * 0.26;
+            const envelope = Math.pow(1 - t, 2.1);
+            data[i] = (Math.random() * 2 - 1) * envelope * 0.26;
         }
         const noise = ctx.createBufferSource();
         noise.buffer = buffer;
+
         const filter = ctx.createBiquadFilter();
         filter.type = 'bandpass';
-        filter.frequency.setValueAtTime(1500, ctx.currentTime);
-        filter.frequency.exponentialRampToValueAtTime(230, ctx.currentTime + duration);
+        filter.frequency.setValueAtTime(1550, ctx.currentTime);
+        filter.frequency.exponentialRampToValueAtTime(260, ctx.currentTime + duration);
+
         const gain = ctx.createGain();
         gain.gain.setValueAtTime(0.001, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.18, ctx.currentTime + 0.035);
+        gain.gain.exponentialRampToValueAtTime(0.18, ctx.currentTime + 0.045);
         gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+
         noise.connect(filter);
         filter.connect(gain);
         gain.connect(ctx.destination);
@@ -2840,81 +2850,45 @@ function updateMeta() {
     currentName.innerHTML = `📖 ${page.name}`;
     pageInfo.textContent = `Trang ${current + 1} / ${pages.length}`;
     progressBar.style.width = `${((current + 1) / pages.length) * 100}%`;
-    prevBtn.disabled = current === 0 || isFlipping;
-    nextBtn.disabled = current === pages.length - 1 || isFlipping;
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === pages.length - 1;
     document.querySelectorAll('.quick-btn').forEach((btn, idx) => {
         btn.classList.toggle('active', idx === current);
-        btn.disabled = isFlipping;
     });
 }
 
-function renderBase() {
-    basePage.innerHTML = pageHtml(pages[current]);
-    nextUnderlay.innerHTML = '';
-    nextUnderlay.classList.remove('show');
-    turnPage.className = 'turn-page';
-    turnPage.style.transform = '';
-    curlShadow.style.opacity = 0;
-    paperHighlight.style.opacity = 0;
-    edgeLine.style.opacity = 0;
+function renderInitial() {
+    pageBase.innerHTML = pageHTML(pages[current]);
     updateMeta();
-}
-
-function easeInOutCubic(t) {
-    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 }
 
 function goToPage(target, direction) {
     if (isFlipping || target < 0 || target >= pages.length || target === current) return;
     isFlipping = true;
-    updateMeta();
     playFlipSound();
 
-    const dir = direction || (target > current ? 'next' : 'prev');
-    const front = pages[current];
-    const back = pages[target];
+    const currentHTML = pageHTML(pages[current]);
+    const targetHTML = pageHTML(pages[target]);
 
-    nextUnderlay.innerHTML = pageHtml(back);
-    turnFront.innerHTML = pageHtml(front);
-    turnBack.innerHTML = pageHtml(back);
-    turnPage.className = `turn-page active ${dir}`;
-    nextUnderlay.classList.add('show');
+    pageBase.innerHTML = currentHTML;
+    pageNext.innerHTML = targetHTML;
+    pageNext.style.opacity = "1";
 
-    const duration = 860;
-    const start = performance.now();
+    turningPage.innerHTML = direction === 'prev' ? targetHTML : currentHTML;
+    turningPage.className = "turning-page " + (direction === 'prev' ? "prev turn-prev" : "next turn-next");
 
-    function frame(now) {
-        const raw = Math.min((now - start) / duration, 1);
-        const t = easeInOutCubic(raw);
-        let angle;
+    setTimeout(() => {
+        current = target;
+        pageBase.innerHTML = targetHTML;
+        updateMeta();
+    }, 455);
 
-        if (dir === 'next') {
-            angle = -180 * t;
-            turnPage.style.transform = `rotateY(${angle}deg) translateZ(${18 * Math.sin(Math.PI * t)}px) skewY(${-2.2 * Math.sin(Math.PI * t)}deg)`;
-        } else {
-            angle = 180 * t;
-            turnPage.style.transform = `rotateY(${angle}deg) translateZ(${18 * Math.sin(Math.PI * t)}px) skewY(${2.2 * Math.sin(Math.PI * t)}deg)`;
-        }
-
-        const fold = Math.sin(Math.PI * t);
-        curlShadow.style.opacity = Math.min(0.62, fold * 0.72);
-        paperHighlight.style.opacity = Math.min(0.7, fold * 0.8);
-        edgeLine.style.opacity = Math.min(0.9, fold * 1.1);
-        basePage.style.filter = `brightness(${1 - 0.10 * fold})`;
-        nextUnderlay.style.filter = `brightness(${0.9 + 0.1 * t})`;
-
-        if (raw < 1) {
-            requestAnimationFrame(frame);
-        } else {
-            current = target;
-            isFlipping = false;
-            basePage.style.filter = '';
-            nextUnderlay.style.filter = '';
-            renderBase();
-        }
-    }
-
-    requestAnimationFrame(frame);
+    setTimeout(() => {
+        turningPage.className = "turning-page";
+        turningPage.innerHTML = "";
+        pageNext.style.opacity = "0";
+        isFlipping = false;
+    }, 950);
 }
 
 prevBtn.addEventListener('click', () => goToPage(current - 1, 'prev'));
@@ -2933,13 +2907,13 @@ pages.forEach((page, idx) => {
     quickGrid.appendChild(btn);
 });
 
-renderBase();
+renderInitial();
 </script>
 </body>
 </html>
 """.replace("__PAGES_JSON__", pages_json)
 
-    components.html(html, height=1060, scrolling=True)
+    components.html(html, height=1100, scrolling=True)
 
 def render_recipe_index_page():
     """Render a recipe index so the menu item Công thức & Cách làm món ăn has a useful page."""
