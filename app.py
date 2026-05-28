@@ -2449,7 +2449,7 @@ html, body {
 .book-stage {
     max-width: 1040px;
     margin: 0 auto;
-    min-height: 300px;
+    min-height: 430px;
     position: relative;
     display: flex;
     align-items: flex-start;
@@ -2459,7 +2459,7 @@ html, body {
 .book-shell {
     position: relative;
     width: min(100%, 980px);
-    height: 250px;
+    height: 390px;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -2523,8 +2523,8 @@ html, body {
 }
 .side-nav {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top:0;
+    transform:none;
     z-index: 30;
     width: 52px;
     height: 52px;
@@ -2674,11 +2674,11 @@ html, body {
         transform: scale(.94);
     }
     .book-stage {
-        min-height: 220px;
+        min-height: 340px;
     }
     .book-shell {
         width: 100%;
-        height: 190px;
+        height: 310px;
     }
     .side-nav {
         width: 44px;
