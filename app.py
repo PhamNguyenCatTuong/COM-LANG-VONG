@@ -2459,7 +2459,10 @@ html, body {
 .book-shell {
     position: relative;
     width: min(100%, 980px);
-    height: 390px;
+
+    aspect-ratio: 12 / 7;
+    height: auto;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2500,7 +2503,7 @@ html, body {
 .page img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
     background: #fbf6e8;
     user-select: none;
