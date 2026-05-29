@@ -263,15 +263,6 @@ PRODUCTION_AREAS = [
     },
 ]
 
-
-
-# Remove stale product/viewed params when not on product detail pages.
-if page != "chitietsp" and ("product" in st.query_params or "viewed" in st.query_params):
-    clean_page = page
-    st.query_params.clear()
-    st.query_params["page"] = clean_page
-    st.rerun()
-
 if "cart" not in st.session_state:
     st.session_state.cart = {}
 
@@ -316,8 +307,9 @@ def get_viewed_products_from_url():
 
 
 def get_current_viewed_query():
-    """Không tự gắn lịch sử viewed vào mọi link để tránh reload nhảy về sản phẩm cũ."""
-    return ""
+    """Trả về chuỗi viewed hiện tại để gắn vào tất cả link sản phẩm."""
+    viewed_items = st.session_state.get("viewed_products", []) or get_viewed_products_from_url()
+    return ",".join(str(i) for i in viewed_items if 0 <= int(i) < len(PRODUCTS))
 
 
 def page_url(page_id, product_index=None, add_cart=None):
@@ -1902,15 +1894,6 @@ footer {visibility: hidden;}
     .process-bottom-note { font-size: 16px; }
 }
 
-
-/* Parent menu buttons with submenus are not direct links */
-.dropbtn.parent-only {
-    cursor: default;
-}
-.dropbtn.parent-only:focus {
-    outline: none;
-}
-
 </style>
 """.replace("__BANNER_IMAGE__", image_to_data_uri("Banner com.jpg")),
     unsafe_allow_html=True,
@@ -1926,11 +1909,11 @@ st.markdown(
 <label for="menu-toggle" class="hamburger">☰</label>
 </div>
 <div class="menu">
-<div class="dropdown"><button class="dropbtn parent-only" type="button">Giới thiệu</button><div class="dropdown-content"><a href="?page=cauchuyen" target="_self">Câu chuyện Cốm Làng Vòng</a><a href="?page=video" target="_self">Hành trình hương cốm</a></div></div>
+<div class="dropdown"><a href="?page=gioithieu" target="_self" style="text-decoration:none;"><button class="dropbtn">Giới thiệu</button></a><div class="dropdown-content"><a href="?page=cauchuyen" target="_self">Câu chuyện Cốm Làng Vòng</a><a href="?page=video" target="_self">Hành trình hương cốm</a></div></div>
 <div class="dropdown"><a href="?page=quytrinh" target="_self" style="text-decoration:none;"><button class="dropbtn">Quy trình & nguồn gốc</button></a></div>
-<div class="dropdown"><button class="dropbtn parent-only" type="button">Sản phẩm</button><div class="dropdown-content"><a href="?page=sanpham" target="_self">Danh sách sản phẩm</a><a href="?page=congthuc" target="_self">Công thức & Cách làm món ăn</a></div></div>
+<div class="dropdown"><a href="?page=sanpham_main" target="_self" style="text-decoration:none;"><button class="dropbtn">Sản phẩm</button></a><div class="dropdown-content"><a href="?page=sanpham" target="_self">Danh sách sản phẩm</a><a href="?page=congthuc" target="_self">Công thức & Cách làm món ăn</a></div></div>
 <div class="dropdown"><a href="?page=chatluong" target="_self" style="text-decoration:none;"><button class="dropbtn">Chất lượng</button></a></div>
-<div class="dropdown"><button class="dropbtn parent-only" type="button">Bao bì & bảo quản</button><div class="dropdown-content"><a href="?page=muc_giay" target="_self">Mực & giấy bao bì</a><a href="?page=thuhoi" target="_self">Chính sách thu hồi</a></div></div>
+<div class="dropdown"><a href="?page=baobi_main" target="_self" style="text-decoration:none;"><button class="dropbtn">Bao bì & bảo quản</button></a><div class="dropdown-content"><a href="?page=muc_giay" target="_self">Mực & giấy bao bì</a><a href="?page=thuhoi" target="_self">Chính sách thu hồi</a></div></div>
 <a href="?page=giohang" target="_self" class="cart-menu-btn">🛒 Giỏ hàng (__CART_COUNT__)</a>
 </div>
 </div>
@@ -3527,13 +3510,27 @@ def render_product_detail_page():
         st.write("Vui lòng quay lại danh sách sản phẩm.")
         return
 
-    # Lưu sản phẩm đã xem trong session בלבד, không ghi lại URL để tránh reload nhảy về sản phẩm cũ.
+    # Lưu sản phẩm đã xem vào cả session_state và URL.
+    # Quan trọng: mọi link nội bộ đều phải giữ tham số viewed, nếu không Streamlit có thể mất lịch sử khi chuyển trang.
     if "viewed_products" not in st.session_state:
         st.session_state.viewed_products = []
 
-    old_viewed = [i for i in st.session_state.viewed_products if i != product_index and 0 <= i < len(PRODUCTS)]
+    url_viewed = get_viewed_products_from_url()
+    merged_viewed = []
+    for i in st.session_state.viewed_products + url_viewed:
+        if i not in merged_viewed and 0 <= i < len(PRODUCTS):
+            merged_viewed.append(i)
+
+    old_viewed = [i for i in merged_viewed if i != product_index]
     st.session_state.viewed_products = [product_index] + old_viewed
     st.session_state.viewed_products = st.session_state.viewed_products[:8]
+
+    new_viewed_param = ",".join(str(i) for i in st.session_state.viewed_products)
+    if params.get("viewed", "") != new_viewed_param:
+        st.query_params["page"] = "chitietsp"
+        st.query_params["product"] = str(product_index)
+        st.query_params["viewed"] = new_viewed_param
+        st.rerun()
 
     product = PRODUCTS[product_index]
     ingredients, process, storage = build_product_details(product)
@@ -3599,234 +3596,289 @@ def render_origin_process_page():
     html = f"""
 <style>
 * {{ box-sizing: border-box; }}
-body {{ margin: 0; font-family: Arial, sans-serif; color: #17351f; background: transparent; }}
-.process-page {{
+body {{ margin:0; font-family: Arial, sans-serif; color:#17351f; background: transparent; }}
+.process-wrap {{
     width: 100%;
-    background: linear-gradient(180deg, #fffdf4 0%, #f4f8ef 100%);
-    border-radius: 28px;
-    padding: 28px;
+    background:
+        radial-gradient(circle at 12% 5%, rgba(159, 214, 113, .30), transparent 30%),
+        radial-gradient(circle at 90% 12%, rgba(46, 125, 50, .16), transparent 28%),
+        linear-gradient(180deg, #fffdf4 0%, #f4faee 100%);
+    border-radius: 32px;
+    padding: clamp(18px, 3vw, 34px);
     overflow: hidden;
+    border: 1px solid #e2ead8;
 }}
-.process-hero {{
+.process-hero-new {{
     display: grid;
-    grid-template-columns: 1.08fr .92fr;
-    gap: 26px;
+    grid-template-columns: minmax(0, 1.05fr) minmax(300px, .95fr);
+    gap: clamp(18px, 3vw, 34px);
     align-items: center;
-    margin-bottom: 34px;
+    margin-bottom: 28px;
 }}
-.process-kicker {{
-    display: inline-block;
-    background: #e5f3df;
-    color: #2e7d32;
-    padding: 8px 15px;
+.process-badge {{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #e7f5df;
+    color: #1b7a32;
+    border: 1px solid #cfe8c2;
     border-radius: 999px;
+    padding: 9px 16px;
     font-size: 13px;
     font-weight: 900;
-    letter-spacing: .2px;
 }}
-.process-hero h2 {{
+.process-hero-new h2 {{
     margin: 16px 0 12px;
-    font-size: clamp(34px, 5vw, 58px);
-    line-height: 1.04;
+    font-size: clamp(32px, 5.5vw, 62px);
+    line-height: 1.02;
+    letter-spacing: -1.4px;
     color: #17351f;
 }}
-.process-hero p {{
+.process-lead {{
     margin: 0;
-    color: #4b5b4d;
-    font-size: 17px;
+    color: #465846;
+    font-size: clamp(15px, 2vw, 18px);
     line-height: 1.75;
 }}
-.process-photo-stack {{
-    position: relative;
-    min-height: 355px;
+.process-stats {{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 20px;
 }}
-.process-photo {{
+.process-stat {{
+    background: rgba(255,255,255,.82);
+    border: 1px solid #dce8d8;
+    border-radius: 18px;
+    padding: 13px 12px;
+    box-shadow: 0 8px 18px rgba(23,53,31,.06);
+}}
+.process-stat b {{ display:block; color:#2e7d32; font-size:24px; line-height:1; margin-bottom:5px; }}
+.process-stat span {{ color:#526354; font-size:13px; font-weight:700; }}
+.process-collage {{
+    position: relative;
+    min-height: 420px;
+}}
+.process-main-photo {{
     position: absolute;
-    object-fit: cover;
-    border: 8px solid white;
-    border-radius: 28px;
-    box-shadow: 0 18px 38px rgba(31, 53, 31, .18);
+    inset: 18px 12px 34px 56px;
+    border-radius: 34px;
+    overflow: hidden;
+    box-shadow: 0 24px 50px rgba(21, 54, 29, .22);
+    border: 9px solid white;
 }}
-.process-photo.one {{ width: 74%; height: 245px; right: 0; top: 0; }}
-.process-photo.two {{ width: 55%; height: 185px; left: 0; bottom: 14px; }}
-.process-photo.three {{ width: 44%; height: 150px; right: 24px; bottom: 0; }}
-.process-section-title {{
-    text-align: center;
-    margin: 4px 0 24px;
+.process-main-photo img, .process-small-photo img {{ width:100%; height:100%; object-fit:cover; display:block; }}
+.process-small-photo {{
+    position: absolute;
+    width: 48%;
+    height: 155px;
+    border-radius: 26px;
+    overflow: hidden;
+    border: 7px solid white;
+    box-shadow: 0 16px 34px rgba(21, 54, 29, .18);
 }}
-.process-section-title h3 {{
-    margin: 0;
-    color: #1b5e20;
-    font-size: 30px;
+.process-small-photo.a {{ left: 0; bottom: 14px; }}
+.process-small-photo.b {{ right: 0; top: 0; width: 43%; height: 135px; }}
+.process-floating-card {{
+    position: absolute;
+    right: 8px;
+    bottom: 0;
+    width: min(72%, 260px);
+    background: rgba(255,255,255,.95);
+    border: 1px solid #dce8d8;
+    border-radius: 22px;
+    padding: 15px 16px;
+    box-shadow: 0 14px 30px rgba(23,53,31,.14);
 }}
-.process-section-title p {{
-    margin: 8px auto 0;
-    max-width: 640px;
-    color: #5d6b60;
-    line-height: 1.6;
+.process-floating-card b {{ color:#1b5e20; display:block; margin-bottom:5px; }}
+.process-floating-card span {{ color:#506252; font-size:13px; line-height:1.45; display:block; }}
+.process-title-row {{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 18px;
+    margin: 34px 0 18px;
 }}
-.process-steps {{
-    position: relative;
+.process-title-row h3 {{ margin:0; color:#17351f; font-size: clamp(26px, 3.5vw, 40px); }}
+.process-title-row p {{ margin:0; color:#60705f; max-width: 470px; line-height:1.55; }}
+.process-timeline {{
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
     gap: 12px;
-    align-items: start;
-    padding: 26px 0 8px;
+    position: relative;
+    padding-top: 26px;
 }}
-.process-steps::before {{
-    content: "";
-    position: absolute;
-    top: 58px;
-    left: 6%;
-    right: 6%;
-    height: 4px;
-    background: linear-gradient(90deg, #9ccc65, #2e7d32);
-    border-radius: 99px;
-    opacity: .72;
+.process-timeline::before {{
+    content:"";
+    position:absolute;
+    top: 55px;
+    left: 5%;
+    right: 5%;
+    height: 5px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #b7d979, #2e7d32, #86b84d);
+    opacity:.8;
 }}
-.step-card {{
+.step {{
     position: relative;
     z-index: 2;
-    background: rgba(255, 255, 255, .96);
-    border: 1px solid #dce8d8;
-    border-radius: 22px;
-    padding: 64px 14px 18px;
-    min-height: 205px;
-    box-shadow: 0 12px 24px rgba(23, 53, 31, .09);
-    transition: transform .2s ease, box-shadow .2s ease;
+    background: rgba(255,255,255,.94);
+    border: 1px solid #d9e8d2;
+    border-radius: 24px;
+    padding: 70px 13px 17px;
+    min-height: 212px;
+    text-align: center;
+    box-shadow: 0 12px 26px rgba(23,53,31,.08);
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
 }}
-.step-card:hover {{
-    transform: translateY(-5px);
-    box-shadow: 0 18px 34px rgba(23, 53, 31, .14);
-}}
-.step-number {{
-    position: absolute;
-    top: 18px;
+.step:hover {{ transform: translateY(-6px); box-shadow: 0 18px 36px rgba(23,53,31,.14); border-color:#b7d979; }}
+.step-icon {{
+    position:absolute;
+    top: 14px;
     left: 50%;
     transform: translateX(-50%);
-    width: 54px;
-    height: 54px;
+    width: 64px;
+    height: 64px;
+    display:grid;
+    place-items:center;
     border-radius: 50%;
-    background: #2e7d32;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    font-weight: 900;
-    border: 5px solid #eff8e8;
-    box-shadow: 0 8px 18px rgba(46, 125, 50, .28);
+    background: linear-gradient(145deg, #2e7d32, #7fb645);
+    color:white;
+    font-size: 28px;
+    border: 6px solid #f4faee;
+    box-shadow: 0 10px 22px rgba(46,125,50,.28);
 }}
-.step-card h4 {{
-    margin: 0 0 8px;
-    color: #17351f;
-    font-size: 17px;
-    text-align: center;
-}}
-.step-card p {{
-    margin: 0;
-    color: #4f5f52;
-    font-size: 13px;
-    line-height: 1.5;
-    text-align: center;
-}}
-.process-note {{
-    margin-top: 28px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-}}
-.note-box {{
-    background: #eaf5e6;
-    border-radius: 22px;
-    padding: 20px 22px;
-    border: 1px solid #d6e8ce;
-}}
-.note-box h4 {{ margin: 0 0 8px; color: #1b5e20; font-size: 20px; }}
-.note-box p {{ margin: 0; color: #425344; line-height: 1.65; }}
-.process-gallery {{
-    display: grid;
+.step small {{ color:#2e7d32; font-weight:900; letter-spacing:.5px; }}
+.step h4 {{ margin: 7px 0 8px; color:#17351f; font-size:16px; line-height:1.25; }}
+.step p {{ margin:0; color:#526354; font-size:13px; line-height:1.48; }}
+.process-info-grid {{
+    display:grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-    margin-top: 28px;
+    gap: 14px;
+    margin-top: 26px;
 }}
-.process-gallery img {{
-    width: 100%;
-    height: 190px;
-    object-fit: cover;
-    border-radius: 22px;
-    box-shadow: 0 12px 26px rgba(0,0,0,.12);
+.info-card {{
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 20px;
+    border: 1px solid #dfead8;
+    box-shadow: 0 10px 22px rgba(23,53,31,.07);
 }}
-.process-quote {{
+.info-card h4 {{ margin:0 0 8px; color:#1b5e20; font-size:20px; }}
+.info-card p {{ margin:0; color:#475a49; line-height:1.62; font-size:14px; }}
+.process-gallery-new {{
+    display:grid;
+    grid-template-columns: 1.1fr .9fr 1fr;
+    gap: 14px;
     margin-top: 24px;
-    padding: 18px 22px;
+}}
+.gallery-tile {{
+    position: relative;
+    min-height: 230px;
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow: 0 16px 34px rgba(0,0,0,.13);
+}}
+.gallery-tile img {{ width:100%; height:100%; object-fit:cover; display:block; }}
+.gallery-tile span {{
+    position:absolute;
+    left:14px;
+    bottom:14px;
+    background: rgba(23,53,31,.82);
+    color:white;
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-weight:900;
+    font-size:13px;
+}}
+.process-quote-new {{
+    margin-top: 24px;
     background: #17351f;
     color: #fffdf4;
-    border-radius: 22px;
-    font-size: 20px;
-    line-height: 1.55;
-    text-align: center;
-    font-style: italic;
+    border-radius: 26px;
+    padding: 22px;
+    text-align:center;
+    font-size: clamp(18px, 2.4vw, 24px);
+    line-height:1.5;
+    font-family: Georgia, 'Times New Roman', serif;
 }}
-@media (max-width: 980px) {{
-    .process-page {{ padding: 18px; }}
-    .process-hero {{ grid-template-columns: 1fr; }}
-    .process-photo-stack {{ min-height: 280px; }}
-    .process-steps {{ grid-template-columns: 1fr; gap: 16px; padding-top: 8px; }}
-    .process-steps::before {{ left: 31px; right: auto; top: 0; bottom: 0; width: 4px; height: auto; }}
-    .step-card {{ min-height: auto; padding: 18px 18px 18px 82px; }}
-    .step-number {{ left: 31px; top: 18px; transform: none; width: 48px; height: 48px; }}
-    .step-card h4, .step-card p {{ text-align: left; }}
-    .process-note {{ grid-template-columns: 1fr; }}
-    .process-gallery {{ grid-template-columns: 1fr; }}
-    .process-gallery img {{ height: 220px; }}
+@media (max-width: 1024px) {{
+    .process-hero-new {{ grid-template-columns: 1fr; }}
+    .process-collage {{ min-height: 330px; }}
+    .process-main-photo {{ inset: 0 0 54px 42px; }}
+    .process-small-photo.a {{ height:132px; }}
+    .process-small-photo.b {{ height:118px; }}
+    .process-title-row {{ display:block; }}
+    .process-title-row p {{ margin-top:8px; }}
+    .process-timeline {{ grid-template-columns: 1fr; gap: 14px; padding-top: 6px; }}
+    .process-timeline::before {{ left: 34px; right:auto; top:0; bottom:0; height:auto; width:5px; }}
+    .step {{ min-height:auto; text-align:left; padding: 18px 18px 18px 90px; }}
+    .step-icon {{ left: 20px; top: 18px; transform:none; width:56px; height:56px; font-size:24px; }}
+    .process-info-grid {{ grid-template-columns: 1fr; }}
+    .process-gallery-new {{ grid-template-columns: 1fr; }}
+    .gallery-tile {{ min-height: 220px; }}
+}}
+@media (max-width: 520px) {{
+    .process-wrap {{ border-radius: 24px; padding: 14px; }}
+    .process-stats {{ grid-template-columns: 1fr; }}
+    .process-collage {{ min-height: 280px; }}
+    .process-main-photo {{ inset: 0 0 58px 28px; border-width:6px; border-radius:24px; }}
+    .process-small-photo {{ border-width:5px; border-radius:20px; height:110px; }}
+    .process-floating-card {{ width: 86%; }}
 }}
 </style>
 
-<div class="process-page">
-    <section class="process-hero">
+<div class="process-wrap">
+    <section class="process-hero-new">
         <div>
-            <div class="process-kicker">Nguồn nguyên liệu & khu vực sản xuất</div>
-            <h2>Từ hạt nếp non đến hương cốm Hà Nội</h2>
-            <p>Cốm Làng Vòng bắt đầu từ những hạt lúa nếp non còn ngậm sữa. Nguyên liệu được chọn lọc, thu hoạch đúng mùa rồi đi qua các công đoạn thủ công như sơ chế, rang, giã, sàng và đóng gói để giữ màu xanh, độ dẻo và mùi thơm tự nhiên.</p>
+            <div class="process-badge">🍃 Nguồn gốc rõ ràng · Quy trình thủ công</div>
+            <h2>Hành trình tạo nên hạt cốm Làng Vòng</h2>
+            <p class="process-lead">Từ hạt lúa nếp non còn ngậm sữa, cốm đi qua từng công đoạn chọn lọc, rang, giã, sàng và đóng gói. Giao diện mới nhấn mạnh câu chuyện truyền thống, hình ảnh nguyên liệu và các bước sản xuất theo cách trực quan hơn.</p>
+            <div class="process-stats">
+                <div class="process-stat"><b>7</b><span>Công đoạn chính</span></div>
+                <div class="process-stat"><b>1</b><span>Luồng chế biến sạch</span></div>
+                <div class="process-stat"><b>100%</b><span>Tôn trọng hương vị truyền thống</span></div>
+            </div>
         </div>
-        <div class="process-photo-stack">
-            <img class="process-photo one" src="{img1}" alt="Nguyên liệu cốm">
-            <img class="process-photo two" src="{img2}" alt="Hạt nếp non">
-            <img class="process-photo three" src="{img3}" alt="Rang cốm">
+        <div class="process-collage">
+            <div class="process-main-photo"><img src="{img1}" alt="Cốm Làng Vòng"></div>
+            <div class="process-small-photo a"><img src="{img2}" alt="Hạt nếp non"></div>
+            <div class="process-small-photo b"><img src="{img3}" alt="Rang cốm"></div>
+            <div class="process-floating-card"><b>Điểm nhấn</b><span>Chọn nguyên liệu đúng độ non để giữ màu xanh, độ dẻo và mùi thơm tự nhiên.</span></div>
         </div>
     </section>
 
-    <div class="process-section-title">
+    <div class="process-title-row">
         <h3>Quy trình sản xuất</h3>
-        <p>Bố cục được làm lại gọn và hiện đại hơn nhưng vẫn bám theo bản phác thảo: chọn lọc → thu hoạch → sơ chế → rang → giã → sàng → đóng gói.</p>
+        <p>Mỗi bước được trình bày như một trạm trong hành trình làm cốm, dễ xem trên máy tính và tự chuyển thành timeline dọc trên điện thoại.</p>
     </div>
 
-    <section class="process-steps">
-        <article class="step-card"><div class="step-number">1</div><h4>Chọn lọc kỹ</h4><p>Chọn hạt lúa nếp non đạt độ sữa, loại bỏ hạt lép, hạt sâu và tạp chất.</p></article>
-        <article class="step-card"><div class="step-number">2</div><h4>Thu hoạch đúng mùa</h4><p>Thu hoạch khi hạt còn non để giữ vị ngọt thanh, màu xanh và hương thơm.</p></article>
-        <article class="step-card"><div class="step-number">3</div><h4>Sơ chế nhanh</h4><p>Làm sạch nguyên liệu sớm sau thu hoạch để bảo toàn độ tươi của hạt nếp.</p></article>
-        <article class="step-card"><div class="step-number">4</div><h4>Rang</h4><p>Rang từng mẻ với lửa đều để hạt chín tới, thơm mà không bị cháy cạnh.</p></article>
-        <article class="step-card"><div class="step-number">5</div><h4>Giã</h4><p>Giã đều tay để hạt mềm dẻo, sạch vỏ và không bị nát.</p></article>
-        <article class="step-card"><div class="step-number">6</div><h4>Sàng</h4><p>Sàng sảy kỹ để loại bỏ trấu, hạt vỡ và dị vật còn sót lại.</p></article>
-        <article class="step-card"><div class="step-number">7</div><h4>Đóng gói</h4><p>Cân định lượng, đóng gói sạch và bảo quản nơi khô mát trước khi giao khách.</p></article>
+    <section class="process-timeline">
+        <article class="step"><div class="step-icon">🌾</div><small>BƯỚC 01</small><h4>Chọn lúa nếp non</h4><p>Chọn hạt đạt độ sữa, loại bỏ hạt lép, sâu và tạp chất.</p></article>
+        <article class="step"><div class="step-icon">⏰</div><small>BƯỚC 02</small><h4>Thu hoạch đúng mùa</h4><p>Giữ vị ngọt thanh, màu xanh và mùi thơm đặc trưng.</p></article>
+        <article class="step"><div class="step-icon">💧</div><small>BƯỚC 03</small><h4>Sơ chế sạch</h4><p>Làm sạch nguyên liệu sớm để bảo toàn độ tươi của hạt.</p></article>
+        <article class="step"><div class="step-icon">🔥</div><small>BƯỚC 04</small><h4>Rang đều lửa</h4><p>Rang từng mẻ để hạt chín tới, thơm và không cháy cạnh.</p></article>
+        <article class="step"><div class="step-icon">🥢</div><small>BƯỚC 05</small><h4>Giã mềm hạt</h4><p>Giã đều tay để hạt dẻo, sạch vỏ mà không bị nát.</p></article>
+        <article class="step"><div class="step-icon">🍃</div><small>BƯỚC 06</small><h4>Sàng sảy kỹ</h4><p>Loại bỏ trấu, hạt vỡ và dị vật trước khi hoàn thiện.</p></article>
+        <article class="step"><div class="step-icon">📦</div><small>BƯỚC 07</small><h4>Đóng gói</h4><p>Cân định lượng, dán nhãn và bảo quản nơi khô mát.</p></article>
     </section>
 
-    <section class="process-note">
-        <div class="note-box"><h4>Khu vực sản xuất</h4><p>Các công đoạn rang, giã, sàng và đóng gói được bố trí theo luồng một chiều, hạn chế lẫn tạp chất và giữ vệ sinh cho thành phẩm.</p></div>
-        <div class="note-box"><h4>Điểm nhấn truyền thống</h4><p>Quy trình thủ công giúp cốm giữ được độ dẻo, mùi thơm nhẹ và cảm giác thanh nhã đặc trưng của mùa thu Hà Nội.</p></div>
+    <section class="process-info-grid">
+        <div class="info-card"><h4>📍 Khu vực sản xuất</h4><p>Bố trí khu tiếp nhận, rang, giã, sàng và đóng gói theo luồng rõ ràng để hạn chế lẫn tạp chất.</p></div>
+        <div class="info-card"><h4>✅ Kiểm soát chất lượng</h4><p>Chú trọng độ non của hạt, nhiệt rang, độ sạch vỏ, khối lượng và tình trạng bao bì trước khi xuất hàng.</p></div>
+        <div class="info-card"><h4>🎁 Giá trị truyền thống</h4><p>Giữ lại tinh thần thủ công, hương lá sen và sự thanh nhã gắn với thức quà mùa thu Hà Nội.</p></div>
     </section>
 
-    <div class="process-gallery">
-        <img src="{img3}" alt="Rang cốm">
-        <img src="{img4}" alt="Giã cốm">
-        <img src="{img5}" alt="Sàng cốm">
-    </div>
+    <section class="process-gallery-new">
+        <div class="gallery-tile"><img src="{img3}" alt="Rang cốm"><span>Rang cốm</span></div>
+        <div class="gallery-tile"><img src="{img4}" alt="Giã cốm"><span>Giã cốm</span></div>
+        <div class="gallery-tile"><img src="{img5}" alt="Sàng cốm"><span>Sàng sảy</span></div>
+    </section>
 
-    <div class="process-quote">“Giữ trọn vẹn hương vị mùa thu Hà Nội qua từng công đoạn thủ công.”</div>
+    <div class="process-quote-new">“Từng hạt cốm là kết quả của nguyên liệu đúng mùa, đôi tay lành nghề và sự nâng niu hương vị Hà Nội.”</div>
 </div>
 """
-    components.html(html, height=1120, scrolling=True)
+    components.html(html, height=1280, scrolling=True)
 
 def render_ingredient_page():
 
