@@ -1409,7 +1409,7 @@ footer {visibility: hidden;}
     position: relative;
     max-width: 920px;
     margin: 8px auto 0;
-    min-height: 560px;
+    min-height: 340px;
     perspective: 1800px;
 }
 
@@ -1420,7 +1420,7 @@ footer {visibility: hidden;}
     border-radius: 22px;
     box-shadow: 0 14px 34px rgba(70,45,12,.22);
     padding: 28px;
-    min-height: 560px;
+    min-height: 340px;
     animation: pageFlip .45s ease;
 }
 
@@ -1557,7 +1557,7 @@ footer {visibility: hidden;}
     position: relative;
     max-width: 920px;
     margin: 8px auto 0;
-    min-height: 560px;
+    min-height: 340px;
     perspective: 1800px;
 }
 
@@ -1569,7 +1569,7 @@ footer {visibility: hidden;}
     border-radius: 22px;
     box-shadow: 0 14px 34px rgba(70,45,12,.22);
     padding: 28px 66px;
-    min-height: 560px;
+    min-height: 340px;
     animation: pageFlip .45s ease;
     grid-template-columns: 1fr 1fr;
     gap: 34px;
@@ -1733,7 +1733,7 @@ footer {visibility: hidden;}
 .recipe-image-page {
     width: 100%;
     height: 100%;
-    min-height: 520px;
+    min-height: 340px;
     border-radius: 16px;
     overflow: hidden;
     background: #f7f1dc;
@@ -1752,7 +1752,7 @@ footer {visibility: hidden;}
 
 .recipe-image-placeholder {
     width: 100%;
-    height: 520px;
+    height: 340px;
     border: 3px dashed #d7b56d;
     border-radius: 16px;
     display: flex;
@@ -1769,8 +1769,8 @@ footer {visibility: hidden;}
 @media (max-width: 768px) {
     .recipe-image-page,
     .recipe-image-placeholder {
-        height: 460px;
-        min-height: 460px;
+        height: 340px;
+        min-height: 340px;
     }
 }
 
@@ -1892,6 +1892,179 @@ footer {visibility: hidden;}
     .flow-card { min-height: 110px; }
     .process-gallery-mini { grid-template-columns: repeat(3, 1fr); gap: 8px; }
     .process-bottom-note { font-size: 16px; }
+}
+
+
+/* COMPACT QUY TRINH / NGUON GOC PAGE */
+.process-page,
+.origin-process-page,
+.source-page {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+}
+
+.process-section,
+.origin-section,
+.source-section,
+.source-block,
+.process-block {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.process-intro,
+.source-intro,
+.origin-intro {
+    margin-bottom: 8px !important;
+}
+
+.process-intro h1,
+.process-intro h2,
+.source-intro h1,
+.source-intro h2,
+.origin-intro h1,
+.origin-intro h2 {
+    margin-top: 0 !important;
+    margin-bottom: 6px !important;
+    line-height: 1.08 !important;
+}
+
+.process-intro p,
+.source-intro p,
+.origin-intro p {
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+    line-height: 1.35 !important;
+}
+
+.process-grid,
+.source-grid,
+.origin-grid,
+.material-grid,
+.rice-grid {
+    gap: 10px !important;
+    align-items: start !important;
+}
+
+.process-image,
+.source-image,
+.origin-image,
+.material-image,
+.rice-image,
+.harvest-image,
+.origin-main-image,
+.source-main-image {
+    height: 340px !important;
+    max-height: 340px !important;
+    overflow: hidden !important;
+    align-self: start !important;
+}
+
+.process-image img,
+.source-image img,
+.origin-image img,
+.material-image img,
+.rice-image img,
+.harvest-image img,
+.origin-main-image img,
+.source-main-image img,
+.process-visual img,
+.source-visual img {
+    width: 100% !important;
+    height: 340px !important;
+    max-height: 340px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+}
+
+.process-card,
+.source-card,
+.origin-card,
+.material-card,
+.rice-card,
+.step-card,
+.harvest-card,
+.origin-info-card,
+.source-info-card {
+    min-height: 112px !important;
+    padding: 12px 14px !important;
+    margin-bottom: 8px !important;
+}
+
+.process-card h3,
+.source-card h3,
+.origin-card h3,
+.material-card h3,
+.rice-card h3,
+.step-card h3,
+.harvest-card h3,
+.origin-info-card h3,
+.source-info-card h3 {
+    margin-top: 0 !important;
+    margin-bottom: 6px !important;
+    line-height: 1.15 !important;
+}
+
+.process-card p,
+.source-card p,
+.origin-card p,
+.material-card p,
+.rice-card p,
+.step-card p,
+.harvest-card p,
+.origin-info-card p,
+.source-info-card p {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    line-height: 1.35 !important;
+}
+
+@media (max-width: 768px) {
+    .process-image,
+    .source-image,
+    .origin-image,
+    .material-image,
+    .rice-image,
+    .harvest-image,
+    .origin-main-image,
+    .source-main-image,
+    .process-image img,
+    .source-image img,
+    .origin-image img,
+    .material-image img,
+    .rice-image img,
+    .harvest-image img,
+    .origin-main-image img,
+    .source-main-image img,
+    .process-visual img,
+    .source-visual img {
+        height: 260px !important;
+        max-height: 260px !important;
+    }
+
+    .process-card,
+    .source-card,
+    .origin-card,
+    .material-card,
+    .rice-card,
+    .step-card,
+    .harvest-card,
+    .origin-info-card,
+    .source-info-card {
+        min-height: auto !important;
+        padding: 10px 12px !important;
+        margin-bottom: 7px !important;
+    }
+
+    .process-grid,
+    .source-grid,
+    .origin-grid,
+    .material-grid,
+    .rice-grid {
+        gap: 8px !important;
+    }
 }
 
 </style>
