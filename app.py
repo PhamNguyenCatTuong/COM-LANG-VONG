@@ -3592,6 +3592,7 @@ def render_origin_process_page():
     img_grain = image_to_data_uri("Cau chuyen 1.jpg")
     img_rang = image_to_data_uri("rang com.jpg")
     img_gia = image_to_data_uri("gia com.jpg")
+    img_thu_hoach = image_to_data_uri("hat com tuoi.jpg")
     img_sang = image_to_data_uri("sang com.jpg")
     img_sen = image_to_data_uri("Cau chuyen 2.jpg")
     img_com_moc = image_to_data_uri("com moc.jpg")
@@ -3995,7 +3996,7 @@ def render_origin_process_page():
     </div>
     <div class="qn-journey">
       <article class="qn-journey-step">
-        <div class="qn-journey-img"><img src="{img_grain}" alt="Thu hoạch và tuyển chọn lúa nếp non"><div class="qn-journey-icon">🌾</div></div>
+        <div class="qn-journey-img"><img src="{img_thu_hoach}" alt="Thu hoạch và tuyển chọn lúa nếp non"><div class="qn-journey-icon">🌾</div></div>
         <div class="qn-journey-body"><h4>Thu hoạch & tuyển chọn nguyên liệu</h4><p>Lúa nếp non được chọn ở thời điểm hạt còn mềm, thơm nhẹ và có độ sữa. Phần hạt lép, hạt sâu hoặc lẫn tạp chất được loại bỏ trước khi chế biến.</p><div class="qn-mini-list"><span>Hạt còn non</span><span>Màu xanh tự nhiên</span><span>Không lẫn tạp chất</span></div></div>
       </article>
       <article class="qn-journey-step">
