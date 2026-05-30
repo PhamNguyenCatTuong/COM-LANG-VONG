@@ -3587,20 +3587,22 @@ def render_product_detail_page():
 
 
 def render_origin_process_page():
-    """Render Quy trình & nguồn gốc with brand-new content in order 2 - 1 - 3 - 4."""
+    """Render Quy trình & nguồn gốc with clean storytelling content and images inside each process step."""
     img_overview = image_to_data_uri("Com tong quan 3.jpg")
     img_grain = image_to_data_uri("hat com tuoi.jpg")
     img_rang = image_to_data_uri("rang com.jpg")
     img_gia = image_to_data_uri("gia com.jpg")
     img_sang = image_to_data_uri("sang com.jpg")
     img_sen = image_to_data_uri("me com lang vong.jpg")
+    img_com_moc = image_to_data_uri("com moc.jpg")
+    img_banh_com = image_to_data_uri("Banh com.jpg")
 
     html = f"""
 <style>
 .qn-page {{
     width:100%;
     margin:0 auto;
-    padding:0 0 28px;
+    padding:0 0 30px;
     color:#17351f;
 }}
 .qn-page * {{ box-sizing:border-box; }}
@@ -3609,24 +3611,25 @@ def render_origin_process_page():
     overflow:hidden;
     border-radius:30px;
     padding:clamp(20px,4vw,42px);
-    background:linear-gradient(135deg,#f5fbef 0%,#fffdf4 48%,#e4f3d9 100%);
+    background:linear-gradient(135deg,#f6fbef 0%,#fffdf4 48%,#e8f4dc 100%);
     border:1px solid #dcebd3;
+    box-shadow:0 12px 32px rgba(23,53,31,.08);
 }}
 .qn-hero::after {{
     content:"";
     position:absolute;
-    right:-70px;
-    top:-80px;
-    width:220px;
-    height:220px;
+    right:-80px;
+    top:-90px;
+    width:240px;
+    height:240px;
     border-radius:50%;
-    background:rgba(139,195,74,.22);
+    background:rgba(139,195,74,.20);
 }}
 .qn-hero-grid {{
     position:relative;
     z-index:1;
     display:grid;
-    grid-template-columns:minmax(0,1.08fr) minmax(250px,.92fr);
+    grid-template-columns:minmax(0,1.05fr) minmax(240px,.95fr);
     gap:clamp(18px,4vw,34px);
     align-items:center;
 }}
@@ -3643,16 +3646,16 @@ def render_origin_process_page():
 }}
 .qn-hero h2 {{
     margin:16px 0 12px;
-    font-size:clamp(32px,7vw,64px);
+    font-size:clamp(32px,7vw,62px);
     line-height:1.02;
     letter-spacing:-1.2px;
     color:#14351d;
 }}
 .qn-hero p {{
     margin:0;
-    color:#435944;
-    font-size:clamp(15px,3.4vw,18px);
-    line-height:1.75;
+    color:#425344;
+    font-size:clamp(15px,3.3vw,18px);
+    line-height:1.72;
 }}
 .qn-hero-points {{
     display:grid;
@@ -3661,7 +3664,7 @@ def render_origin_process_page():
     margin-top:18px;
 }}
 .qn-hero-points div {{
-    background:rgba(255,255,255,.78);
+    background:rgba(255,255,255,.80);
     border:1px solid #dcebd3;
     border-radius:17px;
     padding:12px 13px;
@@ -3679,31 +3682,16 @@ def render_origin_process_page():
     height:150px;
     object-fit:cover;
     border-radius:22px;
-    box-shadow:0 10px 24px rgba(23,53,31,.12);
+    box-shadow:0 10px 24px rgba(23,53,31,.13);
 }}
 .qn-collage img:first-child {{
     grid-column:1 / -1;
     height:230px;
 }}
-.qn-section {{
-    margin-top:28px;
-}}
-.qn-section-head {{
-    margin-bottom:14px;
-}}
-.qn-section-kicker {{
-    display:inline-block;
-    color:#2e7d32;
-    background:#eef8e7;
-    border:1px solid #d6e8cd;
-    border-radius:999px;
-    padding:7px 11px;
-    font-size:12px;
-    font-weight:900;
-    margin-bottom:10px;
-}}
+.qn-section {{ margin-top:30px; }}
+.qn-section-head {{ margin-bottom:15px; }}
 .qn-section h3 {{
-    margin:0 0 8px;
+    margin:0 0 9px;
     color:#14351d;
     font-size:clamp(25px,5vw,40px);
     line-height:1.12;
@@ -3712,8 +3700,8 @@ def render_origin_process_page():
     margin:0;
     color:#536255;
     font-size:15.5px;
-    line-height:1.65;
-    max-width:850px;
+    line-height:1.68;
+    max-width:880px;
 }}
 .qn-story-card {{
     display:grid;
@@ -3725,10 +3713,7 @@ def render_origin_process_page():
     border-radius:26px;
     padding:18px;
 }}
-.qn-story-text {{
-    display:grid;
-    gap:12px;
-}}
+.qn-story-text {{ display:grid; gap:12px; }}
 .qn-story-text p {{
     margin:0;
     color:#405442;
@@ -3783,10 +3768,7 @@ def render_origin_process_page():
     object-fit:cover;
     border-radius:18px;
 }}
-.qn-material-list {{
-    display:grid;
-    gap:10px;
-}}
+.qn-material-list {{ display:grid; gap:10px; }}
 .qn-material-item {{
     background:white;
     border:1px solid #e3ead8;
@@ -3806,56 +3788,73 @@ def render_origin_process_page():
     font-size:14.5px;
 }}
 .qn-journey {{
-    position:relative;
     display:grid;
-    gap:12px;
+    gap:14px;
 }}
 .qn-journey-step {{
     display:grid;
-    grid-template-columns:64px minmax(0,1fr);
-    gap:13px;
-    align-items:start;
-    padding:0 0 12px;
-}}
-.qn-journey-icon {{
-    width:54px;
-    height:54px;
-    border-radius:18px;
-    display:grid;
-    place-items:center;
-    font-size:27px;
-    background:linear-gradient(135deg,#2e7d32,#8bc34a);
-    box-shadow:0 10px 18px rgba(46,125,50,.22);
-}}
-.qn-journey-body {{
+    grid-template-columns:minmax(180px,285px) minmax(0,1fr);
+    gap:14px;
+    align-items:stretch;
     background:#fffdf4;
     border:1px solid #e3ead8;
-    border-radius:20px;
-    padding:15px;
+    border-radius:24px;
+    padding:12px;
+    box-shadow:0 8px 20px rgba(23,53,31,.06);
+}}
+.qn-journey-img {{ position:relative; min-height:180px; }}
+.qn-journey-img img {{
+    width:100%;
+    height:100%;
+    min-height:180px;
+    object-fit:cover;
+    border-radius:18px;
+    display:block;
+}}
+.qn-journey-icon {{
+    position:absolute;
+    left:10px;
+    top:10px;
+    width:48px;
+    height:48px;
+    border-radius:16px;
+    display:grid;
+    place-items:center;
+    font-size:25px;
+    background:linear-gradient(135deg,#2e7d32,#8bc34a);
+    box-shadow:0 10px 18px rgba(46,125,50,.24);
+}}
+.qn-journey-body {{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:8px 6px;
 }}
 .qn-journey-body h4 {{
-    margin:0 0 6px;
+    margin:0 0 7px;
     color:#17351f;
-    font-size:19px;
+    font-size:clamp(19px,4.4vw,25px);
+    line-height:1.2;
 }}
 .qn-journey-body p {{
-    margin:0;
+    margin:0 0 10px;
     color:#536255;
-    line-height:1.62;
-    font-size:14.5px;
+    line-height:1.65;
+    font-size:14.8px;
 }}
-.qn-journey-gallery {{
-    display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:10px;
-    margin-top:12px;
+.qn-mini-list {{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
 }}
-.qn-journey-gallery img {{
-    width:100%;
-    height:150px;
-    object-fit:cover;
-    border-radius:20px;
-    box-shadow:0 8px 18px rgba(23,53,31,.1);
+.qn-mini-list span {{
+    background:#eef8e7;
+    border:1px solid #d6e8cd;
+    color:#2d5d32;
+    border-radius:999px;
+    padding:6px 9px;
+    font-size:12.5px;
+    font-weight:800;
 }}
 .qn-quality-grid {{
     display:grid;
@@ -3868,10 +3867,7 @@ def render_origin_process_page():
     border-radius:22px;
     padding:16px;
 }}
-.qn-quality .qicon {{
-    font-size:30px;
-    margin-bottom:8px;
-}}
+.qn-quality .qicon {{ font-size:30px; margin-bottom:8px; }}
 .qn-quality h4 {{
     margin:0 0 7px;
     color:#17351f;
@@ -3907,7 +3903,7 @@ def render_origin_process_page():
     .qn-quality-grid {{ grid-template-columns:repeat(2,minmax(0,1fr)); }}
     .qn-story-image img {{ min-height:230px; }}
 }}
-@media (max-width:560px) {{
+@media (max-width:640px) {{
     .qn-page {{ padding-bottom:18px; }}
     .qn-hero {{ border-radius:22px; padding:16px 13px; }}
     .qn-hero-points {{ grid-template-columns:1fr; gap:8px; }}
@@ -3918,17 +3914,15 @@ def render_origin_process_page():
     .qn-story-card {{ padding:12px; border-radius:21px; }}
     .qn-feature-grid {{ grid-template-columns:1fr; }}
     .qn-material-photo img {{ min-height:210px; }}
-    .qn-journey-step {{ grid-template-columns:48px minmax(0,1fr); gap:9px; }}
-    .qn-journey-icon {{ width:44px; height:44px; border-radius:15px; font-size:22px; }}
-    .qn-journey-body {{ padding:13px; border-radius:17px; }}
-    .qn-journey-gallery {{ grid-template-columns:1fr; }}
-    .qn-journey-gallery img {{ height:185px; }}
+    .qn-journey-step {{ grid-template-columns:1fr; padding:10px; border-radius:20px; }}
+    .qn-journey-img, .qn-journey-img img {{ min-height:210px; }}
+    .qn-journey-body {{ padding:4px 2px 2px; }}
     .qn-quality-grid {{ grid-template-columns:1fr; }}
     .qn-quality {{ border-radius:18px; padding:14px; }}
 }}
 @media (max-width:380px) {{
     .qn-hero h2 {{ font-size:30px; }}
-    .qn-journey-step {{ grid-template-columns:1fr; }}
+    .qn-journey-img, .qn-journey-img img {{ min-height:190px; }}
 }}
 </style>
 
@@ -3938,12 +3932,12 @@ def render_origin_process_page():
       <div>
         <div class="qn-eyebrow">🍃 Quy trình & nguồn gốc</div>
         <h2>Câu chuyện hạt cốm từ làng nghề đến tay khách hàng</h2>
-        <p>Trang này được viết lại hoàn toàn theo cấu trúc 2 → 1 → 3 → 4: bắt đầu từ nghề truyền thống, tiếp đến vùng nguyên liệu, rồi hành trình tạo cốm và tiêu chuẩn chất lượng.</p>
+        <p>Một hành trình liền mạch từ nghề truyền thống, vùng lúa nếp non, các công đoạn chế biến thủ công đến cam kết chất lượng cho từng sản phẩm.</p>
         <div class="qn-hero-points">
-          <div>🏮 Nghề truyền thống Làng Vòng</div>
-          <div>🌾 Vùng nguyên liệu lúa nếp non</div>
-          <div>🔥 Hành trình tạo ra hạt cốm</div>
-          <div>✅ Tiêu chuẩn chất lượng</div>
+          <div>🏮 Hương vị làng nghề</div>
+          <div>🌾 Lúa nếp non tuyển chọn</div>
+          <div>🔥 Rang, giã, sàng thủ công</div>
+          <div>✅ Sạch, rõ nguồn gốc</div>
         </div>
       </div>
       <div class="qn-collage">
@@ -3956,19 +3950,18 @@ def render_origin_process_page():
 
   <section class="qn-section">
     <div class="qn-section-head">
-      <span class="qn-section-kicker">Mục 2</span>
-      <h3>Nghề làm cốm truyền thống Làng Vòng</h3>
-      <p>Cốm Làng Vòng là một nét đẹp ẩm thực lâu đời của Hà Nội. Giá trị của cốm không chỉ nằm ở món ăn, mà còn ở kinh nghiệm chọn lúa, cảm nhận lửa, nhịp giã và cách giữ hương qua nhiều thế hệ.</p>
+      <h3>Hương vị từ làng nghề trăm năm</h3>
+      <p>Cốm Làng Vòng là nét đẹp ẩm thực gắn với mùa thu Hà Nội. Giá trị của cốm đến từ đôi tay người thợ, từ cách cảm nhận độ non của lúa, giữ lửa khi rang và nhịp giã vừa đủ để hạt cốm dẻo thơm.</p>
     </div>
     <div class="qn-story-card">
       <div class="qn-story-text">
-        <p>Người làm cốm cần sự kiên nhẫn và đôi tay quen nghề. Mỗi mẻ cốm phải được quan sát liên tục: hạt quá non sẽ dễ nát, hạt quá già sẽ kém dẻo, lửa quá lớn làm mất màu xanh, còn giã quá mạnh sẽ làm hạt vụn.</p>
-        <p>Vì vậy, cốm truyền thống là sự kết hợp giữa nguyên liệu đúng mùa và kỹ thuật thủ công tinh tế. Đây cũng là điểm tạo nên sự khác biệt giữa cốm Làng Vòng với các sản phẩm ăn nhanh thông thường.</p>
+        <p>Người làm cốm không chỉ làm theo công thức cố định. Mỗi mẻ lúa có độ non, độ ẩm và mùi thơm khác nhau, nên người thợ phải quan sát màu hạt, nghe tiếng rang và điều chỉnh nhịp giã bằng kinh nghiệm.</p>
+        <p>Cốm ngon là cốm giữ được màu xanh dịu, mùi thơm nhẹ, vị ngọt thanh và cảm giác mềm dẻo khi thưởng thức. Đó là lý do nghề cốm luôn cần sự tỉ mỉ trong từng công đoạn.</p>
         <div class="qn-feature-grid">
-          <div class="qn-feature"><strong>🌿 Giữ hương vị mộc</strong><span>Ưu tiên mùi thơm tự nhiên của lúa nếp non, không làm át hương cốm bằng vị quá nồng.</span></div>
-          <div class="qn-feature"><strong>🥢 Kỹ thuật thủ công</strong><span>Rang, giã và sàng cần cảm nhận bằng mắt, tay và kinh nghiệm của người thợ.</span></div>
-          <div class="qn-feature"><strong>🎁 Giá trị quà biếu</strong><span>Cốm gắn với sự thanh nhã, phù hợp làm quà đặc sản Hà Nội.</span></div>
-          <div class="qn-feature"><strong>🏮 Bản sắc Hà Nội</strong><span>Hương cốm gợi mùa thu, lá sen, phố cổ và ký ức làng nghề.</span></div>
+          <div class="qn-feature"><strong>🌿 Hương vị mộc</strong><span>Giữ mùi thơm tự nhiên của lúa nếp non, không làm mất đi nét thanh nhẹ đặc trưng.</span></div>
+          <div class="qn-feature"><strong>🥢 Tay nghề thủ công</strong><span>Rang, giã và sàng đều cần sự cảm nhận trực tiếp của người thợ.</span></div>
+          <div class="qn-feature"><strong>🎁 Quà Hà Nội</strong><span>Phù hợp làm quà biếu, quà du lịch và món ăn gợi nhớ mùa thu.</span></div>
+          <div class="qn-feature"><strong>🏮 Bản sắc làng nghề</strong><span>Lưu giữ câu chuyện văn hóa qua hương cốm, lá sen và những mẹt cốm xanh.</span></div>
         </div>
       </div>
       <div class="qn-story-image"><img src="{img_sen}" alt="Nghề cốm truyền thống"></div>
@@ -3977,55 +3970,66 @@ def render_origin_process_page():
 
   <section class="qn-section">
     <div class="qn-section-head">
-      <span class="qn-section-kicker">Mục 1</span>
-      <h3>Vùng nguyên liệu</h3>
-      <p>Nguyên liệu quyết định phần lớn chất lượng cốm. Hạt lúa phải được chọn ở thời điểm còn non, có độ sữa, mùi thơm nhẹ và màu xanh tự nhiên.</p>
+      <h3>Những mùa lúa làm nên hạt cốm</h3>
+      <p>Nguyên liệu quyết định phần lớn chất lượng cốm. Hạt lúa phải được chọn khi còn non, có độ sữa, mùi thơm nhẹ và màu xanh tự nhiên.</p>
     </div>
     <div class="qn-material-grid">
       <div class="qn-material-photo"><img src="{img_grain}" alt="Hạt lúa nếp non"></div>
       <div class="qn-material-list">
-        <article class="qn-material-item"><h4>🌾 Chọn lúa đúng độ non</h4><p>Ưu tiên hạt nếp còn ngậm sữa, vỏ xanh, hạt chắc vừa phải. Đây là thời điểm hạt có độ dẻo và vị ngọt thanh tốt nhất.</p></article>
-        <article class="qn-material-item"><h4>⏰ Thu hoạch và sơ chế sớm</h4><p>Lúa sau khi thu hoạch cần được đưa vào sơ chế nhanh để hạn chế xuống màu, khô hạt hoặc mất hương thơm tự nhiên.</p></article>
-        <article class="qn-material-item"><h4>🧺 Phân loại trước khi chế biến</h4><p>Loại bỏ hạt lép, hạt sâu, tạp chất và phần nguyên liệu không đạt. Mỗi mẻ được tách riêng để dễ kiểm soát chất lượng.</p></article>
-        <article class="qn-material-item"><h4>🍃 Không để lẫn mùi lạ</h4><p>Nguyên liệu cần đặt trong khu vực sạch, khô, tránh hóa chất, khói bụi hoặc thực phẩm có mùi mạnh.</p></article>
+        <article class="qn-material-item"><h4>🌾 Chọn lúa đúng độ non</h4><p>Ưu tiên hạt nếp còn ngậm sữa, vỏ xanh, hạt chắc vừa phải để cốm có độ dẻo và vị ngọt thanh.</p></article>
+        <article class="qn-material-item"><h4>⏰ Sơ chế sớm sau thu hoạch</h4><p>Lúa được đưa vào xử lý sớm để hạn chế xuống màu, khô hạt hoặc mất mùi thơm tự nhiên.</p></article>
+        <article class="qn-material-item"><h4>🧺 Phân loại kỹ trước khi rang</h4><p>Loại bỏ hạt lép, hạt sâu, tạp chất và phần nguyên liệu không đạt để chất lượng từng mẻ đồng đều hơn.</p></article>
+        <article class="qn-material-item"><h4>🍃 Giữ nguyên mùi thơm tự nhiên</h4><p>Nguyên liệu được đặt ở nơi sạch, khô, tránh khói bụi, hóa chất và thực phẩm có mùi mạnh.</p></article>
       </div>
     </div>
   </section>
 
   <section class="qn-section">
     <div class="qn-section-head">
-      <span class="qn-section-kicker">Mục 3</span>
-      <h3>Hành trình tạo ra hạt cốm</h3>
-      <p>Quy trình được rút gọn thành các bước chính để khách hàng dễ hiểu và dễ theo dõi trên điện thoại.</p>
+      <h3>Hành trình giữ trọn hương cốm</h3>
+      <p>Mỗi công đoạn đều có vai trò riêng: chọn đúng nguyên liệu, rang vừa lửa, giã đủ nhịp, sàng sạch vỏ và hoàn thiện thành phẩm để giữ được hương cốm non.</p>
     </div>
     <div class="qn-journey">
-      <article class="qn-journey-step"><div class="qn-journey-icon">🌾</div><div class="qn-journey-body"><h4>Thu hoạch lúa nếp non</h4><p>Chọn những bông lúa đạt độ non, hạt còn mềm và có mùi thơm dịu.</p></div></article>
-      <article class="qn-journey-step"><div class="qn-journey-icon">🔥</div><div class="qn-journey-body"><h4>Rang bằng chảo truyền thống</h4><p>Lúa được rang từng mẻ nhỏ, đảo đều để hạt chín tới mà vẫn giữ màu xanh tự nhiên.</p></div></article>
-      <article class="qn-journey-step"><div class="qn-journey-icon">🥣</div><div class="qn-journey-body"><h4>Giã nhiều lần</h4><p>Hạt sau rang được giã nhịp nhàng để tách vỏ, tạo độ mềm dẻo và hình dáng đặc trưng.</p></div></article>
-      <article class="qn-journey-step"><div class="qn-journey-icon">🍃</div><div class="qn-journey-body"><h4>Sàng tách vỏ trấu</h4><p>Cốm được sàng nhiều lượt để loại phần vỏ, hạt vỡ và bụi mịn trước khi hoàn thiện.</p></div></article>
-      <article class="qn-journey-step"><div class="qn-journey-icon">📦</div><div class="qn-journey-body"><h4>Đóng gói thành phẩm</h4><p>Thành phẩm được cân định lượng, đóng gói sạch, ghi nhãn và bảo quản theo từng lô.</p></div></article>
-    </div>
-    <div class="qn-journey-gallery">
-      <img src="{img_rang}" alt="Rang cốm">
-      <img src="{img_gia}" alt="Giã cốm">
-      <img src="{img_sang}" alt="Sàng cốm">
+      <article class="qn-journey-step">
+        <div class="qn-journey-img"><img src="{img_grain}" alt="Thu hoạch và tuyển chọn lúa nếp non"><div class="qn-journey-icon">🌾</div></div>
+        <div class="qn-journey-body"><h4>Thu hoạch & tuyển chọn nguyên liệu</h4><p>Lúa nếp non được chọn ở thời điểm hạt còn mềm, thơm nhẹ và có độ sữa. Phần hạt lép, hạt sâu hoặc lẫn tạp chất được loại bỏ trước khi chế biến.</p><div class="qn-mini-list"><span>Hạt còn non</span><span>Màu xanh tự nhiên</span><span>Không lẫn tạp chất</span></div></div>
+      </article>
+      <article class="qn-journey-step">
+        <div class="qn-journey-img"><img src="{img_rang}" alt="Rang cốm"><div class="qn-journey-icon">🔥</div></div>
+        <div class="qn-journey-body"><h4>Rang cốm</h4><p>Lúa được rang từng mẻ nhỏ trên chảo nóng. Người thợ đảo đều tay để hạt chín tới, giữ được màu xanh và mùi thơm dịu của lúa non.</p><div class="qn-mini-list"><span>Lửa vừa</span><span>Đảo đều tay</span><span>Giữ mùi thơm</span></div></div>
+      </article>
+      <article class="qn-journey-step">
+        <div class="qn-journey-img"><img src="{img_gia}" alt="Giã cốm"><div class="qn-journey-icon">🥣</div></div>
+        <div class="qn-journey-body"><h4>Giã cốm</h4><p>Hạt sau khi rang được giã nhịp nhàng để tách vỏ và làm hạt mềm hơn. Lực giã cần vừa đủ để cốm dẻo mà không bị nát vụn.</p><div class="qn-mini-list"><span>Nhịp giã đều</span><span>Hạt mềm dẻo</span><span>Không làm nát</span></div></div>
+      </article>
+      <article class="qn-journey-step">
+        <div class="qn-journey-img"><img src="{img_sang}" alt="Sàng sảy cốm"><div class="qn-journey-icon">🍃</div></div>
+        <div class="qn-journey-body"><h4>Sàng sảy</h4><p>Cốm được sàng nhiều lượt để tách vỏ trấu, hạt vỡ và bụi mịn. Công đoạn này giúp thành phẩm sạch hơn, đều hạt hơn và dễ bảo quản hơn.</p><div class="qn-mini-list"><span>Tách vỏ trấu</span><span>Lọc hạt vỡ</span><span>Đều hạt</span></div></div>
+      </article>
+      <article class="qn-journey-step">
+        <div class="qn-journey-img"><img src="{img_com_moc}" alt="Hoàn thiện cốm thành phẩm"><div class="qn-journey-icon">📦</div></div>
+        <div class="qn-journey-body"><h4>Hoàn thiện thành phẩm</h4><p>Cốm sau khi đạt độ sạch và độ dẻo sẽ được cân định lượng, đóng gói và bảo quản phù hợp. Một phần cốm được dùng để phát triển các sản phẩm như bánh cốm, xôi cốm, cốm xào hoặc món quà đặc sản.</p><div class="qn-mini-list"><span>Cân định lượng</span><span>Đóng gói sạch</span><span>Bảo quản đúng cách</span></div></div>
+      </article>
+      <article class="qn-journey-step">
+        <div class="qn-journey-img"><img src="{img_banh_com}" alt="Sản phẩm từ cốm"><div class="qn-journey-icon">🎁</div></div>
+        <div class="qn-journey-body"><h4>Từ cốm mộc đến quà đặc sản</h4><p>Hạt cốm được giữ làm cốm mộc hoặc chế biến thành nhiều món quà hiện đại. Dù ở dạng nào, tinh thần chính vẫn là giữ hương vị thanh nhã của Hà Nội.</p><div class="qn-mini-list"><span>Cốm mộc</span><span>Bánh cốm</span><span>Quà Hà Nội</span></div></div>
+      </article>
     </div>
   </section>
 
   <section class="qn-section">
     <div class="qn-section-head">
-      <span class="qn-section-kicker">Mục 4</span>
-      <h3>Tiêu chuẩn chất lượng</h3>
-      <p>Phần này thay thế hoàn toàn nội dung khu vực sản xuất cũ. Trọng tâm là những tiêu chí giúp khách hàng tin tưởng khi chọn mua sản phẩm.</p>
+      <h3>Cam kết chất lượng</h3>
+      <p>Những tiêu chí dưới đây giúp khách hàng yên tâm hơn khi lựa chọn sản phẩm từ cốm Làng Vòng.</p>
     </div>
     <div class="qn-quality-grid">
       <article class="qn-quality"><div class="qicon">✅</div><h4>Nguyên liệu tuyển chọn</h4><p>Lúa nếp non được kiểm tra cảm quan, loại bỏ phần không đạt trước khi đưa vào chế biến.</p></article>
       <article class="qn-quality"><div class="qicon">🧼</div><h4>Vệ sinh chế biến</h4><p>Dụng cụ tiếp xúc thực phẩm cần sạch, khô, không gỉ sét và không dùng chung với hóa chất.</p></article>
-      <article class="qn-quality"><div class="qicon">🏷️</div><h4>Nhãn và truy xuất</h4><p>Bao bì cần thể hiện tên sản phẩm, định lượng, ngày sản xuất, hạn sử dụng và thông tin liên hệ.</p></article>
+      <article class="qn-quality"><div class="qicon">🏷️</div><h4>Nhãn và truy xuất</h4><p>Bao bì thể hiện tên sản phẩm, định lượng, ngày sản xuất, hạn sử dụng và thông tin liên hệ.</p></article>
       <article class="qn-quality"><div class="qicon">📦</div><h4>Bảo quản đúng cách</h4><p>Sản phẩm được để nơi khô mát hoặc bảo quản lạnh tùy dòng hàng, tránh nắng và nguồn nhiệt.</p></article>
     </div>
     <div class="qn-final-note">
-      <h4>Cam kết trải nghiệm</h4>
+      <h4>Điều chúng tôi luôn gìn giữ</h4>
       <p>Mỗi sản phẩm từ cốm cần truyền tải được ba giá trị: hương vị dẻo thơm, nguồn gốc rõ ràng và cảm giác trang trọng khi dùng làm quà đặc sản Hà Nội.</p>
     </div>
   </section>
