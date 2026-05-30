@@ -3587,12 +3587,13 @@ def render_product_detail_page():
 
 
 def render_origin_process_page():
-    """Mobile-first premium layout for Quy trình & nguồn gốc."""
-    img1 = image_to_data_uri("Com tong quan 3.jpg")
-    img2 = image_to_data_uri("hat com tuoi.jpg")
-    img3 = image_to_data_uri("rang com.jpg")
-    img4 = image_to_data_uri("gia com.jpg")
-    img5 = image_to_data_uri("sang com.jpg")
+    """Render a rich, mobile-first information page for Quy trình & nguồn gốc."""
+    img_overview = image_to_data_uri("Com tong quan 3.jpg")
+    img_grain = image_to_data_uri("hat com tuoi.jpg")
+    img_rang = image_to_data_uri("rang com.jpg")
+    img_gia = image_to_data_uri("gia com.jpg")
+    img_sang = image_to_data_uri("sang com.jpg")
+    img_sen = image_to_data_uri("me com lang vong.jpg")
 
     html = f"""
 <!doctype html>
@@ -3602,144 +3603,163 @@ def render_origin_process_page():
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>
 * {{ box-sizing: border-box; -webkit-tap-highlight-color: transparent; }}
-html, body {{ margin:0; padding:0; overflow-x:hidden; background:transparent; font-family: Arial, Helvetica, sans-serif; color:#12351b; }}
-.qtn-root {{ width:100%; max-width:1120px; margin:0 auto; padding:8px 6px 18px; }}
-.qtn-hero {{
-    position:relative; overflow:hidden; border-radius:30px; min-height:420px;
-    background:
-      linear-gradient(135deg, rgba(9,53,27,.88), rgba(46,125,50,.58)),
-      url('{img1}') center/cover no-repeat;
-    padding:clamp(22px,5vw,46px); display:flex; align-items:flex-end;
-    box-shadow:0 18px 42px rgba(18,53,27,.22);
+html, body {{ margin:0; padding:0; overflow-x:hidden; background:transparent; font-family: Arial, Helvetica, sans-serif; color:#15351f; }}
+.qn-wrap {{ width:100%; max-width:1120px; margin:0 auto; padding:8px 4px 24px; }}
+.qn-hero {{
+    position:relative; overflow:hidden; border-radius:32px; min-height:520px;
+    background:linear-gradient(160deg, #fffdf3 0%, #eef8e7 45%, #dcf0d2 100%);
+    border:1px solid #dcebd3; box-shadow:0 18px 45px rgba(32,74,40,.12);
+    display:grid; grid-template-columns:1.05fr .95fr; gap:22px; padding:clamp(18px,4vw,38px);
 }}
-.qtn-hero::before {{ content:""; position:absolute; inset:0; background:radial-gradient(circle at 86% 12%, rgba(255,255,255,.24), transparent 28%), linear-gradient(0deg, rgba(0,0,0,.42), transparent 55%); }}
-.qtn-hero-content {{ position:relative; z-index:2; max-width:760px; color:#fff; }}
-.qtn-badge {{ display:inline-flex; gap:8px; align-items:center; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.32); backdrop-filter: blur(10px); border-radius:999px; padding:9px 14px; font-weight:900; font-size:13px; }}
-.qtn-hero h2 {{ margin:15px 0 10px; font-size:clamp(34px,8vw,66px); line-height:.98; letter-spacing:-1.2px; }}
-.qtn-hero p {{ margin:0; max-width:650px; font-size:clamp(15px,3.7vw,19px); line-height:1.65; color:rgba(255,255,255,.92); }}
-.qtn-pill-row {{ display:flex; flex-wrap:wrap; gap:9px; margin-top:18px; }}
-.qtn-pill {{ background:rgba(255,255,255,.95); color:#1b5e20; padding:10px 13px; border-radius:999px; font-weight:900; font-size:13px; box-shadow:0 8px 18px rgba(0,0,0,.12); }}
-.qtn-title {{ text-align:center; margin:30px auto 16px; max-width:760px; }}
-.qtn-title h3 {{ margin:0; font-size:clamp(26px,6vw,42px); line-height:1.1; color:#12351b; }}
-.qtn-title p {{ margin:9px 0 0; color:#526353; font-size:clamp(14px,3.4vw,17px); line-height:1.6; }}
-.qtn-journey {{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }}
-.qtn-card {{
-    position:relative; overflow:hidden; min-height:196px; background:#fff; border-radius:26px; padding:18px;
-    border:1px solid #dcead3; box-shadow:0 12px 28px rgba(30,75,38,.09);
-}}
-.qtn-card::after {{ content:attr(data-step); position:absolute; right:-8px; top:-18px; font-size:78px; line-height:1; font-weight:900; color:rgba(46,125,50,.075); }}
-.qtn-icon {{ width:50px; height:50px; border-radius:17px; display:grid; place-items:center; background:linear-gradient(135deg,#e9f7df,#fff8da); font-size:27px; margin-bottom:13px; }}
-.qtn-card h4 {{ position:relative; z-index:2; margin:0 0 8px; color:#14391c; font-size:clamp(17px,3.9vw,20px); line-height:1.22; }}
-.qtn-card p {{ position:relative; z-index:2; margin:0; color:#536255; font-size:clamp(13px,3.1vw,15px); line-height:1.56; }}
-.qtn-highlight {{ display:grid; grid-template-columns:1.08fr .92fr; gap:16px; margin-top:20px; align-items:stretch; }}
-.qtn-note {{ background:linear-gradient(135deg,#17351f,#2e7d32); color:#fff; border-radius:28px; padding:clamp(20px,4vw,28px); box-shadow:0 16px 34px rgba(23,53,31,.18); }}
-.qtn-note h3 {{ margin:0 0 10px; font-size:clamp(23px,5vw,34px); line-height:1.1; }}
-.qtn-note p {{ margin:0; color:rgba(255,255,255,.9); line-height:1.65; font-size:clamp(14px,3.4vw,16px); }}
-.qtn-checks {{ display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:18px; }}
-.qtn-check {{ background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.18); border-radius:16px; padding:11px; font-weight:800; font-size:13px; }}
-.qtn-photo-stack {{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }}
-.qtn-photo-stack img {{ width:100%; height:100%; min-height:168px; object-fit:cover; border-radius:24px; box-shadow:0 12px 26px rgba(23,53,31,.14); }}
-.qtn-photo-stack img:first-child {{ grid-row:span 2; min-height:346px; }}
-.qtn-mini {{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:20px; }}
-.qtn-mini-card {{ background:#f7fff3; border:1px solid #dcead3; border-radius:22px; padding:17px; box-shadow:0 10px 24px rgba(30,75,38,.06); }}
-.qtn-mini-card b {{ display:block; color:#2e7d32; font-size:18px; margin-bottom:7px; }}
-.qtn-mini-card span {{ color:#526353; font-size:14px; line-height:1.5; }}
+.qn-hero::before {{ content:""; position:absolute; width:260px; height:260px; right:-80px; top:-90px; background:rgba(46,125,50,.12); border-radius:50%; }}
+.qn-hero::after {{ content:""; position:absolute; width:180px; height:180px; left:-70px; bottom:-80px; background:rgba(214,177,94,.18); border-radius:50%; }}
+.qn-hero-copy, .qn-collage {{ position:relative; z-index:2; }}
+.qn-kicker {{ display:inline-flex; align-items:center; gap:8px; padding:9px 14px; border-radius:999px; background:#e5f4dd; color:#2e7d32; font-weight:900; font-size:13px; }}
+.qn-hero h2 {{ margin:16px 0 12px; font-size:clamp(34px,7.8vw,68px); line-height:.98; letter-spacing:-1.4px; color:#12351b; }}
+.qn-hero p {{ margin:0; color:#445947; font-size:clamp(15px,3.4vw,18px); line-height:1.7; max-width:640px; }}
+.qn-hero-list {{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-top:20px; }}
+.qn-hero-list div {{ background:#fff; border:1px solid #dcebd3; border-radius:18px; padding:12px 13px; font-weight:800; color:#21462a; box-shadow:0 8px 18px rgba(30,75,38,.06); }}
+.qn-collage {{ display:grid; grid-template-columns:1fr 1fr; gap:10px; align-self:center; }}
+.qn-collage img {{ width:100%; height:172px; object-fit:cover; border-radius:24px; box-shadow:0 14px 28px rgba(23,53,31,.14); }}
+.qn-collage img:first-child {{ grid-column:1/3; height:230px; }}
+.qn-section-title {{ margin:30px auto 14px; text-align:center; max-width:780px; }}
+.qn-section-title h3 {{ margin:0; font-size:clamp(25px,5.5vw,42px); line-height:1.12; color:#12351b; }}
+.qn-section-title p {{ margin:9px 0 0; color:#526353; font-size:clamp(14px,3.3vw,17px); line-height:1.6; }}
+.qn-flow {{ position:relative; display:grid; gap:14px; }}
+.qn-step {{ display:grid; grid-template-columns:76px 1fr; gap:14px; background:#fff; border:1px solid #dcebd3; border-radius:26px; padding:16px; box-shadow:0 10px 26px rgba(30,75,38,.075); }}
+.qn-number {{ width:62px; height:62px; border-radius:22px; background:linear-gradient(135deg,#2e7d32,#8bc34a); color:#fff; display:grid; place-items:center; font-weight:900; font-size:20px; box-shadow:0 10px 22px rgba(46,125,50,.24); }}
+.qn-step h4 {{ margin:0 0 7px; font-size:clamp(18px,4vw,22px); color:#17351f; }}
+.qn-step p {{ margin:0 0 10px; color:#4f614f; font-size:clamp(14px,3.2vw,15.5px); line-height:1.62; }}
+.qn-tags {{ display:flex; flex-wrap:wrap; gap:7px; }}
+.qn-tags span {{ background:#f1f8e9; color:#2e7d32; border:1px solid #d6e8cd; border-radius:999px; padding:7px 10px; font-weight:800; font-size:12px; }}
+.qn-info-grid {{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:22px; }}
+.qn-info-card {{ background:#17351f; color:#fff; border-radius:26px; padding:20px; min-height:190px; box-shadow:0 14px 32px rgba(23,53,31,.16); }}
+.qn-info-card:nth-child(2) {{ background:#2e7d32; }}
+.qn-info-card:nth-child(3) {{ background:#fff8dc; color:#17351f; border:1px solid #eadfac; }}
+.qn-info-card h4 {{ margin:0 0 9px; font-size:21px; }}
+.qn-info-card p {{ margin:0; line-height:1.62; font-size:14.5px; opacity:.94; }}
+.qn-zone-grid {{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:18px; }}
+.qn-zone {{ background:#fff; border:1px solid #dcebd3; border-radius:24px; overflow:hidden; box-shadow:0 10px 24px rgba(30,75,38,.07); }}
+.qn-zone img {{ width:100%; height:190px; object-fit:cover; display:block; }}
+.qn-zone-body {{ padding:16px; }}
+.qn-zone h4 {{ margin:0 0 7px; color:#17351f; font-size:20px; }}
+.qn-zone p {{ margin:0; color:#526353; line-height:1.58; font-size:14.5px; }}
+.qn-accordion {{ margin-top:18px; display:grid; gap:10px; }}
+.qn-accordion details {{ background:#f7fff3; border:1px solid #dcebd3; border-radius:20px; padding:14px 16px; }}
+.qn-accordion summary {{ cursor:pointer; font-weight:900; color:#17351f; font-size:16px; }}
+.qn-accordion p {{ margin:10px 0 0; color:#536255; line-height:1.58; font-size:14.5px; }}
+.qn-bottom {{ margin-top:24px; border-radius:28px; padding:22px; background:linear-gradient(135deg,#f1f8e9,#fffdf3); border:1px solid #dcebd3; }}
+.qn-bottom h3 {{ margin:0 0 12px; font-size:clamp(23px,5vw,34px); }}
+.qn-bottom-grid {{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; }}
+.qn-bottom-grid div {{ background:#fff; border-radius:18px; padding:13px; color:#21462a; font-weight:800; border:1px solid #e0ecd8; line-height:1.35; }}
 @media (max-width:900px) {{
-  .qtn-hero {{ min-height:390px; border-radius:26px; }}
-  .qtn-journey {{ grid-template-columns:repeat(2,minmax(0,1fr)); }}
-  .qtn-highlight {{ grid-template-columns:1fr; }}
-  .qtn-photo-stack img:first-child {{ min-height:260px; }}
-  .qtn-mini {{ grid-template-columns:1fr; }}
+  .qn-hero {{ grid-template-columns:1fr; min-height:auto; }}
+  .qn-collage img:first-child {{ height:210px; }}
+  .qn-info-grid {{ grid-template-columns:1fr; }}
+  .qn-zone-grid {{ grid-template-columns:1fr; }}
+  .qn-bottom-grid {{ grid-template-columns:repeat(2,minmax(0,1fr)); }}
 }}
 @media (max-width:560px) {{
-  .qtn-root {{ padding:6px 2px 14px; }}
-  .qtn-hero {{ min-height:470px; border-radius:24px; padding:20px 16px; background-position:center; }}
-  .qtn-hero h2 {{ letter-spacing:-.7px; }}
-  .qtn-pill-row {{ gap:7px; }}
-  .qtn-pill {{ font-size:12px; padding:9px 11px; }}
-  .qtn-title {{ margin:26px 8px 14px; }}
-  .qtn-journey {{ grid-template-columns:1fr; gap:10px; }}
-  .qtn-card {{ min-height:auto; border-radius:20px; padding:15px 15px 15px 76px; }}
-  .qtn-icon {{ position:absolute; left:15px; top:15px; width:46px; height:46px; border-radius:15px; font-size:24px; margin:0; }}
-  .qtn-card::after {{ font-size:58px; top:-11px; right:-3px; }}
-  .qtn-highlight {{ gap:12px; }}
-  .qtn-note {{ border-radius:22px; padding:18px; }}
-  .qtn-checks {{ grid-template-columns:1fr; }}
-  .qtn-photo-stack {{ grid-template-columns:1fr 1fr; gap:8px; }}
-  .qtn-photo-stack img {{ min-height:132px; border-radius:18px; }}
-  .qtn-photo-stack img:first-child {{ min-height:272px; }}
-  .qtn-mini {{ gap:9px; margin-top:14px; }}
-  .qtn-mini-card {{ border-radius:18px; padding:15px; }}
+  .qn-wrap {{ padding:4px 0 18px; }}
+  .qn-hero {{ border-radius:24px; padding:18px 14px; gap:16px; }}
+  .qn-hero h2 {{ letter-spacing:-.8px; }}
+  .qn-hero-list {{ grid-template-columns:1fr; gap:8px; }}
+  .qn-collage {{ gap:8px; }}
+  .qn-collage img {{ height:118px; border-radius:18px; }}
+  .qn-collage img:first-child {{ height:170px; }}
+  .qn-section-title {{ margin:24px 8px 12px; }}
+  .qn-step {{ grid-template-columns:52px 1fr; gap:10px; border-radius:20px; padding:13px; }}
+  .qn-number {{ width:48px; height:48px; border-radius:17px; font-size:16px; }}
+  .qn-tags span {{ font-size:11.5px; padding:6px 8px; }}
+  .qn-info-card {{ min-height:auto; border-radius:22px; padding:17px; }}
+  .qn-zone img {{ height:155px; }}
+  .qn-zone, .qn-accordion details {{ border-radius:18px; }}
+  .qn-bottom {{ border-radius:22px; padding:17px; }}
+  .qn-bottom-grid {{ grid-template-columns:1fr; }}
 }}
 @media (max-width:380px) {{
-  .qtn-hero {{ min-height:455px; padding:18px 13px; }}
-  .qtn-hero h2 {{ font-size:32px; }}
-  .qtn-hero p {{ font-size:14px; }}
-  .qtn-badge {{ font-size:12px; padding:8px 11px; }}
-  .qtn-card {{ padding-left:70px; }}
-  .qtn-icon {{ width:42px; height:42px; font-size:22px; }}
+  .qn-hero h2 {{ font-size:31px; }}
+  .qn-hero p, .qn-step p, .qn-zone p, .qn-info-card p {{ font-size:13.5px; }}
+  .qn-step {{ grid-template-columns:1fr; }}
+  .qn-number {{ width:44px; height:44px; }}
 }}
 </style>
 </head>
 <body>
-<div class="qtn-root">
-  <section class="qtn-hero">
-    <div class="qtn-hero-content">
-      <div class="qtn-badge">🌾 Phiên bản giao diện mới</div>
-      <h2>Quy trình & nguồn gốc Cốm Làng Vòng</h2>
-      <p>Từ hạt lúa nếp non đến thành phẩm dẻo thơm: bố cục mới nổi bật hơn, dễ đọc hơn và được tối ưu riêng cho màn hình điện thoại.</p>
-      <div class="qtn-pill-row">
-        <div class="qtn-pill">7 công đoạn</div>
-        <div class="qtn-pill">Ảnh lớn rõ nét</div>
-        <div class="qtn-pill">Mobile-first</div>
+<div class="qn-wrap">
+  <section class="qn-hero">
+    <div class="qn-hero-copy">
+      <div class="qn-kicker">🍃 Nguồn gốc rõ ràng • Quy trình sạch</div>
+      <h2>Từ lúa nếp non đến hương cốm Hà Nội</h2>
+      <p>Trang này giới thiệu đầy đủ nguồn nguyên liệu, khu vực chế biến, các bước làm cốm, điểm kiểm soát vệ sinh và cách truy xuất sản phẩm. Bố cục mới được thiết kế để đọc thoải mái trên điện thoại, không bị rối hoặc tràn chữ.</p>
+      <div class="qn-hero-list">
+        <div>🌾 Nguyên liệu: lúa nếp non còn ngậm sữa</div>
+        <div>📍 Khu vực: Làng Vòng - Cầu Giấy - Hà Nội</div>
+        <div>🧼 Kiểm soát: sạch, khô, tách biệt công đoạn</div>
+        <div>🏷️ Truy xuất: lô hàng, ngày sản xuất, hạn dùng</div>
       </div>
+    </div>
+    <div class="qn-collage">
+      <img src="{img_overview}" alt="Cốm Làng Vòng">
+      <img src="{img_grain}" alt="Hạt lúa nếp non">
+      <img src="{img_sen}" alt="Mẹt cốm Làng Vòng">
     </div>
   </section>
 
-  <div class="qtn-title">
-    <h3>Hành trình làm cốm</h3>
-    <p>Các bước được tách thành thẻ ngắn, dễ vuốt đọc trên điện thoại và vẫn đẹp khi mở trên máy tính.</p>
+  <div class="qn-section-title">
+    <h3>Quy trình 8 bước</h3>
+    <p>Mỗi bước có mô tả ngắn, mục tiêu kiểm soát và yêu cầu vệ sinh để khách hàng hiểu sản phẩm được làm ra như thế nào.</p>
   </div>
 
-  <section class="qtn-journey">
-    <article class="qtn-card" data-step="01"><div class="qtn-icon">🌾</div><h4>Chọn lúa nếp non</h4><p>Lựa hạt còn ngậm sữa, xanh dịu, thơm nhẹ và loại bỏ tạp chất ngay từ đầu.</p></article>
-    <article class="qtn-card" data-step="02"><div class="qtn-icon">💧</div><h4>Làm sạch</h4><p>Rửa, để ráo và phân loại để hạt đều, sạch trước khi đưa vào rang.</p></article>
-    <article class="qtn-card" data-step="03"><div class="qtn-icon">🔥</div><h4>Rang cốm</h4><p>Giữ lửa đều để hạt chín tới, không cháy cạnh và vẫn giữ màu xanh tự nhiên.</p></article>
-    <article class="qtn-card" data-step="04"><div class="qtn-icon">🥢</div><h4>Giã cốm</h4><p>Giã từng mẻ nhỏ, lực đều tay để hạt mềm dẻo mà không bị nát.</p></article>
-    <article class="qtn-card" data-step="05"><div class="qtn-icon">🍃</div><h4>Sàng sảy</h4><p>Tách trấu, hạt vỡ và kiểm tra cảm quan trước khi hoàn thiện.</p></article>
-    <article class="qtn-card" data-step="06"><div class="qtn-icon">📦</div><h4>Đóng gói</h4><p>Cân định lượng, dán nhãn và dùng bao bì sạch để bảo vệ hương cốm.</p></article>
-    <article class="qtn-card" data-step="07"><div class="qtn-icon">✅</div><h4>Bảo quản</h4><p>Sắp xếp theo lô, tránh nắng nóng và kiểm tra trước khi giao khách.</p></article>
-    <article class="qtn-card" data-step="★"><div class="qtn-icon">🏷️</div><h4>Truy xuất</h4><p>Theo dõi nguồn nguyên liệu, ngày sản xuất và hạn dùng rõ ràng.</p></article>
+  <section class="qn-flow">
+    <article class="qn-step"><div class="qn-number">01</div><div><h4>Tiếp nhận lúa nếp non</h4><p>Chọn lúa nếp non đúng độ sữa, hạt xanh dịu, thơm nhẹ. Nguyên liệu được đặt trên khay hoặc mẹt sạch, không tiếp xúc trực tiếp với nền.</p><div class="qn-tags"><span>Kiểm tra màu sắc</span><span>Loại hạt sâu/lép</span><span>Ghi thời gian nhận</span></div></div></article>
+    <article class="qn-step"><div class="qn-number">02</div><div><h4>Làm sạch và phân loại</h4><p>Loại bỏ tạp chất, hạt kém chất lượng và chia nguyên liệu theo từng mẻ nhỏ để dễ kiểm soát khi rang.</p><div class="qn-tags"><span>Dụng cụ riêng</span><span>Nguyên liệu sạch</span><span>Không lẫn dị vật</span></div></div></article>
+    <article class="qn-step"><div class="qn-number">03</div><div><h4>Rang cốm</h4><p>Lúa được rang bằng lửa đều để hạt chín tới, không cháy cạnh. Đây là công đoạn quyết định mùi thơm ban đầu và màu xanh tự nhiên.</p><div class="qn-tags"><span>Kiểm soát nhiệt</span><span>Đảo đều tay</span><span>Không dùng dụng cụ gỉ</span></div></div></article>
+    <article class="qn-step"><div class="qn-number">04</div><div><h4>Giã cốm</h4><p>Hạt sau rang được giã theo từng mẻ nhỏ. Lực giã cần đều để hạt mềm dẻo, không quá nát và dễ tách vỏ.</p><div class="qn-tags"><span>Cối/chày sạch</span><span>Mẻ nhỏ</span><span>Độ dẻo ổn định</span></div></div></article>
+    <article class="qn-step"><div class="qn-number">05</div><div><h4>Sàng sảy</h4><p>Cốm được sàng nhiều lần để tách vỏ trấu, hạt vỡ và bụi mịn. Người làm cốm kiểm tra lại bằng cảm quan trước khi chuyển bước.</p><div class="qn-tags"><span>Tách trấu</span><span>Loại hạt vỡ</span><span>Kiểm tra cảm quan</span></div></div></article>
+    <article class="qn-step"><div class="qn-number">06</div><div><h4>Ủ hương và hoàn thiện</h4><p>Cốm được để nguội tự nhiên và có thể gói/ủ cùng lá sen để giữ hương dịu, tạo cảm giác thanh nhã đặc trưng của cốm Hà Nội.</p><div class="qn-tags"><span>Giữ hương</span><span>Tránh bụi</span><span>Không lẫn mùi lạ</span></div></div></article>
+    <article class="qn-step"><div class="qn-number">07</div><div><h4>Cân định lượng, đóng gói</h4><p>Thành phẩm được cân đúng khối lượng, đóng trong bao bì sạch, kín và có nhãn thể hiện tên sản phẩm, định lượng, ngày sản xuất, hạn sử dụng.</p><div class="qn-tags"><span>Bao bì kín</span><span>Nhãn rõ</span><span>Định lượng đúng</span></div></div></article>
+    <article class="qn-step"><div class="qn-number">08</div><div><h4>Bảo quản và xuất hàng</h4><p>Sản phẩm được đặt trên kệ, tránh nắng trực tiếp, nguồn nhiệt và hóa chất. Sắp xếp theo lô để dễ kiểm tra và truy xuất khi cần.</p><div class="qn-tags"><span>Nhập trước - xuất trước</span><span>Kiểm tra bao bì</span><span>Theo dõi mã lô</span></div></div></article>
   </section>
 
-  <section class="qtn-highlight">
-    <div class="qtn-note">
-      <h3>Điểm nhấn chất lượng</h3>
-      <p>Quy trình mới nhấn mạnh ba yếu tố: nguyên liệu tươi, khu chế biến sạch và đóng gói đúng chuẩn để giữ trọn hương vị cốm Hà Nội.</p>
-      <div class="qtn-checks">
-        <div class="qtn-check">✓ Nguyên liệu tách biệt</div>
-        <div class="qtn-check">✓ Dụng cụ sạch, khô</div>
-        <div class="qtn-check">✓ Kiểm soát từng mẻ</div>
-        <div class="qtn-check">✓ Nhãn mác rõ ràng</div>
-      </div>
-    </div>
-    <div class="qtn-photo-stack">
-      <img src="{img3}" alt="Rang cốm">
-      <img src="{img4}" alt="Giã cốm">
-      <img src="{img5}" alt="Sàng cốm">
-    </div>
+  <section class="qn-info-grid">
+    <div class="qn-info-card"><h4>🌾 Nguồn nguyên liệu</h4><p>Lúa nếp non được chọn khi hạt còn ngậm sữa, có mùi thơm nhẹ và độ dẻo phù hợp. Nguyên liệu cần được sơ chế sớm để giữ màu xanh, vị ngọt thanh và hương tự nhiên.</p></div>
+    <div class="qn-info-card"><h4>🧼 An toàn vệ sinh</h4><p>Khu tiếp nhận, rang, giã, sàng và đóng gói nên tách biệt. Dụng cụ tiếp xúc thực phẩm phải sạch, khô, không bám dầu mỡ, không gỉ sét và không để lẫn mùi lạ.</p></div>
+    <div class="qn-info-card"><h4>🏷️ Truy xuất sản phẩm</h4><p>Mỗi lô nên lưu thông tin ngày sản xuất, hạn sử dụng, khu vực chế biến, người phụ trách và tình trạng bao bì để hỗ trợ kiểm tra chất lượng sau bán.</p></div>
   </section>
 
-  <section class="qtn-mini">
-    <div class="qtn-mini-card"><b>🌿 Nguồn gốc</b><span>Làng Vòng - Cầu Giấy - Hà Nội, gắn với nghề làm cốm truyền thống.</span></div>
-    <div class="qtn-mini-card"><b>🧼 Vệ sinh</b><span>Khu rang, giã, sàng và đóng gói được trình bày rõ để tạo niềm tin.</span></div>
-    <div class="qtn-mini-card"><b>📱 Điện thoại</b><span>Không tràn chữ, ảnh tự co, khoảng cách thẻ thoáng và dễ thao tác.</span></div>
+  <div class="qn-section-title">
+    <h3>Khu vực sản xuất</h3>
+    <p>Thông tin được tách theo khu vực để người xem hiểu rõ vai trò của từng công đoạn.</p>
+  </div>
+
+  <section class="qn-zone-grid">
+    <article class="qn-zone"><img src="{img_rang}" alt="Khu rang cốm"><div class="qn-zone-body"><h4>Khu rang cốm</h4><p>Kiểm soát lửa, thời gian rang và độ chín của hạt. Chảo rang và dụng cụ đảo cốm cần được vệ sinh trước/sau mỗi mẻ.</p></div></article>
+    <article class="qn-zone"><img src="{img_gia}" alt="Khu giã cốm"><div class="qn-zone-body"><h4>Khu giã cốm</h4><p>Tạo độ mềm dẻo cho cốm. Cối, chày và nia phải sạch, khô; cốm sau rang không đặt trực tiếp xuống nền.</p></div></article>
+    <article class="qn-zone"><img src="{img_sang}" alt="Khu sàng sảy"><div class="qn-zone-body"><h4>Khu sàng sảy</h4><p>Tách trấu, hạt vỡ và dị vật. Thành phẩm được kiểm tra cảm quan trước khi chuyển sang đóng gói.</p></div></article>
+    <article class="qn-zone"><img src="{img_sen}" alt="Đóng gói cốm"><div class="qn-zone-body"><h4>Khu đóng gói & bảo quản</h4><p>Cân định lượng, dán nhãn, kiểm tra bao bì. Sản phẩm bảo quản nơi khô mát, tránh ánh nắng và nguồn mùi mạnh.</p></div></article>
+  </section>
+
+  <section class="qn-accordion">
+    <details open><summary>Khách hàng cần nhìn thấy thông tin gì?</summary><p>Tên sản phẩm, định lượng, thành phần chính, ngày sản xuất, hạn sử dụng, hướng dẫn bảo quản, số điện thoại đặt hàng và thông tin nguồn gốc Làng Vòng - Cầu Giấy - Hà Nội.</p></details>
+    <details><summary>Điểm kiểm soát quan trọng nhất là gì?</summary><p>Độ non của hạt lúa, nhiệt rang, độ sạch sau sàng, tình trạng bao bì, điều kiện bảo quản và việc tách riêng nguyên liệu sống với thành phẩm.</p></details>
+    <details><summary>Vì sao phải tối ưu cho điện thoại?</summary><p>Phần lớn khách hàng xem sản phẩm qua điện thoại. Vì vậy giao diện dùng thẻ dọc, chữ lớn vừa đủ, khoảng cách chạm thoáng và ảnh tự co để đọc tốt trên màn hình nhỏ.</p></details>
+  </section>
+
+  <section class="qn-bottom">
+    <h3>Cam kết hiển thị trên trang</h3>
+    <div class="qn-bottom-grid">
+      <div>Không để chữ tràn khỏi màn hình nhỏ</div>
+      <div>Ảnh giữ tỉ lệ, không méo hình</div>
+      <div>Thông tin đầy đủ nhưng chia khối dễ đọc</div>
+      <div>Phù hợp điện thoại, tablet và máy tính</div>
+    </div>
   </section>
 </div>
 </body>
 </html>
 """
-    components.html(html, height=1550, scrolling=True)
+    components.html(html, height=2550, scrolling=True)
 
 def render_ingredient_page():
 
