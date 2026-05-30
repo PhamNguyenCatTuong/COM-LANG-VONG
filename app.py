@@ -3769,7 +3769,7 @@ def render_origin_process_page():
     img_sang = image_to_data_uri("sang com.jpg")
     img_sen = image_to_data_uri("Cau chuyen 2.jpg")
     img_com_moc = image_to_data_uri("com moc.jpg")
-    img_banh_com = image_to_data_uri("Banh com.jpg")
+    img_banh_com = image_to_data_uri("Qua dac san.jpg")
     img_lang_nghe = image_to_data_uri("Huong vi lang nghe.jpg")
     img_mua_lua = image_to_data_uri("Mua lua lam nen hat com.jpg")
 
