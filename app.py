@@ -3761,12 +3761,11 @@ def render_origin_process_page():
     margin-top:16px;
 }}
 .qn-zone-new {{
-    display:grid;
-    grid-template-columns:160px minmax(0,1fr);
-    gap:14px;
-    align-items:center;
-    padding:12px 0;
-    border-bottom:1px solid #e1ecd8;
+    display:block;
+    padding:16px;
+    border:1px solid #dcebd3;
+    border-radius:20px;
+    background:#fffdf4;
 }}
 .qn-zone-new img {{
     width:100%;
@@ -3824,7 +3823,6 @@ def render_origin_process_page():
       <p class="qn-lead-new">Nguồn gốc và quy trình được trình bày trực tiếp trên nền trang, không còn khung cuộn riêng. Người xem có thể lướt một mạch từ nguyên liệu, công đoạn chế biến, kiểm soát vệ sinh đến bảo quản và truy xuất sản phẩm.</p>
       <div class="qn-quick-new">
         <div>🌾 Nguyên liệu: lúa nếp non còn ngậm sữa</div>
-        <div>📍 Khu vực: Làng Vòng - Cầu Giấy - Hà Nội</div>
         <div>🧼 Kiểm soát: sạch, khô, tách biệt công đoạn</div>
         <div>🏷️ Truy xuất: mã lô, ngày sản xuất, hạn dùng</div>
       </div>
@@ -3859,15 +3857,15 @@ def render_origin_process_page():
   </section>
 
   <div class="qn-title-line">
-    <h3>Khu vực sản xuất</h3>
-    <p>Mỗi khu vực có vai trò riêng, giúp khách hàng hiểu sản phẩm được kiểm soát từ đầu vào đến khi giao hàng.</p>
+    <h3>Điểm kiểm soát chất lượng</h3>
+    <p>Phần này thay cho mục khu vực sản xuất bị lặp. Nội dung tập trung vào những điều khách hàng cần biết để tin tưởng sản phẩm.</p>
   </div>
 
   <section class="qn-zone-list">
-    <article class="qn-zone-new"><img src="{img_rang}" alt="Khu rang cốm"><div><h4>Khu rang cốm</h4><p>Kiểm soát lửa, thời gian rang và độ chín của hạt. Chảo rang và dụng cụ đảo cốm cần được vệ sinh trước/sau mỗi mẻ.</p></div></article>
-    <article class="qn-zone-new"><img src="{img_gia}" alt="Khu giã cốm"><div><h4>Khu giã cốm</h4><p>Tạo độ mềm dẻo cho cốm. Cối, chày và nia phải sạch, khô; cốm sau rang không đặt trực tiếp xuống nền.</p></div></article>
-    <article class="qn-zone-new"><img src="{img_sang}" alt="Khu sàng sảy"><div><h4>Khu sàng sảy</h4><p>Tách trấu, hạt vỡ và dị vật. Thành phẩm được kiểm tra cảm quan trước khi chuyển sang đóng gói.</p></div></article>
-    <article class="qn-zone-new"><img src="{img_sen}" alt="Đóng gói cốm"><div><h4>Khu đóng gói & bảo quản</h4><p>Cân định lượng, dán nhãn, kiểm tra bao bì. Sản phẩm bảo quản nơi khô mát, tránh ánh nắng và nguồn mùi mạnh.</p></div></article>
+    <article class="qn-zone-new"><div><h4>🌾 Đầu vào nguyên liệu</h4><p>Chỉ nhận lúa nếp non đạt độ sữa, không mốc, không lẫn tạp chất. Nguyên liệu được phân loại theo mẻ để giữ chất lượng đồng đều.</p></div></article>
+    <article class="qn-zone-new"><div><h4>🔥 Trong lúc chế biến</h4><p>Theo dõi nhiệt rang, lực giã, độ sạch vỏ và màu sắc hạt. Mẻ không đạt cảm quan được tách riêng, không đưa vào đóng gói.</p></div></article>
+    <article class="qn-zone-new"><div><h4>📦 Trước khi đóng gói</h4><p>Kiểm tra khối lượng, bao bì, nhãn sản phẩm, ngày sản xuất, hạn sử dụng và hướng dẫn bảo quản trước khi giao khách.</p></div></article>
+    <article class="qn-zone-new"><div><h4>🏷️ Sau khi xuất hàng</h4><p>Lưu thông tin lô hàng để hỗ trợ truy xuất, đổi trả hoặc thu hồi khi cần. Ưu tiên nguyên tắc nhập trước - xuất trước.</p></div></article>
   </section>
 
   <section class="qn-note-new">
