@@ -2067,6 +2067,73 @@ footer {visibility: hidden;}
     }
 }
 
+
+/* EQUAL IMAGE BOXES */
+.process-image,
+.source-image,
+.origin-image,
+.material-image,
+.rice-image,
+.harvest-image,
+.origin-main-image,
+.source-main-image,
+.process-visual,
+.source-visual {
+    height: 340px !important;
+    min-height: 340px !important;
+    max-height: 340px !important;
+    overflow: hidden !important;
+}
+
+.process-image img,
+.source-image img,
+.origin-image img,
+.material-image img,
+.rice-image img,
+.harvest-image img,
+.origin-main-image img,
+.source-main-image img,
+.process-visual img,
+.source-visual img {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 340px !important;
+    max-height: 340px !important;
+    object-fit: cover !important;
+    display: block !important;
+}
+
+@media (max-width:768px){
+    .process-image,
+    .source-image,
+    .origin-image,
+    .material-image,
+    .rice-image,
+    .harvest-image,
+    .origin-main-image,
+    .source-main-image,
+    .process-visual,
+    .source-visual{
+        height:260px !important;
+        min-height:260px !important;
+        max-height:260px !important;
+    }
+
+    .process-image img,
+    .source-image img,
+    .origin-image img,
+    .material-image img,
+    .rice-image img,
+    .harvest-image img,
+    .origin-main-image img,
+    .source-main-image img,
+    .process-visual img,
+    .source-visual img{
+        min-height:260px !important;
+        max-height:260px !important;
+    }
+}
+
 </style>
 """.replace("__BANNER_IMAGE__", image_to_data_uri("Banner com.jpg")),
     unsafe_allow_html=True,
@@ -3769,7 +3836,7 @@ def render_origin_process_page():
     img_sang = image_to_data_uri("sang com.jpg")
     img_sen = image_to_data_uri("Cau chuyen 2.jpg")
     img_com_moc = image_to_data_uri("com moc.jpg")
-    img_banh_com = image_to_data_uri("Qua dac san.jpg")
+    img_banh_com = image_to_data_uri("Banh com.jpg")
     img_lang_nghe = image_to_data_uri("Huong vi lang nghe.jpg")
     img_mua_lua = image_to_data_uri("Mua lua lam nen hat com.jpg")
 
