@@ -3589,13 +3589,15 @@ def render_product_detail_page():
 def render_origin_process_page():
     """Render Quy trình & nguồn gốc with clean storytelling content and images inside each process step."""
     img_overview = image_to_data_uri("Com tong quan 3.jpg")
-    img_grain = image_to_data_uri("hat com tuoi.jpg")
+    img_grain = image_to_data_uri("Cau chuyen 1.jpg")
     img_rang = image_to_data_uri("rang com.jpg")
     img_gia = image_to_data_uri("gia com.jpg")
     img_sang = image_to_data_uri("sang com.jpg")
-    img_sen = image_to_data_uri("me com lang vong.jpg")
+    img_sen = image_to_data_uri("Cau chuyen 2.jpg")
     img_com_moc = image_to_data_uri("com moc.jpg")
     img_banh_com = image_to_data_uri("Banh com.jpg")
+    img_lang_nghe = image_to_base64("Huong vi lang nghe.jpg")
+    img_mua_lua = image_to_base64("Mua lua lam nen hat com.jpg")
 
     html = f"""
 <style>
@@ -3964,7 +3966,9 @@ def render_origin_process_page():
           <div class="qn-feature"><strong>🏮 Bản sắc làng nghề</strong><span>Lưu giữ câu chuyện văn hóa qua hương cốm, lá sen và những mẹt cốm xanh.</span></div>
         </div>
       </div>
-      <div class="qn-story-image"><img src="{img_sen}" alt="Nghề cốm truyền thống"></div>
+      <div class="qn-story-image">
+        <img src="{img_lang_nghe}" alt="Nghề cốm">
+      </div>
     </div>
   </section>
 
@@ -3974,7 +3978,7 @@ def render_origin_process_page():
       <p>Nguyên liệu quyết định phần lớn chất lượng cốm. Hạt lúa phải được chọn khi còn non, có độ sữa, mùi thơm nhẹ và màu xanh tự nhiên.</p>
     </div>
     <div class="qn-material-grid">
-      <div class="qn-material-photo"><img src="{img_grain}" alt="Hạt lúa nếp non"></div>
+      <div class="qn-material-photo"><img src="{img_mua_lua}" alt="Lúa nếp non"></div>
       <div class="qn-material-list">
         <article class="qn-material-item"><h4>🌾 Chọn lúa đúng độ non</h4><p>Ưu tiên hạt nếp còn ngậm sữa, vỏ xanh, hạt chắc vừa phải để cốm có độ dẻo và vị ngọt thanh.</p></article>
         <article class="qn-material-item"><h4>⏰ Sơ chế sớm sau thu hoạch</h4><p>Lúa được đưa vào xử lý sớm để hạn chế xuống màu, khô hạt hoặc mất mùi thơm tự nhiên.</p></article>
