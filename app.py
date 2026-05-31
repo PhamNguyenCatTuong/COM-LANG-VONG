@@ -36,22 +36,22 @@ def image_to_data_uri(file_name):
 
 CERTIFICATES = [
     {
-        "image": "CBSP.PNG",
+        "image": "CBSP.png",
         "title": "Tự công bố sản phẩm",
         "desc": "Giấy xác nhận tự công bố sản phẩm Cốm Làng Vòng theo quy định an toàn thực phẩm.",
     },
     {
-        "image": "KQKN.PNG",
+        "image": "KQKN.png",
         "title": "Phiếu kiểm nghiệm",
         "desc": "Kết quả kiểm nghiệm các chỉ tiêu an toàn thực phẩm của sản phẩm.",
     },
     {
-        "image": "OCOP.PNG",
+        "image": "OCOP.png",
         "title": "Chứng nhận OCOP 4 sao",
         "desc": "Chứng nhận sản phẩm OCOP đạt 4 sao năm 2022.",
     },
     {
-        "image": "ATTP.PNG",
+        "image": "ATTP.png",
         "title": "Chứng nhận an toàn thực phẩm",
         "desc": "Chứng nhận cơ sở đủ điều kiện an toàn thực phẩm.",
     },
@@ -3617,7 +3617,7 @@ def render_origin_process_page():
     img_sang = image_to_data_uri("sang com.jpg")
     img_sen = image_to_data_uri("Cau chuyen 2.jpg")
     img_com_moc = image_to_data_uri("com moc.jpg")
-    img_banh_com = image_to_data_uri("Banh com.jpg")
+    img_banh_com = image_to_data_uri("Qua dac san.jpg")
     img_lang_nghe = image_to_data_uri("Huong vi lang nghe.jpg")
     img_mua_lua = image_to_data_uri("Mua lua lam nen hat com.jpg")
 
