@@ -3767,12 +3767,21 @@ def render_origin_process_page():
     font-size:14px;
     line-height:1.55;
 }}
+.qn-story-image {{
+    height:260px;
+    min-height:260px;
+    max-height:260px;
+    overflow:hidden;
+    border-radius:22px;
+}}
 .qn-story-image img {{
     width:100%;
     height:100%;
-    min-height:310px;
+    min-height:100%;
+    max-height:100%;
     object-fit:cover;
     border-radius:22px;
+    display:block;
 }}
 .qn-material-grid {{
     display:grid;
@@ -3785,12 +3794,21 @@ def render_origin_process_page():
     padding:10px;
     border:1px solid #dcebd3;
 }}
+.qn-material-photo {{
+    height:260px;
+    min-height:260px;
+    max-height:260px;
+    overflow:hidden;
+    border-radius:18px;
+}}
 .qn-material-photo img {{
     width:100%;
     height:100%;
-    min-height:300px;
+    min-height:100%;
+    max-height:100%;
     object-fit:cover;
     border-radius:18px;
+    display:block;
 }}
 .qn-material-list {{ display:grid; gap:10px; }}
 .qn-material-item {{
@@ -3826,11 +3844,19 @@ def render_origin_process_page():
     padding:12px;
     box-shadow:0 8px 20px rgba(23,53,31,.06);
 }}
-.qn-journey-img {{ position:relative; min-height:180px; }}
+.qn-journey-img {{
+    position:relative;
+    height:260px;
+    min-height:260px;
+    max-height:260px;
+    overflow:hidden;
+    border-radius:18px;
+}}
 .qn-journey-img img {{
     width:100%;
     height:100%;
-    min-height:180px;
+    min-height:100%;
+    max-height:100%;
     object-fit:cover;
     border-radius:18px;
     display:block;
@@ -3925,7 +3951,22 @@ def render_origin_process_page():
     .qn-story-card,
     .qn-material-grid {{ grid-template-columns:1fr; }}
     .qn-quality-grid {{ grid-template-columns:repeat(2,minmax(0,1fr)); }}
-    .qn-story-image img {{ min-height:230px; }}
+    .qn-story-image {{
+    height:260px;
+    min-height:260px;
+    max-height:260px;
+    overflow:hidden;
+    border-radius:22px;
+}}
+.qn-story-image img {{
+    width:100%;
+    height:100%;
+    min-height:100%;
+    max-height:100%;
+    object-fit:cover;
+    border-radius:22px;
+    display:block;
+}}
 }}
 @media (max-width:640px) {{
     .qn-page {{ padding-bottom:18px; }}
@@ -3937,17 +3978,88 @@ def render_origin_process_page():
     .qn-section {{ margin-top:24px; }}
     .qn-story-card {{ padding:12px; border-radius:21px; }}
     .qn-feature-grid {{ grid-template-columns:1fr; }}
-    .qn-material-photo img {{ min-height:210px; }}
+    .qn-material-photo {{
+    height:260px;
+    min-height:260px;
+    max-height:260px;
+    overflow:hidden;
+    border-radius:18px;
+}}
+.qn-material-photo img {{
+    width:100%;
+    height:100%;
+    min-height:100%;
+    max-height:100%;
+    object-fit:cover;
+    border-radius:18px;
+    display:block;
+}}
     .qn-journey-step {{ grid-template-columns:1fr; padding:10px; border-radius:20px; }}
-    .qn-journey-img, .qn-journey-img img {{ min-height:210px; }}
+    .qn-journey-img, .qn-journey-img img {{
+    width:100%;
+    height:100%;
+    min-height:100%;
+    max-height:100%;
+    object-fit:cover;
+    border-radius:18px;
+    display:block;
+}}
     .qn-journey-body {{ padding:4px 2px 2px; }}
     .qn-quality-grid {{ grid-template-columns:1fr; }}
     .qn-quality {{ border-radius:18px; padding:14px; }}
 }}
 @media (max-width:380px) {{
     .qn-hero h2 {{ font-size:30px; }}
-    .qn-journey-img, .qn-journey-img img {{ min-height:190px; }}
+    .qn-journey-img, .qn-journey-img img {{
+    width:100%;
+    height:100%;
+    min-height:100%;
+    max-height:100%;
+    object-fit:cover;
+    border-radius:18px;
+    display:block;
 }}
+}}
+
+/* ONLY LOWER SECTION IMAGES - keep top 3 collage images unchanged */
+.qn-story-image,
+.qn-material-photo,
+.qn-journey-img {{
+    height:260px !important;
+    min-height:260px !important;
+    max-height:260px !important;
+    overflow:hidden !important;
+}}
+
+.qn-story-image img,
+.qn-material-photo img,
+.qn-journey-img img {{
+    width:100% !important;
+    height:100% !important;
+    min-height:100% !important;
+    max-height:100% !important;
+    object-fit:cover !important;
+    display:block !important;
+}}
+
+@media (max-width:640px) {{
+    .qn-story-image,
+    .qn-material-photo,
+    .qn-journey-img {{
+        height:220px !important;
+        min-height:220px !important;
+        max-height:220px !important;
+    }}
+
+    .qn-story-image img,
+    .qn-material-photo img,
+    .qn-journey-img img {{
+        height:100% !important;
+        min-height:100% !important;
+        max-height:100% !important;
+    }}
+}}
+
 </style>
 
 <div class="qn-page">
