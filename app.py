@@ -3724,7 +3724,7 @@ def render_origin_process_page():
     margin:0;
     color:#536255;
     font-size:15.5px;
-    line-height:1.68;
+    line-height:1.32;
     max-width:880px;
 }}
 .qn-story-card {{
@@ -3742,7 +3742,7 @@ def render_origin_process_page():
     margin:0;
     color:#405442;
     font-size:15.5px;
-    line-height:1.75;
+    line-height:1.32;
 }}
 .qn-feature-grid {{
     display:grid;
@@ -3765,7 +3765,7 @@ def render_origin_process_page():
 .qn-feature span {{
     color:#536255;
     font-size:14px;
-    line-height:1.55;
+    line-height:1.30;
 }}
 .qn-story-image {{
     height:260px;
@@ -3826,7 +3826,7 @@ def render_origin_process_page():
 .qn-material-item p {{
     margin:0;
     color:#536255;
-    line-height:1.62;
+    line-height:1.32;
     font-size:14.5px;
 }}
 .qn-journey {{
@@ -3889,7 +3889,7 @@ def render_origin_process_page():
 .qn-journey-body p {{
     margin:0 0 10px;
     color:#536255;
-    line-height:1.65;
+    line-height:1.32;
     font-size:14.8px;
 }}
 .qn-mini-list {{
@@ -3926,7 +3926,7 @@ def render_origin_process_page():
 .qn-quality p {{
     margin:0;
     color:#536255;
-    line-height:1.58;
+    line-height:1.30;
     font-size:14px;
 }}
 .qn-final-note {{
@@ -3944,7 +3944,7 @@ def render_origin_process_page():
 .qn-final-note p {{
     margin:0;
     color:rgba(255,255,255,.92);
-    line-height:1.65;
+    line-height:1.32;
 }}
 @media (max-width:900px) {{
     .qn-hero-grid,
@@ -4057,6 +4057,73 @@ def render_origin_process_page():
         height:100% !important;
         min-height:100% !important;
         max-height:100% !important;
+    }}
+}}
+
+
+/* COMPACT QN CARD TEXT SPACING */
+.qn-material-item p,
+.qn-journey-body p,
+.qn-quality p,
+.qn-feature span,
+.qn-step-card p,
+.qn-card p,
+.qn-info-card p {{
+    line-height: 1.32 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}}
+
+.qn-material-item h4,
+.qn-journey-body h3,
+.qn-quality h4,
+.qn-step-card h3,
+.qn-card h3,
+.qn-info-card h3 {{
+    line-height: 1.12 !important;
+    margin-top: 0 !important;
+    margin-bottom: 6px !important;
+}}
+
+.qn-material-item,
+.qn-quality,
+.qn-step-card,
+.qn-card,
+.qn-info-card {{
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+}}
+
+.qn-material-list,
+.qn-quality-grid,
+.qn-journey {{
+    gap: 8px !important;
+}}
+
+.qn-tag,
+.qn-pill,
+.qn-chip {{
+    line-height: 1.15 !important;
+}}
+
+@media (max-width: 640px) {{
+    .qn-material-item p,
+    .qn-journey-body p,
+    .qn-quality p,
+    .qn-feature span,
+    .qn-step-card p,
+    .qn-card p,
+    .qn-info-card p {{
+        line-height: 1.25 !important;
+    }}
+
+    .qn-material-item,
+    .qn-quality,
+    .qn-step-card,
+    .qn-card,
+    .qn-info-card {{
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
     }}
 }}
 
