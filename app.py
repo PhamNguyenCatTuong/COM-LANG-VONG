@@ -392,31 +392,70 @@ PAGE_DATABASE = {
         "title": "Câu chuyện Cốm Làng Vòng",
         "card_class": "card",
         "card_title": "🍃 Câu chuyện Cốm Làng Vòng",
+        "intro": "Từ hạt lúa nếp non của đồng quê Bắc Bộ đến thức quà thanh nhã của mùa thu Hà Nội.",
+        "fields": {
+            "Bối cảnh": "Làng Vòng, Cầu Giấy, Hà Nội - nơi hương cốm gắn với ký ức mùa thu và nếp sống thanh lịch của người Hà Nội.",
+            "Giá trị cốt lõi": "Giữ hương nếp non, màu xanh tự nhiên, độ dẻo mềm và tinh thần thủ công của làng nghề.",
+            "Tinh thần thương hiệu": "Tôn trọng truyền thống, minh bạch nguồn gốc, trình bày hiện đại và phù hợp với người tiêu dùng hôm nay.",
+            "Thông điệp": "Mỗi hạt cốm là một lát cắt của mùa thu Hà Nội: nhẹ, thơm, mộc mạc nhưng tinh tế."
+        },
         "paragraphs": [
-            "Cốm Làng Vòng là một thức quà truyền thống gắn liền với mùa thu Hà Nội. Hương cốm non, màu xanh dịu và vị ngọt thanh đã trở thành một phần ký ức quen thuộc của nhiều thế hệ người Việt.",
-            "Từ những hạt lúa nếp non được chọn lọc kỹ, người làm cốm phải trải qua nhiều công đoạn thủ công như rang, giã, sàng sảy và ủ lá sen. Mỗi công đoạn đều cần sự tỉ mỉ, kinh nghiệm và cảm nhận tinh tế của người thợ.",
-            "Không chỉ là một món ăn, cốm còn là biểu tượng của sự thanh nhã trong văn hóa ẩm thực Hà Nội. Cốm thường được dùng làm quà biếu, dùng trong mâm lễ, cưới hỏi hoặc thưởng thức cùng chuối chín, trà sen.",
-            "Ngày nay, Cốm Làng Vòng được phát triển thành nhiều sản phẩm mới như bánh cốm, xôi cốm, cốm xào, mochi cốm và các món quà đặc sản. Dù có nhiều biến tấu, giá trị cốt lõi vẫn là giữ được hương vị mộc mạc, dẻo thơm và tinh thần truyền thống.",
-            "Chúng tôi mong muốn đưa hương vị cốm truyền thống đến gần hơn với người tiêu dùng hiện đại, đồng thời giữ gìn nét đẹp làng nghề và câu chuyện văn hóa của Hà Nội."
+            "Cốm Làng Vòng bắt đầu từ những thửa lúa nếp non còn ngậm sữa. Khi hạt lúa vừa đủ độ chắc, người làm nghề thu hoạch sớm để giữ lại vị ngọt thanh, mùi thơm dịu và màu xanh non đặc trưng.",
+            "Sau khi đưa về làng, lúa được tuốt, rang, giã và sàng sảy qua nhiều lượt. Mỗi công đoạn đều đòi hỏi kinh nghiệm: lửa rang phải đều, tay giã phải vừa lực, sàng phải khéo để tách vỏ mà không làm nát hạt.",
+            "Cốm không chỉ là một món ăn. Với người Hà Nội, cốm là ký ức của những buổi sáng se lạnh, là hương lá sen, là tiếng rao mùa thu và là món quà trang nhã dùng trong cưới hỏi, lễ tết, biếu tặng.",
+            "Theo thời gian, cốm được phát triển thành nhiều sản phẩm như bánh cốm, xôi cốm, cốm xào, mochi cốm, sữa chua cốm và các món ăn sáng tạo. Dù thay đổi cách trình bày, điểm quan trọng nhất vẫn là giữ được hương cốm thật, vị dẻo thơm và cảm giác gần gũi.",
+            "Câu chuyện của Cốm Làng Vòng vì vậy không dừng ở quá khứ. Đó là hành trình nối truyền thống với đời sống hiện đại, để người mua không chỉ thưởng thức một món ngon mà còn hiểu được công sức, văn hóa và niềm tự hào phía sau từng sản phẩm."
+        ],
+        "bullets": [
+            "Nguồn gốc gắn với làng nghề Cốm Làng Vòng và văn hóa mùa thu Hà Nội.",
+            "Nguyên liệu trung tâm là lúa nếp non thu hoạch đúng độ.",
+            "Quy trình truyền thống gồm chọn lúa, rang, giã, sàng, ủ và đóng gói.",
+            "Giá trị cảm xúc nằm ở hương lá sen, vị nếp non và ký ức Hà Nội.",
+            "Định hướng hiện đại là đa dạng hóa sản phẩm nhưng không đánh mất bản sắc.",
+            "Phù hợp để kể chuyện thương hiệu, làm quà biếu và giới thiệu đặc sản địa phương."
         ],
         "images": [
             "Hinh 1.jpg",
-        ],
-
-        "bullets": [
-            "Nguồn cảm hứng từ làng nghề Cốm Làng Vòng lâu đời.",
-            "Giữ tinh thần thủ công, mộc mạc và tinh tế.",
-            "Kết hợp truyền thống với cách trình bày hiện đại.",
-            "Phù hợp làm quà biếu, quà du lịch và đặc sản Hà Nội.",
-            "Tôn trọng chất lượng, nguồn gốc và trải nghiệm của người tiêu dùng."
+            "Com tong quan 3.jpg",
+            "hat com tuoi.jpg",
+            "me com lang vong.jpg"
         ],
     },
     "video": {
         "title": "Hành trình hương cốm",
         "type": "custom_video",
+        "card_class": "card",
         "card_title": "🎬 Hành trình hương cốm",
+        "intro": "Một tuyến nội dung truyền thông kể lại hành trình từ đồng lúa, làng nghề đến bàn ăn và hộp quà.",
+        "fields": {
+            "Mục tiêu": "Giúp người xem hiểu cốm được tạo ra như thế nào, vì sao cốm quý và vì sao sản phẩm cần được bảo quản, đóng gói đúng cách.",
+            "Mạch kể": "Từ mùa lúa non → chọn nguyên liệu → rang giã thủ công → sàng sảy → gói hương lá sen → phát triển sản phẩm hiện đại.",
+            "Cảm xúc chủ đạo": "Mộc mạc, ấm áp, tinh tế, gợi nhớ mùa thu Hà Nội.",
+            "Đối tượng xem": "Khách mua đặc sản, khách du lịch, người trẻ yêu ẩm thực truyền thống và khách hàng cần hiểu nguồn gốc sản phẩm.",
+            "Kêu gọi hành động": "Khám phá sản phẩm, xem công thức, đặt hàng hoặc liên hệ tư vấn."
+        },
         "paragraphs": [
-            "Tái hiện nét đẹp truyền thống và tinh hoa ẩm thực từ cốm Làng Vòng."
+            "Hành trình hương cốm mở đầu bằng hình ảnh đồng lúa nếp non - nơi hạt lúa còn mềm, thơm và giữ vị sữa tự nhiên. Đây là điểm khởi đầu quyết định chất lượng của cốm.",
+            "Tiếp theo là nhịp lao động của làng nghề: người thợ chọn lúa, rang bằng lửa vừa, giã nhiều lượt và sàng sảy kiên nhẫn để hạt cốm sạch vỏ, dẻo mềm và đều hơn.",
+            "Phần giữa của câu chuyện tập trung vào hương vị: màu xanh dịu, mùi nếp non, hương lá sen và cảm giác thanh nhã khi thưởng thức cùng chuối chín, trà sen hoặc dùng làm nguyên liệu cho món ăn mới.",
+            "Phần cuối cho thấy cốm bước vào đời sống hiện đại qua bánh cốm, xôi cốm, cốm xào, mochi cốm, sữa chua cốm, tôm tẩm cốm và các hộp quà đặc sản.",
+            "Video không chỉ giới thiệu sản phẩm mà còn giúp khách hàng tin vào nguồn gốc, hiểu giá trị thủ công và cảm nhận được tinh thần gìn giữ đặc sản Hà Nội."
+        ],
+        "bullets": [
+            "Cảnh 1: Đồng lúa nếp non, hạt còn ngậm sữa.",
+            "Cảnh 2: Thu hoạch, chọn lọc và loại bỏ tạp chất.",
+            "Cảnh 3: Rang cốm - giữ lửa đều để bảo toàn mùi thơm.",
+            "Cảnh 4: Giã, sàng, tách vỏ và làm hạt cốm mềm hơn.",
+            "Cảnh 5: Ủ/gói với lá sen để gợi hương vị Hà Nội.",
+            "Cảnh 6: Thành phẩm và các món ăn phát triển từ cốm.",
+            "Cảnh 7: Chứng nhận, bao bì, bảo quản và lời mời đặt hàng."
+        ],
+        "images": [
+            "Com tong quan 3.jpg",
+            "rang com.jpg",
+            "gia com.jpg",
+            "sang com.jpg",
+            "Banh com.jpg"
         ],
     },
     "sanpham": {
@@ -2157,27 +2196,41 @@ def render_content_card(page_data, detail_link=None, show_full=False):
     st.markdown(html, unsafe_allow_html=True)
 
 def render_story_page():
-    story_image = image_to_data_uri("Hinh 1.jpg")
+    story = PAGE_DATABASE["cauchuyen"]
+    images = story.get("images", [])
+    main_image = image_to_data_uri(images[0] if images else "Hinh 1.jpg")
+
+    field_html = ""
+    for label, value in story.get("fields", {}).items():
+        field_html += f"<div class='story-feature'><b>{escape(label)}:</b> {escape(value)}</div>"
+
+    bullet_html = ""
+    for bullet in story.get("bullets", []):
+        bullet_html += f"<li>{escape(bullet)}</li>"
+
+    paragraph_html = ""
+    for paragraph in story.get("paragraphs", []):
+        paragraph_html += f"<p>{escape(paragraph)}</p>"
 
     html = f"""<div class="story-layout">
 <div class="story-left">
 <div class="story-mini-badge">🍃 Di sản ẩm thực Hà Nội</div>
 <h1>Câu chuyện<br>Cốm Làng Vòng</h1>
-<p class="story-desc">
-Từ hạt lúa nếp non còn ngậm sữa, qua đôi tay người thợ làng nghề,
-cốm trở thành thức quà thanh nhã của mùa thu Hà Nội.
-</p>
+<p class="story-desc">{escape(story.get("intro", ""))}</p>
 <div class="story-features">
-<div class="story-feature">🌾 Lúa nếp non tuyển chọn</div>
-<div class="story-feature">🔥 Rang thủ công giữ hương</div>
-<div class="story-feature">🥢 Giã, sàng tỉ mỉ</div>
-<div class="story-feature">🍃 Gói trong hương lá sen</div>
+{field_html}
 </div>
 <div class="story-quote">“Cốm không chỉ là món ăn, mà còn là ký ức mùa thu Hà Nội.”</div>
 </div>
 <div class="story-right">
-<img src="{story_image}">
+<img src="{main_image}">
 </div>
+</div>
+
+<div class="card">
+<h3>Hành trình câu chuyện</h3>
+{paragraph_html}
+<ul>{bullet_html}</ul>
 </div>"""
 
     st.markdown(html, unsafe_allow_html=True)
@@ -4347,16 +4400,34 @@ def render_cart_page():
 
 
 def render_video_page():
-    st.markdown(
-        """
+    video_data = PAGE_DATABASE["video"]
+
+    field_html = ""
+    for label, value in video_data.get("fields", {}).items():
+        field_html += f"<p><b>{escape(label)}:</b> {escape(value)}</p>"
+
+    paragraph_html = ""
+    for paragraph in video_data.get("paragraphs", []):
+        paragraph_html += f"<p>{escape(paragraph)}</p>"
+
+    bullet_html = ""
+    for bullet in video_data.get("bullets", []):
+        bullet_html += f"<li>{escape(bullet)}</li>"
+
+    html = f"""
 <div class="card">
-<h3>🎬 Hành trình hương cốm</h3>
-<p>Video tái hiện nét đẹp truyền thống của cốm Làng Vòng — từ những hạt nếp non xanh mướt đến quy trình chế biến thủ công mang đậm dấu ấn Hà Nội xưa.</p>
-<p>Mỗi thức quà từ cốm không chỉ là một món ăn, mà còn là hương vị của mùa thu Hà Nội, của ký ức và sự tinh tế trong văn hoá ẩm thực Việt.</p>
+<h3>{escape(video_data.get("card_title", "🎬 Hành trình hương cốm"))}</h3>
+<p><b>Ý tưởng:</b> {escape(video_data.get("intro", ""))}</p>
+{field_html}
 </div>
-""",
-        unsafe_allow_html=True,
-    )
+
+<div class="card2">
+<h3>Kịch bản nội dung</h3>
+{paragraph_html}
+<ul>{bullet_html}</ul>
+</div>
+"""
+    st.markdown(html, unsafe_allow_html=True)
     st.video("https://www.youtube.com/watch?v=_q38xqZFuKE")
 
 
