@@ -4127,6 +4127,26 @@ def render_origin_process_page():
     }}
 }}
 
+
+/* ULTRA COMPACT */
+.qn-material-item *,
+.qn-journey-body *,
+.qn-quality *,
+.qn-step-card *,
+.qn-card *,
+.qn-info-card *{{
+ line-height:1.05 !important;
+}}
+
+.qn-material-item p,
+.qn-journey-body p,
+.qn-quality p,
+.qn-step-card p,
+.qn-card p,
+.qn-info-card p{{
+ margin:0 !important;
+ padding:0 !important;
+}}
 </style>
 
 <div class="qn-page">
