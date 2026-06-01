@@ -11,7 +11,6 @@ st.set_page_config(page_title="CỐM LÀNG VÒNG", layout="wide")
 
 params = st.query_params
 page = params.get("page", "gioithieu")
-is_embed = str(params.get("embed", "")).lower() in ("1", "true", "yes")
 
 APP_DIR = Path(__file__).resolve().parent
 
@@ -2020,111 +2019,64 @@ footer {visibility: hidden;}
 @media(max-width:900px){.story-two-col,.story-two-col.reverse{grid-template-columns:1fr;}.story-two-col.reverse .story-image-frame{order:-1;}.story-gallery-ribbon{grid-template-columns:repeat(2,minmax(0,1fr));}.story-ribbon-item,.story-ribbon-item img{min-height:190px;}}
 @media(max-width:520px){.story-magazine{border-radius:22px;}.story-hero-scene{min-height:500px;padding:24px;}.story-chapter{padding:34px 18px;}.story-gallery-ribbon{grid-template-columns:1fr;}.story-ribbon-item,.story-ribbon-item img{min-height:220px;}}
 
+
+/* FINAL FIX: no quick buttons, no chapter labels, no iframe scroll */
+.story-label,
+.story-process-link {
+    display: none !important;
+}
+
+.content {
+    overflow: visible !important;
+}
+
+.story-magazine,
+.aroma-story {
+    width: 100% !important;
+}
+
+.story-magazine *,
+.aroma-story * {
+    box-sizing: border-box;
+}
+
 </style>
 """.replace("__BANNER_IMAGE__", image_to_data_uri("Banner com.jpg")),
     unsafe_allow_html=True,
 )
 
-if not is_embed:
-    st.markdown(
-        """
-    <div class="topbar">
-    <input type="checkbox" id="menu-toggle">
-    <div class="top-row">
-    <div class="logo">🌾 Cốm Làng Vòng</div>
-    <a href="?page=giohang" target="_self" class="cart-link">🛒 <span class="cart-badge">__CART_COUNT__</span></a>
-    <label for="menu-toggle" class="hamburger">☰</label>
-    </div>
-    <div class="menu">
-    <div class="dropdown"><button class="dropbtn parent-only" type="button">Giới thiệu</button><div class="dropdown-content"><a href="?page=cauchuyen" target="_self">Câu chuyện Cốm Làng Vòng</a><a href="?page=video" target="_self">Hành trình hương cốm</a></div></div>
-    <div class="dropdown"><a href="?page=quytrinh" target="_self" style="text-decoration:none;"><button class="dropbtn">Quy trình & nguồn gốc</button></a></div>
-    <div class="dropdown"><button class="dropbtn parent-only" type="button">Sản phẩm</button><div class="dropdown-content"><a href="?page=sanpham" target="_self">Danh sách sản phẩm</a><a href="?page=congthuc" target="_self">Công thức & Cách làm món ăn</a></div></div>
-    <div class="dropdown"><a href="?page=chatluong" target="_self" style="text-decoration:none;"><button class="dropbtn">Chất lượng</button></a></div>
-    <div class="dropdown"><button class="dropbtn parent-only" type="button">Bao bì & bảo quản</button><div class="dropdown-content"><a href="?page=muc_giay" target="_self">Mực & giấy bao bì</a><a href="?page=thuhoi" target="_self">Chính sách thu hồi</a></div></div>
-    <a href="?page=giohang" target="_self" class="cart-menu-btn">🛒 Giỏ hàng (__CART_COUNT__)</a>
-    </div>
-    </div>
-    <section class="hero-banner">
-    <div class="hero-content">
-    <div class="hero-small">Đặc sản mùa thu Hà Nội</div>
-    <h1>Cốm Làng Vòng</h1>
-    <p>Hương vị truyền thống của Hà Nội với hạt cốm dẻo thơm.</p>
-    <div class="hero-actions">
-    <a href="#dathang" class="hero-btn order" target="_self">Đặt hàng ngay</a>
-    <a href="tel:0385437503" class="hero-btn call">Gọi tư vấn</a>
-    </div>
-    </div>
-    </section>
-    """.replace("__CART_COUNT__", str(cart_count)),
-        unsafe_allow_html=True,
-    )
-    
-    st.markdown("""
-    <script>
-    (function(){
-      try {
-        const url = new URL(window.location.href);
-        if (url.searchParams.get("top") === "1") {
-          window.scrollTo({top: 0, left: 0, behavior: "auto"});
-          setTimeout(function(){ window.scrollTo(0, 0); }, 80);
-          setTimeout(function(){ window.scrollTo(0, 0); }, 250);
-          url.searchParams.delete("top");
-          window.history.replaceState({}, "", url.toString());
-        }
-      } catch(e) {}
-    })();
-    </script>
-    """, unsafe_allow_html=True)
-    
-    st.markdown("""
-    <script>
-    (function(){
-      if (window.__comLangVongNavListenerInstalled) return;
-      window.__comLangVongNavListenerInstalled = true;
-    
-      window.addEventListener("message", function(event){
-        try {
-          const data = event.data || {};
-          if (!data || data.type !== "COM_LANG_VONG_NAV") return;
-    
-          const page = String(data.page || "").trim();
-          if (!page) return;
-    
-          const url = new URL(window.location.href);
-          url.searchParams.set("page", page);
-          url.searchParams.set("top", "1");
-          window.location.href = url.toString();
-        } catch(e) {}
-      });
-    })();
-    </script>
-    """, unsafe_allow_html=True)
-    
-
-if is_embed:
-    st.markdown("""
-    <style>
-    .block-container {
-        padding-top: 0 !important;
-        max-width: 100% !important;
-    }
-    .content {
-        max-width: 100% !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-    .page-title {
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-    }
-    .topbar,
-    .hero-banner,
-    .floating-contact,
-    .footer-full {
-        display: none !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+st.markdown(
+    """
+<div class="topbar">
+<input type="checkbox" id="menu-toggle">
+<div class="top-row">
+<div class="logo">🌾 Cốm Làng Vòng</div>
+<a href="?page=giohang" target="_self" class="cart-link">🛒 <span class="cart-badge">__CART_COUNT__</span></a>
+<label for="menu-toggle" class="hamburger">☰</label>
+</div>
+<div class="menu">
+<div class="dropdown"><button class="dropbtn parent-only" type="button">Giới thiệu</button><div class="dropdown-content"><a href="?page=cauchuyen" target="_self">Câu chuyện Cốm Làng Vòng</a><a href="?page=video" target="_self">Hành trình hương cốm</a></div></div>
+<div class="dropdown"><a href="?page=quytrinh" target="_self" style="text-decoration:none;"><button class="dropbtn">Quy trình & nguồn gốc</button></a></div>
+<div class="dropdown"><button class="dropbtn parent-only" type="button">Sản phẩm</button><div class="dropdown-content"><a href="?page=sanpham" target="_self">Danh sách sản phẩm</a><a href="?page=congthuc" target="_self">Công thức & Cách làm món ăn</a></div></div>
+<div class="dropdown"><a href="?page=chatluong" target="_self" style="text-decoration:none;"><button class="dropbtn">Chất lượng</button></a></div>
+<div class="dropdown"><button class="dropbtn parent-only" type="button">Bao bì & bảo quản</button><div class="dropdown-content"><a href="?page=muc_giay" target="_self">Mực & giấy bao bì</a><a href="?page=thuhoi" target="_self">Chính sách thu hồi</a></div></div>
+<a href="?page=giohang" target="_self" class="cart-menu-btn">🛒 Giỏ hàng (__CART_COUNT__)</a>
+</div>
+</div>
+<section class="hero-banner">
+<div class="hero-content">
+<div class="hero-small">Đặc sản mùa thu Hà Nội</div>
+<h1>Cốm Làng Vòng</h1>
+<p>Hương vị truyền thống của Hà Nội với hạt cốm dẻo thơm.</p>
+<div class="hero-actions">
+<a href="#dathang" class="hero-btn order" target="_self">Đặt hàng ngay</a>
+<a href="tel:0385437503" class="hero-btn call">Gọi tư vấn</a>
+</div>
+</div>
+</section>
+""".replace("__CART_COUNT__", str(cart_count)),
+    unsafe_allow_html=True,
+)
 
 st.markdown("<div class='content'>", unsafe_allow_html=True)
 
@@ -2387,7 +2339,6 @@ def render_story_page():
                 <h2>Hạt cốm được nâng niu từ khi còn ngậm sữa</h2>
                 <p>Nguyên liệu làm cốm là lúa nếp cái hoa vàng, giống nếp quý nổi tiếng bởi hương thơm và độ dẻo. Lúa phải được gặt khi hạt vừa ngậm sữa: không quá non để khỏi nát, cũng không quá già để tránh khô cứng.</p>
                 <p>Từ chọn lúa, rang, giã, sàng sảy đến gói lá sen, mỗi công đoạn đều cần bàn tay khéo léo và sự nhạy cảm của người thợ. Ở trang này, câu chuyện chỉ đi qua như một làn hương; phần chi tiết hơn được dành cho menu Quy trình & nguồn gốc.</p>
-                <a class="story-process-link" href="?page=quytrinh&embed=1" target="_self">Xem Quy trình & nguồn gốc</a>
             </div>
             <div class="story-image-frame"><img src="{lotus_img}"></div>
         </div>
@@ -2429,65 +2380,13 @@ def render_story_page():
     </section>
 </div>
 """
-
-    story_component_css = """
-<style>
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:transparent;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
-.story-magazine{background:#fffdf4;border-radius:30px;overflow:hidden;border:1px solid #e4ead7;box-shadow:0 16px 38px rgba(23,53,31,.09)}
-.story-hero-scene{min-height:clamp(520px,72vw,760px);position:relative;display:flex;align-items:flex-end;padding:clamp(28px,6vw,68px);color:white;background-size:cover;background-position:center}
-.story-hero-scene::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.72)),radial-gradient(circle at 18% 24%,rgba(46,125,50,.32),transparent 36%)}
-.story-hero-inner{position:relative;z-index:2;max-width:850px}
-.story-kicker{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(8px);font-weight:900;letter-spacing:.5px;margin-bottom:16px}
-.story-hero-inner h1{margin:0 0 18px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,8vw,88px);line-height:.95;text-shadow:0 8px 28px rgba(0,0,0,.34)}
-.story-hero-lead{margin:0;max-width:760px;color:rgba(255,255,255,.92);font-size:clamp(17px,2.35vw,24px);line-height:1.48}
-.story-chapter{padding:clamp(38px,7vw,84px) clamp(18px,5vw,72px)}
-.story-chapter.alt{background:linear-gradient(180deg,#fffdf4,#f5fbef)}
-.story-two-col{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(24px,5vw,58px);align-items:center}
-.story-two-col.reverse{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr)}
-.story-image-frame{position:relative;min-height:clamp(320px,46vw,540px);border-radius:28px;overflow:hidden;box-shadow:0 18px 42px rgba(23,53,31,.14)}
-.story-image-frame img{width:100%;height:100%;min-height:clamp(320px,46vw,540px);object-fit:cover;display:block}
-.story-image-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(23,53,31,.18))}
-.story-text-block{max-width:650px}
-.story-label{color:#2e7d32;font-weight:900;text-transform:uppercase;letter-spacing:.08em;font-size:13px;margin-bottom:10px}
-.story-text-block h2,.story-full h2{color:#17351f;font-family:Georgia,"Times New Roman",serif;font-size:clamp(30px,5.2vw,58px);line-height:1.04;margin:0 0 18px}
-.story-text-block p,.story-full p,.story-final p{color:#405442;font-size:clamp(16px,2vw,19px);line-height:1.78;margin:0 0 16px}
-.story-full{max-width:850px;margin:0 auto}
-.story-wide-scene{position:relative;min-height:clamp(390px,58vw,620px);display:flex;align-items:flex-end;padding:clamp(28px,6vw,64px);color:white;background-size:cover;background-position:center;overflow:hidden}
-.story-wide-scene::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.70))}
-.story-wide-content{position:relative;z-index:2;max-width:820px}
-.story-wide-content h2{margin:0 0 12px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,6vw,72px);line-height:1}
-.story-wide-content p{margin:0;color:rgba(255,255,255,.92);font-size:clamp(17px,2.4vw,23px);line-height:1.52}
-.story-legend{max-width:860px;margin:0 auto;text-align:center;padding:clamp(42px,7vw,82px) clamp(20px,5vw,70px)}
-.story-legend .quote-mark{font-family:Georgia,"Times New Roman",serif;color:#2e7d32;font-size:clamp(54px,8vw,92px);line-height:.7}
-.story-legend h2{margin:0 0 18px;color:#17351f;font-family:Georgia,"Times New Roman",serif;font-size:clamp(31px,5.6vw,62px);line-height:1.05}
-.story-legend p{margin:0 auto 16px;color:#405442;font-size:clamp(16px,2vw,19px);line-height:1.72;max-width:760px}
-.story-process-link{margin-top:26px;display:inline-block;background:#2e7d32;color:white!important;text-decoration:none;padding:12px 20px;border-radius:999px;font-weight:900}
-.story-gallery-ribbon{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:26px}
-.story-ribbon-item{position:relative;min-height:250px;border-radius:24px;overflow:hidden;box-shadow:0 12px 26px rgba(23,53,31,.12)}
-.story-ribbon-item img{width:100%;height:100%;min-height:250px;object-fit:cover;display:block}
-.story-ribbon-caption{position:absolute;left:0;right:0;bottom:0;color:white;font-weight:900;padding:18px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.72))}
-.story-final{background:linear-gradient(135deg,#102716,#2e7d32);color:white;padding:clamp(44px,8vw,92px) clamp(22px,6vw,76px);text-align:center}
-.story-final h2{margin:0 0 20px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(36px,7vw,78px);line-height:1.03;color:white}
-.story-final p{color:rgba(255,255,255,.90);max-width:850px;margin-left:auto;margin-right:auto}
-.story-final .last-line{margin-top:26px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(24px,4vw,42px);line-height:1.25;color:#fff7d6}
-@media(max-width:900px){.story-two-col,.story-two-col.reverse{grid-template-columns:1fr}.story-two-col.reverse .story-image-frame{order:-1}.story-gallery-ribbon{grid-template-columns:repeat(2,minmax(0,1fr))}.story-ribbon-item,.story-ribbon-item img{min-height:190px}}
-@media(max-width:520px){.story-magazine{border-radius:22px}.story-hero-scene{min-height:500px;padding:24px}.story-chapter{padding:34px 18px}.story-gallery-ribbon{grid-template-columns:1fr}.story-ribbon-item,.story-ribbon-item img{min-height:220px}}
-
-/* FIX: remove chapter labels */
-.story-label {
-    display: none !important;
-}
-
-</style>
-"""
-    components.html(story_component_css + html, height=6200, scrolling=True)
+st.markdown(html, unsafe_allow_html=True)
 
 
 def render_certificate_page():
     html = """
 <style>
-html, body { margin:0; padding:0; overflow:hidden; font-family:Arial, sans-serif; }
+
 .cert-shell { width:100%; position:relative; padding:0 38px; box-sizing:border-box; }
 .cert-track { display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; padding:6px 0 16px 0; }
 .cert-track::-webkit-scrollbar { height:6px; }
@@ -4714,21 +4613,6 @@ def render_video_page():
         </article>
     </section>
 
-    
-    <section class="aroma-video-scene">
-        <div class="aroma-products-head">
-            <span>Video</span>
-            <h2>Xem hành trình hương cốm</h2>
-            <p>Video giúp người xem cảm nhận rõ hơn không khí, màu sắc và nhịp kể của Cốm Làng Vòng.</p>
-        </div>
-        <div class="aroma-video-frame">
-            <iframe src="https://www.youtube.com/embed/_q38xqZFuKE"
-                title="Hành trình hương cốm"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-        </div>
-    </section>
-
     <section class="aroma-products-scene">
         <div class="aroma-products-head">
             <span>Những điểm chạm sản phẩm</span>
@@ -4759,7 +4643,6 @@ def render_video_page():
             <h2>Điểm cuối của hành trình<br>là lúc khách hàng muốn quay lại</h2>
             <p>Khi một hương vị đủ thật, một câu chuyện đủ đẹp và một sản phẩm đủ chỉn chu, khách hàng không chỉ mua một lần. Họ nhớ, họ kể lại, họ tìm đến khi cần một món quà mang dấu ấn Hà Nội.</p>
             <div class="aroma-final-line">Hương cốm không dừng lại ở làng nghề.<br>Nó tiếp tục sống trong những người yêu Hà Nội.</div>
-            <a href="?page=sanpham&embed=1" target="_self">Khám phá sản phẩm từ cốm</a>
         </div>
     </section>
 </div>
@@ -4768,7 +4651,7 @@ def render_video_page():
     aroma_css = """
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:transparent;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+.aroma-story *{box-sizing:border-box}
 .aroma-story{background:#fffdf4;border:1px solid #e4ead7;border-radius:30px;overflow:hidden;box-shadow:0 16px 38px rgba(23,53,31,.09)}
 .aroma-opening{min-height:clamp(520px,72vw,760px);position:relative;display:flex;align-items:flex-end;padding:clamp(28px,6vw,70px);color:white;background-size:cover;background-position:center}
 .aroma-opening::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.76)),radial-gradient(circle at 20% 20%,rgba(46,125,50,.32),transparent 34%)}
@@ -4809,84 +4692,9 @@ html,body{margin:0;padding:0;background:transparent;font-family:Arial,Helvetica,
 .aroma-memory a{display:inline-block;background:white;color:#2e7d32!important;text-decoration:none;padding:13px 22px;border-radius:999px;font-weight:900}
 @media(max-width:980px){.aroma-line{left:28px}.aroma-moment,.aroma-moment.reverse{grid-template-columns:1fr;padding-left:34px}.aroma-moment.reverse .aroma-copy{order:1}.aroma-moment.reverse .aroma-visual{order:2}.aroma-number{left:28px;top:0;transform:translate(-50%,0);width:48px;height:48px;border-width:5px}.aroma-product-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.aroma-product-strip figure,.aroma-product-strip img{min-height:240px}}
 @media(max-width:560px){.aroma-story{border-radius:22px}.aroma-opening{min-height:520px;padding:24px}.aroma-flow{padding:34px 16px}.aroma-copy{padding:20px;border-radius:22px}.aroma-visual,.aroma-visual img{min-height:260px;border-radius:22px}.aroma-product-strip{grid-template-columns:1fr}.aroma-product-strip figure,.aroma-product-strip img{min-height:250px}.aroma-gift-scene{min-height:520px;padding:24px}.aroma-line{left:20px}.aroma-moment,.aroma-moment.reverse{padding-left:28px}.aroma-number{left:20px}}
-
-/* FIX: remove round timeline number buttons */
-.aroma-number {
-    display: none !important;
-}
-.aroma-line {
-    left: 24px !important;
-    opacity: .22 !important;
-}
-.aroma-moment,
-.aroma-moment.reverse {
-    padding-left: 0 !important;
-}
-@media(max-width:980px){
-    .aroma-moment,
-    .aroma-moment.reverse {
-        padding-left: 0 !important;
-    }
-}
-
-/* FIX: portrait product gallery in one horizontal row */
-.aroma-product-strip {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    gap: 14px !important;
-    overflow-x: auto !important;
-    padding: 4px 4px 14px !important;
-    scroll-snap-type: x mandatory !important;
-}
-.aroma-product-strip figure {
-    flex: 0 0 220px !important;
-    min-height: 380px !important;
-    height: 380px !important;
-    border-radius: 26px !important;
-    scroll-snap-align: start !important;
-}
-.aroma-product-strip img {
-    min-height: 380px !important;
-    height: 380px !important;
-    object-fit: cover !important;
-}
-@media(max-width:560px){
-    .aroma-product-strip figure {
-        flex-basis: 190px !important;
-        min-height: 330px !important;
-        height: 330px !important;
-    }
-    .aroma-product-strip img {
-        min-height: 330px !important;
-        height: 330px !important;
-    }
-}
-
-/* FIX: visible video section */
-.aroma-video-scene {
-    padding: clamp(42px,7vw,88px) clamp(18px,5vw,72px);
-    background: linear-gradient(180deg,#f6fbef,#fffdf4);
-}
-.aroma-video-frame {
-    max-width: 980px;
-    margin: 0 auto;
-    aspect-ratio: 16 / 9;
-    border-radius: 28px;
-    overflow: hidden;
-    box-shadow: 0 18px 42px rgba(23,53,31,.16);
-    border: 1px solid #dcebd3;
-    background: #17351f;
-}
-.aroma-video-frame iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    display: block;
-}
-
 </style>
 """
-    components.html(aroma_css + aroma_html, height=7600, scrolling=True)
+    st.markdown(aroma_css + aroma_html, unsafe_allow_html=True)
 
 
 def render_page(page_data):
