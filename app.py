@@ -1965,6 +1965,49 @@ footer {visibility: hidden;}
 @media (max-width:1024px){.brand-timeline,.brand-life-grid,.brand-values,.aroma-map,.aroma-uses,.aroma-products,.aroma-testimonials{grid-template-columns:repeat(2,minmax(0,1fr));}.brand-people{grid-template-columns:1fr;}.brand-people-img img,.aroma-wide-img img{min-height:260px;height:260px;}}
 @media (max-width:560px){.brand-page,.aroma-page{padding:12px;border-radius:20px;}.brand-hero,.aroma-hero{min-height:360px;border-radius:20px;padding:20px;}.brand-timeline,.brand-life-grid,.brand-values,.aroma-map,.aroma-uses,.aroma-products,.aroma-testimonials{grid-template-columns:1fr;}.aroma-product img{height:180px;}}
 
+
+/* MAGAZINE STORYTELLING UI - COM LANG VONG */
+.story-magazine{margin-top:18px;background:#fffdf4;border-radius:30px;overflow:hidden;border:1px solid #e4ead7;box-shadow:0 16px 38px rgba(23,53,31,.09);}
+.story-magazine *{box-sizing:border-box;}
+.story-hero-scene{min-height:clamp(520px,72vw,760px);position:relative;display:flex;align-items:flex-end;padding:clamp(28px,6vw,68px);color:white;background-size:cover;background-position:center;}
+.story-hero-scene::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.72)),radial-gradient(circle at 18% 24%,rgba(46,125,50,.32),transparent 36%);}
+.story-hero-inner{position:relative;z-index:2;max-width:850px;}
+.story-kicker{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(8px);font-weight:900;letter-spacing:.5px;margin-bottom:16px;}
+.story-hero-inner h1{margin:0 0 18px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,8vw,88px);line-height:.95;text-shadow:0 8px 28px rgba(0,0,0,.34);}
+.story-hero-lead{margin:0;max-width:760px;color:rgba(255,255,255,.92);font-size:clamp(17px,2.35vw,24px);line-height:1.48;}
+.story-chapter{padding:clamp(38px,7vw,84px) clamp(18px,5vw,72px);}
+.story-chapter.alt{background:linear-gradient(180deg,#fffdf4,#f5fbef);}
+.story-two-col{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(24px,5vw,58px);align-items:center;}
+.story-two-col.reverse{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);}
+.story-image-frame{position:relative;min-height:clamp(320px,46vw,540px);border-radius:28px;overflow:hidden;box-shadow:0 18px 42px rgba(23,53,31,.14);}
+.story-image-frame img{width:100%;height:100%;min-height:clamp(320px,46vw,540px);object-fit:cover;display:block;}
+.story-image-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(23,53,31,.18));}
+.story-text-block{max-width:650px;}
+.story-label{color:#2e7d32;font-weight:900;text-transform:uppercase;letter-spacing:.08em;font-size:13px;margin-bottom:10px;}
+.story-text-block h2,.story-full h2{color:#17351f;font-family:Georgia,"Times New Roman",serif;font-size:clamp(30px,5.2vw,58px);line-height:1.04;margin:0 0 18px;}
+.story-text-block p,.story-full p,.story-final p{color:#405442;font-size:clamp(16px,2vw,19px);line-height:1.78;margin:0 0 16px;}
+.story-full{max-width:850px;margin:0 auto;}
+.story-wide-scene{position:relative;min-height:clamp(390px,58vw,620px);display:flex;align-items:flex-end;padding:clamp(28px,6vw,64px);color:white;background-size:cover;background-position:center;overflow:hidden;}
+.story-wide-scene::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.70));}
+.story-wide-content{position:relative;z-index:2;max-width:820px;}
+.story-wide-content h2{margin:0 0 12px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,6vw,72px);line-height:1;}
+.story-wide-content p{margin:0;color:rgba(255,255,255,.92);font-size:clamp(17px,2.4vw,23px);line-height:1.52;}
+.story-legend{max-width:860px;margin:0 auto;text-align:center;padding:clamp(42px,7vw,82px) clamp(20px,5vw,70px);}
+.story-legend .quote-mark{font-family:Georgia,"Times New Roman",serif;color:#2e7d32;font-size:clamp(54px,8vw,92px);line-height:.7;}
+.story-legend h2{margin:0 0 18px;color:#17351f;font-family:Georgia,"Times New Roman",serif;font-size:clamp(31px,5.6vw,62px);line-height:1.05;}
+.story-legend p{margin:0 auto 16px;color:#405442;font-size:clamp(16px,2vw,19px);line-height:1.72;max-width:760px;}
+.story-process-link{margin-top:26px;display:inline-block;background:#2e7d32;color:white!important;text-decoration:none;padding:12px 20px;border-radius:999px;font-weight:900;}
+.story-gallery-ribbon{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:26px;}
+.story-ribbon-item{position:relative;min-height:250px;border-radius:24px;overflow:hidden;box-shadow:0 12px 26px rgba(23,53,31,.12);}
+.story-ribbon-item img{width:100%;height:100%;min-height:250px;object-fit:cover;display:block;}
+.story-ribbon-caption{position:absolute;left:0;right:0;bottom:0;color:white;font-weight:900;padding:18px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.72));}
+.story-final{background:linear-gradient(135deg,#102716,#2e7d32);color:white;padding:clamp(44px,8vw,92px) clamp(22px,6vw,76px);text-align:center;}
+.story-final h2{margin:0 0 20px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(36px,7vw,78px);line-height:1.03;color:white;}
+.story-final p{color:rgba(255,255,255,.90);max-width:850px;margin-left:auto;margin-right:auto;}
+.story-final .last-line{margin-top:26px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(24px,4vw,42px);line-height:1.25;color:#fff7d6;}
+@media(max-width:900px){.story-two-col,.story-two-col.reverse{grid-template-columns:1fr;}.story-two-col.reverse .story-image-frame{order:-1;}.story-gallery-ribbon{grid-template-columns:repeat(2,minmax(0,1fr));}.story-ribbon-item,.story-ribbon-item img{min-height:190px;}}
+@media(max-width:520px){.story-magazine{border-radius:22px;}.story-hero-scene{min-height:500px;padding:24px;}.story-chapter{padding:34px 18px;}.story-gallery-ribbon{grid-template-columns:1fr;}.story-ribbon-item,.story-ribbon-item img{min-height:220px;}}
+
 </style>
 """.replace("__BANNER_IMAGE__", image_to_data_uri("Banner com.jpg")),
     unsafe_allow_html=True,
@@ -2208,29 +2251,109 @@ def render_content_card(page_data, detail_link=None, show_full=False):
 
 def render_story_page():
     hero_img = image_to_data_uri("Hinh 1.jpg")
-    people_img = image_to_data_uri("me com lang vong.jpg")
+    autumn_img = image_to_data_uri("Com tong quan 3.jpg")
+    village_img = image_to_data_uri("me com lang vong.jpg")
+    lotus_img = image_to_data_uri("hat com tuoi.jpg")
+    gift_img = image_to_data_uri("Banh com.jpg")
+    xoi_img = image_to_data_uri("xoi com.jpg")
+    mochi_img = image_to_data_uri("mochi com.png")
+    yogurt_img = image_to_data_uri("sua chua com.png")
+
     html = f"""
-<div class="brand-page">
-<section class="brand-hero" style="background-image:linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.68)),url('{hero_img}');">
-  <div class="brand-hero-content"><div class="brand-eyebrow">🍃 Brand Story</div><h2>Câu chuyện<br>Cốm Làng Vòng</h2><p>Hương vị mùa thu Hà Nội được gìn giữ qua ký ức, bàn tay người làm nghề và những món quà xanh thơm đi cùng năm tháng.</p></div>
-</section>
-<section class="brand-section"><div class="brand-section-head"><h3>Di sản đi qua nhiều thế hệ</h3><p>Trang này kể về văn hóa và cảm xúc của cốm, không lặp lại các bước kỹ thuật ở menu Quy trình & nguồn gốc.</p></div><div class="brand-timeline">
-<div class="brand-time-card"><div class="year">1</div><h4>Làng nghề</h4><p>Cốm gắn với Làng Vòng và nếp sống thanh lịch của Hà Nội.</p></div>
-<div class="brand-time-card"><div class="year">2</div><h4>Mùa thu</h4><p>Hương nếp non, lá sen và tiết trời se lạnh tạo nên ký ức rất riêng.</p></div>
-<div class="brand-time-card"><div class="year">3</div><h4>Thức quà</h4><p>Cốm trở thành món quà trang nhã trong gặp gỡ, cưới hỏi và biếu tặng.</p></div>
-<div class="brand-time-card"><div class="year">4</div><h4>Gìn giữ</h4><p>Người làm nghề giữ lại sự tỉ mỉ, mộc mạc và niềm tự hào địa phương.</p></div>
-<div class="brand-time-card"><div class="year">5</div><h4>Hiện đại</h4><p>Cốm bước vào sản phẩm mới nhưng vẫn giữ tinh thần Hà Nội.</p></div>
-</div></section>
-<section class="brand-section brand-people"><div class="brand-people-img"><img src="{people_img}"></div><div class="brand-people-card"><h3>Người giữ hồn cốm</h3><p>Điều làm nên giá trị của cốm không chỉ là hạt nếp non, mà còn là sự kiên nhẫn, kinh nghiệm và tình yêu nghề của người làm cốm.</p><p>Qua mỗi mùa, người giữ nghề truyền lại cách cảm nhận: biết quý mùi thơm dịu, vị ngọt thanh và vẻ đẹp thanh nhã của Hà Nội.</p><p><b>Giá trị cốt lõi:</b> mộc mạc, tinh tế, đáng tin và giàu cảm xúc.</p></div></section>
-<section class="brand-section"><div class="brand-section-head"><h3>Cốm trong đời sống Hà Nội</h3><p>Cốm hiện diện như một phần văn hóa: không ồn ào, không cầu kỳ, nhưng đủ để người ta nhớ lâu.</p></div><div class="brand-life-grid">
-<div class="brand-life-card"><div class="icon">🍂</div><h4>Cốm và mùa thu</h4><p>Một hương vị khiến người ta nhớ đến Hà Nội dịu nhẹ, xanh non và thanh sạch.</p></div>
-<div class="brand-life-card"><div class="icon">💍</div><h4>Cốm trong lễ cưới</h4><p>Bánh cốm là món quà truyền thống, tượng trưng cho sự trọn vẹn và gắn kết.</p></div>
-<div class="brand-life-card"><div class="icon">🎁</div><h4>Cốm làm quà biếu</h4><p>Gọn nhẹ, tinh tế, phù hợp để gửi tặng người thân, khách du lịch và đối tác.</p></div>
-<div class="brand-life-card"><div class="icon">☕</div><h4>Cốm trong ẩm thực mới</h4><p>Từ xôi, chè, bánh đến mochi hay sữa chua, cốm tiếp tục sống trong hình thức mới.</p></div>
-</div></section>
-<section class="brand-section"><div class="brand-section-head"><h3>Giá trị chúng tôi gìn giữ</h3></div><div class="brand-values"><div class="brand-value-card"><div class="icon">🌿</div><h4>Tự nhiên</h4><p>Ưu tiên hương vị xanh dịu, gần gũi và không phô trương.</p></div><div class="brand-value-card"><div class="icon">🤲</div><h4>Thủ công</h4><p>Tôn trọng sự tỉ mỉ và kinh nghiệm của người làm nghề.</p></div><div class="brand-value-card"><div class="icon">🏮</div><h4>Truyền thống</h4><p>Giữ tinh thần đặc sản Hà Nội trong từng câu chuyện sản phẩm.</p></div><div class="brand-value-card"><div class="icon">✨</div><h4>Tinh tế</h4><p>Đẹp từ hương vị, bao bì đến cảm giác khi trao tặng.</p></div></div></section>
-<section class="brand-quote"><h3>“Cốm không chỉ để ăn,<br>cốm là ký ức của Hà Nội.”</h3><p>Một món quà nhỏ, nhưng mang theo hương mùa thu và sự thanh nhã của đất kinh kỳ.</p></section>
-</div>"""
+<div class="story-magazine">
+    <section class="story-hero-scene" style="background-image:url('{hero_img}');">
+        <div class="story-hero-inner">
+            <div class="story-kicker">🍃 Câu chuyện thương hiệu</div>
+            <h1>Cốm Làng Vòng<br>hương thu ở lại</h1>
+            <p class="story-hero-lead">Có những hương vị không cần gọi tên thật lớn. Chỉ cần một thoáng gió heo may, một sắc nắng cuối mùa và mùi lúa non dịu ngọt đi ngang phố, người ta đã biết mùa thu Hà Nội đang trở về.</p>
+        </div>
+    </section>
+
+    <section class="story-chapter">
+        <div class="story-two-col">
+            <div class="story-image-frame"><img src="{autumn_img}"></div>
+            <div class="story-text-block">
+                <div class="story-label">Chương 01</div>
+                <h2>Hà Nội dịu lại trong hương cốm</h2>
+                <p>Mỗi khi thu về, Hà Nội như chậm hơn một nhịp. Nắng không còn gắt, gió trở nên mỏng nhẹ, còn những con phố bỗng vấn vương bởi hương thơm ngọt lành của lúa nếp non.</p>
+                <p>Giữa khoảnh khắc ấy, Cốm Làng Vòng hiện lên như một thức quà thanh tao của đất kinh kỳ. Không cầu kỳ, không phô trương, cốm đi vào lòng người bằng màu xanh non, vị ngọt dịu và mùi hương thoảng nhẹ như chính mùa thu Hà Nội.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-wide-scene" style="background-image:url('{village_img}');">
+        <div class="story-wide-content">
+            <h2>Nơi câu chuyện bắt đầu</h2>
+            <p>Cốm Làng Vòng có nguồn gốc từ làng Vòng xưa, nay thuộc phường Dịch Vọng Hậu, quận Cầu Giấy, Hà Nội. Qua nhiều thế hệ, nơi đây vẫn được nhắc đến như cái nôi của một hương vị đã trở thành biểu tượng ẩm thực Thủ đô.</p>
+        </div>
+    </section>
+
+    <section class="story-chapter alt">
+        <div class="story-full">
+            <div class="story-label">Chương 02</div>
+            <h2>Từ một sự tình cờ thành báu vật làng nghề</h2>
+            <p>Tương truyền, trong một năm mưa bão lớn, lúa ngoài đồng bị ngập khi hạt vẫn còn xanh. Để cứu lấy phần lúa non ấy, người dân đem rang lên ăn tạm. Không ngờ, từ điều tưởng như bất đắc dĩ, họ phát hiện ra một hương vị dẻo thơm rất riêng.</p>
+            <p>Từ sự tình cờ của mùa màng, nghề làm cốm dần được hình thành, chăm chút và truyền lại qua từng đời. Mỗi thế hệ lại gửi vào hạt cốm thêm một chút kinh nghiệm, một chút kiên nhẫn và một niềm tự hào âm thầm của người giữ nghề.</p>
+        </div>
+    </section>
+
+    <section class="story-legend">
+        <div class="quote-mark">“</div>
+        <h2>Cốm Vòng, gạo tám Mễ Trì<br>Tương Bần, húng Láng còn gì ngon hơn!</h2>
+        <p>Câu ca dao xưa không chỉ ngợi ca một món ăn ngon. Nó đặt Cốm Làng Vòng vào bản đồ tinh hoa của ẩm thực đất Bắc, nơi mỗi đặc sản đều mang trong mình một vùng đất, một lối sống và một nếp văn hóa.</p>
+    </section>
+
+    <section class="story-chapter">
+        <div class="story-two-col reverse">
+            <div class="story-text-block">
+                <div class="story-label">Chương 03</div>
+                <h2>Hạt cốm được nâng niu từ khi còn ngậm sữa</h2>
+                <p>Nguyên liệu làm cốm là lúa nếp cái hoa vàng, giống nếp quý nổi tiếng bởi hương thơm và độ dẻo. Lúa phải được gặt khi hạt vừa ngậm sữa: không quá non để khỏi nát, cũng không quá già để tránh khô cứng.</p>
+                <p>Từ chọn lúa, rang, giã, sàng sảy đến gói lá sen, mỗi công đoạn đều cần bàn tay khéo léo và sự nhạy cảm của người thợ. Ở trang này, câu chuyện chỉ đi qua như một làn hương; phần chi tiết hơn được dành cho menu Quy trình & nguồn gốc.</p>
+                <a class="story-process-link" href="?page=quytrinh" target="_self">Xem Quy trình & nguồn gốc</a>
+            </div>
+            <div class="story-image-frame"><img src="{lotus_img}"></div>
+        </div>
+    </section>
+
+    <section class="story-chapter alt">
+        <div class="story-full">
+            <div class="story-label">Chương 04</div>
+            <h2>Một thức quà không dành cho sự vội vàng</h2>
+            <p>Cốm không phải món ăn để thưởng thức qua loa. Người Hà Nội thường nâng nhẹ một nhúm cốm bằng năm đầu ngón tay, nhai chậm rãi để cảm nhận vị ngọt thanh, độ dẻo mềm và mùi thơm của sữa non hòa cùng hương lá sen.</p>
+            <p>Khi nhấp thêm một ngụm trà xanh ấm, vị chát dịu của trà như làm nổi bật hơn cái ngọt lành của cốm. Sự kết hợp ấy giản dị mà tinh tế, nhẹ nhàng mà khó quên, như cách Hà Nội lưu giữ vẻ đẹp của mình qua những điều rất nhỏ.</p>
+        </div>
+    </section>
+
+    <section class="story-wide-scene" style="background-image:url('{gift_img}');">
+        <div class="story-wide-content">
+            <h2>Từ gánh hàng rong đến món quà của Thủ đô</h2>
+            <p>Từ những gánh cốm len lỏi qua phố phường, cốm dần bước vào lễ hỏi, cưới xin, những hộp quà biếu và cả các sản phẩm mới của đời sống hiện đại. Dù hình thức đổi thay, tinh thần thanh nhã của Cốm Làng Vòng vẫn còn nguyên vẹn.</p>
+        </div>
+    </section>
+
+    <section class="story-chapter">
+        <div class="story-full">
+            <div class="story-label">Chương 05</div>
+            <h2>Hương cốm tiếp tục sống trong những món ăn mới</h2>
+            <p>Ngày nay, bên cạnh cốm mộc truyền thống, hương cốm còn được gửi vào bánh cốm, xôi cốm, cốm xào, mochi cốm, sữa chua cốm hay nhiều món ăn sáng tạo khác. Mỗi sản phẩm là một cách để hương vị xưa đến gần hơn với người thưởng thức hôm nay.</p>
+            <div class="story-gallery-ribbon">
+                <div class="story-ribbon-item"><img src="{gift_img}"><div class="story-ribbon-caption">Bánh cốm - món quà cưới hỏi</div></div>
+                <div class="story-ribbon-item"><img src="{xoi_img}"><div class="story-ribbon-caption">Xôi cốm - hương vị sáng thu</div></div>
+                <div class="story-ribbon-item"><img src="{mochi_img}"><div class="story-ribbon-caption">Mochi cốm - cảm hứng hiện đại</div></div>
+                <div class="story-ribbon-item"><img src="{yogurt_img}"><div class="story-ribbon-caption">Sữa chua cốm - dịu mát mỗi ngày</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-final">
+        <h2>Cốm Làng Vòng<br>không chỉ là món ăn</h2>
+        <p>Giữa nhịp sống hiện đại, nghề làm cốm vẫn được gìn giữ như một phần hồn cốt của Thủ đô. Dù bao bì có mới hơn, cách giới thiệu có hiện đại hơn, hương vị cốm truyền thống vẫn cần giữ được nét thanh tao vốn có.</p>
+        <p>Cốm Làng Vòng là ký ức, là văn hóa, là biểu tượng của mùa thu Hà Nội — một thức quà giản dị nhưng chứa đựng tinh hoa của đất trời và bàn tay cần mẫn của con người.</p>
+        <div class="last-line">Một hạt cốm nhỏ,<br>một mùa thu dài ở lại.</div>
+    </section>
+</div>
+"""
     st.markdown(html, unsafe_allow_html=True)
 
 
