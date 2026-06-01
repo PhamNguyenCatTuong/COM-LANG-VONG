@@ -390,73 +390,57 @@ PAGE_DATABASE = {
 
     "cauchuyen": {
         "title": "Câu chuyện Cốm Làng Vòng",
+        "type": "custom_story",
         "card_class": "card",
         "card_title": "🍃 Câu chuyện Cốm Làng Vòng",
-        "intro": "Từ hạt lúa nếp non của đồng quê Bắc Bộ đến thức quà thanh nhã của mùa thu Hà Nội.",
+        "intro": "Một trang kể chuyện thương hiệu: lịch sử, con người, ký ức mùa thu Hà Nội và giá trị văn hóa của cốm.",
         "fields": {
-            "Bối cảnh": "Làng Vòng, Cầu Giấy, Hà Nội - nơi hương cốm gắn với ký ức mùa thu và nếp sống thanh lịch của người Hà Nội.",
-            "Giá trị cốt lõi": "Giữ hương nếp non, màu xanh tự nhiên, độ dẻo mềm và tinh thần thủ công của làng nghề.",
-            "Tinh thần thương hiệu": "Tôn trọng truyền thống, minh bạch nguồn gốc, trình bày hiện đại và phù hợp với người tiêu dùng hôm nay.",
-            "Thông điệp": "Mỗi hạt cốm là một lát cắt của mùa thu Hà Nội: nhẹ, thơm, mộc mạc nhưng tinh tế."
+            "Vai trò": "Brand Story - kể về di sản, cảm xúc và tinh thần gìn giữ Cốm Làng Vòng.",
+            "Không trùng với": "Menu Quy trình & nguồn gốc, vì trang này không đi sâu vào các bước sản xuất.",
+            "Trọng tâm": "Làng nghề, người giữ nghề, mùa thu Hà Nội, văn hóa quà biếu và bản sắc thương hiệu.",
+            "Thông điệp": "Cốm không chỉ là một món ăn, mà là ký ức dịu thơm của Hà Nội."
         },
         "paragraphs": [
-            "Cốm Làng Vòng bắt đầu từ những thửa lúa nếp non còn ngậm sữa. Khi hạt lúa vừa đủ độ chắc, người làm nghề thu hoạch sớm để giữ lại vị ngọt thanh, mùi thơm dịu và màu xanh non đặc trưng.",
-            "Sau khi đưa về làng, lúa được tuốt, rang, giã và sàng sảy qua nhiều lượt. Mỗi công đoạn đều đòi hỏi kinh nghiệm: lửa rang phải đều, tay giã phải vừa lực, sàng phải khéo để tách vỏ mà không làm nát hạt.",
-            "Cốm không chỉ là một món ăn. Với người Hà Nội, cốm là ký ức của những buổi sáng se lạnh, là hương lá sen, là tiếng rao mùa thu và là món quà trang nhã dùng trong cưới hỏi, lễ tết, biếu tặng.",
-            "Theo thời gian, cốm được phát triển thành nhiều sản phẩm như bánh cốm, xôi cốm, cốm xào, mochi cốm, sữa chua cốm và các món ăn sáng tạo. Dù thay đổi cách trình bày, điểm quan trọng nhất vẫn là giữ được hương cốm thật, vị dẻo thơm và cảm giác gần gũi.",
-            "Câu chuyện của Cốm Làng Vòng vì vậy không dừng ở quá khứ. Đó là hành trình nối truyền thống với đời sống hiện đại, để người mua không chỉ thưởng thức một món ngon mà còn hiểu được công sức, văn hóa và niềm tự hào phía sau từng sản phẩm."
+            "Cốm Làng Vòng là một biểu tượng văn hóa của Hà Nội, gắn với mùa thu, hương lá sen và nếp sống thanh nhã của người Tràng An.",
+            "Điều làm nên sức sống của cốm không chỉ nằm ở hương vị, mà còn ở bàn tay người giữ nghề, ở ký ức gia đình và ở cách món quà nhỏ bé ấy đi qua nhiều thế hệ.",
+            "Trong đời sống hôm nay, cốm tiếp tục xuất hiện trong quà biếu, lễ cưới hỏi, du lịch ẩm thực và các sản phẩm sáng tạo. Dù hình thức thay đổi, tinh thần cốt lõi vẫn là sự tinh tế, mộc mạc và trân trọng nguồn gốc.",
+            "Trang này được xây dựng để người xem cảm nhận được hồn cốm: không lặp lại quy trình sản xuất, mà tập trung vào câu chuyện thương hiệu và giá trị văn hóa."
         ],
         "bullets": [
-            "Nguồn gốc gắn với làng nghề Cốm Làng Vòng và văn hóa mùa thu Hà Nội.",
-            "Nguyên liệu trung tâm là lúa nếp non thu hoạch đúng độ.",
-            "Quy trình truyền thống gồm chọn lúa, rang, giã, sàng, ủ và đóng gói.",
-            "Giá trị cảm xúc nằm ở hương lá sen, vị nếp non và ký ức Hà Nội.",
-            "Định hướng hiện đại là đa dạng hóa sản phẩm nhưng không đánh mất bản sắc.",
-            "Phù hợp để kể chuyện thương hiệu, làm quà biếu và giới thiệu đặc sản địa phương."
+            "Di sản làng nghề gắn với Hà Nội.",
+            "Ký ức mùa thu và hương lá sen.",
+            "Con người giữ nghề qua nhiều thế hệ.",
+            "Cốm trong cưới hỏi, biếu tặng và đời sống hiện đại.",
+            "Tinh thần thương hiệu: mộc mạc, thanh nhã, đáng tin."
         ],
-        "images": [
-            "Hinh 1.jpg",
-            "Com tong quan 3.jpg",
-            "hat com tuoi.jpg",
-            "me com lang vong.jpg"
-        ],
+        "images": ["Hinh 1.jpg", "Com tong quan 3.jpg", "me com lang vong.jpg", "Banh com.jpg"],
     },
     "video": {
         "title": "Hành trình hương cốm",
         "type": "custom_video",
         "card_class": "card",
         "card_title": "🎬 Hành trình hương cốm",
-        "intro": "Một tuyến nội dung truyền thông kể lại hành trình từ đồng lúa, làng nghề đến bàn ăn và hộp quà.",
+        "intro": "Một trang trải nghiệm thương hiệu: hương cốm đi từ làng nghề đến món ăn, hộp quà và khoảnh khắc thưởng thức.",
         "fields": {
-            "Mục tiêu": "Giúp người xem hiểu cốm được tạo ra như thế nào, vì sao cốm quý và vì sao sản phẩm cần được bảo quản, đóng gói đúng cách.",
-            "Mạch kể": "Từ mùa lúa non → chọn nguyên liệu → rang giã thủ công → sàng sảy → gói hương lá sen → phát triển sản phẩm hiện đại.",
-            "Cảm xúc chủ đạo": "Mộc mạc, ấm áp, tinh tế, gợi nhớ mùa thu Hà Nội.",
-            "Đối tượng xem": "Khách mua đặc sản, khách du lịch, người trẻ yêu ẩm thực truyền thống và khách hàng cần hiểu nguồn gốc sản phẩm.",
-            "Kêu gọi hành động": "Khám phá sản phẩm, xem công thức, đặt hàng hoặc liên hệ tư vấn."
+            "Vai trò": "Customer Journey & Experience - mô tả cách hương cốm bước vào đời sống khách hàng.",
+            "Không trùng với": "Menu Quy trình & nguồn gốc, vì trang này không mô tả kỹ thuật sản xuất từng bước.",
+            "Trọng tâm": "Trải nghiệm thưởng thức, sản phẩm ứng dụng, quà tặng, cảm nhận khách hàng và lời mời khám phá.",
+            "Thông điệp": "Từ một hương vị truyền thống, cốm trở thành trải nghiệm ẩm thực và món quà mang dấu ấn Hà Nội."
         },
         "paragraphs": [
-            "Hành trình hương cốm mở đầu bằng hình ảnh đồng lúa nếp non - nơi hạt lúa còn mềm, thơm và giữ vị sữa tự nhiên. Đây là điểm khởi đầu quyết định chất lượng của cốm.",
-            "Tiếp theo là nhịp lao động của làng nghề: người thợ chọn lúa, rang bằng lửa vừa, giã nhiều lượt và sàng sảy kiên nhẫn để hạt cốm sạch vỏ, dẻo mềm và đều hơn.",
-            "Phần giữa của câu chuyện tập trung vào hương vị: màu xanh dịu, mùi nếp non, hương lá sen và cảm giác thanh nhã khi thưởng thức cùng chuối chín, trà sen hoặc dùng làm nguyên liệu cho món ăn mới.",
-            "Phần cuối cho thấy cốm bước vào đời sống hiện đại qua bánh cốm, xôi cốm, cốm xào, mochi cốm, sữa chua cốm, tôm tẩm cốm và các hộp quà đặc sản.",
-            "Video không chỉ giới thiệu sản phẩm mà còn giúp khách hàng tin vào nguồn gốc, hiểu giá trị thủ công và cảm nhận được tinh thần gìn giữ đặc sản Hà Nội."
+            "Hành trình hương cốm bắt đầu khi người xem biết đến một mùi hương rất Hà Nội: nhẹ, xanh, dịu và gợi nhớ mùa thu.",
+            "Từ làng nghề, hương cốm đi vào nhiều khoảnh khắc khác nhau: một gói quà biếu, một món bánh trong lễ cưới, một ly sữa chua cốm mát lạnh hay một món ăn sáng tạo dành cho người trẻ.",
+            "Điểm quan trọng của hành trình này là trải nghiệm của khách hàng: nhìn thấy bao bì đẹp, hiểu câu chuyện phía sau, tin vào chất lượng và muốn chia sẻ món quà ấy với người khác.",
+            "Trang này được thiết kế như một hành trình cảm xúc và thương mại: từ nhận biết, yêu thích, chọn mua, thưởng thức đến quay lại với thương hiệu."
         ],
         "bullets": [
-            "Cảnh 1: Đồng lúa nếp non, hạt còn ngậm sữa.",
-            "Cảnh 2: Thu hoạch, chọn lọc và loại bỏ tạp chất.",
-            "Cảnh 3: Rang cốm - giữ lửa đều để bảo toàn mùi thơm.",
-            "Cảnh 4: Giã, sàng, tách vỏ và làm hạt cốm mềm hơn.",
-            "Cảnh 5: Ủ/gói với lá sen để gợi hương vị Hà Nội.",
-            "Cảnh 6: Thành phẩm và các món ăn phát triển từ cốm.",
-            "Cảnh 7: Chứng nhận, bao bì, bảo quản và lời mời đặt hàng."
+            "Nhận biết hương cốm qua hình ảnh và câu chuyện.",
+            "Khám phá sản phẩm truyền thống và hiện đại.",
+            "Chọn cốm làm quà biếu, quà du lịch, quà doanh nghiệp.",
+            "Thưởng thức cốm trong nhiều hoàn cảnh khác nhau.",
+            "Ghi nhớ thương hiệu qua chất lượng, bao bì và cảm xúc."
         ],
-        "images": [
-            "Com tong quan 3.jpg",
-            "rang com.jpg",
-            "gia com.jpg",
-            "sang com.jpg",
-            "Banh com.jpg"
-        ],
+        "images": ["Com tong quan 3.jpg", "Banh com.jpg", "xoi com.jpg", "mochi com.png", "sua chua com.png", "tom tam com.jpg"],
     },
     "sanpham": {
         "title": "Sản phẩm",
@@ -1954,6 +1938,33 @@ footer {visibility: hidden;}
     outline: none;
 }
 
+
+/* NEW BRAND STORY + AROMA JOURNEY UI */
+.brand-page,.aroma-page{background:#fffdf4;border-radius:28px;padding:clamp(16px,3.8vw,34px);margin-top:18px;box-shadow:0 14px 34px rgba(23,53,31,.08);border:1px solid #e4ead7;overflow:hidden;}
+.brand-hero,.aroma-hero{position:relative;min-height:clamp(360px,52vw,520px);border-radius:26px;overflow:hidden;display:flex;align-items:flex-end;padding:clamp(22px,5vw,46px);color:white;background-size:cover;background-position:center;box-shadow:0 18px 42px rgba(23,53,31,.18);}
+.brand-hero-content,.aroma-hero-content{position:relative;z-index:2;max-width:740px;}
+.brand-eyebrow,.aroma-eyebrow{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.34);backdrop-filter:blur(8px);border-radius:999px;padding:8px 14px;font-weight:900;letter-spacing:.5px;margin-bottom:12px;}
+.brand-hero h2,.aroma-hero h2{font-size:clamp(36px,7vw,76px);line-height:.96;margin:0 0 14px;font-family:Georgia,"Times New Roman",serif;}
+.brand-hero p,.aroma-hero p{font-size:clamp(15px,2.2vw,21px);line-height:1.45;margin:0;color:rgba(255,255,255,.92);}
+.brand-section,.aroma-section{margin-top:26px;}.brand-section-head,.aroma-section-head{margin-bottom:14px;}
+.brand-section-head h3,.aroma-section-head h3{color:#17351f;font-size:clamp(25px,4vw,42px);line-height:1.06;margin:0 0 8px;font-family:Georgia,"Times New Roman",serif;}
+.brand-section-head p,.aroma-section-head p{color:#526152;margin:0;line-height:1.45;}
+.brand-timeline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;}
+.brand-time-card,.aroma-step{background:white;border:1px solid #e3ead8;border-radius:20px;padding:16px;box-shadow:0 8px 22px rgba(23,53,31,.06);}
+.brand-time-card .year,.aroma-step .num{display:inline-flex;width:38px;height:38px;border-radius:50%;align-items:center;justify-content:center;background:#2e7d32;color:white;font-weight:900;margin-bottom:10px;}
+.brand-time-card h4,.aroma-step h4{margin:0 0 6px;color:#17351f;font-size:17px;}.brand-time-card p,.aroma-step p{margin:0;color:#536255;line-height:1.34;font-size:14px;}
+.brand-people{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:18px;align-items:stretch;}
+.brand-people-img img,.aroma-wide-img img{width:100%;height:100%;min-height:340px;object-fit:cover;border-radius:24px;display:block;}
+.brand-people-card{background:linear-gradient(135deg,#f1f8e9,#ffffff);border:1px solid #dcebd3;border-radius:24px;padding:clamp(18px,3vw,28px);display:flex;flex-direction:column;justify-content:center;}
+.brand-people-card h3{color:#17351f;font-size:clamp(25px,3.6vw,40px);line-height:1.05;margin:0 0 12px;}.brand-people-card p{color:#405442;line-height:1.42;margin:0 0 10px;}
+.brand-life-grid,.brand-values,.aroma-uses,.aroma-products,.aroma-testimonials{display:grid;gap:12px;}.brand-life-grid,.brand-values{grid-template-columns:repeat(4,minmax(0,1fr));}.aroma-uses{grid-template-columns:repeat(5,minmax(0,1fr));}.aroma-products,.aroma-testimonials{grid-template-columns:repeat(3,minmax(0,1fr));}
+.brand-life-card,.brand-value-card,.aroma-use,.aroma-product,.aroma-review{background:white;border-radius:20px;border:1px solid #e3ead8;padding:16px;box-shadow:0 8px 20px rgba(23,53,31,.055);}.brand-life-card .icon,.brand-value-card .icon,.aroma-use .icon{font-size:30px;margin-bottom:8px;}
+.brand-life-card h4,.brand-value-card h4,.aroma-use h4,.aroma-product h4,.aroma-review h4{margin:0 0 6px;color:#17351f;font-size:17px;}.brand-life-card p,.brand-value-card p,.aroma-use p,.aroma-product p,.aroma-review p{margin:0;color:#536255;line-height:1.34;font-size:14px;}
+.brand-quote,.aroma-cta{margin-top:26px;border-radius:26px;padding:clamp(22px,4vw,42px);color:white;background:linear-gradient(135deg,#17351f,#2e7d32);text-align:center;box-shadow:0 16px 34px rgba(23,53,31,.18);}.brand-quote h3,.aroma-cta h3{font-family:Georgia,"Times New Roman",serif;font-size:clamp(28px,5vw,54px);line-height:1.06;margin:0 0 10px;}.brand-quote p,.aroma-cta p{margin:0;color:rgba(255,255,255,.9);line-height:1.4;}
+.aroma-map{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;}.aroma-step{text-align:center;}.aroma-product img{width:100%;height:155px;object-fit:cover;border-radius:16px;margin-bottom:10px;display:block;}.aroma-review .stars{color:#f59e0b;letter-spacing:1px;font-weight:900;margin-bottom:8px;}.aroma-cta a{display:inline-block;margin-top:16px;background:white;color:#2e7d32!important;text-decoration:none;padding:12px 20px;border-radius:999px;font-weight:900;}
+@media (max-width:1024px){.brand-timeline,.brand-life-grid,.brand-values,.aroma-map,.aroma-uses,.aroma-products,.aroma-testimonials{grid-template-columns:repeat(2,minmax(0,1fr));}.brand-people{grid-template-columns:1fr;}.brand-people-img img,.aroma-wide-img img{min-height:260px;height:260px;}}
+@media (max-width:560px){.brand-page,.aroma-page{padding:12px;border-radius:20px;}.brand-hero,.aroma-hero{min-height:360px;border-radius:20px;padding:20px;}.brand-timeline,.brand-life-grid,.brand-values,.aroma-map,.aroma-uses,.aroma-products,.aroma-testimonials{grid-template-columns:1fr;}.aroma-product img{height:180px;}}
+
 </style>
 """.replace("__BANNER_IMAGE__", image_to_data_uri("Banner com.jpg")),
     unsafe_allow_html=True,
@@ -2196,43 +2207,30 @@ def render_content_card(page_data, detail_link=None, show_full=False):
     st.markdown(html, unsafe_allow_html=True)
 
 def render_story_page():
-    story = PAGE_DATABASE["cauchuyen"]
-    images = story.get("images", [])
-    main_image = image_to_data_uri(images[0] if images else "Hinh 1.jpg")
-
-    field_html = ""
-    for label, value in story.get("fields", {}).items():
-        field_html += f"<div class='story-feature'><b>{escape(label)}:</b> {escape(value)}</div>"
-
-    bullet_html = ""
-    for bullet in story.get("bullets", []):
-        bullet_html += f"<li>{escape(bullet)}</li>"
-
-    paragraph_html = ""
-    for paragraph in story.get("paragraphs", []):
-        paragraph_html += f"<p>{escape(paragraph)}</p>"
-
-    html = f"""<div class="story-layout">
-<div class="story-left">
-<div class="story-mini-badge">🍃 Di sản ẩm thực Hà Nội</div>
-<h1>Câu chuyện<br>Cốm Làng Vòng</h1>
-<p class="story-desc">{escape(story.get("intro", ""))}</p>
-<div class="story-features">
-{field_html}
-</div>
-<div class="story-quote">“Cốm không chỉ là món ăn, mà còn là ký ức mùa thu Hà Nội.”</div>
-</div>
-<div class="story-right">
-<img src="{main_image}">
-</div>
-</div>
-
-<div class="card">
-<h3>Hành trình câu chuyện</h3>
-{paragraph_html}
-<ul>{bullet_html}</ul>
+    hero_img = image_to_data_uri("Hinh 1.jpg")
+    people_img = image_to_data_uri("me com lang vong.jpg")
+    html = f"""
+<div class="brand-page">
+<section class="brand-hero" style="background-image:linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.68)),url('{hero_img}');">
+  <div class="brand-hero-content"><div class="brand-eyebrow">🍃 Brand Story</div><h2>Câu chuyện<br>Cốm Làng Vòng</h2><p>Hương vị mùa thu Hà Nội được gìn giữ qua ký ức, bàn tay người làm nghề và những món quà xanh thơm đi cùng năm tháng.</p></div>
+</section>
+<section class="brand-section"><div class="brand-section-head"><h3>Di sản đi qua nhiều thế hệ</h3><p>Trang này kể về văn hóa và cảm xúc của cốm, không lặp lại các bước kỹ thuật ở menu Quy trình & nguồn gốc.</p></div><div class="brand-timeline">
+<div class="brand-time-card"><div class="year">1</div><h4>Làng nghề</h4><p>Cốm gắn với Làng Vòng và nếp sống thanh lịch của Hà Nội.</p></div>
+<div class="brand-time-card"><div class="year">2</div><h4>Mùa thu</h4><p>Hương nếp non, lá sen và tiết trời se lạnh tạo nên ký ức rất riêng.</p></div>
+<div class="brand-time-card"><div class="year">3</div><h4>Thức quà</h4><p>Cốm trở thành món quà trang nhã trong gặp gỡ, cưới hỏi và biếu tặng.</p></div>
+<div class="brand-time-card"><div class="year">4</div><h4>Gìn giữ</h4><p>Người làm nghề giữ lại sự tỉ mỉ, mộc mạc và niềm tự hào địa phương.</p></div>
+<div class="brand-time-card"><div class="year">5</div><h4>Hiện đại</h4><p>Cốm bước vào sản phẩm mới nhưng vẫn giữ tinh thần Hà Nội.</p></div>
+</div></section>
+<section class="brand-section brand-people"><div class="brand-people-img"><img src="{people_img}"></div><div class="brand-people-card"><h3>Người giữ hồn cốm</h3><p>Điều làm nên giá trị của cốm không chỉ là hạt nếp non, mà còn là sự kiên nhẫn, kinh nghiệm và tình yêu nghề của người làm cốm.</p><p>Qua mỗi mùa, người giữ nghề truyền lại cách cảm nhận: biết quý mùi thơm dịu, vị ngọt thanh và vẻ đẹp thanh nhã của Hà Nội.</p><p><b>Giá trị cốt lõi:</b> mộc mạc, tinh tế, đáng tin và giàu cảm xúc.</p></div></section>
+<section class="brand-section"><div class="brand-section-head"><h3>Cốm trong đời sống Hà Nội</h3><p>Cốm hiện diện như một phần văn hóa: không ồn ào, không cầu kỳ, nhưng đủ để người ta nhớ lâu.</p></div><div class="brand-life-grid">
+<div class="brand-life-card"><div class="icon">🍂</div><h4>Cốm và mùa thu</h4><p>Một hương vị khiến người ta nhớ đến Hà Nội dịu nhẹ, xanh non và thanh sạch.</p></div>
+<div class="brand-life-card"><div class="icon">💍</div><h4>Cốm trong lễ cưới</h4><p>Bánh cốm là món quà truyền thống, tượng trưng cho sự trọn vẹn và gắn kết.</p></div>
+<div class="brand-life-card"><div class="icon">🎁</div><h4>Cốm làm quà biếu</h4><p>Gọn nhẹ, tinh tế, phù hợp để gửi tặng người thân, khách du lịch và đối tác.</p></div>
+<div class="brand-life-card"><div class="icon">☕</div><h4>Cốm trong ẩm thực mới</h4><p>Từ xôi, chè, bánh đến mochi hay sữa chua, cốm tiếp tục sống trong hình thức mới.</p></div>
+</div></section>
+<section class="brand-section"><div class="brand-section-head"><h3>Giá trị chúng tôi gìn giữ</h3></div><div class="brand-values"><div class="brand-value-card"><div class="icon">🌿</div><h4>Tự nhiên</h4><p>Ưu tiên hương vị xanh dịu, gần gũi và không phô trương.</p></div><div class="brand-value-card"><div class="icon">🤲</div><h4>Thủ công</h4><p>Tôn trọng sự tỉ mỉ và kinh nghiệm của người làm nghề.</p></div><div class="brand-value-card"><div class="icon">🏮</div><h4>Truyền thống</h4><p>Giữ tinh thần đặc sản Hà Nội trong từng câu chuyện sản phẩm.</p></div><div class="brand-value-card"><div class="icon">✨</div><h4>Tinh tế</h4><p>Đẹp từ hương vị, bao bì đến cảm giác khi trao tặng.</p></div></div></section>
+<section class="brand-quote"><h3>“Cốm không chỉ để ăn,<br>cốm là ký ức của Hà Nội.”</h3><p>Một món quà nhỏ, nhưng mang theo hương mùa thu và sự thanh nhã của đất kinh kỳ.</p></section>
 </div>"""
-
     st.markdown(html, unsafe_allow_html=True)
 
 
@@ -4400,35 +4398,23 @@ def render_cart_page():
 
 
 def render_video_page():
-    video_data = PAGE_DATABASE["video"]
-
-    field_html = ""
-    for label, value in video_data.get("fields", {}).items():
-        field_html += f"<p><b>{escape(label)}:</b> {escape(value)}</p>"
-
-    paragraph_html = ""
-    for paragraph in video_data.get("paragraphs", []):
-        paragraph_html += f"<p>{escape(paragraph)}</p>"
-
-    bullet_html = ""
-    for bullet in video_data.get("bullets", []):
-        bullet_html += f"<li>{escape(bullet)}</li>"
-
+    hero_img = image_to_data_uri("Com tong quan 3.jpg")
+    wide_img = image_to_data_uri("Banh com.jpg")
+    product_cards = [("Cốm mộc","com moc.jpg","Hương vị nguyên bản, xanh non và dẻo thơm."),("Bánh cốm","Banh com.jpg","Món quà cưới hỏi và biếu tặng mang dấu ấn Hà Nội."),("Xôi cốm","xoi com.jpg","Ấm áp, dân dã, hợp với những buổi sáng se lạnh."),("Mochi cốm","mochi com.png","Cách kể mới dành cho người trẻ yêu hương vị truyền thống."),("Sữa chua cốm","sua chua com.png","Tươi mát, nhẹ nhàng, dễ thưởng thức mỗi ngày."),("Tôm tẩm cốm","tom tam com.jpg","Cốm bước vào món mặn theo cách mới lạ và hấp dẫn.")]
+    product_html = ""
+    for title, img, desc in product_cards:
+        product_html += f'<div class="aroma-product"><img src="{image_to_data_uri(img)}"><h4>{escape(title)}</h4><p>{escape(desc)}</p></div>'
     html = f"""
-<div class="card">
-<h3>{escape(video_data.get("card_title", "🎬 Hành trình hương cốm"))}</h3>
-<p><b>Ý tưởng:</b> {escape(video_data.get("intro", ""))}</p>
-{field_html}
-</div>
-
-<div class="card2">
-<h3>Kịch bản nội dung</h3>
-{paragraph_html}
-<ul>{bullet_html}</ul>
-</div>
-"""
+<div class="aroma-page">
+<section class="aroma-hero" style="background-image:linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.70)),url('{hero_img}');"><div class="aroma-hero-content"><div class="aroma-eyebrow">🎬 Customer Journey</div><h2>Hành trình<br>hương cốm</h2><p>Từ làng nghề đến hộp quà, từ món ăn truyền thống đến trải nghiệm hiện đại - hương cốm đi cùng nhiều khoảnh khắc của khách hàng.</p></div></section>
+<section class="aroma-section"><div class="aroma-section-head"><h3>Hành trình của một hương vị</h3><p>Trang này không mô tả lại quy trình sản xuất, mà kể hành trình cốm xuất hiện trong đời sống và quyết định mua hàng.</p></div><div class="aroma-map"><div class="aroma-step"><div class="num">1</div><h4>Nhìn thấy</h4><p>Khách hàng bắt gặp màu xanh cốm, hình ảnh Hà Nội và bao bì gần gũi.</p></div><div class="aroma-step"><div class="num">2</div><h4>Hiểu câu chuyện</h4><p>Họ biết cốm gắn với mùa thu, làng nghề và nét quà thanh lịch.</p></div><div class="aroma-step"><div class="num">3</div><h4>Chọn sản phẩm</h4><p>Từ cốm mộc đến bánh, xôi, mochi, sữa chua hoặc món quà biếu.</p></div><div class="aroma-step"><div class="num">4</div><h4>Thưởng thức</h4><p>Hương thơm nhẹ, vị ngọt thanh và cảm giác mềm dẻo tạo trải nghiệm nhớ lâu.</p></div><div class="aroma-step"><div class="num">5</div><h4>Trao tặng</h4><p>Sản phẩm trở thành món quà kể thay sự tinh tế của người tặng.</p></div><div class="aroma-step"><div class="num">6</div><h4>Quay lại</h4><p>Khi nhớ Hà Nội, khách hàng nhớ lại hương cốm và thương hiệu.</p></div></div></section>
+<section class="aroma-section"><div class="brand-people"><div class="brand-people-card"><h3>Hương cốm xuất hiện ở đâu?</h3><p>Không chỉ nằm trong một gói cốm, hương cốm có thể trở thành điểm chạm trong bữa ăn, hộp quà, chuyến du lịch, dịp cưới hỏi hay món tráng miệng hiện đại.</p><p>Đây là lý do trang “Hành trình hương cốm” tập trung vào trải nghiệm và ứng dụng thương hiệu thay vì lặp lại kỹ thuật chế biến.</p></div><div class="aroma-wide-img"><img src="{wide_img}"></div></div></section>
+<section class="aroma-section"><div class="aroma-section-head"><h3>Những điểm chạm của hương cốm</h3></div><div class="aroma-uses"><div class="aroma-use"><div class="icon">🍽️</div><h4>Ẩm thực truyền thống</h4><p>Cốm mộc, xôi cốm, bánh cốm, món ăn mùa thu.</p></div><div class="aroma-use"><div class="icon">🧁</div><h4>Ẩm thực hiện đại</h4><p>Mochi, sữa chua, món tráng miệng và sản phẩm sáng tạo.</p></div><div class="aroma-use"><div class="icon">🎁</div><h4>Quà biếu</h4><p>Phù hợp làm quà du lịch, quà gia đình hoặc quà doanh nghiệp.</p></div><div class="aroma-use"><div class="icon">💍</div><h4>Lễ cưới hỏi</h4><p>Bánh cốm gắn với ý nghĩa trọn vẹn và thanh lịch.</p></div><div class="aroma-use"><div class="icon">📷</div><h4>Truyền thông</h4><p>Màu xanh cốm, lá sen và Hà Nội tạo nhận diện giàu cảm xúc.</p></div></div></section>
+<section class="aroma-section"><div class="aroma-section-head"><h3>Sản phẩm từ hương cốm</h3><p>Mỗi sản phẩm là một cách để hương cốm bước vào đời sống hiện đại.</p></div><div class="aroma-products">{product_html}</div></section>
+<section class="aroma-section"><div class="aroma-section-head"><h3>Cảm nhận khách hàng</h3></div><div class="aroma-testimonials"><div class="aroma-review"><div class="stars">★★★★★</div><h4>Hương vị rất thật</h4><p>“Mùi cốm nhẹ, không gắt, ăn vào thấy đúng cảm giác mùa thu Hà Nội.”</p></div><div class="aroma-review"><div class="stars">★★★★★</div><h4>Bao bì đẹp</h4><p>“Phù hợp làm quà tặng, nhìn chỉn chu và có câu chuyện rõ ràng.”</p></div><div class="aroma-review"><div class="stars">★★★★★</div><h4>Dễ giới thiệu</h4><p>“Có nhiều sản phẩm nên người trẻ cũng dễ thử, không chỉ có cốm truyền thống.”</p></div></div></section>
+<section class="aroma-cta"><h3>Mang hương cốm Hà Nội<br>đến gần hơn với bạn</h3><p>Khám phá các sản phẩm từ cốm và chọn một món quà xanh thơm cho người thân, bạn bè hoặc đối tác.</p><a href="?page=sanpham" target="_self">Khám phá sản phẩm</a></section>
+</div>"""
     st.markdown(html, unsafe_allow_html=True)
-    st.video("https://www.youtube.com/watch?v=_q38xqZFuKE")
 
 
 def render_page(page_data):
@@ -4440,7 +4426,7 @@ def render_page(page_data):
     title_class = "page-title small-title" if page_data["title"] in special_titles else "page-title"
     st.markdown(f"<h1 class='{title_class}'>{page_data['title']}</h1>", unsafe_allow_html=True)
 
-    if page_data["page_id"] == "cauchuyen":
+    if page_data["page_id"] == "cauchuyen" or page_data["type"] == "custom_story":
         render_story_page()
         return
     if page_data["page_id"] == "quytrinh":
