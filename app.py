@@ -2354,7 +2354,53 @@ def render_story_page():
     </section>
 </div>
 """
-    st.markdown(html, unsafe_allow_html=True)
+
+    story_component_css = """
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:transparent;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+.story-magazine{background:#fffdf4;border-radius:30px;overflow:hidden;border:1px solid #e4ead7;box-shadow:0 16px 38px rgba(23,53,31,.09)}
+.story-hero-scene{min-height:clamp(520px,72vw,760px);position:relative;display:flex;align-items:flex-end;padding:clamp(28px,6vw,68px);color:white;background-size:cover;background-position:center}
+.story-hero-scene::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.72)),radial-gradient(circle at 18% 24%,rgba(46,125,50,.32),transparent 36%)}
+.story-hero-inner{position:relative;z-index:2;max-width:850px}
+.story-kicker{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(8px);font-weight:900;letter-spacing:.5px;margin-bottom:16px}
+.story-hero-inner h1{margin:0 0 18px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,8vw,88px);line-height:.95;text-shadow:0 8px 28px rgba(0,0,0,.34)}
+.story-hero-lead{margin:0;max-width:760px;color:rgba(255,255,255,.92);font-size:clamp(17px,2.35vw,24px);line-height:1.48}
+.story-chapter{padding:clamp(38px,7vw,84px) clamp(18px,5vw,72px)}
+.story-chapter.alt{background:linear-gradient(180deg,#fffdf4,#f5fbef)}
+.story-two-col{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(24px,5vw,58px);align-items:center}
+.story-two-col.reverse{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr)}
+.story-image-frame{position:relative;min-height:clamp(320px,46vw,540px);border-radius:28px;overflow:hidden;box-shadow:0 18px 42px rgba(23,53,31,.14)}
+.story-image-frame img{width:100%;height:100%;min-height:clamp(320px,46vw,540px);object-fit:cover;display:block}
+.story-image-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(23,53,31,.18))}
+.story-text-block{max-width:650px}
+.story-label{color:#2e7d32;font-weight:900;text-transform:uppercase;letter-spacing:.08em;font-size:13px;margin-bottom:10px}
+.story-text-block h2,.story-full h2{color:#17351f;font-family:Georgia,"Times New Roman",serif;font-size:clamp(30px,5.2vw,58px);line-height:1.04;margin:0 0 18px}
+.story-text-block p,.story-full p,.story-final p{color:#405442;font-size:clamp(16px,2vw,19px);line-height:1.78;margin:0 0 16px}
+.story-full{max-width:850px;margin:0 auto}
+.story-wide-scene{position:relative;min-height:clamp(390px,58vw,620px);display:flex;align-items:flex-end;padding:clamp(28px,6vw,64px);color:white;background-size:cover;background-position:center;overflow:hidden}
+.story-wide-scene::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.70))}
+.story-wide-content{position:relative;z-index:2;max-width:820px}
+.story-wide-content h2{margin:0 0 12px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,6vw,72px);line-height:1}
+.story-wide-content p{margin:0;color:rgba(255,255,255,.92);font-size:clamp(17px,2.4vw,23px);line-height:1.52}
+.story-legend{max-width:860px;margin:0 auto;text-align:center;padding:clamp(42px,7vw,82px) clamp(20px,5vw,70px)}
+.story-legend .quote-mark{font-family:Georgia,"Times New Roman",serif;color:#2e7d32;font-size:clamp(54px,8vw,92px);line-height:.7}
+.story-legend h2{margin:0 0 18px;color:#17351f;font-family:Georgia,"Times New Roman",serif;font-size:clamp(31px,5.6vw,62px);line-height:1.05}
+.story-legend p{margin:0 auto 16px;color:#405442;font-size:clamp(16px,2vw,19px);line-height:1.72;max-width:760px}
+.story-process-link{margin-top:26px;display:inline-block;background:#2e7d32;color:white!important;text-decoration:none;padding:12px 20px;border-radius:999px;font-weight:900}
+.story-gallery-ribbon{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:26px}
+.story-ribbon-item{position:relative;min-height:250px;border-radius:24px;overflow:hidden;box-shadow:0 12px 26px rgba(23,53,31,.12)}
+.story-ribbon-item img{width:100%;height:100%;min-height:250px;object-fit:cover;display:block}
+.story-ribbon-caption{position:absolute;left:0;right:0;bottom:0;color:white;font-weight:900;padding:18px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.72))}
+.story-final{background:linear-gradient(135deg,#102716,#2e7d32);color:white;padding:clamp(44px,8vw,92px) clamp(22px,6vw,76px);text-align:center}
+.story-final h2{margin:0 0 20px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(36px,7vw,78px);line-height:1.03;color:white}
+.story-final p{color:rgba(255,255,255,.90);max-width:850px;margin-left:auto;margin-right:auto}
+.story-final .last-line{margin-top:26px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(24px,4vw,42px);line-height:1.25;color:#fff7d6}
+@media(max-width:900px){.story-two-col,.story-two-col.reverse{grid-template-columns:1fr}.story-two-col.reverse .story-image-frame{order:-1}.story-gallery-ribbon{grid-template-columns:repeat(2,minmax(0,1fr))}.story-ribbon-item,.story-ribbon-item img{min-height:190px}}
+@media(max-width:520px){.story-magazine{border-radius:22px}.story-hero-scene{min-height:500px;padding:24px}.story-chapter{padding:34px 18px}.story-gallery-ribbon{grid-template-columns:1fr}.story-ribbon-item,.story-ribbon-item img{min-height:220px}}
+</style>
+"""
+    components.html(story_component_css + html, height=6200, scrolling=True)
 
 
 def render_certificate_page():
