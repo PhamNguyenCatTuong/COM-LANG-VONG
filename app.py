@@ -2057,6 +2057,23 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+st.markdown("""
+<script>
+(function(){
+  try {
+    const url = new URL(window.location.href);
+    if (url.searchParams.get("top") === "1") {
+      window.scrollTo({top: 0, left: 0, behavior: "auto"});
+      setTimeout(function(){ window.scrollTo(0, 0); }, 80);
+      setTimeout(function(){ window.scrollTo(0, 0); }, 250);
+      url.searchParams.delete("top");
+      window.history.replaceState({}, "", url.toString());
+    }
+  } catch(e) {}
+})();
+</script>
+""", unsafe_allow_html=True)
+
 st.markdown("<div class='content'>", unsafe_allow_html=True)
 
 
@@ -2321,7 +2338,7 @@ def render_story_page():
                 <h2>Hạt cốm được nâng niu từ khi còn ngậm sữa</h2>
                 <p>Nguyên liệu làm cốm là lúa nếp cái hoa vàng, giống nếp quý nổi tiếng bởi hương thơm và độ dẻo. Lúa phải được gặt khi hạt vừa ngậm sữa: không quá non để khỏi nát, cũng không quá già để tránh khô cứng.</p>
                 <p>Từ chọn lúa, rang, giã, sàng sảy đến gói lá sen, mỗi công đoạn đều cần bàn tay khéo léo và sự nhạy cảm của người thợ. Ở trang này, câu chuyện chỉ đi qua như một làn hương; phần chi tiết hơn được dành cho menu Quy trình & nguồn gốc.</p>
-                <a class="story-process-link" href="?page=quytrinh" target="_self">Xem Quy trình & nguồn gốc</a>
+                <a class="story-process-link" href="?page=quytrinh&top=1" target="_top">Xem Quy trình & nguồn gốc</a>
             </div>
             <div class="story-image-frame"><img src="{lotus_img}"></div>
         </div>
@@ -4644,6 +4661,21 @@ def render_video_page():
         </article>
     </section>
 
+    
+    <section class="aroma-video-scene">
+        <div class="aroma-products-head">
+            <span>Video</span>
+            <h2>Xem hành trình hương cốm</h2>
+            <p>Video giúp người xem cảm nhận rõ hơn không khí, màu sắc và nhịp kể của Cốm Làng Vòng.</p>
+        </div>
+        <div class="aroma-video-frame">
+            <iframe src="https://www.youtube.com/embed/_q38xqZFuKE"
+                title="Hành trình hương cốm"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+        </div>
+    </section>
+
     <section class="aroma-products-scene">
         <div class="aroma-products-head">
             <span>Những điểm chạm sản phẩm</span>
@@ -4674,7 +4706,7 @@ def render_video_page():
             <h2>Điểm cuối của hành trình<br>là lúc khách hàng muốn quay lại</h2>
             <p>Khi một hương vị đủ thật, một câu chuyện đủ đẹp và một sản phẩm đủ chỉn chu, khách hàng không chỉ mua một lần. Họ nhớ, họ kể lại, họ tìm đến khi cần một món quà mang dấu ấn Hà Nội.</p>
             <div class="aroma-final-line">Hương cốm không dừng lại ở làng nghề.<br>Nó tiếp tục sống trong những người yêu Hà Nội.</div>
-            <a href="?page=sanpham" target="_self">Khám phá sản phẩm từ cốm</a>
+            <a href="?page=sanpham&top=1" target="_top">Khám phá sản phẩm từ cốm</a>
         </div>
     </section>
 </div>
@@ -4724,9 +4756,84 @@ html,body{margin:0;padding:0;background:transparent;font-family:Arial,Helvetica,
 .aroma-memory a{display:inline-block;background:white;color:#2e7d32!important;text-decoration:none;padding:13px 22px;border-radius:999px;font-weight:900}
 @media(max-width:980px){.aroma-line{left:28px}.aroma-moment,.aroma-moment.reverse{grid-template-columns:1fr;padding-left:34px}.aroma-moment.reverse .aroma-copy{order:1}.aroma-moment.reverse .aroma-visual{order:2}.aroma-number{left:28px;top:0;transform:translate(-50%,0);width:48px;height:48px;border-width:5px}.aroma-product-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.aroma-product-strip figure,.aroma-product-strip img{min-height:240px}}
 @media(max-width:560px){.aroma-story{border-radius:22px}.aroma-opening{min-height:520px;padding:24px}.aroma-flow{padding:34px 16px}.aroma-copy{padding:20px;border-radius:22px}.aroma-visual,.aroma-visual img{min-height:260px;border-radius:22px}.aroma-product-strip{grid-template-columns:1fr}.aroma-product-strip figure,.aroma-product-strip img{min-height:250px}.aroma-gift-scene{min-height:520px;padding:24px}.aroma-line{left:20px}.aroma-moment,.aroma-moment.reverse{padding-left:28px}.aroma-number{left:20px}}
+
+/* FIX: remove round timeline number buttons */
+.aroma-number {
+    display: none !important;
+}
+.aroma-line {
+    left: 24px !important;
+    opacity: .22 !important;
+}
+.aroma-moment,
+.aroma-moment.reverse {
+    padding-left: 0 !important;
+}
+@media(max-width:980px){
+    .aroma-moment,
+    .aroma-moment.reverse {
+        padding-left: 0 !important;
+    }
+}
+
+/* FIX: portrait product gallery in one horizontal row */
+.aroma-product-strip {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 14px !important;
+    overflow-x: auto !important;
+    padding: 4px 4px 14px !important;
+    scroll-snap-type: x mandatory !important;
+}
+.aroma-product-strip figure {
+    flex: 0 0 220px !important;
+    min-height: 380px !important;
+    height: 380px !important;
+    border-radius: 26px !important;
+    scroll-snap-align: start !important;
+}
+.aroma-product-strip img {
+    min-height: 380px !important;
+    height: 380px !important;
+    object-fit: cover !important;
+}
+@media(max-width:560px){
+    .aroma-product-strip figure {
+        flex-basis: 190px !important;
+        min-height: 330px !important;
+        height: 330px !important;
+    }
+    .aroma-product-strip img {
+        min-height: 330px !important;
+        height: 330px !important;
+    }
+}
+
+/* FIX: visible video section */
+.aroma-video-scene {
+    padding: clamp(42px,7vw,88px) clamp(18px,5vw,72px);
+    background: linear-gradient(180deg,#f6fbef,#fffdf4);
+}
+.aroma-video-frame {
+    max-width: 980px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 18px 42px rgba(23,53,31,.16);
+    border: 1px solid #dcebd3;
+    background: #17351f;
+}
+.aroma-video-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
 </style>
 """
-    components.html(aroma_css + aroma_html, height=7200, scrolling=True)
+    components.html(aroma_css + aroma_html, height=7600, scrolling=True)
 
 
 def render_page(page_data):
