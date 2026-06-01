@@ -701,16 +701,6 @@ footer {visibility: hidden;}
     padding: clamp(7px, 1.9vw, 10px) 12px;
 }
 
-.dropbtn-link {
-    display: block;
-    text-decoration: none !important;
-    color: white !important;
-}
-
-.dropbtn-link:hover {
-    background: #256b2b;
-}
-
 .dropdown-content {
     display: none;
     background: white;
@@ -2109,7 +2099,7 @@ st.markdown(
 </div>
 <div class="menu">
 <div class="dropdown"><button class="dropbtn parent-only" type="button">Giới thiệu</button><div class="dropdown-content"><a href="?page=cauchuyen" target="_self">Câu chuyện Cốm Làng Vòng</a><a href="?page=video" target="_self">Hành trình hương cốm</a></div></div>
-<div class="dropdown"><a href="?page=quytrinh" target="_self" class="dropbtn dropbtn-link">Quy trình & nguồn gốc</a></div>
+<div class="dropdown"><a href="?page=quytrinh" target="_self" style="text-decoration:none;"><button class="dropbtn">Quy trình & nguồn gốc</button></a></div>
 <div class="dropdown"><button class="dropbtn parent-only" type="button">Sản phẩm</button><div class="dropdown-content"><a href="?page=sanpham" target="_self">Danh sách sản phẩm</a><a href="?page=congthuc" target="_self">Công thức & Cách làm món ăn</a></div></div>
 <div class="dropdown"><a href="?page=chatluong" target="_self" style="text-decoration:none;"><button class="dropbtn">Chất lượng</button></a></div>
 <div class="dropdown"><button class="dropbtn parent-only" type="button">Bao bì & bảo quản</button><div class="dropdown-content"><a href="?page=muc_giay" target="_self">Mực & giấy bao bì</a><a href="?page=thuhoi" target="_self">Chính sách thu hồi</a></div></div>
@@ -4122,18 +4112,18 @@ def render_origin_process_page():
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Nunito:wght@400;500;600;700&display=swap');
 
-:root {
+:root {{
     --font-heading: "Be Vietnam Pro", Arial, sans-serif;
     --font-body: "Nunito", Arial, sans-serif;
-}
+}}
 
 /* FONT SYSTEM - Vietnamese supported
    Heading/menu/buttons: Be Vietnam Pro
    Body content: Nunito
 */
-html, body {
+html, body {{
     font-family: var(--font-body) !important;
-}
+}}
 
 h1, h2, h3, h4, h5, h6,
 .logo,
@@ -4164,9 +4154,9 @@ h1, h2, h3, h4, h5, h6,
 .brand-eyebrow,
 .brand-section-head h3,
 .aroma-eyebrow,
-.aroma-section-head h3 {
+.aroma-section-head h3 {{
     font-family: var(--font-heading) !important;
-}
+}}
 
 p, li, span, div,
 .content,
@@ -4180,9 +4170,9 @@ p, li, span, div,
 .viewer-title p,
 .status-row,
 .page-label,
-.counter-pill {
+.counter-pill {{
     font-family: var(--font-body) !important;
-}
+}}
 
 .qn-page {{
     width:100%;
