@@ -566,11 +566,11 @@ PAGE_DATABASE = {
 st.markdown(
     """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Be+Vietnam+Pro:wght@400;500;600&display=swap');
 
-:root{
-    --font-heading: "Playfair Display", serif;
-    --font-body: "Be Vietnam Pro", sans-serif;
+:root {
+    --font-heading: "Be Vietnam Pro", Arial, sans-serif;
+    --font-body: "Nunito", Arial, sans-serif;
 }
 
 /* FONT SYSTEM - Vietnamese supported
@@ -2080,8 +2080,8 @@ footer {visibility: hidden;}
 .story-final h2{margin:0 0 20px;font-family:var(--font-heading);font-size:clamp(36px,7vw,78px);line-height:1.03;color:white;}
 .story-final p{color:rgba(255,255,255,.90);max-width:850px;margin-left:auto;margin-right:auto;}
 .story-final .last-line{margin-top:26px;font-family:var(--font-heading);font-size:clamp(24px,4vw,42px);line-height:1.25;color:#fff7d6;}
-@media(max-width:900px){.story-two-col,.story-two-col.reverse{grid-template-columns:1fr;}.story-two-col.reverse .story-image-frame{order:-1;}.story-gallery-ribbon{display:grid;grid-template-columns:repeat(4, 1fr);gap:6px;}.story-ribbon-item,.story-ribbon-item img{min-height:190px;}}
-@media(max-width:520px){.story-magazine{border-radius:22px;}.story-hero-scene{min-height:500px;padding:24px;}.story-chapter{padding:34px 18px;}.story-gallery-ribbon{grid-template-columns:1fr;}.story-ribbon-item,.story-ribbon-item img{min-height:110px;}}
+@media(max-width:900px){.story-two-col,.story-two-col.reverse{grid-template-columns:1fr;}.story-two-col.reverse .story-image-frame{order:-1;}.story-gallery-ribbon{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;}.story-ribbon-item,.story-ribbon-item img{min-height:140px;}.story-ribbon-item{border-radius:16px;}.story-ribbon-caption{font-size:12px;line-height:1.25;padding:10px 8px;}}
+@media(max-width:520px){.story-magazine{border-radius:22px;}.story-hero-scene{min-height:500px;padding:24px;}.story-chapter{padding:34px 18px;}.story-gallery-ribbon{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;}.story-ribbon-item,.story-ribbon-item img{min-height:105px;}.story-ribbon-item{border-radius:12px;}.story-ribbon-caption{font-size:10px;line-height:1.2;padding:7px 5px;}}
 
 </style>
 """.replace("__BANNER_IMAGE__", image_to_data_uri("Banner com.jpg")),
@@ -2535,11 +2535,11 @@ html,body{margin:0;padding:0;background:transparent;font-family:var(--font-body)
 .story-final h2{margin:0 0 20px;font-family:var(--font-heading);font-size:clamp(36px,7vw,78px);line-height:1.03;color:white}
 .story-final p{color:rgba(255,255,255,.90);max-width:850px;margin-left:auto;margin-right:auto}
 .story-final .last-line{margin-top:26px;font-family:var(--font-heading);font-size:clamp(24px,4vw,42px);line-height:1.25;color:#fff7d6}
-@media(max-width:900px){.story-two-col,.story-two-col.reverse{grid-template-columns:1fr}.story-two-col.reverse .story-image-frame{order:-1}.story-gallery-ribbon{grid-template-columns:repeat(2,minmax(0,1fr))}.story-ribbon-item,.story-ribbon-item img{min-height:190px}}
-@media(max-width:520px){.story-magazine{border-radius:22px}.story-hero-scene{min-height:500px;padding:24px}.story-chapter{padding:34px 18px}.story-gallery-ribbon{grid-template-columns:1fr}.story-ribbon-item,.story-ribbon-item img{min-height:220px}}
+@media(max-width:900px){.story-two-col,.story-two-col.reverse{grid-template-columns:1fr}.story-two-col.reverse .story-image-frame{order:-1}.story-gallery-ribbon{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.story-ribbon-item,.story-ribbon-item img{min-height:140px}.story-ribbon-item{border-radius:16px}.story-ribbon-caption{font-size:12px;line-height:1.25;padding:10px 8px}}
+@media(max-width:520px){.story-magazine{border-radius:22px}.story-hero-scene{min-height:500px;padding:24px}.story-chapter{padding:34px 18px}.story-gallery-ribbon{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.story-ribbon-item,.story-ribbon-item img{min-height:105px}.story-ribbon-item{border-radius:12px}.story-ribbon-caption{font-size:10px;line-height:1.2;padding:7px 5px}}
 </style>
 """
-    components.html(story_component_css + html, height=6750, scrolling=False)
+    components.html(story_component_css + html, height=6600, scrolling=False)
 
 
 def render_certificate_page():
