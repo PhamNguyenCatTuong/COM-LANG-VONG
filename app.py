@@ -566,11 +566,11 @@ PAGE_DATABASE = {
 st.markdown(
     """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Source+Sans+3:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap');
 
-:root {
-    --font-heading: "Be Vietnam Pro", Arial, sans-serif;
-    --font-body: "Nunito", Arial, sans-serif;
+:root{
+    --font-heading: "Playfair Display", serif;
+    --font-body: "Be Vietnam Pro", sans-serif;
 }
 
 /* FONT SYSTEM - Vietnamese supported
