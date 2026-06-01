@@ -566,7 +566,7 @@ PAGE_DATABASE = {
 st.markdown(
     """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Be+Vietnam+Pro:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Nunito:wght@400;500;600;700&display=swap');
 
 :root {
     --font-heading: "Be Vietnam Pro", Arial, sans-serif;
@@ -2007,7 +2007,7 @@ footer {visibility: hidden;}
 
 /* Parent menu buttons with submenus are not direct links */
 .dropbtn.parent-only {
-    cursor: default;
+    cursor: pointer;
 }
 .dropbtn.parent-only:focus {
     outline: none;
@@ -2099,7 +2099,7 @@ st.markdown(
 </div>
 <div class="menu">
 <div class="dropdown"><button class="dropbtn parent-only" type="button">Giới thiệu</button><div class="dropdown-content"><a href="?page=cauchuyen" target="_self">Câu chuyện Cốm Làng Vòng</a><a href="?page=video" target="_self">Hành trình hương cốm</a></div></div>
-<div class="dropdown"><a href="?page=quytrinh" target="_self" style="text-decoration:none;"><button class="dropbtn">Quy trình & nguồn gốc</button></a></div>
+<div class="dropdown"><button class="dropbtn parent-only" type="button">Quy trình & nguồn gốc</button><div class="dropdown-content"><a href="?page=quytrinh" target="_self">Tổng quan quy trình</a><a href="?page=nguyenlieu" target="_self">Nguồn nguyên liệu</a><a href="?page=khuvuc" target="_self">Khu vực sản xuất</a></div></div>
 <div class="dropdown"><button class="dropbtn parent-only" type="button">Sản phẩm</button><div class="dropdown-content"><a href="?page=sanpham" target="_self">Danh sách sản phẩm</a><a href="?page=congthuc" target="_self">Công thức & Cách làm món ăn</a></div></div>
 <div class="dropdown"><a href="?page=chatluong" target="_self" style="text-decoration:none;"><button class="dropbtn">Chất lượng</button></a></div>
 <div class="dropdown"><button class="dropbtn parent-only" type="button">Bao bì & bảo quản</button><div class="dropdown-content"><a href="?page=muc_giay" target="_self">Mực & giấy bao bì</a><a href="?page=thuhoi" target="_self">Chính sách thu hồi</a></div></div>
