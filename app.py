@@ -2412,11 +2412,11 @@ def render_recipe_book_page():
         {"name": "Chè cốm", "file": "2.jpg"},
         {"name": "Chả cốm", "file": "3.jpg"},
         {"name": "Cốm xào dừa/Tôm tẩm cốm chiên giòn", "file": "4.jpg"},
-        {"name": "Bánh cốm nếp nương", "file": "5.jpg"},
+        {"name": "Xôi cốm", "file": "5.jpg"},
         {"name": "Bánh xu xê cốm", "file": "6.jpg"},
         {"name": "Sữa chua cốm", "file": "7.jpg"},
-        {"name": "Xôi cốm", "file": "8.jpg"},
-        {"name": "Mochi cốm", "file": "9.jpg"},
+        {"name": "Mochi cốm", "file": "8.jpg"},
+        {"name": "Bánh cốm nếp nương", "file": "9.jpg"},
         {"name": "Bánh trung thu nhân cốm", "file": "10.jpg"},
         {"name": "Bánh chưng nhân cốm", "file": "11.jpg"},
     ]
@@ -2862,7 +2862,7 @@ html, body {
 <div class="viewer" id="viewer">
     <div class="viewer-top">
         <div class="viewer-title">
-            <h2>Sổ Tay Công Thức Cốm</h2>
+            <h2>Sổ tay công thức Cốm</h2>
             <p>Kéo mép trang hoặc bấm mũi tên để lật sách</p>
         </div>
         <div class="toolbar">
