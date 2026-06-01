@@ -2411,8 +2411,11 @@ html,body{margin:0;padding:0;background:transparent;font-family:Arial,Helvetica,
 @media(max-width:520px){.story-magazine{border-radius:22px}.story-hero-scene{min-height:500px;padding:24px}.story-chapter{padding:34px 18px}.story-gallery-ribbon{grid-template-columns:1fr}.story-ribbon-item,.story-ribbon-item img{min-height:220px}}
 </style>
 """
-    st.markdown(story_component_css + html, unsafe_allow_html=True)
-
+    components.html(
+        story_component_css + html,
+        height=7000,
+        scrolling=False
+    )
 
 def render_certificate_page():
     html = """
