@@ -566,6 +566,70 @@ PAGE_DATABASE = {
 st.markdown(
     """
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Nunito:wght@400;500;600;700&display=swap');
+
+:root {
+    --font-heading: "Be Vietnam Pro", Arial, sans-serif;
+    --font-body: "Nunito", Arial, sans-serif;
+}
+
+/* FONT SYSTEM - Vietnamese supported
+   Heading/menu/buttons: Be Vietnam Pro
+   Body content: Nunito
+*/
+html, body {
+    font-family: var(--font-body) !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.logo,
+.menu,
+.dropbtn,
+.dropdown-content a,
+.cart-link,
+.cart-menu-btn,
+.hero-btn,
+.page-title,
+.product-section-title,
+.product-info h3,
+.product-price,
+.buy-btn,
+.cart-btn,
+.cart-add-btn,
+.recipe-quick-title,
+.viewer-title h2,
+.story-kicker,
+.story-label,
+.story-hero-inner h1,
+.story-text-block h2,
+.story-full h2,
+.story-wide-content h2,
+.story-legend h2,
+.story-final h2,
+.story-final .last-line,
+.brand-eyebrow,
+.brand-section-head h3,
+.aroma-eyebrow,
+.aroma-section-head h3 {
+    font-family: var(--font-heading) !important;
+}
+
+p, li, span, div,
+.content,
+.card,
+.card2,
+.product-info,
+.story-hero-lead,
+.story-text-block,
+.story-full,
+.story-final,
+.viewer-title p,
+.status-row,
+.page-label,
+.counter-pill {
+    font-family: var(--font-body) !important;
+}
+
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; overflow-x: hidden; }
 img { max-width: 100%; height: auto; }
@@ -1955,10 +2019,10 @@ footer {visibility: hidden;}
 .brand-hero,.aroma-hero{position:relative;min-height:clamp(360px,52vw,520px);border-radius:26px;overflow:hidden;display:flex;align-items:flex-end;padding:clamp(22px,5vw,46px);color:white;background-size:cover;background-position:center;box-shadow:0 18px 42px rgba(23,53,31,.18);}
 .brand-hero-content,.aroma-hero-content{position:relative;z-index:2;max-width:740px;}
 .brand-eyebrow,.aroma-eyebrow{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.34);backdrop-filter:blur(8px);border-radius:999px;padding:8px 14px;font-weight:900;letter-spacing:.5px;margin-bottom:12px;}
-.brand-hero h2,.aroma-hero h2{font-size:clamp(36px,7vw,76px);line-height:.96;margin:0 0 14px;font-family:Georgia,"Times New Roman",serif;}
+.brand-hero h2,.aroma-hero h2{font-size:clamp(36px,7vw,76px);line-height:.96;margin:0 0 14px;font-family:var(--font-heading);}
 .brand-hero p,.aroma-hero p{font-size:clamp(15px,2.2vw,21px);line-height:1.45;margin:0;color:rgba(255,255,255,.92);}
 .brand-section,.aroma-section{margin-top:26px;}.brand-section-head,.aroma-section-head{margin-bottom:14px;}
-.brand-section-head h3,.aroma-section-head h3{color:#17351f;font-size:clamp(25px,4vw,42px);line-height:1.06;margin:0 0 8px;font-family:Georgia,"Times New Roman",serif;}
+.brand-section-head h3,.aroma-section-head h3{color:#17351f;font-size:clamp(25px,4vw,42px);line-height:1.06;margin:0 0 8px;font-family:var(--font-heading);}
 .brand-section-head p,.aroma-section-head p{color:#526152;margin:0;line-height:1.45;}
 .brand-timeline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;}
 .brand-time-card,.aroma-step{background:white;border:1px solid #e3ead8;border-radius:20px;padding:16px;box-shadow:0 8px 22px rgba(23,53,31,.06);}
@@ -1971,7 +2035,7 @@ footer {visibility: hidden;}
 .brand-life-grid,.brand-values,.aroma-uses,.aroma-products,.aroma-testimonials{display:grid;gap:12px;}.brand-life-grid,.brand-values{grid-template-columns:repeat(4,minmax(0,1fr));}.aroma-uses{grid-template-columns:repeat(5,minmax(0,1fr));}.aroma-products,.aroma-testimonials{grid-template-columns:repeat(3,minmax(0,1fr));}
 .brand-life-card,.brand-value-card,.aroma-use,.aroma-product,.aroma-review{background:white;border-radius:20px;border:1px solid #e3ead8;padding:16px;box-shadow:0 8px 20px rgba(23,53,31,.055);}.brand-life-card .icon,.brand-value-card .icon,.aroma-use .icon{font-size:30px;margin-bottom:8px;}
 .brand-life-card h4,.brand-value-card h4,.aroma-use h4,.aroma-product h4,.aroma-review h4{margin:0 0 6px;color:#17351f;font-size:17px;}.brand-life-card p,.brand-value-card p,.aroma-use p,.aroma-product p,.aroma-review p{margin:0;color:#536255;line-height:1.34;font-size:14px;}
-.brand-quote,.aroma-cta{margin-top:26px;border-radius:26px;padding:clamp(22px,4vw,42px);color:white;background:linear-gradient(135deg,#17351f,#2e7d32);text-align:center;box-shadow:0 16px 34px rgba(23,53,31,.18);}.brand-quote h3,.aroma-cta h3{font-family:Georgia,"Times New Roman",serif;font-size:clamp(28px,5vw,54px);line-height:1.06;margin:0 0 10px;}.brand-quote p,.aroma-cta p{margin:0;color:rgba(255,255,255,.9);line-height:1.4;}
+.brand-quote,.aroma-cta{margin-top:26px;border-radius:26px;padding:clamp(22px,4vw,42px);color:white;background:linear-gradient(135deg,#17351f,#2e7d32);text-align:center;box-shadow:0 16px 34px rgba(23,53,31,.18);}.brand-quote h3,.aroma-cta h3{font-family:var(--font-heading);font-size:clamp(28px,5vw,54px);line-height:1.06;margin:0 0 10px;}.brand-quote p,.aroma-cta p{margin:0;color:rgba(255,255,255,.9);line-height:1.4;}
 .aroma-map{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;}.aroma-step{text-align:center;}.aroma-product img{width:100%;height:155px;object-fit:cover;border-radius:16px;margin-bottom:10px;display:block;}.aroma-review .stars{color:#f59e0b;letter-spacing:1px;font-weight:900;margin-bottom:8px;}.aroma-cta a{display:inline-block;margin-top:16px;background:white;color:#2e7d32!important;text-decoration:none;padding:12px 20px;border-radius:999px;font-weight:900;}
 @media (max-width:1024px){.brand-timeline,.brand-life-grid,.brand-values,.aroma-map,.aroma-uses,.aroma-products,.aroma-testimonials{grid-template-columns:repeat(2,minmax(0,1fr));}.brand-people{grid-template-columns:1fr;}.brand-people-img img,.aroma-wide-img img{min-height:260px;height:260px;}}
 @media (max-width:560px){.brand-page,.aroma-page{padding:12px;border-radius:20px;}.brand-hero,.aroma-hero{min-height:360px;border-radius:20px;padding:20px;}.brand-timeline,.brand-life-grid,.brand-values,.aroma-map,.aroma-uses,.aroma-products,.aroma-testimonials{grid-template-columns:1fr;}.aroma-product img{height:180px;}}
@@ -1984,7 +2048,7 @@ footer {visibility: hidden;}
 .story-hero-scene::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.72)),radial-gradient(circle at 18% 24%,rgba(46,125,50,.32),transparent 36%);}
 .story-hero-inner{position:relative;z-index:2;max-width:850px;}
 .story-kicker{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(8px);font-weight:900;letter-spacing:.5px;margin-bottom:16px;}
-.story-hero-inner h1{margin:0 0 18px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,8vw,88px);line-height:.95;text-shadow:0 8px 28px rgba(0,0,0,.34);}
+.story-hero-inner h1{margin:0 0 18px;font-family:var(--font-heading);font-size:clamp(42px,8vw,88px);line-height:.95;text-shadow:0 8px 28px rgba(0,0,0,.34);}
 .story-hero-lead{margin:0;max-width:760px;color:rgba(255,255,255,.92);font-size:clamp(17px,2.35vw,24px);line-height:1.48;}
 .story-chapter{padding:clamp(38px,7vw,84px) clamp(18px,5vw,72px);}
 .story-chapter.alt{background:linear-gradient(180deg,#fffdf4,#f5fbef);}
@@ -1995,17 +2059,17 @@ footer {visibility: hidden;}
 .story-image-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(23,53,31,.18));}
 .story-text-block{max-width:650px;}
 .story-label{color:#2e7d32;font-weight:900;text-transform:uppercase;letter-spacing:.08em;font-size:13px;margin-bottom:10px;}
-.story-text-block h2,.story-full h2{color:#17351f;font-family:Georgia,"Times New Roman",serif;font-size:clamp(30px,5.2vw,58px);line-height:1.04;margin:0 0 18px;}
+.story-text-block h2,.story-full h2{color:#17351f;font-family:var(--font-heading);font-size:clamp(30px,5.2vw,58px);line-height:1.04;margin:0 0 18px;}
 .story-text-block p,.story-full p,.story-final p{color:#405442;font-size:clamp(16px,2vw,19px);line-height:1.78;margin:0 0 16px;}
 .story-full{max-width:850px;margin:0 auto;}
 .story-wide-scene{position:relative;min-height:clamp(390px,58vw,620px);display:flex;align-items:flex-end;padding:clamp(28px,6vw,64px);color:white;background-size:cover;background-position:center;overflow:hidden;}
 .story-wide-scene::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.70));}
 .story-wide-content{position:relative;z-index:2;max-width:820px;}
-.story-wide-content h2{margin:0 0 12px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,6vw,72px);line-height:1;}
+.story-wide-content h2{margin:0 0 12px;font-family:var(--font-heading);font-size:clamp(34px,6vw,72px);line-height:1;}
 .story-wide-content p{margin:0;color:rgba(255,255,255,.92);font-size:clamp(17px,2.4vw,23px);line-height:1.52;}
 .story-legend{max-width:860px;margin:0 auto;text-align:center;padding:clamp(42px,7vw,82px) clamp(20px,5vw,70px);}
-.story-legend .quote-mark{font-family:Georgia,"Times New Roman",serif;color:#2e7d32;font-size:clamp(54px,8vw,92px);line-height:.7;}
-.story-legend h2{margin:0 0 18px;color:#17351f;font-family:Georgia,"Times New Roman",serif;font-size:clamp(31px,5.6vw,62px);line-height:1.05;}
+.story-legend .quote-mark{font-family:var(--font-heading);color:#2e7d32;font-size:clamp(54px,8vw,92px);line-height:.7;}
+.story-legend h2{margin:0 0 18px;color:#17351f;font-family:var(--font-heading);font-size:clamp(31px,5.6vw,62px);line-height:1.05;}
 .story-legend p{margin:0 auto 16px;color:#405442;font-size:clamp(16px,2vw,19px);line-height:1.72;max-width:760px;}
 .story-process-link{margin-top:26px;display:inline-block;background:#2e7d32;color:white!important;text-decoration:none;padding:12px 20px;border-radius:999px;font-weight:900;}
 .story-gallery-ribbon{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:26px;}
@@ -2013,9 +2077,9 @@ footer {visibility: hidden;}
 .story-ribbon-item img{width:100%;height:100%;min-height:250px;object-fit:cover;display:block;}
 .story-ribbon-caption{position:absolute;left:0;right:0;bottom:0;color:white;font-weight:900;padding:18px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.72));}
 .story-final{background:linear-gradient(135deg,#102716,#2e7d32);color:white;padding:clamp(44px,8vw,92px) clamp(22px,6vw,76px);text-align:center;}
-.story-final h2{margin:0 0 20px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(36px,7vw,78px);line-height:1.03;color:white;}
+.story-final h2{margin:0 0 20px;font-family:var(--font-heading);font-size:clamp(36px,7vw,78px);line-height:1.03;color:white;}
 .story-final p{color:rgba(255,255,255,.90);max-width:850px;margin-left:auto;margin-right:auto;}
-.story-final .last-line{margin-top:26px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(24px,4vw,42px);line-height:1.25;color:#fff7d6;}
+.story-final .last-line{margin-top:26px;font-family:var(--font-heading);font-size:clamp(24px,4vw,42px);line-height:1.25;color:#fff7d6;}
 @media(max-width:900px){.story-two-col,.story-two-col.reverse{grid-template-columns:1fr;}.story-two-col.reverse .story-image-frame{order:-1;}.story-gallery-ribbon{grid-template-columns:repeat(2,minmax(0,1fr));}.story-ribbon-item,.story-ribbon-item img{min-height:190px;}}
 @media(max-width:520px){.story-magazine{border-radius:22px;}.story-hero-scene{min-height:500px;padding:24px;}.story-chapter{padding:34px 18px;}.story-gallery-ribbon{grid-template-columns:1fr;}.story-ribbon-item,.story-ribbon-item img{min-height:220px;}}
 
@@ -2368,14 +2432,78 @@ def render_story_page():
 
     story_component_css = """
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Nunito:wght@400;500;600;700&display=swap');
+
+:root {
+    --font-heading: "Be Vietnam Pro", Arial, sans-serif;
+    --font-body: "Nunito", Arial, sans-serif;
+}
+
+/* FONT SYSTEM - Vietnamese supported
+   Heading/menu/buttons: Be Vietnam Pro
+   Body content: Nunito
+*/
+html, body {
+    font-family: var(--font-body) !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.logo,
+.menu,
+.dropbtn,
+.dropdown-content a,
+.cart-link,
+.cart-menu-btn,
+.hero-btn,
+.page-title,
+.product-section-title,
+.product-info h3,
+.product-price,
+.buy-btn,
+.cart-btn,
+.cart-add-btn,
+.recipe-quick-title,
+.viewer-title h2,
+.story-kicker,
+.story-label,
+.story-hero-inner h1,
+.story-text-block h2,
+.story-full h2,
+.story-wide-content h2,
+.story-legend h2,
+.story-final h2,
+.story-final .last-line,
+.brand-eyebrow,
+.brand-section-head h3,
+.aroma-eyebrow,
+.aroma-section-head h3 {
+    font-family: var(--font-heading) !important;
+}
+
+p, li, span, div,
+.content,
+.card,
+.card2,
+.product-info,
+.story-hero-lead,
+.story-text-block,
+.story-full,
+.story-final,
+.viewer-title p,
+.status-row,
+.page-label,
+.counter-pill {
+    font-family: var(--font-body) !important;
+}
+
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:transparent;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+html,body{margin:0;padding:0;background:transparent;font-family:var(--font-body);overflow-x:hidden}
 .story-magazine{background:#fffdf4;border-radius:30px;overflow:hidden;border:1px solid #e4ead7;box-shadow:0 16px 38px rgba(23,53,31,.09)}
 .story-hero-scene{min-height:clamp(520px,72vw,760px);position:relative;display:flex;align-items:flex-end;padding:clamp(28px,6vw,68px);color:white;background-size:cover;background-position:center}
 .story-hero-scene::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.72)),radial-gradient(circle at 18% 24%,rgba(46,125,50,.32),transparent 36%)}
 .story-hero-inner{position:relative;z-index:2;max-width:850px}
 .story-kicker{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(8px);font-weight:900;letter-spacing:.5px;margin-bottom:16px}
-.story-hero-inner h1{margin:0 0 18px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,8vw,88px);line-height:.95;text-shadow:0 8px 28px rgba(0,0,0,.34)}
+.story-hero-inner h1{margin:0 0 18px;font-family:var(--font-heading);font-size:clamp(42px,8vw,88px);line-height:.95;text-shadow:0 8px 28px rgba(0,0,0,.34)}
 .story-hero-lead{margin:0;max-width:760px;color:rgba(255,255,255,.92);font-size:clamp(17px,2.35vw,24px);line-height:1.48}
 .story-chapter{padding:clamp(38px,7vw,84px) clamp(18px,5vw,72px)}
 .story-chapter.alt{background:linear-gradient(180deg,#fffdf4,#f5fbef)}
@@ -2386,17 +2514,17 @@ html,body{margin:0;padding:0;background:transparent;font-family:Arial,Helvetica,
 .story-image-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(23,53,31,.18))}
 .story-text-block{max-width:650px}
 .story-label{color:#2e7d32;font-weight:900;text-transform:uppercase;letter-spacing:.08em;font-size:13px;margin-bottom:10px}
-.story-text-block h2,.story-full h2{color:#17351f;font-family:Georgia,"Times New Roman",serif;font-size:clamp(30px,5.2vw,58px);line-height:1.04;margin:0 0 18px}
+.story-text-block h2,.story-full h2{color:#17351f;font-family:var(--font-heading);font-size:clamp(30px,5.2vw,58px);line-height:1.04;margin:0 0 18px}
 .story-text-block p,.story-full p,.story-final p{color:#405442;font-size:clamp(16px,2vw,19px);line-height:1.78;margin:0 0 16px}
 .story-full{max-width:850px;margin:0 auto}
 .story-wide-scene{position:relative;min-height:clamp(390px,58vw,620px);display:flex;align-items:flex-end;padding:clamp(28px,6vw,64px);color:white;background-size:cover;background-position:center;overflow:hidden}
 .story-wide-scene::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.70))}
 .story-wide-content{position:relative;z-index:2;max-width:820px}
-.story-wide-content h2{margin:0 0 12px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,6vw,72px);line-height:1}
+.story-wide-content h2{margin:0 0 12px;font-family:var(--font-heading);font-size:clamp(34px,6vw,72px);line-height:1}
 .story-wide-content p{margin:0;color:rgba(255,255,255,.92);font-size:clamp(17px,2.4vw,23px);line-height:1.52}
 .story-legend{max-width:860px;margin:0 auto;text-align:center;padding:clamp(42px,7vw,82px) clamp(20px,5vw,70px)}
-.story-legend .quote-mark{font-family:Georgia,"Times New Roman",serif;color:#2e7d32;font-size:clamp(54px,8vw,92px);line-height:.7}
-.story-legend h2{margin:0 0 18px;color:#17351f;font-family:Georgia,"Times New Roman",serif;font-size:clamp(31px,5.6vw,62px);line-height:1.05}
+.story-legend .quote-mark{font-family:var(--font-heading);color:#2e7d32;font-size:clamp(54px,8vw,92px);line-height:.7}
+.story-legend h2{margin:0 0 18px;color:#17351f;font-family:var(--font-heading);font-size:clamp(31px,5.6vw,62px);line-height:1.05}
 .story-legend p{margin:0 auto 16px;color:#405442;font-size:clamp(16px,2vw,19px);line-height:1.72;max-width:760px}
 .story-process-link{margin-top:26px;display:inline-block;background:#2e7d32;color:white!important;text-decoration:none;padding:12px 20px;border-radius:999px;font-weight:900}
 .story-gallery-ribbon{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:26px}
@@ -2404,23 +2532,84 @@ html,body{margin:0;padding:0;background:transparent;font-family:Arial,Helvetica,
 .story-ribbon-item img{width:100%;height:100%;min-height:250px;object-fit:cover;display:block}
 .story-ribbon-caption{position:absolute;left:0;right:0;bottom:0;color:white;font-weight:900;padding:18px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.72))}
 .story-final{background:linear-gradient(135deg,#102716,#2e7d32);color:white;padding:clamp(44px,8vw,92px) clamp(22px,6vw,76px);text-align:center}
-.story-final h2{margin:0 0 20px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(36px,7vw,78px);line-height:1.03;color:white}
+.story-final h2{margin:0 0 20px;font-family:var(--font-heading);font-size:clamp(36px,7vw,78px);line-height:1.03;color:white}
 .story-final p{color:rgba(255,255,255,.90);max-width:850px;margin-left:auto;margin-right:auto}
-.story-final .last-line{margin-top:26px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(24px,4vw,42px);line-height:1.25;color:#fff7d6}
+.story-final .last-line{margin-top:26px;font-family:var(--font-heading);font-size:clamp(24px,4vw,42px);line-height:1.25;color:#fff7d6}
 @media(max-width:900px){.story-two-col,.story-two-col.reverse{grid-template-columns:1fr}.story-two-col.reverse .story-image-frame{order:-1}.story-gallery-ribbon{grid-template-columns:repeat(2,minmax(0,1fr))}.story-ribbon-item,.story-ribbon-item img{min-height:190px}}
 @media(max-width:520px){.story-magazine{border-radius:22px}.story-hero-scene{min-height:500px;padding:24px}.story-chapter{padding:34px 18px}.story-gallery-ribbon{grid-template-columns:1fr}.story-ribbon-item,.story-ribbon-item img{min-height:220px}}
 </style>
 """
-    components.html(
-        story_component_css + html,
-        height=6800,
-        scrolling=False
-    )
+    components.html(story_component_css + html, height=6800, scrolling=False)
+
 
 def render_certificate_page():
     html = """
 <style>
-html, body { margin:0; padding:0; overflow:hidden; font-family:Arial, sans-serif; }
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Nunito:wght@400;500;600;700&display=swap');
+
+:root {
+    --font-heading: "Be Vietnam Pro", Arial, sans-serif;
+    --font-body: "Nunito", Arial, sans-serif;
+}
+
+/* FONT SYSTEM - Vietnamese supported
+   Heading/menu/buttons: Be Vietnam Pro
+   Body content: Nunito
+*/
+html, body {
+    font-family: var(--font-body) !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.logo,
+.menu,
+.dropbtn,
+.dropdown-content a,
+.cart-link,
+.cart-menu-btn,
+.hero-btn,
+.page-title,
+.product-section-title,
+.product-info h3,
+.product-price,
+.buy-btn,
+.cart-btn,
+.cart-add-btn,
+.recipe-quick-title,
+.viewer-title h2,
+.story-kicker,
+.story-label,
+.story-hero-inner h1,
+.story-text-block h2,
+.story-full h2,
+.story-wide-content h2,
+.story-legend h2,
+.story-final h2,
+.story-final .last-line,
+.brand-eyebrow,
+.brand-section-head h3,
+.aroma-eyebrow,
+.aroma-section-head h3 {
+    font-family: var(--font-heading) !important;
+}
+
+p, li, span, div,
+.content,
+.card,
+.card2,
+.product-info,
+.story-hero-lead,
+.story-text-block,
+.story-full,
+.story-final,
+.viewer-title p,
+.status-row,
+.page-label,
+.counter-pill {
+    font-family: var(--font-body) !important;
+}
+
+html, body { margin:0; padding:0; overflow:hidden; font-family:var(--font-body); }
 .cert-shell { width:100%; position:relative; padding:0 38px; box-sizing:border-box; }
 .cert-track { display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; padding:6px 0 16px 0; }
 .cert-track::-webkit-scrollbar { height:6px; }
@@ -2624,13 +2813,77 @@ def render_recipe_book_page():
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Nunito:wght@400;500;600;700&display=swap');
+
+:root {
+    --font-heading: "Be Vietnam Pro", Arial, sans-serif;
+    --font-body: "Nunito", Arial, sans-serif;
+}
+
+/* FONT SYSTEM - Vietnamese supported
+   Heading/menu/buttons: Be Vietnam Pro
+   Body content: Nunito
+*/
+html, body {
+    font-family: var(--font-body) !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.logo,
+.menu,
+.dropbtn,
+.dropdown-content a,
+.cart-link,
+.cart-menu-btn,
+.hero-btn,
+.page-title,
+.product-section-title,
+.product-info h3,
+.product-price,
+.buy-btn,
+.cart-btn,
+.cart-add-btn,
+.recipe-quick-title,
+.viewer-title h2,
+.story-kicker,
+.story-label,
+.story-hero-inner h1,
+.story-text-block h2,
+.story-full h2,
+.story-wide-content h2,
+.story-legend h2,
+.story-final h2,
+.story-final .last-line,
+.brand-eyebrow,
+.brand-section-head h3,
+.aroma-eyebrow,
+.aroma-section-head h3 {
+    font-family: var(--font-heading) !important;
+}
+
+p, li, span, div,
+.content,
+.card,
+.card2,
+.product-info,
+.story-hero-lead,
+.story-text-block,
+.story-full,
+.story-final,
+.viewer-title p,
+.status-row,
+.page-label,
+.counter-pill {
+    font-family: var(--font-body) !important;
+}
+
 * { box-sizing: border-box; }
 html, body {
     margin: 0;
     padding: 0;
     overflow: hidden;
     background: transparent;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:var(--font-body);
 }
 .viewer {
     width: 100%;
@@ -2655,7 +2908,7 @@ html, body {
 }
 .viewer-title h2 {
     margin: 0;
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family:var(--font-heading);
     font-size: clamp(22px, 3.4vw, 34px);
     line-height: 1;
     
@@ -3857,6 +4110,70 @@ def render_origin_process_page():
 
     html = f"""
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Nunito:wght@400;500;600;700&display=swap');
+
+:root {
+    --font-heading: "Be Vietnam Pro", Arial, sans-serif;
+    --font-body: "Nunito", Arial, sans-serif;
+}
+
+/* FONT SYSTEM - Vietnamese supported
+   Heading/menu/buttons: Be Vietnam Pro
+   Body content: Nunito
+*/
+html, body {
+    font-family: var(--font-body) !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.logo,
+.menu,
+.dropbtn,
+.dropdown-content a,
+.cart-link,
+.cart-menu-btn,
+.hero-btn,
+.page-title,
+.product-section-title,
+.product-info h3,
+.product-price,
+.buy-btn,
+.cart-btn,
+.cart-add-btn,
+.recipe-quick-title,
+.viewer-title h2,
+.story-kicker,
+.story-label,
+.story-hero-inner h1,
+.story-text-block h2,
+.story-full h2,
+.story-wide-content h2,
+.story-legend h2,
+.story-final h2,
+.story-final .last-line,
+.brand-eyebrow,
+.brand-section-head h3,
+.aroma-eyebrow,
+.aroma-section-head h3 {
+    font-family: var(--font-heading) !important;
+}
+
+p, li, span, div,
+.content,
+.card,
+.card2,
+.product-info,
+.story-hero-lead,
+.story-text-block,
+.story-full,
+.story-final,
+.viewer-title p,
+.status-row,
+.page-label,
+.counter-pill {
+    font-family: var(--font-body) !important;
+}
+
 .qn-page {{
     width:100%;
     margin:0 auto;
@@ -4685,14 +5002,78 @@ def render_video_page():
 
     aroma_css = """
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Nunito:wght@400;500;600;700&display=swap');
+
+:root {
+    --font-heading: "Be Vietnam Pro", Arial, sans-serif;
+    --font-body: "Nunito", Arial, sans-serif;
+}
+
+/* FONT SYSTEM - Vietnamese supported
+   Heading/menu/buttons: Be Vietnam Pro
+   Body content: Nunito
+*/
+html, body {
+    font-family: var(--font-body) !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.logo,
+.menu,
+.dropbtn,
+.dropdown-content a,
+.cart-link,
+.cart-menu-btn,
+.hero-btn,
+.page-title,
+.product-section-title,
+.product-info h3,
+.product-price,
+.buy-btn,
+.cart-btn,
+.cart-add-btn,
+.recipe-quick-title,
+.viewer-title h2,
+.story-kicker,
+.story-label,
+.story-hero-inner h1,
+.story-text-block h2,
+.story-full h2,
+.story-wide-content h2,
+.story-legend h2,
+.story-final h2,
+.story-final .last-line,
+.brand-eyebrow,
+.brand-section-head h3,
+.aroma-eyebrow,
+.aroma-section-head h3 {
+    font-family: var(--font-heading) !important;
+}
+
+p, li, span, div,
+.content,
+.card,
+.card2,
+.product-info,
+.story-hero-lead,
+.story-text-block,
+.story-full,
+.story-final,
+.viewer-title p,
+.status-row,
+.page-label,
+.counter-pill {
+    font-family: var(--font-body) !important;
+}
+
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:transparent;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+html,body{margin:0;padding:0;background:transparent;font-family:var(--font-body);overflow-x:hidden}
 .aroma-story{background:#fffdf4;border:1px solid #e4ead7;border-radius:30px;overflow:hidden;box-shadow:0 16px 38px rgba(23,53,31,.09)}
 .aroma-opening{min-height:clamp(520px,72vw,760px);position:relative;display:flex;align-items:flex-end;padding:clamp(28px,6vw,70px);color:white;background-size:cover;background-position:center}
 .aroma-opening::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.76)),radial-gradient(circle at 20% 20%,rgba(46,125,50,.32),transparent 34%)}
 .aroma-opening-inner{position:relative;z-index:2;max-width:850px}
 .aroma-kicker,.aroma-copy span,.aroma-products-head span,.aroma-gift-copy span,.aroma-memory span{display:inline-block;color:#fff7d6;background:rgba(46,125,50,.78);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:8px 14px;font-weight:900;letter-spacing:.04em;margin-bottom:14px}
-.aroma-opening h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(44px,8vw,92px);line-height:.94;margin:0 0 18px;text-shadow:0 8px 28px rgba(0,0,0,.34)}
+.aroma-opening h1{font-family:var(--font-heading);font-size:clamp(44px,8vw,92px);line-height:.94;margin:0 0 18px;text-shadow:0 8px 28px rgba(0,0,0,.34)}
 .aroma-opening p{font-size:clamp(17px,2.35vw,24px);line-height:1.5;color:rgba(255,255,255,.92);max-width:780px;margin:0}
 .aroma-flow{position:relative;padding:clamp(38px,7vw,90px) clamp(18px,5vw,72px);background:linear-gradient(180deg,#fffdf4,#f6fbef)}
 .aroma-line{position:absolute;top:0;bottom:0;left:50%;width:2px;background:linear-gradient(180deg,transparent,#9ccc65,#2e7d32,#9ccc65,transparent);opacity:.75}
@@ -4702,7 +5083,7 @@ html,body{margin:0;padding:0;background:transparent;font-family:Arial,Helvetica,
 .aroma-number{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#2e7d32;color:white;font-weight:900;border:6px solid #fffdf4;box-shadow:0 10px 24px rgba(23,53,31,.18);z-index:3}
 .aroma-copy{background:rgba(255,255,255,.78);border:1px solid #e3ead8;border-radius:28px;padding:clamp(22px,4vw,42px);box-shadow:0 14px 34px rgba(23,53,31,.075);backdrop-filter:blur(8px)}
 .aroma-copy span,.aroma-products-head span,.aroma-memory span{color:white;background:#2e7d32}
-.aroma-copy h2,.aroma-products-head h2,.aroma-gift-copy h2,.aroma-memory h2{font-family:Georgia,"Times New Roman",serif;color:#17351f;font-size:clamp(30px,5.2vw,58px);line-height:1.05;margin:0 0 18px}
+.aroma-copy h2,.aroma-products-head h2,.aroma-gift-copy h2,.aroma-memory h2{font-family:var(--font-heading);color:#17351f;font-size:clamp(30px,5.2vw,58px);line-height:1.05;margin:0 0 18px}
 .aroma-copy p,.aroma-products-head p,.aroma-gift-copy p,.aroma-memory p{font-size:clamp(16px,2vw,19px);line-height:1.74;color:#405442;margin:0 0 15px}
 .aroma-visual{min-height:clamp(320px,46vw,540px);border-radius:30px;overflow:hidden;box-shadow:0 18px 42px rgba(23,53,31,.14)}
 .aroma-visual img{width:100%;height:100%;min-height:clamp(320px,46vw,540px);object-fit:cover;display:block}
@@ -4723,7 +5104,7 @@ html,body{margin:0;padding:0;background:transparent;font-family:Arial,Helvetica,
 .aroma-memory-inner{max-width:900px;margin:0 auto}
 .aroma-memory h2{color:white}
 .aroma-memory p{color:rgba(255,255,255,.90);max-width:820px;margin-left:auto;margin-right:auto}
-.aroma-final-line{margin:28px auto 24px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(25px,4.5vw,48px);line-height:1.2;color:#fff7d6}
+.aroma-final-line{margin:28px auto 24px;font-family:var(--font-heading);font-size:clamp(25px,4.5vw,48px);line-height:1.2;color:#fff7d6}
 .aroma-memory a{display:inline-block;background:white;color:#2e7d32!important;text-decoration:none;padding:13px 22px;border-radius:999px;font-weight:900}
 @media(max-width:980px){.aroma-line{left:28px}.aroma-moment,.aroma-moment.reverse{grid-template-columns:1fr;padding-left:34px}.aroma-moment.reverse .aroma-copy{order:1}.aroma-moment.reverse .aroma-visual{order:2}.aroma-number{left:28px;top:0;transform:translate(-50%,0);width:48px;height:48px;border-width:5px}.aroma-product-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.aroma-product-strip figure,.aroma-product-strip img{min-height:240px}}
 @media(max-width:560px){.aroma-story{border-radius:22px}.aroma-opening{min-height:520px;padding:24px}.aroma-flow{padding:34px 16px}.aroma-copy{padding:20px;border-radius:22px}.aroma-visual,.aroma-visual img{min-height:260px;border-radius:22px}.aroma-product-strip{grid-template-columns:1fr}.aroma-product-strip figure,.aroma-product-strip img{min-height:250px}.aroma-gift-scene{min-height:520px;padding:24px}.aroma-line{left:20px}.aroma-moment,.aroma-moment.reverse{padding-left:28px}.aroma-number{left:20px}}
