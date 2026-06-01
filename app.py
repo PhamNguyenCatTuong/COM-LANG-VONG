@@ -2413,7 +2413,7 @@ html,body{margin:0;padding:0;background:transparent;font-family:Arial,Helvetica,
 """
     components.html(
         story_component_css + html,
-        height=7000,
+        height=6800,
         scrolling=False
     )
 
