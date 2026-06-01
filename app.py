@@ -2540,7 +2540,7 @@ def render_products():
 
         html += "</div></section>"
 
-    st.markdown(html, unsafe_allow_html=True)
+    # removed invalid st.markdown(html)
 
 
 
@@ -3336,7 +3336,7 @@ def render_recipe_index_page():
         )
 
     html += "</div></section>"
-    st.markdown(html, unsafe_allow_html=True)
+    # removed invalid st.markdown(html)
 
 
 def build_product_notes(product):
@@ -3392,7 +3392,7 @@ def render_compact_product_grid(indexes):
             f'</div>'
         )
     html += '</div>'
-    st.markdown(html, unsafe_allow_html=True)
+    # removed invalid st.markdown(html)
 
 
 
@@ -3782,7 +3782,7 @@ def render_product_detail_page():
         f"<div class='detail-block'><h3>Giới thiệu sản phẩm</h3><p>{story}</p><p>{product.get('desc', '')}</p></div>"
     )
 
-    st.markdown(html, unsafe_allow_html=True)
+    # removed invalid st.markdown(html)
 
     same_category = [
         index for index, item in enumerate(PRODUCTS)
@@ -4460,7 +4460,7 @@ def render_origin_process_page():
   </section>
 </div>
 """
-    st.markdown(html, unsafe_allow_html=True)
+    # removed invalid st.markdown(html)
 
 def render_ingredient_page():
 
@@ -4488,7 +4488,7 @@ def render_ingredient_page():
 </div>
 </section>"""
 
-    st.markdown(html, unsafe_allow_html=True)
+    # removed invalid st.markdown(html)
 
 def render_production_area_page():
     img4 = image_to_data_uri("rang com.jpg")
@@ -4514,7 +4514,7 @@ def render_production_area_page():
 </div>
 </section>"""
 
-    st.markdown(html, unsafe_allow_html=True)
+    # removed invalid st.markdown(html)
 
 def render_cart_page():
     st.markdown("<h1 class='page-title'>🛒 Giỏ hàng</h1>", unsafe_allow_html=True)
@@ -4543,7 +4543,7 @@ def render_cart_page():
         )
 
     html += "</div>"
-    st.markdown(html, unsafe_allow_html=True)
+    # removed invalid st.markdown(html)
 
 
 def render_video_page():
