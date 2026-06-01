@@ -11,6 +11,7 @@ st.set_page_config(page_title="CỐM LÀNG VÒNG", layout="wide")
 
 params = st.query_params
 page = params.get("page", "gioithieu")
+is_embed = str(params.get("embed", "")).lower() in ("1", "true", "yes")
 
 APP_DIR = Path(__file__).resolve().parent
 
@@ -2024,79 +2025,106 @@ footer {visibility: hidden;}
     unsafe_allow_html=True,
 )
 
-st.markdown(
-    """
-<div class="topbar">
-<input type="checkbox" id="menu-toggle">
-<div class="top-row">
-<div class="logo">🌾 Cốm Làng Vòng</div>
-<a href="?page=giohang" target="_self" class="cart-link">🛒 <span class="cart-badge">__CART_COUNT__</span></a>
-<label for="menu-toggle" class="hamburger">☰</label>
-</div>
-<div class="menu">
-<div class="dropdown"><button class="dropbtn parent-only" type="button">Giới thiệu</button><div class="dropdown-content"><a href="?page=cauchuyen" target="_self">Câu chuyện Cốm Làng Vòng</a><a href="?page=video" target="_self">Hành trình hương cốm</a></div></div>
-<div class="dropdown"><a href="?page=quytrinh" target="_self" style="text-decoration:none;"><button class="dropbtn">Quy trình & nguồn gốc</button></a></div>
-<div class="dropdown"><button class="dropbtn parent-only" type="button">Sản phẩm</button><div class="dropdown-content"><a href="?page=sanpham" target="_self">Danh sách sản phẩm</a><a href="?page=congthuc" target="_self">Công thức & Cách làm món ăn</a></div></div>
-<div class="dropdown"><a href="?page=chatluong" target="_self" style="text-decoration:none;"><button class="dropbtn">Chất lượng</button></a></div>
-<div class="dropdown"><button class="dropbtn parent-only" type="button">Bao bì & bảo quản</button><div class="dropdown-content"><a href="?page=muc_giay" target="_self">Mực & giấy bao bì</a><a href="?page=thuhoi" target="_self">Chính sách thu hồi</a></div></div>
-<a href="?page=giohang" target="_self" class="cart-menu-btn">🛒 Giỏ hàng (__CART_COUNT__)</a>
-</div>
-</div>
-<section class="hero-banner">
-<div class="hero-content">
-<div class="hero-small">Đặc sản mùa thu Hà Nội</div>
-<h1>Cốm Làng Vòng</h1>
-<p>Hương vị truyền thống của Hà Nội với hạt cốm dẻo thơm.</p>
-<div class="hero-actions">
-<a href="#dathang" class="hero-btn order" target="_self">Đặt hàng ngay</a>
-<a href="tel:0385437503" class="hero-btn call">Gọi tư vấn</a>
-</div>
-</div>
-</section>
-""".replace("__CART_COUNT__", str(cart_count)),
-    unsafe_allow_html=True,
-)
+if not is_embed:
+    st.markdown(
+        """
+    <div class="topbar">
+    <input type="checkbox" id="menu-toggle">
+    <div class="top-row">
+    <div class="logo">🌾 Cốm Làng Vòng</div>
+    <a href="?page=giohang" target="_self" class="cart-link">🛒 <span class="cart-badge">__CART_COUNT__</span></a>
+    <label for="menu-toggle" class="hamburger">☰</label>
+    </div>
+    <div class="menu">
+    <div class="dropdown"><button class="dropbtn parent-only" type="button">Giới thiệu</button><div class="dropdown-content"><a href="?page=cauchuyen" target="_self">Câu chuyện Cốm Làng Vòng</a><a href="?page=video" target="_self">Hành trình hương cốm</a></div></div>
+    <div class="dropdown"><a href="?page=quytrinh" target="_self" style="text-decoration:none;"><button class="dropbtn">Quy trình & nguồn gốc</button></a></div>
+    <div class="dropdown"><button class="dropbtn parent-only" type="button">Sản phẩm</button><div class="dropdown-content"><a href="?page=sanpham" target="_self">Danh sách sản phẩm</a><a href="?page=congthuc" target="_self">Công thức & Cách làm món ăn</a></div></div>
+    <div class="dropdown"><a href="?page=chatluong" target="_self" style="text-decoration:none;"><button class="dropbtn">Chất lượng</button></a></div>
+    <div class="dropdown"><button class="dropbtn parent-only" type="button">Bao bì & bảo quản</button><div class="dropdown-content"><a href="?page=muc_giay" target="_self">Mực & giấy bao bì</a><a href="?page=thuhoi" target="_self">Chính sách thu hồi</a></div></div>
+    <a href="?page=giohang" target="_self" class="cart-menu-btn">🛒 Giỏ hàng (__CART_COUNT__)</a>
+    </div>
+    </div>
+    <section class="hero-banner">
+    <div class="hero-content">
+    <div class="hero-small">Đặc sản mùa thu Hà Nội</div>
+    <h1>Cốm Làng Vòng</h1>
+    <p>Hương vị truyền thống của Hà Nội với hạt cốm dẻo thơm.</p>
+    <div class="hero-actions">
+    <a href="#dathang" class="hero-btn order" target="_self">Đặt hàng ngay</a>
+    <a href="tel:0385437503" class="hero-btn call">Gọi tư vấn</a>
+    </div>
+    </div>
+    </section>
+    """.replace("__CART_COUNT__", str(cart_count)),
+        unsafe_allow_html=True,
+    )
+    
+    st.markdown("""
+    <script>
+    (function(){
+      try {
+        const url = new URL(window.location.href);
+        if (url.searchParams.get("top") === "1") {
+          window.scrollTo({top: 0, left: 0, behavior: "auto"});
+          setTimeout(function(){ window.scrollTo(0, 0); }, 80);
+          setTimeout(function(){ window.scrollTo(0, 0); }, 250);
+          url.searchParams.delete("top");
+          window.history.replaceState({}, "", url.toString());
+        }
+      } catch(e) {}
+    })();
+    </script>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <script>
+    (function(){
+      if (window.__comLangVongNavListenerInstalled) return;
+      window.__comLangVongNavListenerInstalled = true;
+    
+      window.addEventListener("message", function(event){
+        try {
+          const data = event.data || {};
+          if (!data || data.type !== "COM_LANG_VONG_NAV") return;
+    
+          const page = String(data.page || "").trim();
+          if (!page) return;
+    
+          const url = new URL(window.location.href);
+          url.searchParams.set("page", page);
+          url.searchParams.set("top", "1");
+          window.location.href = url.toString();
+        } catch(e) {}
+      });
+    })();
+    </script>
+    """, unsafe_allow_html=True)
+    
 
-st.markdown("""
-<script>
-(function(){
-  try {
-    const url = new URL(window.location.href);
-    if (url.searchParams.get("top") === "1") {
-      window.scrollTo({top: 0, left: 0, behavior: "auto"});
-      setTimeout(function(){ window.scrollTo(0, 0); }, 80);
-      setTimeout(function(){ window.scrollTo(0, 0); }, 250);
-      url.searchParams.delete("top");
-      window.history.replaceState({}, "", url.toString());
+if is_embed:
+    st.markdown("""
+    <style>
+    .block-container {
+        padding-top: 0 !important;
+        max-width: 100% !important;
     }
-  } catch(e) {}
-})();
-</script>
-""", unsafe_allow_html=True)
-
-st.markdown("""
-<script>
-(function(){
-  if (window.__comLangVongNavListenerInstalled) return;
-  window.__comLangVongNavListenerInstalled = true;
-
-  window.addEventListener("message", function(event){
-    try {
-      const data = event.data || {};
-      if (!data || data.type !== "COM_LANG_VONG_NAV") return;
-
-      const page = String(data.page || "").trim();
-      if (!page) return;
-
-      const url = new URL(window.location.href);
-      url.searchParams.set("page", page);
-      url.searchParams.set("top", "1");
-      window.location.href = url.toString();
-    } catch(e) {}
-  });
-})();
-</script>
-""", unsafe_allow_html=True)
+    .content {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .page-title {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    .topbar,
+    .hero-banner,
+    .floating-contact,
+    .footer-full {
+        display: none !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
 st.markdown("<div class='content'>", unsafe_allow_html=True)
 
@@ -2359,7 +2387,7 @@ def render_story_page():
                 <h2>Hạt cốm được nâng niu từ khi còn ngậm sữa</h2>
                 <p>Nguyên liệu làm cốm là lúa nếp cái hoa vàng, giống nếp quý nổi tiếng bởi hương thơm và độ dẻo. Lúa phải được gặt khi hạt vừa ngậm sữa: không quá non để khỏi nát, cũng không quá già để tránh khô cứng.</p>
                 <p>Từ chọn lúa, rang, giã, sàng sảy đến gói lá sen, mỗi công đoạn đều cần bàn tay khéo léo và sự nhạy cảm của người thợ. Ở trang này, câu chuyện chỉ đi qua như một làn hương; phần chi tiết hơn được dành cho menu Quy trình & nguồn gốc.</p>
-                <a class="story-process-link js-parent-nav" href="#" data-page="quytrinh">Xem Quy trình & nguồn gốc</a>
+                <a class="story-process-link" href="?page=quytrinh&embed=1" target="_self">Xem Quy trình & nguồn gốc</a>
             </div>
             <div class="story-image-frame"><img src="{lotus_img}"></div>
         </div>
@@ -2453,23 +2481,7 @@ html,body{margin:0;padding:0;background:transparent;font-family:Arial,Helvetica,
 
 </style>
 """
-    components.html(story_component_css + html + """
-<script>
-document.addEventListener("click", function(e){
-  const a = e.target.closest("a.js-parent-nav");
-  if (!a) return;
-  e.preventDefault();
-  const page = a.getAttribute("data-page");
-  if (!page) return;
-
-  try {
-    window.parent.postMessage({type:"COM_LANG_VONG_NAV", page:page}, "*");
-  } catch(err) {}
-
-  return false;
-});
-</script>
-""", height=6200, scrolling=True)
+    components.html(story_component_css + html, height=6200, scrolling=True)
 
 
 def render_certificate_page():
@@ -4747,7 +4759,7 @@ def render_video_page():
             <h2>Điểm cuối của hành trình<br>là lúc khách hàng muốn quay lại</h2>
             <p>Khi một hương vị đủ thật, một câu chuyện đủ đẹp và một sản phẩm đủ chỉn chu, khách hàng không chỉ mua một lần. Họ nhớ, họ kể lại, họ tìm đến khi cần một món quà mang dấu ấn Hà Nội.</p>
             <div class="aroma-final-line">Hương cốm không dừng lại ở làng nghề.<br>Nó tiếp tục sống trong những người yêu Hà Nội.</div>
-            <a class="js-parent-nav" href="#" data-page="sanpham">Khám phá sản phẩm từ cốm</a>
+            <a href="?page=sanpham&embed=1" target="_self">Khám phá sản phẩm từ cốm</a>
         </div>
     </section>
 </div>
@@ -4874,23 +4886,7 @@ html,body{margin:0;padding:0;background:transparent;font-family:Arial,Helvetica,
 
 </style>
 """
-    components.html(aroma_css + aroma_html + """
-<script>
-document.addEventListener("click", function(e){
-  const a = e.target.closest("a.js-parent-nav");
-  if (!a) return;
-  e.preventDefault();
-  const page = a.getAttribute("data-page");
-  if (!page) return;
-
-  try {
-    window.parent.postMessage({type:"COM_LANG_VONG_NAV", page:page}, "*");
-  } catch(err) {}
-
-  return false;
-});
-</script>
-""", height=7600, scrolling=True)
+    components.html(aroma_css + aroma_html, height=7600, scrolling=True)
 
 
 def render_page(page_data):
