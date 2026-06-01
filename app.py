@@ -566,7 +566,7 @@ PAGE_DATABASE = {
 st.markdown(
     """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Nunito:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Be+Vietnam+Pro:wght@400;500;600&display=swap');
 
 :root {
     --font-heading: "Be Vietnam Pro", Arial, sans-serif;
@@ -699,6 +699,16 @@ footer {visibility: hidden;}
     border-radius: 8px 8px 0 0;
     font-size: clamp(12px, 3.1vw, 15px);
     padding: clamp(7px, 1.9vw, 10px) 12px;
+}
+
+.dropbtn-link {
+    display: block;
+    text-decoration: none !important;
+    color: white !important;
+}
+
+.dropbtn-link:hover {
+    background: #256b2b;
 }
 
 .dropdown-content {
@@ -2007,7 +2017,7 @@ footer {visibility: hidden;}
 
 /* Parent menu buttons with submenus are not direct links */
 .dropbtn.parent-only {
-    cursor: pointer;
+    cursor: default;
 }
 .dropbtn.parent-only:focus {
     outline: none;
@@ -2080,8 +2090,8 @@ footer {visibility: hidden;}
 .story-final h2{margin:0 0 20px;font-family:var(--font-heading);font-size:clamp(36px,7vw,78px);line-height:1.03;color:white;}
 .story-final p{color:rgba(255,255,255,.90);max-width:850px;margin-left:auto;margin-right:auto;}
 .story-final .last-line{margin-top:26px;font-family:var(--font-heading);font-size:clamp(24px,4vw,42px);line-height:1.25;color:#fff7d6;}
-@media(max-width:900px){.story-two-col,.story-two-col.reverse{grid-template-columns:1fr;}.story-two-col.reverse .story-image-frame{order:-1;}.story-gallery-ribbon{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;}.story-ribbon-item,.story-ribbon-item img{min-height:140px;}.story-ribbon-item{border-radius:16px;}.story-ribbon-caption{font-size:12px;line-height:1.25;padding:10px 8px;}}
-@media(max-width:520px){.story-magazine{border-radius:22px;}.story-hero-scene{min-height:500px;padding:24px;}.story-chapter{padding:34px 18px;}.story-gallery-ribbon{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;}.story-ribbon-item,.story-ribbon-item img{min-height:105px;}.story-ribbon-item{border-radius:12px;}.story-ribbon-caption{font-size:10px;line-height:1.2;padding:7px 5px;}}
+@media(max-width:900px){.story-two-col,.story-two-col.reverse{grid-template-columns:1fr;}.story-two-col.reverse .story-image-frame{order:-1;}.story-gallery-ribbon{grid-template-columns:repeat(2,minmax(0,1fr));}.story-ribbon-item,.story-ribbon-item img{min-height:190px;}}
+@media(max-width:520px){.story-magazine{border-radius:22px;}.story-hero-scene{min-height:500px;padding:24px;}.story-chapter{padding:34px 18px;}.story-gallery-ribbon{grid-template-columns:1fr;}.story-ribbon-item,.story-ribbon-item img{min-height:220px;}}
 
 </style>
 """.replace("__BANNER_IMAGE__", image_to_data_uri("Banner com.jpg")),
@@ -2099,7 +2109,7 @@ st.markdown(
 </div>
 <div class="menu">
 <div class="dropdown"><button class="dropbtn parent-only" type="button">Giới thiệu</button><div class="dropdown-content"><a href="?page=cauchuyen" target="_self">Câu chuyện Cốm Làng Vòng</a><a href="?page=video" target="_self">Hành trình hương cốm</a></div></div>
-<div class="dropdown"><button class="dropbtn parent-only" type="button">Quy trình & nguồn gốc</button><div class="dropdown-content"><a href="?page=quytrinh" target="_self">Tổng quan quy trình</a><a href="?page=nguyenlieu" target="_self">Nguồn nguyên liệu</a><a href="?page=khuvuc" target="_self">Khu vực sản xuất</a></div></div>
+<div class="dropdown"><a href="?page=quytrinh" target="_self" class="dropbtn dropbtn-link">Quy trình & nguồn gốc</a></div>
 <div class="dropdown"><button class="dropbtn parent-only" type="button">Sản phẩm</button><div class="dropdown-content"><a href="?page=sanpham" target="_self">Danh sách sản phẩm</a><a href="?page=congthuc" target="_self">Công thức & Cách làm món ăn</a></div></div>
 <div class="dropdown"><a href="?page=chatluong" target="_self" style="text-decoration:none;"><button class="dropbtn">Chất lượng</button></a></div>
 <div class="dropdown"><button class="dropbtn parent-only" type="button">Bao bì & bảo quản</button><div class="dropdown-content"><a href="?page=muc_giay" target="_self">Mực & giấy bao bì</a><a href="?page=thuhoi" target="_self">Chính sách thu hồi</a></div></div>
@@ -2535,8 +2545,8 @@ html,body{margin:0;padding:0;background:transparent;font-family:var(--font-body)
 .story-final h2{margin:0 0 20px;font-family:var(--font-heading);font-size:clamp(36px,7vw,78px);line-height:1.03;color:white}
 .story-final p{color:rgba(255,255,255,.90);max-width:850px;margin-left:auto;margin-right:auto}
 .story-final .last-line{margin-top:26px;font-family:var(--font-heading);font-size:clamp(24px,4vw,42px);line-height:1.25;color:#fff7d6}
-@media(max-width:900px){.story-two-col,.story-two-col.reverse{grid-template-columns:1fr}.story-two-col.reverse .story-image-frame{order:-1}.story-gallery-ribbon{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.story-ribbon-item,.story-ribbon-item img{min-height:140px}.story-ribbon-item{border-radius:16px}.story-ribbon-caption{font-size:12px;line-height:1.25;padding:10px 8px}}
-@media(max-width:520px){.story-magazine{border-radius:22px}.story-hero-scene{min-height:500px;padding:24px}.story-chapter{padding:34px 18px}.story-gallery-ribbon{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.story-ribbon-item,.story-ribbon-item img{min-height:105px}.story-ribbon-item{border-radius:12px}.story-ribbon-caption{font-size:10px;line-height:1.2;padding:7px 5px}}
+@media(max-width:900px){.story-two-col,.story-two-col.reverse{grid-template-columns:1fr}.story-two-col.reverse .story-image-frame{order:-1}.story-gallery-ribbon{grid-template-columns:repeat(2,minmax(0,1fr))}.story-ribbon-item,.story-ribbon-item img{min-height:190px}}
+@media(max-width:520px){.story-magazine{border-radius:22px}.story-hero-scene{min-height:500px;padding:24px}.story-chapter{padding:34px 18px}.story-gallery-ribbon{grid-template-columns:1fr}.story-ribbon-item,.story-ribbon-item img{min-height:220px}}
 </style>
 """
     components.html(story_component_css + html, height=6600, scrolling=False)
