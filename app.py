@@ -2301,7 +2301,6 @@ def render_story_page():
         <div class="story-two-col">
             <div class="story-image-frame"><img src="{autumn_img}"></div>
             <div class="story-text-block">
-                <div class="story-label">Chương 01</div>
                 <h2>Hà Nội dịu lại trong hương cốm</h2>
                 <p>Mỗi khi thu về, Hà Nội như chậm hơn một nhịp. Nắng không còn gắt, gió trở nên mỏng nhẹ, còn những con phố bỗng vấn vương bởi hương thơm ngọt lành của lúa nếp non.</p>
                 <p>Giữa khoảnh khắc ấy, Cốm Làng Vòng hiện lên như một thức quà thanh tao của đất kinh kỳ. Không cầu kỳ, không phô trương, cốm đi vào lòng người bằng màu xanh non, vị ngọt dịu và mùi hương thoảng nhẹ như chính mùa thu Hà Nội.</p>
@@ -2318,7 +2317,6 @@ def render_story_page():
 
     <section class="story-chapter alt">
         <div class="story-full">
-            <div class="story-label">Chương 02</div>
             <h2>Từ một sự tình cờ thành báu vật làng nghề</h2>
             <p>Tương truyền, trong một năm mưa bão lớn, lúa ngoài đồng bị ngập khi hạt vẫn còn xanh. Để cứu lấy phần lúa non ấy, người dân đem rang lên ăn tạm. Không ngờ, từ điều tưởng như bất đắc dĩ, họ phát hiện ra một hương vị dẻo thơm rất riêng.</p>
             <p>Từ sự tình cờ của mùa màng, nghề làm cốm dần được hình thành, chăm chút và truyền lại qua từng đời. Mỗi thế hệ lại gửi vào hạt cốm thêm một chút kinh nghiệm, một chút kiên nhẫn và một niềm tự hào âm thầm của người giữ nghề.</p>
@@ -2334,11 +2332,10 @@ def render_story_page():
     <section class="story-chapter">
         <div class="story-two-col reverse">
             <div class="story-text-block">
-                <div class="story-label">Chương 03</div>
                 <h2>Hạt cốm được nâng niu từ khi còn ngậm sữa</h2>
                 <p>Nguyên liệu làm cốm là lúa nếp cái hoa vàng, giống nếp quý nổi tiếng bởi hương thơm và độ dẻo. Lúa phải được gặt khi hạt vừa ngậm sữa: không quá non để khỏi nát, cũng không quá già để tránh khô cứng.</p>
                 <p>Từ chọn lúa, rang, giã, sàng sảy đến gói lá sen, mỗi công đoạn đều cần bàn tay khéo léo và sự nhạy cảm của người thợ. Ở trang này, câu chuyện chỉ đi qua như một làn hương; phần chi tiết hơn được dành cho menu Quy trình & nguồn gốc.</p>
-                <a class="story-process-link" href="?page=quytrinh&top=1" target="_top">Xem Quy trình & nguồn gốc</a>
+                <a class="story-process-link js-parent-nav" href="?page=quytrinh&top=1" data-page="quytrinh">Xem Quy trình & nguồn gốc</a>
             </div>
             <div class="story-image-frame"><img src="{lotus_img}"></div>
         </div>
@@ -2346,7 +2343,6 @@ def render_story_page():
 
     <section class="story-chapter alt">
         <div class="story-full">
-            <div class="story-label">Chương 04</div>
             <h2>Một thức quà không dành cho sự vội vàng</h2>
             <p>Cốm không phải món ăn để thưởng thức qua loa. Người Hà Nội thường nâng nhẹ một nhúm cốm bằng năm đầu ngón tay, nhai chậm rãi để cảm nhận vị ngọt thanh, độ dẻo mềm và mùi thơm của sữa non hòa cùng hương lá sen.</p>
             <p>Khi nhấp thêm một ngụm trà xanh ấm, vị chát dịu của trà như làm nổi bật hơn cái ngọt lành của cốm. Sự kết hợp ấy giản dị mà tinh tế, nhẹ nhàng mà khó quên, như cách Hà Nội lưu giữ vẻ đẹp của mình qua những điều rất nhỏ.</p>
@@ -2362,7 +2358,6 @@ def render_story_page():
 
     <section class="story-chapter">
         <div class="story-full">
-            <div class="story-label">Chương 05</div>
             <h2>Hương cốm tiếp tục sống trong những món ăn mới</h2>
             <p>Ngày nay, bên cạnh cốm mộc truyền thống, hương cốm còn được gửi vào bánh cốm, xôi cốm, cốm xào, mochi cốm, sữa chua cốm hay nhiều món ăn sáng tạo khác. Mỗi sản phẩm là một cách để hương vị xưa đến gần hơn với người thưởng thức hôm nay.</p>
             <div class="story-gallery-ribbon">
@@ -2426,9 +2421,30 @@ html,body{margin:0;padding:0;background:transparent;font-family:Arial,Helvetica,
 .story-final .last-line{margin-top:26px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(24px,4vw,42px);line-height:1.25;color:#fff7d6}
 @media(max-width:900px){.story-two-col,.story-two-col.reverse{grid-template-columns:1fr}.story-two-col.reverse .story-image-frame{order:-1}.story-gallery-ribbon{grid-template-columns:repeat(2,minmax(0,1fr))}.story-ribbon-item,.story-ribbon-item img{min-height:190px}}
 @media(max-width:520px){.story-magazine{border-radius:22px}.story-hero-scene{min-height:500px;padding:24px}.story-chapter{padding:34px 18px}.story-gallery-ribbon{grid-template-columns:1fr}.story-ribbon-item,.story-ribbon-item img{min-height:220px}}
+
+/* FIX: remove chapter labels */
+.story-label {
+    display: none !important;
+}
+
 </style>
 """
-    components.html(story_component_css + html, height=6200, scrolling=True)
+    components.html(story_component_css + html + """
+<script>
+document.addEventListener("click", function(e){
+  const a = e.target.closest("a.js-parent-nav");
+  if (!a) return;
+  e.preventDefault();
+  const page = a.getAttribute("data-page");
+  if (!page) return;
+  try {
+    window.parent.location.href = "?page=" + encodeURIComponent(page) + "&top=1";
+  } catch(err) {
+    window.top.location.href = "?page=" + encodeURIComponent(page) + "&top=1";
+  }
+});
+</script>
+""", height=6200, scrolling=True)
 
 
 def render_certificate_page():
@@ -4706,7 +4722,7 @@ def render_video_page():
             <h2>Điểm cuối của hành trình<br>là lúc khách hàng muốn quay lại</h2>
             <p>Khi một hương vị đủ thật, một câu chuyện đủ đẹp và một sản phẩm đủ chỉn chu, khách hàng không chỉ mua một lần. Họ nhớ, họ kể lại, họ tìm đến khi cần một món quà mang dấu ấn Hà Nội.</p>
             <div class="aroma-final-line">Hương cốm không dừng lại ở làng nghề.<br>Nó tiếp tục sống trong những người yêu Hà Nội.</div>
-            <a href="?page=sanpham&top=1" target="_top">Khám phá sản phẩm từ cốm</a>
+            <a class="js-parent-nav" href="?page=sanpham&top=1" data-page="sanpham">Khám phá sản phẩm từ cốm</a>
         </div>
     </section>
 </div>
@@ -4833,7 +4849,22 @@ html,body{margin:0;padding:0;background:transparent;font-family:Arial,Helvetica,
 
 </style>
 """
-    components.html(aroma_css + aroma_html, height=7600, scrolling=True)
+    components.html(aroma_css + aroma_html + """
+<script>
+document.addEventListener("click", function(e){
+  const a = e.target.closest("a.js-parent-nav");
+  if (!a) return;
+  e.preventDefault();
+  const page = a.getAttribute("data-page");
+  if (!page) return;
+  try {
+    window.parent.location.href = "?page=" + encodeURIComponent(page) + "&top=1";
+  } catch(err) {
+    window.top.location.href = "?page=" + encodeURIComponent(page) + "&top=1";
+  }
+});
+</script>
+""", height=7600, scrolling=True)
 
 
 def render_page(page_data):
