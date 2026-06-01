@@ -2411,7 +2411,7 @@ html,body{margin:0;padding:0;background:transparent;font-family:Arial,Helvetica,
 @media(max-width:520px){.story-magazine{border-radius:22px}.story-hero-scene{min-height:500px;padding:24px}.story-chapter{padding:34px 18px}.story-gallery-ribbon{grid-template-columns:1fr}.story-ribbon-item,.story-ribbon-item img{min-height:220px}}
 </style>
 """
-    components.html(story_component_css + html, height=6200, scrolling=False)
+    st.markdown(story_component_css + html, unsafe_allow_html=True)
 
 
 def render_certificate_page():
