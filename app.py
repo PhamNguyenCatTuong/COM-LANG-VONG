@@ -2380,7 +2380,7 @@ def render_story_page():
     </section>
 </div>
 """
-st.markdown(html, unsafe_allow_html=True)
+    st.markdown(html, unsafe_allow_html=True)
 
 
 def render_certificate_page():
