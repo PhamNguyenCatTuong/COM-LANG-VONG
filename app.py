@@ -2074,6 +2074,30 @@ st.markdown("""
 </script>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+<script>
+(function(){
+  if (window.__comLangVongNavListenerInstalled) return;
+  window.__comLangVongNavListenerInstalled = true;
+
+  window.addEventListener("message", function(event){
+    try {
+      const data = event.data || {};
+      if (!data || data.type !== "COM_LANG_VONG_NAV") return;
+
+      const page = String(data.page || "").trim();
+      if (!page) return;
+
+      const url = new URL(window.location.href);
+      url.searchParams.set("page", page);
+      url.searchParams.set("top", "1");
+      window.location.href = url.toString();
+    } catch(e) {}
+  });
+})();
+</script>
+""", unsafe_allow_html=True)
+
 st.markdown("<div class='content'>", unsafe_allow_html=True)
 
 
@@ -2335,7 +2359,7 @@ def render_story_page():
                 <h2>Hạt cốm được nâng niu từ khi còn ngậm sữa</h2>
                 <p>Nguyên liệu làm cốm là lúa nếp cái hoa vàng, giống nếp quý nổi tiếng bởi hương thơm và độ dẻo. Lúa phải được gặt khi hạt vừa ngậm sữa: không quá non để khỏi nát, cũng không quá già để tránh khô cứng.</p>
                 <p>Từ chọn lúa, rang, giã, sàng sảy đến gói lá sen, mỗi công đoạn đều cần bàn tay khéo léo và sự nhạy cảm của người thợ. Ở trang này, câu chuyện chỉ đi qua như một làn hương; phần chi tiết hơn được dành cho menu Quy trình & nguồn gốc.</p>
-                <a class="story-process-link js-parent-nav" href="?page=quytrinh&top=1" data-page="quytrinh">Xem Quy trình & nguồn gốc</a>
+                <a class="story-process-link js-parent-nav" href="#" data-page="quytrinh">Xem Quy trình & nguồn gốc</a>
             </div>
             <div class="story-image-frame"><img src="{lotus_img}"></div>
         </div>
@@ -2437,11 +2461,12 @@ document.addEventListener("click", function(e){
   e.preventDefault();
   const page = a.getAttribute("data-page");
   if (!page) return;
+
   try {
-    window.parent.location.href = "?page=" + encodeURIComponent(page) + "&top=1";
-  } catch(err) {
-    window.top.location.href = "?page=" + encodeURIComponent(page) + "&top=1";
-  }
+    window.parent.postMessage({type:"COM_LANG_VONG_NAV", page:page}, "*");
+  } catch(err) {}
+
+  return false;
 });
 </script>
 """, height=6200, scrolling=True)
@@ -4722,7 +4747,7 @@ def render_video_page():
             <h2>Điểm cuối của hành trình<br>là lúc khách hàng muốn quay lại</h2>
             <p>Khi một hương vị đủ thật, một câu chuyện đủ đẹp và một sản phẩm đủ chỉn chu, khách hàng không chỉ mua một lần. Họ nhớ, họ kể lại, họ tìm đến khi cần một món quà mang dấu ấn Hà Nội.</p>
             <div class="aroma-final-line">Hương cốm không dừng lại ở làng nghề.<br>Nó tiếp tục sống trong những người yêu Hà Nội.</div>
-            <a class="js-parent-nav" href="?page=sanpham&top=1" data-page="sanpham">Khám phá sản phẩm từ cốm</a>
+            <a class="js-parent-nav" href="#" data-page="sanpham">Khám phá sản phẩm từ cốm</a>
         </div>
     </section>
 </div>
@@ -4857,11 +4882,12 @@ document.addEventListener("click", function(e){
   e.preventDefault();
   const page = a.getAttribute("data-page");
   if (!page) return;
+
   try {
-    window.parent.location.href = "?page=" + encodeURIComponent(page) + "&top=1";
-  } catch(err) {
-    window.top.location.href = "?page=" + encodeURIComponent(page) + "&top=1";
-  }
+    window.parent.postMessage({type:"COM_LANG_VONG_NAV", page:page}, "*");
+  } catch(err) {}
+
+  return false;
 });
 </script>
 """, height=7600, scrolling=True)
