@@ -566,7 +566,7 @@ PAGE_DATABASE = {
 st.markdown(
     """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Nunito:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Be+Vietnam+Pro:wght@400;500;600&display=swap');
 
 :root {
     --font-heading: "Be Vietnam Pro", Arial, sans-serif;
