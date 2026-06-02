@@ -1477,7 +1477,7 @@ footer {visibility: hidden;}
     perspective: 1800px;
 }
 
-.recipe-page {
+ {
     display: none;
     background: linear-gradient(90deg, #fff8df 0%, #fffdf4 48%, #f8edc8 50%, #fffdf4 52%, #fff8df 100%);
     border: 2px solid #d7b56d;
@@ -1632,10 +1632,10 @@ footer {visibility: hidden;}
     border: 2px solid #d7b56d;
     border-radius: 22px;
     box-shadow: 0 14px 34px rgba(70,45,12,.22);
-    padding: 28px 66px;
+    padding:24px !important;
     min-height: 560px;
     animation: pageFlip .45s ease;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
     gap: 34px;
 }
 
