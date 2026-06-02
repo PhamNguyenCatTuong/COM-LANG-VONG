@@ -2076,7 +2076,7 @@ footer {visibility: hidden;}
 .recipe-image-page img{
     width:100% !important;
     height:auto !important;
-    max-width:100% !important;
+    max-width:1400px !important;
     object-fit:contain !important;
     display:block;
 }
