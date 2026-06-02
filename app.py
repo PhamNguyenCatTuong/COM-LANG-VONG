@@ -2489,7 +2489,7 @@ html,body{margin:0;padding:0;background:transparent;font-family:var(--font-body)
 @media(max-width:520px){.story-magazine{border-radius:22px}.story-hero-scene{min-height:500px;padding:24px}.story-chapter{padding:34px 18px}.story-gallery-ribbon{grid-template-columns:1fr}.story-ribbon-item,.story-ribbon-item img{min-height:220px}}
 </style>
 """
-    components.html(story_component_css + html, height=6600, scrolling=False)
+    components.html(story_component_css + html, height=6800, scrolling=False)
 
 
 def render_certificate_page():
@@ -5059,7 +5059,7 @@ html,body{margin:0;padding:0;background:transparent;font-family:var(--font-body)
 @media(max-width:560px){.aroma-story{border-radius:22px}.aroma-opening{min-height:520px;padding:24px}.aroma-flow{padding:34px 16px}.aroma-copy{padding:20px;border-radius:22px}.aroma-visual,.aroma-visual img{min-height:260px;border-radius:22px}.aroma-product-strip{grid-template-columns:1fr}.aroma-product-strip figure,.aroma-product-strip img{min-height:250px}.aroma-gift-scene{min-height:520px;padding:24px}.aroma-line{left:20px}.aroma-moment,.aroma-moment.reverse{padding-left:28px}.aroma-number{left:20px}}
 </style>
 """
-    components.html(aroma_css + aroma_html, height=7200, scrolling=True)
+    components.html(aroma_css + aroma_html, height=6800, scrolling=True)
 
 
 def render_page(page_data):
