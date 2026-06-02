@@ -341,10 +341,20 @@ def page_url(page_id, product_index=None, add_cart=None):
     return "?" + "&".join(parts)
 
 PAGE_DATABASE = {
+    "gioithieu": {
+        "title": "Giới thiệu",
+        "type": "group",
+        "items": ["cauchuyen", "video"],
+    },
     "quytrinh": {
         "title": "Quy trình & nguồn gốc",
         "type": "custom_origin_process",
         "items": ["nguyenlieu", "khuvuc"],
+    },
+    "sanpham_main": {
+        "title": "Sản phẩm",
+        "type": "group",
+        "items": ["sanpham", "congthuc"],
     },
     "baobi_main": {
         "title": "Bao bì & bảo quản",
@@ -452,7 +462,7 @@ PAGE_DATABASE = {
         ],
     },
     "congthuc": {
-        "title": "Công thức & Cách làm",
+        "title": "Công thức & Cách làm món ăn",
         "card_class": "card",
         "card_title": "🍽️ Công thức & Cách làm món ăn",
         "paragraphs": [
@@ -465,6 +475,63 @@ PAGE_DATABASE = {
             "Tôm tẩm cốm và các món đặc sản khác.",
         ],
     },
+    "tensp_masp": {
+        "title": "Tên & mã sản phẩm",
+        "card_class": "card",
+        "card_title": "🌾 Thông tin nhận diện sản phẩm",
+        "fields": {
+            "Tên sản phẩm": "Cốm Làng Vòng",
+            "Mã sản phẩm": "COM-LV-001",
+            "Loại sản phẩm": "Thực phẩm truyền thống",
+            "Dòng sản phẩm": "Cốm truyền thống",
+        },
+        "paragraphs": [
+            "Thông tin tên và mã sản phẩm giúp khách hàng nhận diện, tra cứu và truy xuất sản phẩm nhanh chóng."
+        ],
+    },
+    "nguyenlieu": {
+        "title": "Nguồn nguyên liệu",
+        "card_class": "card2",
+        "card_title": "🌾 Nguồn nguyên liệu làm cốm",
+        "paragraphs": [
+            "Cốm Làng Vòng được tạo nên từ những hạt lúa nếp non còn ngậm sữa, được thu hoạch đúng thời điểm để giữ độ dẻo mềm và hương thơm tự nhiên.",
+            "Người làm cốm phải chọn lọc kỹ từng bó lúa, loại bỏ hạt lép, hạt sâu và tạp chất để giữ lại phần nguyên liệu đạt chất lượng tốt nhất.",
+            "Lúa sau khi thu hoạch cần được đưa vào sơ chế sớm để giữ màu xanh non, vị ngọt thanh và mùi thơm đặc trưng của cốm Hà Nội.",
+        ],
+        "bullets": [
+            "Chọn hạt lúa nếp non đạt độ sữa thích hợp.",
+            "Ưu tiên nguyên liệu canh tác an toàn.",
+            "Thu hoạch đúng mùa để giữ độ dẻo và màu xanh.",
+            "Sơ chế nhanh để bảo toàn hương thơm tự nhiên.",
+        ],
+        "images": [
+            "Com tong quan 3.jpg",
+            "hat com tuoi.jpg",
+            "me com lang vong.jpg",
+        ],
+    },
+
+    "khuvuc": {
+        "title": "Khu vực sản xuất",
+        "card_class": "card2",
+        "card_title": "📍 Khu vực sản xuất & chế biến",
+        "images": [
+            "rang com.jpg",
+            "gia com.jpg",
+            "sang com.jpg",
+        ],
+        "paragraphs": [
+            "Sản phẩm được chế biến theo phương pháp truyền thống gắn với nghề làm cốm Làng Vòng, Hà Nội.",
+            "Khu vực sản xuất cần đảm bảo sạch sẽ, khô thoáng, tách biệt với nguồn ô nhiễm và có dụng cụ chuyên dùng cho thực phẩm.",
+            "Các công đoạn rang, giã, sàng, đóng gói được kiểm soát nhằm giữ hương vị cốm và đảm bảo an toàn cho người tiêu dùng.",
+        ],
+        "fields": {
+            "Khu vực": "Làng Vòng - Cầu Giấy - Hà Nội",
+            "Hình thức sản xuất": "Kết hợp phương pháp truyền thống và kiểm soát vệ sinh an toàn thực phẩm",
+            "Điều kiện sản xuất": "Sạch sẽ, khô thoáng, dụng cụ tiếp xúc thực phẩm được vệ sinh định kỳ",
+        },
+    },
+
     "chatluong": {
         "title": "Chất lượng & chứng nhận",
         "type": "custom_cert",
@@ -561,20 +628,6 @@ p, li, span, div,
 .page-label,
 .counter-pill {
     font-family: var(--font-body) !important;
-}
-
-.content p,
-.card p,
-.card2 p,
-.origin-text p,
-.story-desc,
-.story-text-block p,
-.story-full p,
-.story-final p,
-.aroma-story p,
-.recipe-page p,
-.recipe-page li {
-    text-align: justify;
 }
 
 * { box-sizing: border-box; }
@@ -747,19 +800,15 @@ footer {visibility: hidden;}
 
 .page-title {
     text-align: center;
-    font-size: clamp(10px, 2.8vw, 32px);
-    line-height: 1;
+    font-size: clamp(17px, 4.2vw, 34px);
+    line-height: 1.2;
     margin: clamp(14px, 4vw, 24px) auto clamp(10px, 3vw, 18px) auto;
-    white-space: nowrap;
+    white-space: normal;
     max-width: 100%;
     overflow-wrap: normal;
 }
 
-.page-title.small-title {
-    white-space: nowrap;
-    font-size: clamp(10px, 2.8vw, 32px);
-    line-height: 1;
-}
+.page-title.small-title { font-size: clamp(18px, 4vw, 30px); }
 
 .card, .card2 {
     padding: clamp(14px, 3vw, 20px);
@@ -933,10 +982,9 @@ footer {visibility: hidden;}
 }
 
 .product-info h3 {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 14px;
+    margin: 0 0 8px 0;
+    color: #1f2937;
+    font-size: 17px;
 }
 
 .product-info p {
@@ -1117,12 +1165,10 @@ footer {visibility: hidden;}
     .hero-content h1 { font-size: clamp(34px, 9vw, 48px); white-space: nowrap; line-height: 1; }
     .hero-content p { font-size: clamp(12px, 3.4vw, 14px); }
     .hero-btn { padding: 14px 24px; font-size: 16px; }
-    .page-title { font-size: clamp(16px, 4.1vw, 19px); white-space: normal !important; word-break: break-word; line-height: 1.2; }
+    .page-title { font-size: clamp(16px, 4.1vw, 19px); white-space: nowrap; }
     .page-title.small-title {
         font-size: 35px !important;
-        white-space: normal !important;
-        word-break: break-word;
-        line-height: 1.2;
+        white-space: nowrap;
         letter-spacing: 0;
         width: 100%;
         text-align: center !important;
@@ -2493,7 +2539,7 @@ html,body{margin:0;padding:0;background:transparent;font-family:var(--font-body)
 @media(max-width:520px){.story-magazine{border-radius:22px}.story-hero-scene{min-height:500px;padding:24px}.story-chapter{padding:34px 18px}.story-gallery-ribbon{grid-template-columns:1fr}.story-ribbon-item,.story-ribbon-item img{min-height:220px}}
 </style>
 """
-    components.html(story_component_css + html, height=6800, scrolling=False)
+    components.html(story_component_css + html, height=6600, scrolling=False)
 
 
 def render_certificate_page():
@@ -3250,6 +3296,7 @@ html, body {
 <div class="viewer" id="viewer">
     <div class="viewer-top">
         <div class="viewer-title">
+            <h2>Sổ tay công thức Cốm</h2>
             <p>Kéo mép trang hoặc bấm mũi tên để lật sách</p>
         </div>
         <div class="toolbar">
@@ -3411,9 +3458,9 @@ function initPageFlip() {
         return;
     }
 
-    const mobile = false;
+    const mobile = window.matchMedia("(max-width: 760px)").matches;
     const rect = bookShell.getBoundingClientRect();
-    const width = Math.floor(rect.width);
+    const width = Math.max(320, Math.floor(rect.width / (mobile ? 1 : 2)));
     const height = Math.max(430, Math.floor(rect.height));
 
     pageFlip = new St.PageFlip(bookEl, {
@@ -3421,14 +3468,14 @@ function initPageFlip() {
         height: height,
         size: "stretch",
         minWidth: 280,
-        maxWidth: 1200,
+        maxWidth: 560,
         minHeight: 380,
         maxHeight: 760,
         drawShadow: true,
         flippingTime: 1450,
-        usePortrait: false,
+        usePortrait: mobile,
         startZIndex: 10,
-        autoSize: false,
+        autoSize: true,
         maxShadowOpacity: 0.42,
         showCover: true,
         mobileScrollSupport: false,
@@ -5063,7 +5110,7 @@ html,body{margin:0;padding:0;background:transparent;font-family:var(--font-body)
 @media(max-width:560px){.aroma-story{border-radius:22px}.aroma-opening{min-height:520px;padding:24px}.aroma-flow{padding:34px 16px}.aroma-copy{padding:20px;border-radius:22px}.aroma-visual,.aroma-visual img{min-height:260px;border-radius:22px}.aroma-product-strip{grid-template-columns:1fr}.aroma-product-strip figure,.aroma-product-strip img{min-height:250px}.aroma-gift-scene{min-height:520px;padding:24px}.aroma-line{left:20px}.aroma-moment,.aroma-moment.reverse{padding-left:28px}.aroma-number{left:20px}}
 </style>
 """
-    components.html(aroma_css + aroma_html, height=6800, scrolling=True)
+    components.html(aroma_css + aroma_html, height=7200, scrolling=True)
 
 
 def render_page(page_data):
