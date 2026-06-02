@@ -1657,15 +1657,7 @@ footer {visibility: hidden;}
     display: none !important;
     position: relative;
     width: 100%;
-    background: linear-gradient(
-        90deg,
-        #fff8df 0%,
-        #fffdf4 49.2%,
-        #efd9a2 49.7%,
-        #efd9a2 50.3%,
-        #fffdf4 50.8%,
-        #fff8df 100%
-    );
+    background: #fffdf4;
     border: 2px solid #d7b56d;
     border-radius: 22px;
     box-shadow: 0 14px 34px rgba(70,45,12,.22);
@@ -5230,3 +5222,71 @@ st.markdown(
 )
 
 # viewer background updated to soft green
+
+
+/* REMOVE BOOK CROP */
+.recipe-image-page {
+    width: 100% !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    background: #fffdf4 !important;
+}
+
+.recipe-image-page img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+
+/* JUSTIFY CONTENT */
+.content p,
+.card p,
+.card2 p,
+.origin-text p,
+.story-desc,
+.story-text-block p,
+.story-full p,
+.story-final p,
+.aroma-story p,
+.recipe-page p,
+.recipe-page li,
+.recipe-page ul,
+.recipe-page ol,
+.product-info p,
+.detail-block p,
+.detail-block li {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+}
+
+/* FIX 4 IMAGES LAYOUT */
+.story-gallery,
+.intro-gallery,
+.brand-gallery,
+.process-gallery-mini {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0,1fr)) !important;
+    gap: 12px !important;
+}
+
+.story-gallery img,
+.intro-gallery img,
+.brand-gallery img,
+.process-gallery-mini img {
+    width: 100% !important;
+    aspect-ratio: 3/4 !important;
+    object-fit: cover !important;
+    border-radius: 16px !important;
+}
+
+@media (max-width: 768px) {
+    .story-gallery,
+    .intro-gallery,
+    .brand-gallery,
+    .process-gallery-mini {
+        grid-template-columns: repeat(2, minmax(0,1fr)) !important;
+    }
+}
