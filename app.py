@@ -747,7 +747,7 @@ footer {visibility: hidden;}
 
 .page-title {
     text-align: center;
-    font-size: clamp(12px, 3.2vw, 32px);
+    font-size: clamp(10px, 2.8vw, 32px);
     line-height: 1;
     margin: clamp(14px, 4vw, 24px) auto clamp(10px, 3vw, 18px) auto;
     white-space: nowrap;
@@ -757,7 +757,7 @@ footer {visibility: hidden;}
 
 .page-title.small-title {
     white-space: nowrap;
-    font-size: clamp(12px, 3.2vw, 32px);
+    font-size: clamp(10px, 2.8vw, 32px);
     line-height: 1;
 }
 
