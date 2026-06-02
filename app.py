@@ -1471,7 +1471,7 @@ footer {visibility: hidden;}
 
 .recipe-book {
     position: relative;
-    max-width: 1000px;
+    max-width: 1500px;
     margin: 8px auto 0;
     min-height: 560px;
     perspective: 1800px;
