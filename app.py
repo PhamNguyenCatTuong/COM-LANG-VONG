@@ -747,15 +747,19 @@ footer {visibility: hidden;}
 
 .page-title {
     text-align: center;
-    font-size: clamp(17px, 4.2vw, 34px);
-    line-height: 1.2;
+    font-size: clamp(12px, 3.2vw, 32px);
+    line-height: 1;
     margin: clamp(14px, 4vw, 24px) auto clamp(10px, 3vw, 18px) auto;
-    white-space: normal;
+    white-space: nowrap;
     max-width: 100%;
     overflow-wrap: normal;
 }
 
-.page-title.small-title { font-size: clamp(18px, 4vw, 30px); }
+.page-title.small-title {
+    white-space: nowrap;
+    font-size: clamp(12px, 3.2vw, 32px);
+    line-height: 1;
+}
 
 .card, .card2 {
     padding: clamp(14px, 3vw, 20px);
