@@ -475,51 +475,23 @@ PAGE_DATABASE = {
     },
     "muc_giay": {
         "title": "Mực & giấy bao bì",
-        "type": "detailed_packaging",
         "card_class": "card2",
         "card_title": "📦 Thông tin chất liệu bao bì",
         "paragraphs": [
-            "Bao bì được xây dựng theo định hướng đồng bộ nhận diện thương hiệu Cốm Làng Vòng với tone xanh cốm, vàng nhạt và họa tiết lá sen.",
-            "Toàn bộ chất liệu tiếp xúc trực tiếp thực phẩm ưu tiên giấy kraft thực phẩm, giấy ivory, duplex cán mờ và túi zip chống ẩm.",
-            "Mực in sử dụng loại gốc nước, ít mùi, an toàn cho thực phẩm và giữ màu ổn định trong quá trình vận chuyển.",
-            "Thiết kế bao bì cần thể hiện đầy đủ mã QR truy xuất nguồn gốc, hạn sử dụng, thành phần, hướng dẫn bảo quản và hotline thương hiệu."
-        ],
-        "fields": {
-            "Mực in": "Mực gốc nước, chống lem, bám màu tốt, an toàn thực phẩm",
-            "Giấy sử dụng": "Kraft thực phẩm, Ivory 300-400gsm, Duplex cán mờ",
-            "Màu thương hiệu": "Xanh cốm, trắng kem, vàng nhạt, họa tiết lá sen",
-            "Tiêu chuẩn in": "In offset chất lượng cao, chống phai màu khi bảo quản lạnh",
-            "Thông tin bắt buộc": "QR truy xuất, NSX, HSD, thành phần, hotline, hướng dẫn bảo quản"
-        },
-        "bullets": [
-            "Đồng bộ thiết kế với giao diện website và social media",
-            "Ưu tiên vật liệu tái chế và thân thiện môi trường",
-            "Thiết kế hộp quà riêng cho khách du lịch và quà biếu",
-            "Có tem chống giả và mã truy xuất nguồn gốc"
+            "Bao bì sử dụng giấy sạch, chắc chắn và phù hợp với thực phẩm.",
+            "Mực in cần rõ nét, bền màu, thể hiện đầy đủ tên sản phẩm, mã lô hàng, hạn sử dụng và thông tin truy xuất.",
+            "Thiết kế nên dùng màu xanh cốm, họa tiết lá sen để tăng khả năng nhận diện thương hiệu.",
         ],
     },
     "thuhoi": {
         "title": "Chính sách thu hồi",
-        "type": "detailed_recycle",
         "card_class": "card2",
         "card_title": "♻️ Chính sách thu hồi",
-        "paragraphs": [
-            "Thương hiệu xây dựng chính sách thu hồi bao bì nhằm giảm rác thải và tăng tỷ lệ tái sử dụng vật liệu.",
-            "Khách hàng có thể hoàn trả hộp quà, túi giấy và bao bì còn sạch tại điểm bán hoặc đơn vị phân phối.",
-            "Bao bì sau thu hồi sẽ được phân loại để tái chế, tái sử dụng hoặc xử lý đúng quy chuẩn môi trường."
-        ],
-        "fields": {
-            "Đối tượng thu hồi": "Hộp giấy, túi giấy, túi zip, tem nhãn, hộp quà",
-            "Hình thức": "Thu hồi tại cửa hàng hoặc đơn giao hàng",
-            "Mục tiêu": "Giảm rác thải và xây dựng thương hiệu xanh",
-            "Ưu đãi khách hàng": "Tích điểm hoặc giảm giá khi hoàn trả bao bì"
-        },
+        "paragraphs": ["Khuyến khích phân loại và tái chế bao bì sau sử dụng."],
         "bullets": [
-            "Không vứt bao bì ra môi trường",
-            "Phân loại riêng giấy, nhựa và túi zip",
-            "Khuyến khích tái sử dụng hộp quà",
-            "Ưu tiên bao bì dễ phân hủy sinh học",
-            "Đồng bộ quy trình thu hồi với website và QR tracking"
+            "Không vứt bao bì ra môi trường.",
+            "Phân loại bao bì giấy, túi, hộp sau khi dùng.",
+            "Ưu tiên sử dụng bao bì thân thiện với môi trường.",
         ],
     },
 }
@@ -1647,38 +1619,24 @@ footer {visibility: hidden;}
 
 .recipe-book {
     position: relative;
-    width: 100%;
-    max-width: 1480px;
-    margin: 12px auto 0;
+    max-width: 920px;
+    margin: 8px auto 0;
+    min-height: 560px;
     perspective: 1800px;
 }
 
 .recipe-page {
     display: none !important;
     position: relative;
-    width: 100%;
-    background: #fffdf4;
+    background: linear-gradient(90deg, #fff8df 0%, #fffdf4 48%, #f8edc8 50%, #fffdf4 52%, #fff8df 100%);
     border: 2px solid #d7b56d;
     border-radius: 22px;
     box-shadow: 0 14px 34px rgba(70,45,12,.22);
-    padding: 22px 32px;
-    min-height: auto;
+    padding: 28px 66px;
+    min-height: 560px;
     animation: pageFlip .45s ease;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-    align-items: start;
-}
-
-.recipe-page-left,
-.recipe-page-right {
-    width: 100%;
-    overflow: visible;
-}
-
-.recipe-page img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+    grid-template-columns: 1fr 1fr;
+    gap: 34px;
 }
 
 #recipe-page-0:checked ~ .recipe-book .recipe-page-0,
@@ -1810,10 +1768,9 @@ footer {visibility: hidden;}
 
 @media (max-width: 480px) {
     .recipe-page {
-        padding: 16px 20px 40px !important;
-        min-height: auto !important;
+        padding: 18px 46px 46px !important;
+        min-height: 560px !important;
         border-radius: 18px !important;
-        gap: 12px !important;
     }
 
     .recipe-page h3 {
@@ -1839,15 +1796,14 @@ footer {visibility: hidden;}
 
 .recipe-image-page {
     width: 100%;
-    aspect-ratio: 1200 / 1400;
-    min-height: auto;
+    height: 100%;
+    min-height: 520px;
     border-radius: 16px;
     overflow: hidden;
     background: #f7f1dc;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px;
 }
 
 .recipe-image-page img {
@@ -2080,6 +2036,100 @@ footer {visibility: hidden;}
 .story-final .last-line{margin-top:26px;font-family:var(--font-heading);font-size:clamp(24px,4vw,42px);line-height:1.25;color:#fff7d6;}
 @media(max-width:900px){.story-two-col,.story-two-col.reverse{grid-template-columns:1fr;}.story-two-col.reverse .story-image-frame{order:-1;}.story-gallery-ribbon{grid-template-columns:repeat(2,minmax(0,1fr));}.story-ribbon-item,.story-ribbon-item img{min-height:190px;}}
 @media(max-width:520px){.story-magazine{border-radius:22px;}.story-hero-scene{min-height:500px;padding:24px;}.story-chapter{padding:34px 18px;}.story-gallery-ribbon{grid-template-columns:1fr;}.story-ribbon-item,.story-ribbon-item img{min-height:220px;}}
+
+
+
+/* ===== BOOK FIX V3 ===== */
+
+.recipe-book{
+    position:relative;
+    width:100%;
+    max-width:1500px;
+    margin:12px auto 0;
+    perspective:none !important;
+}
+
+.recipe-page{
+    background:#fffdf4 !important;
+    padding:24px !important;
+    gap:18px !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    min-height:auto !important;
+    box-shadow:0 10px 24px rgba(0,0,0,.12) !important;
+}
+
+.recipe-page-left,
+.recipe-page-right{
+    width:100%;
+    overflow:visible !important;
+}
+
+.recipe-image-page{
+    width:100%;
+    overflow:visible !important;
+    background:#fffdf4 !important;
+    padding:0 !important;
+    min-height:auto !important;
+    border-radius:14px;
+}
+
+.recipe-image-page img{
+    width:100% !important;
+    height:auto !important;
+    max-width:100% !important;
+    object-fit:contain !important;
+    display:block;
+}
+
+/* JUSTIFY CONTENT */
+.content p,
+.card p,
+.card2 p,
+.origin-text p,
+.story-desc,
+.story-text-block p,
+.story-full p,
+.story-final p,
+.aroma-story p,
+.recipe-page p,
+.recipe-page li,
+.recipe-page ul,
+.recipe-page ol,
+.product-info p,
+.detail-block p,
+.detail-block li{
+    text-align:justify !important;
+    text-justify:inter-word !important;
+}
+
+/* FIX 4 IMAGE ROW */
+.origin-gallery,
+.process-gallery-mini{
+    display:grid !important;
+    grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+    gap:12px !important;
+}
+
+.origin-gallery img,
+.process-gallery-mini img{
+    width:100% !important;
+    aspect-ratio:3/4 !important;
+    object-fit:cover !important;
+    border-radius:16px !important;
+}
+
+@media (max-width: 768px){
+
+    .recipe-page{
+        grid-template-columns:1fr !important;
+        padding:16px !important;
+    }
+
+    .origin-gallery,
+    .process-gallery-mini{
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    }
+}
 
 </style>
 """.replace("__BANNER_IMAGE__", image_to_data_uri("Banner com.jpg")),
@@ -5222,71 +5272,3 @@ st.markdown(
 )
 
 # viewer background updated to soft green
-
-
-/* REMOVE BOOK CROP */
-.recipe-image-page {
-    width: 100% !important;
-    min-height: auto !important;
-    overflow: visible !important;
-    padding: 0 !important;
-    background: #fffdf4 !important;
-}
-
-.recipe-image-page img {
-    width: 100% !important;
-    height: auto !important;
-    max-width: 100% !important;
-    object-fit: contain !important;
-    display: block !important;
-}
-
-/* JUSTIFY CONTENT */
-.content p,
-.card p,
-.card2 p,
-.origin-text p,
-.story-desc,
-.story-text-block p,
-.story-full p,
-.story-final p,
-.aroma-story p,
-.recipe-page p,
-.recipe-page li,
-.recipe-page ul,
-.recipe-page ol,
-.product-info p,
-.detail-block p,
-.detail-block li {
-    text-align: justify !important;
-    text-justify: inter-word !important;
-}
-
-/* FIX 4 IMAGES LAYOUT */
-.story-gallery,
-.intro-gallery,
-.brand-gallery,
-.process-gallery-mini {
-    display: grid !important;
-    grid-template-columns: repeat(4, minmax(0,1fr)) !important;
-    gap: 12px !important;
-}
-
-.story-gallery img,
-.intro-gallery img,
-.brand-gallery img,
-.process-gallery-mini img {
-    width: 100% !important;
-    aspect-ratio: 3/4 !important;
-    object-fit: cover !important;
-    border-radius: 16px !important;
-}
-
-@media (max-width: 768px) {
-    .story-gallery,
-    .intro-gallery,
-    .brand-gallery,
-    .process-gallery-mini {
-        grid-template-columns: repeat(2, minmax(0,1fr)) !important;
-    }
-}
