@@ -464,7 +464,7 @@ PAGE_DATABASE = {
     "congthuc": {
         "title": "Công thức & Cách làm món ăn",
         "card_class": "card",
-        "card_title": "🍽️ Công thức & Cách làm món ăn",
+        "card_title": "🍽️ Công thức & Cách làm",
         "paragraphs": [
             "Chọn một sản phẩm trong danh sách để xem công thức, nguyên liệu chi tiết, các bước làm minh họa và lưu ý khi chế biến.",
             "Các công thức được trình bày theo từng món để khách hàng dễ theo dõi và thực hiện tại nhà.",
@@ -803,7 +803,7 @@ footer {visibility: hidden;}
     font-size: clamp(17px, 4.2vw, 34px);
     line-height: 1.2;
     margin: clamp(14px, 4vw, 24px) auto clamp(10px, 3vw, 18px) auto;
-    white-space: normal;
+    white-space: normal; 
     max-width: 100%;
     overflow-wrap: normal;
 }
@@ -1165,10 +1165,12 @@ footer {visibility: hidden;}
     .hero-content h1 { font-size: clamp(34px, 9vw, 48px); white-space: nowrap; line-height: 1; }
     .hero-content p { font-size: clamp(12px, 3.4vw, 14px); }
     .hero-btn { padding: 14px 24px; font-size: 16px; }
-    .page-title { font-size: clamp(16px, 4.1vw, 19px); white-space: nowrap; }
+    .page-title { font-size: clamp(16px, 4.1vw, 19px); white-space: normal !important; word-break: break-word; line-height: 1.2; }
     .page-title.small-title {
         font-size: 35px !important;
-        white-space: nowrap;
+        white-space: normal !important;
+        word-break: break-word;
+        line-height: 1.2;
         letter-spacing: 0;
         width: 100%;
         text-align: center !important;
