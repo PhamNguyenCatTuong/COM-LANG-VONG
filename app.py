@@ -3467,7 +3467,7 @@ function initPageFlip() {
         height: height,
         size: "stretch",
         minWidth: 0,
-        maxWidth: 3000,
+        maxWidth: 3500,
         minHeight: 0,
         maxHeight: 3000,
         drawShadow: false,
