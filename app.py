@@ -2988,23 +2988,20 @@ html, body {
     height: 100%;
     position: relative;
 }
-.page {
-    background: transparent !important;
-    overflow: hidden;
-    box-shadow: none !important;
+.page{
+    padding:0 !important;
+    margin:0 !important;
+    background:transparent !important;
 }
 .page::before {
     content: none !important;
     display: none !important;
 }
-.page img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-    background: transparent !important;
-    user-select: none;
-    -webkit-user-drag: none;
+.page img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 .page.cover img {
     object-fit: contain;
@@ -3472,13 +3469,13 @@ function initPageFlip() {
         minWidth: 0,
         maxWidth: 3000,
         minHeight: 0,
-        maxHeight: 2000,
-        drawShadow: true,
+        maxHeight: 2500,
+        drawShadow: false,
         flippingTime: 1450,
         usePortrait: false,
         startZIndex: 10,
         autoSize: true,
-        maxShadowOpacity: 0.42,
+        maxShadowOpacity: 0,
         showCover: true,
         mobileScrollSupport: false,
         swipeDistance: 18,
