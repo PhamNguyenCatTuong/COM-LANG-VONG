@@ -3469,7 +3469,7 @@ function initPageFlip() {
         minWidth: 0,
         maxWidth: 3000,
         minHeight: 0,
-        maxHeight: 2500,
+        maxHeight: 3000,
         drawShadow: false,
         flippingTime: 1450,
         usePortrait: false,
