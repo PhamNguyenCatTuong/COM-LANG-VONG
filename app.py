@@ -3475,7 +3475,7 @@ function initPageFlip() {
         maxHeight: 760,
         drawShadow: true,
         flippingTime: 1450,
-        usePortrait: mobile,
+        usePortrait: false,
         startZIndex: 10,
         autoSize: true,
         maxShadowOpacity: 0.42,
