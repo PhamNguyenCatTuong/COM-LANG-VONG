@@ -2791,6 +2791,16 @@ def render_recipe_book_page():
         {"name": "Bánh cốm nếp nương", "file": "9.jpg"},
         {"name": "Bánh trung thu nhân cốm", "file": "10.jpg"},
         {"name": "Bánh chưng nhân cốm", "file": "11.jpg"},
+        {"name": "Chè cốm", "file": "12.jpg"},
+        {"name": "Chả cốm", "file": "13.jpg"},
+        {"name": "Cốm xào dừa/Tôm tẩm cốm chiên giòn", "file": "14.jpg"},
+        {"name": "Xôi cốm", "file": "15.jpg"},
+        {"name": "Bánh xu xê cốm", "file": "16.jpg"},
+        {"name": "Sữa chua cốm", "file": "17.jpg"},
+        {"name": "Mochi cốm", "file": "18.jpg"},
+        {"name": "Bánh cốm nếp nương", "file": "19.jpg"},
+        {"name": "Bánh trung thu nhân cốm", "file": "20.jpg"},
+        {"name": "Bánh chưng nhân cốm", "file": "21.jpg"},
     ]
 
     pages_payload = []
