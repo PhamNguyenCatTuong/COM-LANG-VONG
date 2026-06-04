@@ -3471,7 +3471,7 @@ function initPageFlip() {
     const rect = bookShell.getBoundingClientRect();
     const width = Math.max(
         330,
-        Math.floor(rect.width * (mobile ? 0.94 : 0.5))
+        Math.floor(rect.width * (mobile ? 1 : 2))
     );
     const height = Math.max(430, Math.floor(rect.height));
 
