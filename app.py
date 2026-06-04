@@ -3478,7 +3478,7 @@ function initPageFlip() {
     pageFlip = new St.PageFlip(bookEl, {
         width: width,
         height: height,
-        size: "fixed",
+        size: "stretch",
         minWidth: 0,
         maxWidth: 3500,
         minHeight: 0,
