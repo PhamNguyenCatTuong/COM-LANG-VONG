@@ -2986,8 +2986,8 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    overflow: hidden;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
 }
 .book-shell::before {
     content: none !important;
@@ -3469,13 +3469,16 @@ function initPageFlip() {
 
     const mobile = window.matchMedia("(max-width: 760px)").matches;
     const rect = bookShell.getBoundingClientRect();
-    const width = Math.max(320, Math.floor(rect.width / (mobile ? 1 : 2)));
+    const width = Math.max(
+        320,
+        Math.floor((rect.width - 20) / (mobile ? 1 : 2))
+    );
     const height = Math.max(430, Math.floor(rect.height));
 
     pageFlip = new St.PageFlip(bookEl, {
         width: width,
         height: height,
-        size: "stretch",
+        size: "fixed",
         minWidth: 0,
         maxWidth: 3500,
         minHeight: 0,
