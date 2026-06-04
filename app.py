@@ -3469,7 +3469,10 @@ function initPageFlip() {
 
     const mobile = window.matchMedia("(max-width: 760px)").matches;
     const rect = bookShell.getBoundingClientRect();
-    const width = Math.floor(rect.width - 20);
+    const width = Math.max(
+        330,
+        Math.floor(rect.width * (mobile ? 1 : 2))
+    );
     const height = Math.max(430, Math.floor(rect.height));
 
     pageFlip = new St.PageFlip(bookEl, {
