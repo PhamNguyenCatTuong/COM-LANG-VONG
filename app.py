@@ -36,12 +36,12 @@ def image_to_data_uri(file_name):
 
 CERTIFICATES = [
     {
-        "image": "CBSP.png",
+        "image": "CBSP.jpg",
         "title": "Tự công bố sản phẩm",
         "desc": "Giấy xác nhận tự công bố sản phẩm Cốm Làng Vòng theo quy định an toàn thực phẩm.",
     },
     {
-        "image": "KQKN.png",
+        "image": "KQKN.jpg",
         "title": "Phiếu kiểm nghiệm",
         "desc": "Kết quả kiểm nghiệm các chỉ tiêu an toàn thực phẩm của sản phẩm.",
     },
@@ -2328,13 +2328,14 @@ def render_content_card(page_data, detail_link=None, show_full=False):
 
 def render_story_page():
     hero_img = image_to_data_uri("Hinh 1.jpg")
-    autumn_img = image_to_data_uri("Com tong quan 3.jpg")
+    autumn_img = image_to_data_uri("Com 4.jpg")
     village_img = image_to_data_uri("me com lang vong.jpg")
-    lotus_img = image_to_data_uri("hat com tuoi.jpg")
-    gift_img = image_to_data_uri("Banh com.jpg")
-    xoi_img = image_to_data_uri("xoi com.jpg")
-    mochi_img = image_to_data_uri("mochi com.png")
-    yogurt_img = image_to_data_uri("sua chua com.png")
+    lotus_img = image_to_data_uri("Com 3.jpg")
+    gift_img = image_to_data_uri("P2.jpg")
+    xoi_img = image_to_data_uri("Xoi com 1.jpg")
+    Banhtrungthu_img = image_to_data_uri("BTTC.jpg")
+    yogurt_img = image_to_data_uri("Sua chua 2.jpg")
+    MQCH_img = image_to_data_uri("Xu xe 6.jpg")
 
     html = f"""
 <div class="story-magazine">
@@ -2415,9 +2416,9 @@ def render_story_page():
             <h2>Hương cốm tiếp tục sống trong những món ăn mới</h2>
             <p>Ngày nay, bên cạnh cốm mộc truyền thống, hương cốm còn được gửi vào bánh cốm, xôi cốm, cốm xào, mochi cốm, sữa chua cốm hay nhiều món ăn sáng tạo khác. Mỗi sản phẩm là một cách để hương vị xưa đến gần hơn với người thưởng thức hôm nay.</p>
             <div class="story-gallery-ribbon">
-                <div class="story-ribbon-item"><img src="{gift_img}"><div class="story-ribbon-caption">Bánh cốm - món quà cưới hỏi</div></div>
+                <div class="story-ribbon-item"><img src="{MQCH_img}"><div class="story-ribbon-caption">Món quà cưới hỏi</div></div>
                 <div class="story-ribbon-item"><img src="{xoi_img}"><div class="story-ribbon-caption">Xôi cốm - hương vị sáng thu</div></div>
-                <div class="story-ribbon-item"><img src="{mochi_img}"><div class="story-ribbon-caption">Mochi cốm - cảm hứng hiện đại</div></div>
+                <div class="story-ribbon-item"><img src="{Banhtrungthu_img}"><div class="story-ribbon-caption">Bánh trung thu cốm - cảm hứng hiện đại</div></div>
                 <div class="story-ribbon-item"><img src="{yogurt_img}"><div class="story-ribbon-caption">Sữa chua cốm - dịu mát mỗi ngày</div></div>
             </div>
         </div>
@@ -2434,6 +2435,15 @@ def render_story_page():
 
     story_component_css = """
 <style>
+.story-hero-lead,
+.story-text-block p,
+.story-wide-content p,
+.story-full p,
+.story-legend p{
+    text-align: justify !important;
+    text-justify: inter-word;
+    line-height: 1.8;
+}
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Nunito:wght@400;500;600;700&display=swap');
 
 :root {
@@ -2541,7 +2551,7 @@ html,body{margin:0;padding:0;background:transparent;font-family:var(--font-body)
 @media(max-width:520px){.story-magazine{border-radius:22px}.story-hero-scene{min-height:500px;padding:24px}.story-chapter{padding:34px 18px}.story-gallery-ribbon{grid-template-columns:1fr}.story-ribbon-item,.story-ribbon-item img{min-height:220px}}
 </style>
 """
-    components.html(story_component_css + html, height=6600, scrolling=False)
+    components.html(story_component_css + html, height=6800, scrolling=False)
 
 
 def render_certificate_page():
@@ -4710,6 +4720,11 @@ p, li, span, div,
  margin:0 !important;
  padding:0 !important;
 }}
+
+.qn-page p{{
+    text-align: justify !important;
+    line-height: 1.8;
+}}
 </style>
 
 <div class="qn-page">
@@ -4910,13 +4925,9 @@ def render_cart_page():
 
 
 def render_video_page():
-    hero_img = image_to_data_uri("Com tong quan 3.jpg")
-    field_img = image_to_data_uri("hat com tuoi.jpg")
-    gift_img = image_to_data_uri("Banh com.jpg")
-    xoi_img = image_to_data_uri("xoi com.jpg")
-    mochi_img = image_to_data_uri("mochi com.png")
-    yogurt_img = image_to_data_uri("sua chua com.png")
-    shrimp_img = image_to_data_uri("tom tam com.jpg")
+    hero_img = image_to_data_uri("P3.jpg")
+    field_img = image_to_data_uri("Com 2.jpg")
+    gift_img = image_to_data_uri("Xu xe 7.jpg")
 
     aroma_html = f"""
 <div class="aroma-story">
@@ -4950,7 +4961,6 @@ def render_video_page():
                 <p>Khi câu chuyện được mở ra, cốm không còn là một món ăn đơn lẻ. Đó là làng nghề, là mùa thu, là bàn tay người thợ và là sự thanh nhã của Hà Nội được gìn giữ qua nhiều thế hệ.</p>
                 <p>Chính phần hiểu này giúp khách hàng tin hơn vào sản phẩm. Họ biết mình đang chọn một món quà có văn hóa, chứ không chỉ chọn một món ngon.</p>
             </div>
-            <div class="aroma-visual"><img src="{hero_img}"></div>
         </article>
 
         <article class="aroma-moment">
@@ -4972,7 +4982,6 @@ def render_video_page():
                 <p>Một buổi sáng se lạnh có thể bắt đầu bằng xôi cốm. Một chiều nhẹ nhàng có thể có sữa chua cốm. Một bữa ăn mới lạ có thể có tôm tẩm cốm giòn thơm.</p>
                 <p>Khi được đặt vào nhiều hoàn cảnh, hương cốm trở nên gần gũi hơn. Nó không còn chỉ thuộc về ký ức cũ, mà tiếp tục sống trong thói quen và khẩu vị hôm nay.</p>
             </div>
-            <div class="aroma-visual"><img src="{xoi_img}"></div>
         </article>
     </section>
 
@@ -4981,17 +4990,11 @@ def render_video_page():
             <span>Những điểm chạm sản phẩm</span>
             <h2>Một hương vị, nhiều cách gặp gỡ</h2>
             <p>Từ truyền thống đến hiện đại, mỗi sản phẩm là một cánh cửa để khách hàng bước vào thế giới Cốm Làng Vòng theo cách riêng của mình.</p>
-        </div>
-        <div class="aroma-product-strip">
-            <figure><img src="{gift_img}"><figcaption>Bánh cốm<br><small>Trang nhã cho cưới hỏi và biếu tặng</small></figcaption></figure>
-            <figure><img src="{xoi_img}"><figcaption>Xôi cốm<br><small>Ấm áp trong những buổi sáng thu</small></figcaption></figure>
-            <figure><img src="{mochi_img}"><figcaption>Mochi cốm<br><small>Cảm hứng mới dành cho người trẻ</small></figcaption></figure>
-            <figure><img src="{yogurt_img}"><figcaption>Sữa chua cốm<br><small>Dịu mát, nhẹ nhàng, dễ thưởng thức</small></figcaption></figure>
-            <figure><img src="{shrimp_img}"><figcaption>Tôm tẩm cốm<br><small>Món mặn sáng tạo từ hương cốm</small></figcaption></figure>
+            <a href="?page=sanpham" target="_self">Khám phá sản phẩm từ cốm</a>
         </div>
     </section>
 
-    <section class="aroma-gift-scene" style="background-image:url('{gift_img}');">
+    <section class="aroma-gift-scene" style="background-image:url('{hero_img}');">
         <div class="aroma-gift-copy">
             <span>Trao tặng</span>
             <h2>Khi hương cốm trở thành lời nhắn gửi</h2>
@@ -5006,7 +5009,6 @@ def render_video_page():
             <h2>Điểm cuối của hành trình<br>là lúc khách hàng muốn quay lại</h2>
             <p>Khi một hương vị đủ thật, một câu chuyện đủ đẹp và một sản phẩm đủ chỉn chu, khách hàng không chỉ mua một lần. Họ nhớ, họ kể lại, họ tìm đến khi cần một món quà mang dấu ấn Hà Nội.</p>
             <div class="aroma-final-line">Hương cốm không dừng lại ở làng nghề.<br>Nó tiếp tục sống trong những người yêu Hà Nội.</div>
-            <a href="?page=sanpham" target="_self">Khám phá sản phẩm từ cốm</a>
         </div>
     </section>
 </div>
@@ -5014,6 +5016,16 @@ def render_video_page():
 
     aroma_css = """
 <style>
+
+.aroma-opening-inner p,
+.aroma-copy p,
+.aroma-products-head p,
+.aroma-gift-copy p{
+    text-align: justify !important;
+    text-justify: inter-word;
+    line-height: 1.8;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Nunito:wght@400;500;600;700&display=swap');
 
 :root {
