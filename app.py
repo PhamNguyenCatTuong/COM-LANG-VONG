@@ -4115,6 +4115,124 @@ def render_product_detail_page():
         else:
             st.info("Bạn chưa xem thêm sản phẩm nào khác.")
 
+def render_baobi_page():
+    html = """
+    <style>
+    .craft-container {
+        background-color: #FDFBF7;
+        background-image: radial-gradient(#e0dcd3 1px, transparent 1px);
+        background-size: 20px 20px;
+        padding: 40px 30px;
+        border-radius: 16px;
+        border: 1px solid #E8E3D9;
+        color: #4A3B32;
+        font-family: 'Segoe UI', sans-serif;
+    }
+    .section-title {
+        color: #2E7D32; text-align: center; text-transform: uppercase;
+        letter-spacing: 2px; border-bottom: 2px dashed #8D6E63;
+        padding-bottom: 15px; margin-bottom: 30px; font-weight: 700;
+    }
+    .img-block { display: flex; gap: 20px; margin-bottom: 30px; }
+    .mockup-main {
+        flex: 2; background: #F1F8E9; border: 1px dashed #AED581; border-radius: 12px;
+        display: flex; align-items: center; justify-content: center; height: 250px; color: #7CB342; font-weight: bold; font-size: 1.2rem;
+    }
+    .mockup-sub { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+    .sub-box {
+        flex: 1; background: #EFEBE9; border-radius: 12px; border: 1px dashed #BCAAA4;
+        display: flex; align-items: center; justify-content: center; flex-direction: column; color: #8D6E63; font-weight: 500;
+    }
+    .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px; }
+    .tech-card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); border-left: 4px solid #2E7D32; }
+    .tech-card h4 { margin: 0 0 10px 0; color: #8D6E63; font-size: 14px; text-transform: uppercase;}
+    .tech-card p { margin: 0; color: #2E7D32; font-weight: bold; font-size: 16px;}
+    .trace-block { display: flex; background: #E8F5E9; padding: 20px; border-radius: 12px; align-items: center; gap: 30px; }
+    .qr-box { width: 100px; height: 100px; background: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 40px; }
+    .trace-info p { margin: 5px 0; font-size: 15px; }
+    .trace-info strong { color: #2E7D32; }
+    </style>
+
+    <div class="craft-container">
+        <h2 class="section-title">📦 Thông Tin Bao Bì & In Ấn</h2>
+        <div class="img-block">
+            <div class="mockup-main">🖼️ Mockup Bao Bì Tổng Thể<br><small>(Chèn ảnh st.image tại đây)</small></div>
+            <div class="mockup-sub">
+                <div class="sub-box">🔍 Ảnh chi tiết chất liệu</div>
+                <div class="sub-box" style="background:#E8F5E9; color:#2E7D32; border-color:#81C784;">
+                    <h3 style="margin:0;">♻️ 100%</h3><span>Sinh học phân hủy</span>
+                </div>
+            </div>
+        </div>
+        <div class="tech-grid">
+            <div class="tech-card"><h4>Chất liệu bao bì</h4><p>Giấy Kraft / Túi sinh học</p></div>
+            <div class="tech-card"><h4>Công nghệ in</h4><p>Offset / Mực gốc nước</p></div>
+            <div class="tech-card"><h4>Kích thước</h4><p>15 x 20 x 5 cm</p></div>
+            <div class="tech-card"><h4>Đơn vị & Nơi SX</h4><p>EcoPrint JSC, Hà Nội</p></div>
+        </div>
+        <div class="trace-block">
+            <div class="qr-box">📱</div>
+            <div class="trace-info">
+                <p><strong>Mã lô sản xuất:</strong> LOT-CV2026-X1</p>
+                <p><strong>Truy xuất nguồn gốc:</strong> Quét mã QR để xem hành trình hạt lúa.</p>
+                <p><strong>Website:</strong> comlangvong-smart.vn</p>
+            </div>
+        </div>
+    </div>
+    """
+    st.markdown(html, unsafe_allow_html=True)
+
+
+def render_baoquan_page():
+    html = """
+    <style>
+    .craft-container {
+        background-color: #FDFBF7;
+        background-image: radial-gradient(#e0dcd3 1px, transparent 1px);
+        background-size: 20px 20px;
+        padding: 40px 30px;
+        border-radius: 16px;
+        border: 1px solid #E8E3D9;
+        color: #4A3B32;
+        font-family: 'Segoe UI', sans-serif;
+    }
+    .section-title { color: #2E7D32; text-align: center; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px dashed #8D6E63; padding-bottom: 15px; margin-bottom: 30px; font-weight: 700; }
+    .icon-bar { display: flex; justify-content: space-around; margin-bottom: 40px; background: white; padding: 20px; border-radius: 100px; box-shadow: 0 4px 15px rgba(46,125,50,0.05); }
+    .icon-item { text-align: center; }
+    .icon-item span { display: block; font-size: 30px; margin-bottom: 8px;}
+    .icon-item p { margin: 0; font-size: 13px; font-weight: 600; color: #8D6E63; text-transform: uppercase;}
+    .info-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+    .info-table th { background: #2E7D32; color: white; padding: 15px; text-align: left; }
+    .info-table td { padding: 15px; border-bottom: 1px solid #EFEBE9; color: #5D4037; font-weight: 500;}
+    .info-table tr:last-child td { border-bottom: none; }
+    .note-grid { display: flex; gap: 20px; }
+    .note-box { flex: 1; padding: 20px; border-radius: 12px; position: relative; padding-left: 50px; }
+    .note-box::before { content: '📌'; position: absolute; left: 15px; top: 18px; font-size: 20px; }
+    .note-1 { background: #FFF3E0; border: 1px solid #FFE0B2; color: #E65100; }
+    .note-2 { background: #E0F2F1; border: 1px solid #B2DFDB; color: #00695C; }
+    </style>
+
+    <div class="craft-container">
+        <h2 class="section-title">⏳ Chỉ Dẫn Bảo Quản & Thông Tin Lô</h2>
+        <div class="icon-bar">
+            <div class="icon-item"><span>🌡️</span><p>Khô ráo<br>Thoáng mát</p></div>
+            <div class="icon-item"><span>⏱️</span><p>Sử dụng ngay<br>trong 3 ngày</p></div>
+            <div class="icon-item"><span>🧊</span><p>Trữ tủ lạnh<br>nếu để lâu</p></div>
+            <div class="icon-item"><span>📦</span><p>Buộc kín<br>sau khi mở</p></div>
+        </div>
+        <table class="info-table">
+            <tr><th>Tiêu chí</th><th>Thông tin chi tiết</th></tr>
+            <tr><td><strong>Ngày đóng gói:</strong></td><td>20/10/2026 (Sản xuất theo ngày)</td></tr>
+            <tr><td><strong>Hạn sử dụng (HSD):</strong></td><td>3 ngày (nhiệt độ thường) - 15 ngày (ngăn mát tủ lạnh)</td></tr>
+            <tr><td><strong>Lô sản xuất / Mẻ cốm:</strong></td><td>#LOT-CV-SANG-2010</td></tr>
+        </table>
+        <div class="note-grid">
+            <div class="note-box note-1"><strong>Lưu ý quan trọng:</strong> Tránh tuyệt đối ánh nắng trực tiếp. Không để sản phẩm ở nơi có độ ẩm cao để tránh mốc.</div>
+            <div class="note-box note-2"><strong>Mẹo thưởng thức:</strong> Dùng ngon nhất cùng chuối tiêu hoặc pha trà sen. Nếu bảo quản lạnh, nên để ra ngoài 15 phút trước khi ăn.</div>
+        </div>
+    </div>
+    """
+    st.markdown(html, unsafe_allow_html=True)
 
 def render_origin_process_page():
     """Render Quy trình & nguồn gốc with clean storytelling content and images inside each process step."""
@@ -5202,6 +5320,14 @@ def render_page(page_data):
 
         return
 
+    if page_data["page_id"] in ["muc_giay", "baobi"]:
+        render_baobi_page()
+        return
+    
+    if page_data["page_id"] in ["thuhoi", "baoquan"]:
+        render_baoquan_page()
+        return
+    
     if page_data["page_id"] == "nguyenlieu":
         render_origin_process_page()
         return
