@@ -541,7 +541,7 @@ PAGE_DATABASE = {
         ],
     },
     "muc_giay": {
-        "title": "Mực & giấy bao bì",
+        "title": "📦 Thông tin bao bì",
         "card_class": "card2",
         "card_title": "📦 Thông tin chất liệu bao bì",
         "paragraphs": [
@@ -551,7 +551,7 @@ PAGE_DATABASE = {
         ],
     },
     "thuhoi": {
-        "title": "Chính sách thu hồi",
+        "title": "🏷️ Thông tin sản phẩm",
         "card_class": "card2",
         "card_title": "♻️ Chính sách thu hồi",
         "paragraphs": ["Khuyến khích phân loại và tái chế bao bì sau sử dụng."],
@@ -2104,7 +2104,7 @@ st.markdown(
 <div class="dropdown"><a href="?page=quytrinh" target="_self" style="text-decoration:none;"><button class="dropbtn">Quy trình & nguồn gốc</button></a></div>
 <div class="dropdown"><button class="dropbtn parent-only" type="button">Sản phẩm</button><div class="dropdown-content"><a href="?page=sanpham" target="_self">Danh sách sản phẩm</a><a href="?page=congthuc" target="_self">Công thức & Cách làm món ăn</a></div></div>
 <div class="dropdown"><a href="?page=chatluong" target="_self" style="text-decoration:none;"><button class="dropbtn">Chất lượng</button></a></div>
-<div class="dropdown"><button class="dropbtn parent-only" type="button">Bao bì & bảo quản</button><div class="dropdown-content"><a href="?page=muc_giay" target="_self">Mực & giấy bao bì</a><a href="?page=thuhoi" target="_self">Chính sách thu hồi</a></div></div>
+<div class="dropdown"><button class="dropbtn parent-only" type="button">Bao bì & bảo quản</button><div class="dropdown-content"><a href="?page=muc_giay" target="_self">Thông tin bao bì</a><a href="?page=thuhoi" target="_self">Thông tin sản phẩm</a></div></div>
 <a href="?page=giohang" target="_self" class="cart-menu-btn">🛒 Giỏ hàng (__CART_COUNT__)</a>
 </div>
 </div>
@@ -4116,13 +4116,12 @@ def render_product_detail_page():
             st.info("Bạn chưa xem thêm sản phẩm nào khác.")
 
 def render_baobi_page():
-    html = """
+    # Style mới: Nền phẳng tối giản (Flat Craft Layout), loại bỏ chấm bi
+    st.markdown("""
     <style>
-    .craft-container {
-        background-color: #FDFBF7;
-        background-image: radial-gradient(#e0dcd3 1px, transparent 1px);
-        background-size: 20px 20px;
-        padding: 40px 30px;
+    .craft-container-flat {
+        background-color: #FDFBF7; /* Nền kem phẳng trơn sạch sẽ */
+        padding: 35px 30px;
         border-radius: 16px;
         border: 1px solid #E8E3D9;
         color: #4A3B32;
@@ -4133,106 +4132,169 @@ def render_baobi_page():
         letter-spacing: 2px; border-bottom: 2px dashed #8D6E63;
         padding-bottom: 15px; margin-bottom: 30px; font-weight: 700;
     }
-    .img-block { display: flex; gap: 20px; margin-bottom: 30px; }
-    .mockup-main {
-        flex: 2; background: #F1F8E9; border: 1px dashed #AED581; border-radius: 12px;
-        display: flex; align-items: center; justify-content: center; height: 250px; color: #7CB342; font-weight: bold; font-size: 1.2rem;
+    .tech-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px; margin-top: 25px; margin-bottom: 25px;
     }
-    .mockup-sub { flex: 1; display: flex; flex-direction: column; gap: 20px; }
-    .sub-box {
-        flex: 1; background: #EFEBE9; border-radius: 12px; border: 1px dashed #BCAAA4;
-        display: flex; align-items: center; justify-content: center; flex-direction: column; color: #8D6E63; font-weight: 500;
+    .tech-card {
+        background: white; padding: 20px; border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        border-left: 4px solid #2E7D32;
+        border-top: 1px solid #F0EFEA;
+        border-right: 1px solid #F0EFEA;
+        border-bottom: 1px solid #F0EFEA;
     }
-    .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px; }
-    .tech-card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); border-left: 4px solid #2E7D32; }
-    .tech-card h4 { margin: 0 0 10px 0; color: #8D6E63; font-size: 14px; text-transform: uppercase;}
-    .tech-card p { margin: 0; color: #2E7D32; font-weight: bold; font-size: 16px;}
-    .trace-block { display: flex; background: #E8F5E9; padding: 20px; border-radius: 12px; align-items: center; gap: 30px; }
-    .qr-box { width: 100px; height: 100px; background: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 40px; }
-    .trace-info p { margin: 5px 0; font-size: 15px; }
-    .trace-info strong { color: #2E7D32; }
+    .tech-card h4 { margin: 0 0 10px 0; color: #8D6E63; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;}
+    .tech-card p { margin: 0; color: #2E7D32; font-weight: bold; font-size: 15px;}
+    
+    .trace-block {
+        display: flex; background: #E8F5E9; padding: 25px; border-radius: 12px;
+        align-items: center; gap: 20px; height: 100%;
+    }
+    .trace-info p { margin: 6px 0; font-size: 15px; color: #388E3C; }
+    .trace-info strong { color: #1B5E20; }
+    
+    .eco-badge {
+        background: #E8F5E9; color: #2E7D32; border: 1px dashed #81C784;
+        padding: 12px; border-radius: 8px; text-align: center; font-weight: bold;
+        font-size: 14px; margin-top: 12px;
+    }
     </style>
-
-    <div class="craft-container">
-        <h2 class="section-title">📦 Thông Tin Bao Bì & In Ấn</h2>
-        <div class="img-block">
-            <div class="mockup-main">🖼️ Mockup Bao Bì Tổng Thể<br><small>(Chèn ảnh st.image tại đây)</small></div>
-            <div class="mockup-sub">
-                <div class="sub-box">🔍 Ảnh chi tiết chất liệu</div>
-                <div class="sub-box" style="background:#E8F5E9; color:#2E7D32; border-color:#81C784;">
-                    <h3 style="margin:0;">♻️ 100%</h3><span>Sinh học phân hủy</span>
-                </div>
-            </div>
-        </div>
-        <div class="tech-grid">
-            <div class="tech-card"><h4>Chất liệu bao bì</h4><p>Giấy Kraft / Túi sinh học</p></div>
-            <div class="tech-card"><h4>Công nghệ in</h4><p>Offset / Mực gốc nước</p></div>
-            <div class="tech-card"><h4>Kích thước</h4><p>15 x 20 x 5 cm</p></div>
-            <div class="tech-card"><h4>Đơn vị & Nơi SX</h4><p>EcoPrint JSC, Hà Nội</p></div>
-        </div>
-        <div class="trace-block">
-            <div class="qr-box">📱</div>
-            <div class="trace-info">
-                <p><strong>Mã lô sản xuất:</strong> LOT-CV2026-X1</p>
-                <p><strong>Truy xuất nguồn gốc:</strong> Quét mã QR để xem hành trình hạt lúa.</p>
-                <p><strong>Website:</strong> comlangvong-smart.vn</p>
-            </div>
-        </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown('<div class="craft-container-flat">', unsafe_allow_html=True)
+    
+    # KHỐI 1: Tích hợp hình ảnh bằng cấu trúc layout của Streamlit
+    img_col1, img_col2 = st.columns([2, 1])
+    with img_col1:
+        # Nhúng ảnh Mockup lớn (Thay link dưới bằng file ảnh của bạn nếu cần, ví dụ: "mockup.png")
+        st.image("Mockup.jpg", 
+                 caption="Mockup Thiết Kế Bao Bì Thương Mại Tổng Thể", use_container_width=True)
+    with img_col2:
+        # Nhúng ảnh chi tiết chất liệu vật liệu nền
+        st.image("https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=400", 
+                 caption="Cận cảnh bề mặt Giấy Kraft Eco", use_container_width=True)
+        st.markdown('<div class="eco-badge">♻️ Chuẩn Tái Chế Quốc Tế</div>', unsafe_allow_html=True)
+    
+    # KHỐI 2: Thông số kỹ thuật dạng thẻ Grid phẳng
+    st.markdown("""
+    <div class="tech-grid">
+        <div class="tech-card"><h4>Chất liệu chính</h4><p>Giấy Kraft Nhật / Túi zip PP sinh học</p></div>
+        <div class="tech-card"><h4>Công nghệ in ấn</h4><p>In Offset công nghiệp / Mực gốc nước</p></div>
+        <div class="tech-card"><h4>Kích thước bao bì</h4><p>15 x 20 x 5 cm (Dài x Rộng x Cao)</p></div>
+        <div class="tech-card"><h4>Nhà máy sản xuất</h4><p>EcoPrint Việt Nam (Đồng Nai)</p></div>
     </div>
-    """
-    st.markdown(html, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
+    
+    # KHỐI 3: Khu vực quét mã QR truy xuất nguồn gốc đồ án
+    trace_col1, trace_col2 = st.columns([1, 3])
+    with trace_col1:
+        # Ảnh QR Code thực tế (Thay bằng file qrcode của bạn, ví dụ: "qrcode.png")
+        st.image("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://comlangvong-smart.vn", 
+                 caption="Mã QR Truy Xuất", use_container_width=True)
+    with trace_col2:
+        st.markdown("""
+        <div class="trace-block">
+            <div class="trace-info">
+                <p><strong>Mã định danh lô:</strong> LOT-CV2026-X1 (Cập nhật thời gian thực)</p>
+                <p><strong>Cơ chế bảo mật:</strong> Mã hóa dữ liệu QR phân tán chống sao chép bao bì giả.</p>
+                <p><strong>Cổng thông tin:</strong> comlangvong-smart.vn</p>
+                <p><strong>Đơn vị sở hữu công nghệ:</strong> Đồ án tốt nghiệp Hệ thống Bao bì thông minh</p>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+    st.markdown('</div>', unsafe_allow_html=True)
 
 
 def render_baoquan_page():
-    html = """
+    # Style mới: Nền phẳng, cấu trúc Infographic / Timeline rõ chữ
+    st.markdown("""
     <style>
-    .craft-container {
+    .craft-container-flat {
         background-color: #FDFBF7;
-        background-image: radial-gradient(#e0dcd3 1px, transparent 1px);
-        background-size: 20px 20px;
-        padding: 40px 30px;
+        padding: 35px 30px;
         border-radius: 16px;
         border: 1px solid #E8E3D9;
         color: #4A3B32;
         font-family: 'Segoe UI', sans-serif;
     }
-    .section-title { color: #2E7D32; text-align: center; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px dashed #8D6E63; padding-bottom: 15px; margin-bottom: 30px; font-weight: 700; }
-    .icon-bar { display: flex; justify-content: space-around; margin-bottom: 40px; background: white; padding: 20px; border-radius: 100px; box-shadow: 0 4px 15px rgba(46,125,50,0.05); }
+    .section-title {
+        color: #2E7D32; text-align: center; text-transform: uppercase;
+        letter-spacing: 2px; border-bottom: 2px dashed #8D6E63;
+        padding-bottom: 15px; margin-bottom: 30px; font-weight: 700;
+    }
+    .icon-bar {
+        display: flex; justify-content: space-around; margin-bottom: 35px;
+        background: white; padding: 20px; border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+        border: 1px solid #EFEBE9;
+    }
     .icon-item { text-align: center; }
-    .icon-item span { display: block; font-size: 30px; margin-bottom: 8px;}
-    .icon-item p { margin: 0; font-size: 13px; font-weight: 600; color: #8D6E63; text-transform: uppercase;}
-    .info-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
-    .info-table th { background: #2E7D32; color: white; padding: 15px; text-align: left; }
-    .info-table td { padding: 15px; border-bottom: 1px solid #EFEBE9; color: #5D4037; font-weight: 500;}
+    .icon-item span { display: block; font-size: 32px; margin-bottom: 8px;}
+    .icon-item p { margin: 0; font-size: 13px; font-weight: 600; color: #8D6E63; text-transform: uppercase; line-height: 1.4;}
+    
+    .info-table {
+        width: 100%; border-collapse: collapse; margin-bottom: 30px;
+        background: white; border-radius: 12px; overflow: hidden;
+        border: 1px solid #EFEBE9;
+    }
+    .info-table th { background: #2E7D32; color: white; padding: 15px; text-align: left; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;}
+    .info-table td { padding: 15px; border-bottom: 1px solid #EFEBE9; color: #5D4037; font-size: 14px;}
     .info-table tr:last-child td { border-bottom: none; }
-    .note-grid { display: flex; gap: 20px; }
-    .note-box { flex: 1; padding: 20px; border-radius: 12px; position: relative; padding-left: 50px; }
-    .note-box::before { content: '📌'; position: absolute; left: 15px; top: 18px; font-size: 20px; }
+    
+    .note-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 768px) { .note-grid { grid-template-columns: 1fr; } }
+    .note-box { padding: 20px 20px 20px 55px; border-radius: 12px; position: relative; line-height: 1.6; font-size: 14px;}
+    .note-box::before { content: '📌'; position: absolute; left: 18px; top: 18px; font-size: 22px; }
     .note-1 { background: #FFF3E0; border: 1px solid #FFE0B2; color: #E65100; }
     .note-2 { background: #E0F2F1; border: 1px solid #B2DFDB; color: #00695C; }
     </style>
-
-    <div class="craft-container">
-        <h2 class="section-title">⏳ Chỉ Dẫn Bảo Quản & Thông Tin Lô</h2>
-        <div class="icon-bar">
-            <div class="icon-item"><span>🌡️</span><p>Khô ráo<br>Thoáng mát</p></div>
-            <div class="icon-item"><span>⏱️</span><p>Sử dụng ngay<br>trong 3 ngày</p></div>
-            <div class="icon-item"><span>🧊</span><p>Trữ tủ lạnh<br>nếu để lâu</p></div>
-            <div class="icon-item"><span>📦</span><p>Buộc kín<br>sau khi mở</p></div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown('<div class="craft-container-flat">', unsafe_allow_html=True)
+    
+    # PHẦN TRÊN: Bộ Icon Infographic chỉ dẫn nhanh
+    st.markdown("""
+    <div class="icon-bar">
+        <div class="icon-item"><span>🌡️</span><p>Khô ráo<br>Thoáng mát</p></div>
+        <div class="icon-item"><span>⏱️</span><p>Sử dụng tốt nhất<br>Trong 3 ngày</p></div>
+        <div class="icon-item"><span>🧊</span><p>Ngăn đông lạnh<br>Để giữ lâu dài</p></div>
+        <div class="icon-item"><span>📦</span><p>Ép miệng túi<br>Kín khí sau mở</p></div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # PHẦN GIỮA: Bảng dữ liệu quản lý mẻ sản xuất
+    st.markdown("""
+    <table class="info-table">
+        <thead>
+            <tr>
+                <th style="width: 30%;">Nội dung kiểm soát</th>
+                <th style="width: 70%;">Thông tin chi tiết trên hệ thống</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>Ngày đóng gói:</strong></td><td>20/10/2026 (Sản xuất và đóng gói ngay trong ngày)</td></tr>
+            <tr><td><strong>Hạn sử dụng (HSD):</strong></td><td>03 ngày (nhiệt độ thường) — Khuyến khích lên đến 15 ngày (nếu cấp đông)</td></tr>
+            <tr><td><strong>Mã số mẻ / Lô sản xuất:</strong></td><td><code>#LOT-CV-SANG-2010</code> (Tra cứu minh bạch trên chuỗi cung ứng)</td></tr>
+            <tr><td><strong>Địa điểm đóng gói:</strong></td><td>Cơ sở sản xuất Cốm Làng Vòng Bà Hoản, Cầu Giấy, Hà Nội.</td></tr>
+        </tbody>
+    </table>
+    """, unsafe_allow_html=True)
+    
+    # PHẦN DƯỚI: Các khối khuyến nghị sử dụng tách biệt trực quan
+    st.markdown("""
+    <div class="note-grid">
+        <div class="note-box note-1">
+            <strong>Chỉ dẫn an toàn:</strong> Tránh để sản phẩm ở vị trí có độ ẩm cao hoặc ánh nắng trực tiếp chiếu vào. Nếu cốm bị cứng do không khí lạnh, có thể hấp cách thủy lại trong 2 phút để hạt cốm hồi phục độ mềm dẻo.
         </div>
-        <table class="info-table">
-            <tr><th>Tiêu chí</th><th>Thông tin chi tiết</th></tr>
-            <tr><td><strong>Ngày đóng gói:</strong></td><td>20/10/2026 (Sản xuất theo ngày)</td></tr>
-            <tr><td><strong>Hạn sử dụng (HSD):</strong></td><td>3 ngày (nhiệt độ thường) - 15 ngày (ngăn mát tủ lạnh)</td></tr>
-            <tr><td><strong>Lô sản xuất / Mẻ cốm:</strong></td><td>#LOT-CV-SANG-2010</td></tr>
-        </table>
-        <div class="note-grid">
-            <div class="note-box note-1"><strong>Lưu ý quan trọng:</strong> Tránh tuyệt đối ánh nắng trực tiếp. Không để sản phẩm ở nơi có độ ẩm cao để tránh mốc.</div>
-            <div class="note-box note-2"><strong>Mẹo thưởng thức:</strong> Dùng ngon nhất cùng chuối tiêu hoặc pha trà sen. Nếu bảo quản lạnh, nên để ra ngoài 15 phút trước khi ăn.</div>
+        <div class="note-box note-2">
+            <strong>Mẹo thưởng thức ngon nhất:</strong> Hương vị cốm sẽ đạt độ thơm ngon lý tưởng nhất khi thưởng thức cùng chuối tiêu chín kỹ hoặc nhâm nhi bên tách trà sen ấm vào buổi sáng.
         </div>
     </div>
-    """
-    st.markdown(html, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
+    
+    st.markdown('</div>', unsafe_allow_html=True)
 
 def render_origin_process_page():
     """Render Quy trình & nguồn gốc with clean storytelling content and images inside each process step."""
