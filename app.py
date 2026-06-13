@@ -4116,14 +4116,11 @@ def render_product_detail_page():
             st.info("Bạn chưa xem thêm sản phẩm nào khác.")
 
 def render_baobi_page():
-    # Style mới: Nền phẳng tối giản (Flat Craft Layout), loại bỏ chấm bi
+    # Style mới: Loại bỏ hoàn toàn khung viền và nền của container ngoài cùng
     st.markdown("""
     <style>
-    .craft-container-flat {
-        background-color: #FDFBF7; /* Nền kem phẳng trơn sạch sẽ */
-        padding: 35px 30px;
-        border-radius: 16px;
-        border: 1px solid #E8E3D9;
+    .craft-container-noborder {
+        padding: 10px 0px;
         color: #4A3B32;
         font-family: 'Segoe UI', sans-serif;
     }
@@ -4137,12 +4134,12 @@ def render_baobi_page():
         gap: 15px; margin-top: 25px; margin-bottom: 25px;
     }
     .tech-card {
-        background: white; padding: 20px; border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        background: #FFFFFF; padding: 20px; border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         border-left: 4px solid #2E7D32;
-        border-top: 1px solid #F0EFEA;
-        border-right: 1px solid #F0EFEA;
-        border-bottom: 1px solid #F0EFEA;
+        border-top: 1px solid #EFEBE9;
+        border-right: 1px solid #EFEBE9;
+        border-bottom: 1px solid #EFEBE9;
     }
     .tech-card h4 { margin: 0 0 10px 0; color: #8D6E63; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;}
     .tech-card p { margin: 0; color: #2E7D32; font-weight: bold; font-size: 15px;}
@@ -4162,21 +4159,19 @@ def render_baobi_page():
     </style>
     """, unsafe_allow_html=True)
     
-    st.markdown('<div class="craft-container-flat">', unsafe_allow_html=True)
+    st.markdown('<div class="craft-container-noborder">', unsafe_allow_html=True)
     
-    # KHỐI 1: Tích hợp hình ảnh bằng cấu trúc layout của Streamlit
-    img_col1, img_col2 = st.columns([2, 1])
+    # KHỐI 1: Hình ảnh hiển thị trực tiếp trên nền app
+    img_col1, img_col2 = st.columns([2, 1/2])
     with img_col1:
-        # Nhúng ảnh Mockup lớn (Thay link dưới bằng file ảnh của bạn nếu cần, ví dụ: "mockup.png")
         st.image("Mockup.jpg", 
                  caption="Mockup Thiết Kế Bao Bì Thương Mại Tổng Thể", use_container_width=True)
     with img_col2:
-        # Nhúng ảnh chi tiết chất liệu vật liệu nền
         st.image("https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=400", 
                  caption="Cận cảnh bề mặt Giấy Kraft Eco", use_container_width=True)
         st.markdown('<div class="eco-badge">♻️ Chuẩn Tái Chế Quốc Tế</div>', unsafe_allow_html=True)
     
-    # KHỐI 2: Thông số kỹ thuật dạng thẻ Grid phẳng
+    # KHỐI 2: Thông số dạng thẻ phẳng
     st.markdown("""
     <div class="tech-grid">
         <div class="tech-card"><h4>Chất liệu chính</h4><p>Giấy Kraft Nhật / Túi zip PP sinh học</p></div>
@@ -4186,10 +4181,9 @@ def render_baobi_page():
     </div>
     """, unsafe_allow_html=True)
     
-    # KHỐI 3: Khu vực quét mã QR truy xuất nguồn gốc đồ án
+    # KHỐI 3: Khu vực quét mã QR
     trace_col1, trace_col2 = st.columns([1, 3])
     with trace_col1:
-        # Ảnh QR Code thực tế (Thay bằng file qrcode của bạn, ví dụ: "qrcode.png")
         st.image("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://comlangvong-smart.vn", 
                  caption="Mã QR Truy Xuất", use_container_width=True)
     with trace_col2:
@@ -4208,14 +4202,11 @@ def render_baobi_page():
 
 
 def render_baoquan_page():
-    # Style mới: Nền phẳng, cấu trúc Infographic / Timeline rõ chữ
+    # Style mới: Loại bỏ hoàn toàn khung viền ngoài cho trang Bảo Quản
     st.markdown("""
     <style>
-    .craft-container-flat {
-        background-color: #FDFBF7;
-        padding: 35px 30px;
-        border-radius: 16px;
-        border: 1px solid #E8E3D9;
+    .craft-container-noborder {
+        padding: 10px 0px;
         color: #4A3B32;
         font-family: 'Segoe UI', sans-serif;
     }
@@ -4226,8 +4217,8 @@ def render_baoquan_page():
     }
     .icon-bar {
         display: flex; justify-content: space-around; margin-bottom: 35px;
-        background: white; padding: 20px; border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+        background: #FFFFFF; padding: 20px; border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         border: 1px solid #EFEBE9;
     }
     .icon-item { text-align: center; }
@@ -4236,7 +4227,7 @@ def render_baoquan_page():
     
     .info-table {
         width: 100%; border-collapse: collapse; margin-bottom: 30px;
-        background: white; border-radius: 12px; overflow: hidden;
+        background: #FFFFFF; border-radius: 12px; overflow: hidden;
         border: 1px solid #EFEBE9;
     }
     .info-table th { background: #2E7D32; color: white; padding: 15px; text-align: left; font-size: 15px; text-transform: uppercase; letter-spacing: 1px;}
@@ -4252,9 +4243,9 @@ def render_baoquan_page():
     </style>
     """, unsafe_allow_html=True)
     
-    st.markdown('<div class="craft-container-flat">', unsafe_allow_html=True)
+    st.markdown('<div class="craft-container-noborder">', unsafe_allow_html=True)
     
-    # PHẦN TRÊN: Bộ Icon Infographic chỉ dẫn nhanh
+    # Bộ Icon Infographic
     st.markdown("""
     <div class="icon-bar">
         <div class="icon-item"><span>🌡️</span><p>Khô ráo<br>Thoáng mát</p></div>
@@ -4264,7 +4255,7 @@ def render_baoquan_page():
     </div>
     """, unsafe_allow_html=True)
     
-    # PHẦN GIỮA: Bảng dữ liệu quản lý mẻ sản xuất
+    # Bảng dữ liệu kiểm soát
     st.markdown("""
     <table class="info-table">
         <thead>
@@ -4282,7 +4273,7 @@ def render_baoquan_page():
     </table>
     """, unsafe_allow_html=True)
     
-    # PHẦN DƯỚI: Các khối khuyến nghị sử dụng tách biệt trực quan
+    # Khối lưu ý
     st.markdown("""
     <div class="note-grid">
         <div class="note-box note-1">
