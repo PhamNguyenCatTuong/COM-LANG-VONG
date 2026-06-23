@@ -377,7 +377,7 @@ PAGE_DATABASE = {
         "items": ["cauchuyen", "video"],
     },
     "baobi": {
-        "title": "Thông tin bao bì",
+        "title": "",
         "type": "group",
         "items": ["muc_giay", "thuhoi"],
     },
@@ -535,7 +535,7 @@ PAGE_DATABASE = {
         ],
     },
     "muc_giay": {
-        "title": "📦 Thông tin bao bì",
+        "title": "📦 ",
         "card_class": "card2",
         "card_title": "📦 Thông tin chất liệu bao bì",
         "paragraphs": [
@@ -5390,13 +5390,21 @@ elif page == "baobi_main":
         
     # Tạo một khoảng trống nhỏ bằng HTML để phân cách 2 khối giao diện cho đẹp mắt
     st.markdown("<div style='margin: 25px 0;'></div>", unsafe_allow_html=True)
-    st.markdown("<h1 class='page-title'>🏷️ Thông tin sản phẩm</h1>", unsafe_allow_html=True)
+    st.markdown("""
+        <h1 style='font-size: 35px; text-align: center; margin-bottom: -40px; color: #333;'>
+            🏷️ Thông tin sản phẩm
+        </h1>
+    """, unsafe_allow_html=True)
     # 2. Gọi hiển thị trang con thứ hai: Chương trình thu hồi hộp cũ (thuhoi)
     p2 = fetch_page(conn, "thuhoi")
     if p2:
         render_baoquan_page()
 
-    st.markdown("<h1 class='page-title'>✅Chứng nhận sản phẩm</h1>", unsafe_allow_html=True)
+    st.markdown("""
+        <h1 style='font-size: 35px; text-align: center; margin-bottom: -40px; color: #333;'>
+            ✅Chứng nhận sản phẩm
+        </h1>
+    """, unsafe_allow_html=True)
     p3 = fetch_page(conn, "chatluong")
     if p3: 
         render_certificate_page()
