@@ -5401,7 +5401,7 @@ elif page == "baobi_main":
         render_baoquan_page()
 
     st.markdown("""
-        <h1 style='font-size: 25px; text-align: center; margin-bottom: -40px; color: #333;'>
+        <h1 style='font-size: 25px; text-align: center; margin-bottom: -25px; color: #333;'>
             ✅Chứng nhận sản phẩm
         </h1>
     """, unsafe_allow_html=True)
