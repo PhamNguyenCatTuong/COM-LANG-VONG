@@ -5379,7 +5379,7 @@ elif page == "chitietsp":
 
 elif page == "baobi_main":
     st.markdown("""
-        <h1 style='font-size: 35px; text-align: center; margin-bottom: -40px; color: #333;'>
+        <h1 style='font-size: 30px; text-align: center; margin-bottom: -40px; color: #333;'>
             📦 Thông tin bao bì
         </h1>
     """, unsafe_allow_html=True)
@@ -5391,7 +5391,7 @@ elif page == "baobi_main":
     # Tạo một khoảng trống nhỏ bằng HTML để phân cách 2 khối giao diện cho đẹp mắt
     st.markdown("<div style='margin: 25px 0;'></div>", unsafe_allow_html=True)
     st.markdown("""
-        <h1 style='font-size: 35px; text-align: center; margin-bottom: -40px; color: #333;'>
+        <h1 style='font-size: 30px; text-align: center; margin-bottom: -40px; color: #333;'>
             🏷️ Thông tin sản phẩm
         </h1>
     """, unsafe_allow_html=True)
@@ -5401,7 +5401,7 @@ elif page == "baobi_main":
         render_baoquan_page()
 
     st.markdown("""
-        <h1 style='font-size: 35px; text-align: center; margin-bottom: -40px; color: #333;'>
+        <h1 style='font-size: 30px; text-align: center; margin-bottom: -40px; color: #333;'>
             ✅Chứng nhận sản phẩm
         </h1>
     """, unsafe_allow_html=True)
