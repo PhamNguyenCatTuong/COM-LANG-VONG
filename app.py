@@ -5378,7 +5378,11 @@ elif page == "chitietsp":
     render_product_detail_page()
 
 elif page == "baobi_main":
-    st.markdown("<h1 class='page-title'>📦Thông tin bao bì</h1>", unsafe_allow_html=True)
+    st.markdown("""
+        <h1 style='font-size: 28px; text-align: center; margin-bottom: 20px; color: #333;'>
+            📦 Thông tin bao bì
+        </h1>
+    """, unsafe_allow_html=True)
     # 1. Gọi hiển thị trang con thứ nhất: Thông tin bao bì (muc_giay)
     p1 = fetch_page(conn, "muc_giay")
     if p1:
