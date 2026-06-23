@@ -10,7 +10,7 @@ import streamlit.components.v1 as components
 st.set_page_config(page_title="CỐM LÀNG VÒNG", layout="wide")
 
 params = st.query_params
-page = params.get("page", "gioithieu")
+page = params.get("page", "nguongoc")
 
 APP_DIR = Path(__file__).resolve().parent
 
