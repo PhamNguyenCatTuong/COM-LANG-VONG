@@ -4166,9 +4166,9 @@ def render_baobi_page():
     st.markdown("""
     <div class="tech-grid">
         <div class="tech-card"><h4>Chất liệu chính</h4><p>Giấy Ivory / Túi zip PP sinh học</p></div>
-        <div class="tech-card"><h4>Công nghệ in ấn</h4><p>In Offset công nghiệp / Mực gốc nước</p></div>
-        <div class="tech-card"><h4>Kích thước bao bì</h4><p>15 x 20 x 5 cm (Dài x Rộng x Cao)</p></div>
-        <div class="tech-card"><h4>Nhà máy sản xuất</h4><p>EcoPrint Việt Nam (Đồng Nai)</p></div>
+        <div class="tech-card"><h4>Công nghệ in ấn</h4><p>In Offset công nghiệp / Mực in Kingwood gốc dầu</p></div>
+        <div class="tech-card"><h4>Kích thước bao bì</h4><p>14 x 2 x 14 cm (Dài x Rộng x Cao)</p></div>
+        <div class="tech-card"><h4>Đơn vị in ấn bao bì</h4><p>EcoPrint Việt Nam (Đồng Nai)</p></div>
     </div>
     """, unsafe_allow_html=True)
     
@@ -4183,8 +4183,8 @@ def render_baobi_page():
             <div class="trace-info">
                 <p><strong>Mã định danh lô:</strong> LOT-CV2026-X1 (Cập nhật thời gian thực)</p>
                 <p><strong>Cơ chế bảo mật:</strong> Mã hóa dữ liệu QR phân tán chống sao chép bao bì giả.</p>
-                <p><strong>Cổng thông tin:</strong> comlangvong-smart.vn</p>
-                <p><strong>Đơn vị sở hữu công nghệ:</strong> Đồ án tốt nghiệp Hệ thống Bao bì thông minh</p>
+                <p><strong>Cổng thông tin:</strong> https://com-lang-vong.streamlit.app/</p>
+                <p><strong>Đơn vị sở hữu công nghệ:</strong> Đồ án tốt nghiệp K22</p>
             </div>
         </div>
         """, unsafe_allow_html=True)
