@@ -5379,7 +5379,7 @@ elif page == "chitietsp":
 
 elif page == "baobi_main":
     st.markdown("""
-        <h1 style='font-size: 35px; text-align: center; margin-bottom: -25px; color: #333;'>
+        <h1 style='font-size: 35px; text-align: center; margin-bottom: -40px; color: #333;'>
             📦 Thông tin bao bì
         </h1>
     """, unsafe_allow_html=True)
