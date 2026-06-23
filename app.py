@@ -10,7 +10,7 @@ import streamlit.components.v1 as components
 st.set_page_config(page_title="CỐM LÀNG VÒNG", layout="wide")
 
 params = st.query_params
-page = params.get("page", "nguongoc")
+page = params.get("page", "baobi_main")
 
 APP_DIR = Path(__file__).resolve().parent
 
@@ -269,8 +269,7 @@ PRODUCTION_AREAS = [
 PARENT_PAGE_REDIRECTS = {
     "gioithieu": "cauchuyen",
     "sanpham_main": "sanpham",
-    "baobi_main": "muc_giay",
-}
+    }
 if page in PARENT_PAGE_REDIRECTS:
     st.query_params["page"] = PARENT_PAGE_REDIRECTS[page]
     st.rerun()
@@ -341,6 +340,10 @@ def page_url(page_id, product_index=None, add_cart=None):
     return "?" + "&".join(parts)
 
 PAGE_DATABASE = {
+    "baobi_main": {
+        "title": "Truy xuất nguồn gốc",
+        "type": "page",
+    },
     "gioithieu": {
         "title": "Giới thiệu",
         "type": "group",
@@ -356,16 +359,7 @@ PAGE_DATABASE = {
         "type": "group",
         "items": ["sanpham", "congthuc"],
     },
-    "baobi_main": {
-        "title": "Bao bì & bảo quản",
-        "type": "group",
-        "items": ["muc_giay", "thuhoi"],
-    },
-    "giohang": {
-        "title": "Giỏ hàng",
-        "type": "custom_cart",
-    },
-
+        
     # Legacy groups kept for old links.
     "thongtinsp": {
         "title": "Thông tin sản phẩm",
@@ -2100,12 +2094,10 @@ st.markdown(
 <label for="menu-toggle" class="hamburger">☰</label>
 </div>
 <div class="menu">
+<div class="dropdown"><a href="?page=baobi_main" target="_self" style="text-decoration:none;"><button class="dropbtn">Truy xuất nguồn gốc</button></a></div>
 <div class="dropdown"><button class="dropbtn parent-only" type="button">Giới thiệu</button><div class="dropdown-content"><a href="?page=cauchuyen" target="_self">Câu chuyện Cốm Làng Vòng</a><a href="?page=video" target="_self">Hành trình hương cốm</a></div></div>
 <div class="dropdown"><a href="?page=quytrinh" target="_self" style="text-decoration:none;"><button class="dropbtn">Quy trình & nguồn gốc</button></a></div>
 <div class="dropdown"><button class="dropbtn parent-only" type="button">Sản phẩm</button><div class="dropdown-content"><a href="?page=sanpham" target="_self">Danh sách sản phẩm</a><a href="?page=congthuc" target="_self">Công thức & Cách làm món ăn</a></div></div>
-<div class="dropdown"><a href="?page=chatluong" target="_self" style="text-decoration:none;"><button class="dropbtn">Chất lượng</button></a></div>
-<div class="dropdown"><button class="dropbtn parent-only" type="button">Bao bì & bảo quản</button><div class="dropdown-content"><a href="?page=muc_giay" target="_self">Thông tin bao bì</a><a href="?page=thuhoi" target="_self">Thông tin sản phẩm</a></div></div>
-<a href="?page=giohang" target="_self" class="cart-menu-btn">🛒 Giỏ hàng (__CART_COUNT__)</a>
 </div>
 </div>
 <section class="hero-banner">
@@ -4167,14 +4159,13 @@ def render_baobi_page():
         st.image("Mockup.jpg", 
                  caption="Mockup Thiết Kế Bao Bì Thương Mại Tổng Thể", use_container_width=True)
     with img_col2:
-        st.image("https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=400", 
-                 caption="Cận cảnh bề mặt Giấy Kraft Eco", use_container_width=True)
-        st.markdown('<div class="eco-badge">♻️ Chuẩn Tái Chế Quốc Tế</div>', unsafe_allow_html=True)
-    
+        st.image("Bematgiay.jpg",
+                 caption="Cận cảnh bề mặt Giấy Ivory", use_container_width=True)
+        
     # KHỐI 2: Thông số dạng thẻ phẳng
     st.markdown("""
     <div class="tech-grid">
-        <div class="tech-card"><h4>Chất liệu chính</h4><p>Giấy Kraft Nhật / Túi zip PP sinh học</p></div>
+        <div class="tech-card"><h4>Chất liệu chính</h4><p>Giấy Ivory / Túi zip PP sinh học</p></div>
         <div class="tech-card"><h4>Công nghệ in ấn</h4><p>In Offset công nghiệp / Mực gốc nước</p></div>
         <div class="tech-card"><h4>Kích thước bao bì</h4><p>15 x 20 x 5 cm (Dài x Rộng x Cao)</p></div>
         <div class="tech-card"><h4>Nhà máy sản xuất</h4><p>EcoPrint Việt Nam (Đồng Nai)</p></div>
@@ -5329,9 +5320,6 @@ def render_page(page_data):
     if page_data["page_id"] == "khuvuc":
         render_production_area_page()
         return
-    if page_data["type"] == "custom_cert":
-        render_certificate_page()
-        return
 
     if page_data["type"] in ["group", "full_content"]:
         for child_page_id in page_data.get("group_items", []):
@@ -5372,18 +5360,6 @@ def render_page(page_data):
                 st.warning(f"Không tìm thấy ảnh: {image_path}")
 
         return
-
-    if page_data["page_id"] in ["muc_giay", "baobi"]:
-        render_baobi_page()
-        return
-    
-    if page_data["page_id"] in ["thuhoi", "baoquan"]:
-        render_baoquan_page()
-        return
-    
-    if page_data["page_id"] == "nguyenlieu":
-        render_origin_process_page()
-        return
     
     if page_data["page_id"] == "khuvuc":
         render_production_area_page()
@@ -5400,6 +5376,26 @@ if page == "giohang":
 
 elif page == "chitietsp":
     render_product_detail_page()
+
+elif page == "baobi_main":
+    st.markdown("<h1 class='page-title'>📦Thông tin bao bì</h1>", unsafe_allow_html=True)
+    # 1. Gọi hiển thị trang con thứ nhất: Thông tin bao bì (muc_giay)
+    p1 = fetch_page(conn, "muc_giay")
+    if p1:
+        render_baobi_page()
+        
+    # Tạo một khoảng trống nhỏ bằng HTML để phân cách 2 khối giao diện cho đẹp mắt
+    st.markdown("<div style='margin: 25px 0;'></div>", unsafe_allow_html=True)
+    st.markdown("<h1 class='page-title'>🏷️ Thông tin sản phẩm</h1>", unsafe_allow_html=True)
+    # 2. Gọi hiển thị trang con thứ hai: Chương trình thu hồi hộp cũ (thuhoi)
+    p2 = fetch_page(conn, "thuhoi")
+    if p2:
+        render_baoquan_page()
+
+    st.markdown("<h1 class='page-title'>✅Chứng nhận sản phẩm</h1>", unsafe_allow_html=True)
+    p3 = fetch_page(conn, "chatluong")
+    if p3: 
+        render_certificate_page()
 
 elif current_page:
     render_page(current_page)
