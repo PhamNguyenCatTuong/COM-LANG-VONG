@@ -3042,38 +3042,7 @@ html, body {
     font-weight: 900;
     line-height: 1.5;
 }
-.side-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 30;
-    width: 42px;
-    height: 42px;
-    border: 0;
-    border-radius: 50%;
-    background: rgba(15,17,18,.72);
-    color: white;
-    font-size: 30px;
-    font-weight: 800;
-    cursor: pointer;
-    box-shadow: 0 12px 30px rgba(0,0,0,.38);
-    backdrop-filter: blur(8px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: .16s ease;
-}
-.side-nav:hover {
-    background: rgba(46,125,50,.92);
-    transform: translateY(-50%) scale(1.04);
-}
-.side-nav:disabled {
-    opacity: .28;
-    cursor: not-allowed;
-    transform: translateY(-50%);
-}
-.side-nav.prev { left: 0; }
-.side-nav.next { right: 0; }
+
 .status-row {
     max-width: 1040px;
     margin: 6px auto 0;
@@ -3202,14 +3171,6 @@ html, body {
         aspect-ratio: 2400 / 1400;
         height: auto;
     }
-    .side-nav {
-        width: 44px;
-        height: 44px;
-        font-size: 30px;
-        background: rgba(15,17,18,.56);
-    }
-    .side-nav.prev { left: 4px; }
-    .side-nav.next { right: 4px; }
     .status-row {
         justify-content: center;
         flex-wrap: wrap;
@@ -3322,12 +3283,12 @@ html, body {
     </div>
 
     <div class="book-stage">
-        <button class="side-nav prev" id="prevBtn">‹</button>
+        <button class="side-nav prev" id="prevBtn"></button>
         <div class="book-shell" id="bookShell">
             <div id="book"></div>
             <div class="loading" id="loading">Đang tải sách...</div>
         </div>
-        <button class="side-nav next" id="nextBtn">›</button>
+        <button class="side-nav next" id="nextBtn"></button>
     </div>
 
     <div class="status-row">
@@ -4184,13 +4145,12 @@ def render_baobi_page():
                 <p><strong>Mã định danh lô:</strong> LOT-CV2026-X1 (Cập nhật thời gian thực)</p>
                 <p><strong>Cơ chế bảo mật:</strong> Mã hóa dữ liệu QR phân tán chống sao chép bao bì giả.</p>
                 <p><strong>Cổng thông tin:</strong> https://com-lang-vong.streamlit.app/</p>
-                <p><strong>Đơn vị sở hữu công nghệ:</strong> Đồ án tốt nghiệp K22</p>
+                <p><strong>Đơn vị sở hữu:</strong> Đồ án tốt nghiệp K22</p>
             </div>
         </div>
         """, unsafe_allow_html=True)
         
     st.markdown('</div>', unsafe_allow_html=True)
-
 
 def render_baoquan_page():
     # Style mới: Loại bỏ hoàn toàn khung viền ngoài cho trang Bảo Quản
