@@ -4115,31 +4115,21 @@ def render_baobi_page():
     st.markdown('<div class="craft-container-noborder">', unsafe_allow_html=True)
     
     # KHỐI 1: Hình ảnh hiển thị trực tiếp trên nền app
-    img_col1, img_col2 = st.columns([2, 1/2])
-    with img_col1:
-        st.image("Mockup.jpg", 
-                 caption="Mockup Thiết Kế Bao Bì Thương Mại Tổng Thể", use_container_width=True)
-    with img_col2:
-        st.image("Bematgiay.jpg",
+    st.image("Bematgiay.jpg",
                  caption="Cận cảnh bề mặt Giấy Ivory", use_container_width=True)
         
     # KHỐI 2: Thông số dạng thẻ phẳng
     st.markdown("""
     <div class="tech-grid">
         <div class="tech-card"><h4>Chất liệu chính</h4><p>Giấy Ivory / Túi zip PP sinh học</p></div>
-        <div class="tech-card"><h4>Công nghệ in ấn</h4><p>In Offset công nghiệp / Mực in Kingwood gốc dầu</p></div>
+        <div class="tech-card"><h4>Công nghệ in ấn</h4><p>In Offset công nghiệp / Mực in Kingswood gốc dầu</p></div>
         <div class="tech-card"><h4>Kích thước bao bì</h4><p>14 x 2 x 14 cm (Dài x Rộng x Cao)</p></div>
         <div class="tech-card"><h4>Đơn vị in ấn bao bì</h4><p>EcoPrint Việt Nam (Đồng Nai)</p></div>
     </div>
     """, unsafe_allow_html=True)
     
     # KHỐI 3: Khu vực quét mã QR
-    trace_col1, trace_col2 = st.columns([1, 3])
-    with trace_col1:
-        st.image("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://comlangvong-smart.vn", 
-                 caption="Mã QR Truy Xuất", use_container_width=True)
-    with trace_col2:
-        st.markdown("""
+    st.markdown("""
         <div class="trace-block">
             <div class="trace-info">
                 <p><strong>Mã định danh lô:</strong> LOT-CV2026-X1 (Cập nhật thời gian thực)</p>
@@ -4195,7 +4185,9 @@ def render_baoquan_page():
     """, unsafe_allow_html=True)
     
     st.markdown('<div class="craft-container-noborder">', unsafe_allow_html=True)
-    
+    st.image("Mockup.jpg", 
+                 caption="Bao bì sản phẩm Cốm Làng Vòng", use_container_width=True)
+        
     # Bộ Icon Infographic
     st.markdown("""
     <div class="icon-bar">
@@ -5340,18 +5332,6 @@ elif page == "chitietsp":
 elif page == "baobi_main":
     st.markdown("""
         <h1 style='font-size: 30px; text-align: center; margin-bottom: -40px; color: #333;'>
-            📦 Thông tin bao bì
-        </h1>
-    """, unsafe_allow_html=True)
-    # 1. Gọi hiển thị trang con thứ nhất: Thông tin bao bì (muc_giay)
-    p1 = fetch_page(conn, "muc_giay")
-    if p1:
-        render_baobi_page()
-        
-    # Tạo một khoảng trống nhỏ bằng HTML để phân cách 2 khối giao diện cho đẹp mắt
-    st.markdown("<div style='margin: 25px 0;'></div>", unsafe_allow_html=True)
-    st.markdown("""
-        <h1 style='font-size: 30px; text-align: center; margin-bottom: -40px; color: #333;'>
             🏷️ Thông tin sản phẩm
         </h1>
     """, unsafe_allow_html=True)
@@ -5359,6 +5339,18 @@ elif page == "baobi_main":
     p2 = fetch_page(conn, "thuhoi")
     if p2:
         render_baoquan_page()
+    
+    # Tạo một khoảng trống nhỏ bằng HTML để phân cách 2 khối giao diện cho đẹp mắt
+    st.markdown("<div style='margin: 25px 0;'></div>", unsafe_allow_html=True)
+    st.markdown("""
+        <h1 style='font-size: 30px; text-align: center; margin-bottom: -40px; color: #333;'>
+            📦 Thông tin bao bì
+        </h1>
+    """, unsafe_allow_html=True)
+    # 1. Gọi hiển thị trang con thứ nhất: Thông tin bao bì (muc_giay)
+    p1 = fetch_page(conn, "muc_giay")
+    if p1:
+        render_baobi_page()
 
     st.markdown("""
         <h1 style='font-size: 25px; text-align: center; margin-bottom: -5px; color: #333;'>
