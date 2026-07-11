@@ -5386,7 +5386,7 @@ html,body{margin:0;padding:0;background:transparent;font-family:var(--font-body)
 @media(max-width:560px){.aroma-story{border-radius:22px}.video-hero{border-radius:22px 22px 0 0}.aroma-flow{padding:34px 16px}.aroma-copy{padding:20px;border-radius:22px}.aroma-visual,.aroma-visual img{min-height:260px;border-radius:22px}.aroma-product-strip{grid-template-columns:1fr}.aroma-product-strip figure,.aroma-product-strip img{min-height:250px}.aroma-gift-scene{min-height:520px;padding:24px}.aroma-line{left:20px}.aroma-moment,.aroma-moment.reverse{padding-left:28px}.aroma-number{left:20px}}
 </style>
 """
-    components.html(aroma_css + aroma_html, height=6500, scrolling=True)
+    components.html(aroma_css + aroma_html, height=5500, scrolling=True)
 
 
 def render_page(page_data):
