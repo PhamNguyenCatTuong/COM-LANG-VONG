@@ -5347,7 +5347,18 @@ html,body{margin:0;padding:0;background:transparent;font-family:var(--font-body)
 .aroma-moment.reverse .aroma-copy{order:2}.aroma-moment.reverse .aroma-visual{order:1}
 .aroma-number{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#2e7d32;color:white;font-weight:900;border:6px solid #fffdf4;box-shadow:0 10px 24px rgba(23,53,31,.18);z-index:3}
 .aroma-copy{background:rgba(255,255,255,.78);border:1px solid #e3ead8;border-radius:28px;padding:clamp(22px,4vw,42px);box-shadow:0 14px 34px rgba(23,53,31,.075);backdrop-filter:blur(8px)}
-.aroma-copy span,.aroma-products-head span,.aroma-memory span{color:white;background:#2e7d32}
+.aroma-copy span,.aroma-products-head span,.aroma-memory span{
+    display: inline-block;
+    background: #2e7d32;
+    color: white !important;
+    padding: 10px;
+    border-radius: 999px;
+    font-weight: 900;
+    text-decoration: none;
+    box-shadow: 0 0 0 2px #2e7d32;
+    transition: 0.2s;
+    margin-bottom: 16px;
+}
 .aroma-copy h2,.aroma-products-head h2,.aroma-gift-copy h2,.aroma-memory h2{font-family:var(--font-heading);color:#17351f;font-size:clamp(30px,5.2vw,58px);line-height:1.05;margin:0 0 18px}
 .aroma-copy p,.aroma-products-head p,.aroma-gift-copy p,.aroma-memory p{font-size:clamp(16px,2vw,19px);line-height:1.74;color:#405442;margin:0 0 15px}
 .aroma-visual{min-height:clamp(320px,46vw,540px);border-radius:30px;overflow:hidden;box-shadow:0 18px 42px rgba(23,53,31,.14)}
@@ -5375,7 +5386,7 @@ html,body{margin:0;padding:0;background:transparent;font-family:var(--font-body)
 @media(max-width:560px){.aroma-story{border-radius:22px}.video-hero{border-radius:22px 22px 0 0}.aroma-flow{padding:34px 16px}.aroma-copy{padding:20px;border-radius:22px}.aroma-visual,.aroma-visual img{min-height:260px;border-radius:22px}.aroma-product-strip{grid-template-columns:1fr}.aroma-product-strip figure,.aroma-product-strip img{min-height:250px}.aroma-gift-scene{min-height:520px;padding:24px}.aroma-line{left:20px}.aroma-moment,.aroma-moment.reverse{padding-left:28px}.aroma-number{left:20px}}
 </style>
 """
-    components.html(aroma_css + aroma_html, height=7200, scrolling=True)
+    components.html(aroma_css + aroma_html, height=4000, scrolling=True)
 
 
 def render_page(page_data):
