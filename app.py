@@ -4124,7 +4124,7 @@ def render_baobi_page():
         <div class="tech-card"><h4>Chất liệu chính</h4><p>Giấy Ivory / Túi zip PP sinh học</p></div>
         <div class="tech-card"><h4>Công nghệ in ấn</h4><p>In Offset công nghiệp / Mực in Kingswood gốc dầu</p></div>
         <div class="tech-card"><h4>Kích thước bao bì</h4><p>14 x 2 x 14 cm (Dài x Rộng x Cao)</p></div>
-        <div class="tech-card"><h4>Đơn vị in ấn bao bì</h4><p>EcoPrint Việt Nam (Đồng Nai)</p></div>
+        <div class="tech-card"><h4>Đơn vị in ấn bao bì</h4><p>Công ty In Đức Thành</p></div>
     </div>
     """, unsafe_allow_html=True)
     
@@ -5042,14 +5042,26 @@ def render_video_page():
     hero_img = image_to_data_uri("P3.jpg")
     field_img = image_to_data_uri("Com 2.jpg")
     gift_img = image_to_data_uri("Xu xe 7.jpg")
+    youtube_embed_url = "https://www.youtube.com/embed/_q38xqZFuKE"
 
     aroma_html = f"""
 <div class="aroma-story">
-    <section class="aroma-opening" style="background-image:url('{hero_img}');">
-        <div class="aroma-opening-inner">
-            <div class="aroma-kicker">🎬 Hành trình trải nghiệm</div>
-            <h1>Hành trình<br>hương cốm</h1>
-            <p>Có những hương vị không chỉ được ăn, mà được nhớ. Hương cốm đi từ màu xanh non của ký ức đến từng món quà, từng bữa ăn và từng khoảnh khắc người ta muốn gửi Hà Nội cho một ai đó.</p>
+    <!-- Phần hero video với overlay -->
+    <section class="video-hero" id="videoHero">
+        <!-- Overlay chứa chữ và nút -->
+        <div class="video-overlay" id="videoOverlay" onclick="playVideo()">
+            <div class="video-text">
+                <div class="aroma-kicker">🎬 Hành trình trải nghiệm</div>
+                <h1>Hành trình<br>hương cốm</h1>
+                <p>Có những hương vị không chỉ được ăn, mà được nhớ. Hương cốm đi từ màu xanh non của ký ức đến từng món quà, từng bữa ăn và từng khoảnh khắc người ta muốn gửi Hà Nội cho một ai đó.</p>
+                <button class="play-btn" onclick="event.stopPropagation(); playVideo();">▶ Xem video</button>
+            </div>
+        </div>
+        <!-- Video YouTube (ẩn ban đầu) -->
+        <div class="video-container" id="videoContainer" style="display:none;">
+            <iframe id="mainVideo" width="100%" height="500" src="{youtube_embed_url}" 
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen style="border-radius:30px;"></iframe>
         </div>
     </section>
 
@@ -5104,7 +5116,7 @@ def render_video_page():
             <span>Những điểm chạm sản phẩm</span>
             <h2>Một hương vị, nhiều cách gặp gỡ</h2>
             <p>Từ truyền thống đến hiện đại, mỗi sản phẩm là một cánh cửa để khách hàng bước vào thế giới Cốm Làng Vòng theo cách riêng của mình.</p>
-            <a href="?page=sanpham" target="_self">Khám phá sản phẩm từ cốm</a>
+            <a href="?page=sanpham" target="_self" class="aroma-explore-btn">Khám phá sản phẩm từ cốm</a>
         </div>
     </section>
 
@@ -5126,11 +5138,135 @@ def render_video_page():
         </div>
     </section>
 </div>
+
+<script>
+    function playVideo() {{
+        document.getElementById('videoOverlay').style.display = 'none';
+        var container = document.getElementById('videoContainer');
+        container.style.display = 'block';
+        var iframe = document.getElementById('mainVideo');
+        // Thêm autoplay vào src
+        if (iframe.src.indexOf('?') === -1) {{
+            iframe.src += '?autoplay=1';
+        }} else {{
+            iframe.src += '&autoplay=1';
+        }}
+    }}
+</script>
 """
 
     aroma_css = """
 <style>
+.aroma-explore-btn {
+    display: inline-block;
+    background: #2e7d32;
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-weight: 900;
+    text-decoration: none;
+    box-shadow: 0 0 0 2px #2e7d32;
+    transition: 0.2s;
+}
+.aroma-explore-btn:hover {
+    background: #1b5e20;
+    transform: scale(1.02);
+}
 
+/* Video hero */
+.video-hero {
+    position: relative;
+    border-radius: 30px 30px 0 0;
+    overflow: hidden;
+    background: #1b3a2a;
+}
+.video-overlay {
+    min-height: clamp(520px, 72vw, 760px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0f281c, #2e7d32);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+}
+.video-text {
+    max-width: 720px;
+}
+.video-text .aroma-kicker {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff7d6;
+}
+.video-text h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(36px, 8vw, 72px);
+    line-height: 1.05;
+    margin-bottom: 20px;
+}
+.video-text p {
+    font-size: clamp(16px, 2.2vw, 22px);
+    line-height: 1.6;
+    opacity: 0.92;
+    max-width: 600px;
+    margin: 0 auto 20px;
+}
+.play-btn {
+    margin-top: 12px;
+    background: #f59e0b;
+    border: none;
+    color: white;
+    font-weight: 900;
+    padding: 14px 36px;
+    border-radius: 999px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+.play-btn:hover {
+    transform: scale(1.04);
+    background: #d97706;
+}
+.video-container {
+    width: 100%;
+    padding: 20px;
+    background: #0f281c;
+}
+.video-container iframe {
+    width: 100%;
+    height: 500px;
+    border-radius: 30px;
+}
+@media (max-width: 600px) {
+    .video-overlay {
+        min-height: 400px;
+        padding: 20px 16px;
+    }
+    .video-text h1 {
+        font-size: 32px;
+    }
+    .video-text p {
+        font-size: 15px;
+    }
+    .play-btn {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+    .video-container iframe {
+        height: 300px;
+    }
+}
+
+/* Giữ nguyên các style cũ của aroma */
 .aroma-opening-inner p,
 .aroma-copy p,
 .aroma-products-head p,
@@ -5147,10 +5283,6 @@ def render_video_page():
     --font-body: "Nunito", Arial, sans-serif;
 }
 
-/* FONT SYSTEM - Vietnamese supported
-   Heading/menu/buttons: Be Vietnam Pro
-   Body content: Nunito
-*/
 html, body {
     font-family: var(--font-body) !important;
 }
@@ -5207,12 +5339,7 @@ p, li, span, div,
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:transparent;font-family:var(--font-body);overflow-x:hidden}
 .aroma-story{background:#fffdf4;border:1px solid #e4ead7;border-radius:30px;overflow:hidden;box-shadow:0 16px 38px rgba(23,53,31,.09)}
-.aroma-opening{min-height:clamp(520px,72vw,760px);position:relative;display:flex;align-items:flex-end;padding:clamp(28px,6vw,70px);color:white;background-size:cover;background-position:center}
-.aroma-opening::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.76)),radial-gradient(circle at 20% 20%,rgba(46,125,50,.32),transparent 34%)}
-.aroma-opening-inner{position:relative;z-index:2;max-width:850px}
-.aroma-kicker,.aroma-copy span,.aroma-products-head span,.aroma-gift-copy span,.aroma-memory span{display:inline-block;color:#fff7d6;background:rgba(46,125,50,.78);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:8px 14px;font-weight:900;letter-spacing:.04em;margin-bottom:14px}
-.aroma-opening h1{font-family:var(--font-heading);font-size:clamp(44px,8vw,92px);line-height:.94;margin:0 0 18px;text-shadow:0 8px 28px rgba(0,0,0,.34)}
-.aroma-opening p{font-size:clamp(17px,2.35vw,24px);line-height:1.5;color:rgba(255,255,255,.92);max-width:780px;margin:0}
+/* .aroma-opening bị bỏ, thay bằng video-hero */
 .aroma-flow{position:relative;padding:clamp(38px,7vw,90px) clamp(18px,5vw,72px);background:linear-gradient(180deg,#fffdf4,#f6fbef)}
 .aroma-line{position:absolute;top:0;bottom:0;left:50%;width:2px;background:linear-gradient(180deg,transparent,#9ccc65,#2e7d32,#9ccc65,transparent);opacity:.75}
 .aroma-moment{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(22px,5vw,60px);align-items:center;margin:0 0 clamp(48px,8vw,100px)}
@@ -5245,7 +5372,7 @@ html,body{margin:0;padding:0;background:transparent;font-family:var(--font-body)
 .aroma-final-line{margin:28px auto 24px;font-family:var(--font-heading);font-size:clamp(25px,4.5vw,48px);line-height:1.2;color:#fff7d6}
 .aroma-memory a{display:inline-block;background:white;color:#2e7d32!important;text-decoration:none;padding:13px 22px;border-radius:999px;font-weight:900}
 @media(max-width:980px){.aroma-line{left:28px}.aroma-moment,.aroma-moment.reverse{grid-template-columns:1fr;padding-left:34px}.aroma-moment.reverse .aroma-copy{order:1}.aroma-moment.reverse .aroma-visual{order:2}.aroma-number{left:28px;top:0;transform:translate(-50%,0);width:48px;height:48px;border-width:5px}.aroma-product-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.aroma-product-strip figure,.aroma-product-strip img{min-height:240px}}
-@media(max-width:560px){.aroma-story{border-radius:22px}.aroma-opening{min-height:520px;padding:24px}.aroma-flow{padding:34px 16px}.aroma-copy{padding:20px;border-radius:22px}.aroma-visual,.aroma-visual img{min-height:260px;border-radius:22px}.aroma-product-strip{grid-template-columns:1fr}.aroma-product-strip figure,.aroma-product-strip img{min-height:250px}.aroma-gift-scene{min-height:520px;padding:24px}.aroma-line{left:20px}.aroma-moment,.aroma-moment.reverse{padding-left:28px}.aroma-number{left:20px}}
+@media(max-width:560px){.aroma-story{border-radius:22px}.video-hero{border-radius:22px 22px 0 0}.aroma-flow{padding:34px 16px}.aroma-copy{padding:20px;border-radius:22px}.aroma-visual,.aroma-visual img{min-height:260px;border-radius:22px}.aroma-product-strip{grid-template-columns:1fr}.aroma-product-strip figure,.aroma-product-strip img{min-height:250px}.aroma-gift-scene{min-height:520px;padding:24px}.aroma-line{left:20px}.aroma-moment,.aroma-moment.reverse{padding-left:28px}.aroma-number{left:20px}}
 </style>
 """
     components.html(aroma_css + aroma_html, height=7200, scrolling=True)
