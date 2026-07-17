@@ -634,12 +634,19 @@ footer {visibility: hidden;}
 [data-testid="stToolbar"] {display: none !important;}
 
 .block-container {
-    max-width: 1180px !important;
-    padding-left: clamp(8px, 2vw, 16px) !important;
-    padding-right: clamp(8px, 2vw, 16px) !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     overflow-x: hidden;
+}
+
+.main .block-container {
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
 .topbar {
