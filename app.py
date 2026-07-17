@@ -2902,7 +2902,7 @@ html, body {
 .viewer {
     width: 100%;
     min-height: 720px;
-    padding: 8px 10px 10px;
+    padding: 8px 0px 10px;
     border-radius: 28px;
     background: transparent !important;
     
@@ -2979,7 +2979,7 @@ html, body {
 .book-shell {
     position: relative;
 
-    width: min(100%, 980px);
+    width: 100%;
 
     aspect-ratio: 2400 / 1400;
 
