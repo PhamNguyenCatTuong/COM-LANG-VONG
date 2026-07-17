@@ -3176,7 +3176,7 @@ html, body {
     .book-shell {
         width: 100% !important;
         max-width: 100% !important;
-        aspect-ratio: 2400 / 1400;
+        aspect-ratio: 2400 / 1600;
         height: auto;
     }
     .status-row {
