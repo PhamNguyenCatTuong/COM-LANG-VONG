@@ -2909,7 +2909,7 @@ html, body {
 .viewer {
     width: 100%;
     min-height: 720px;
-    padding: 8px 0px 10px;
+    padding: 8px 0px 10px !important; 
     border-radius: 28px;
     background: transparent !important;
     
@@ -2973,7 +2973,7 @@ html, body {
     cursor: not-allowed;
     transform: none;
 }
-.book-stage {
+ {
     max-width: 1040px;
     margin: 0 auto;
     min-height: 285px;
@@ -3157,7 +3157,7 @@ html, body {
 @media (max-width: 760px) {
     .viewer {
         min-height: 650px;
-        padding: 6px;
+        padding: 6px 0 !important;
         border-radius: 22px;
     }
     .viewer-top {
@@ -3170,11 +3170,12 @@ html, body {
         align-self: center;
         transform: scale(.86);
     }
-    .book-stage {
+     {
         min-height: 245px;
     }
     .book-shell {
-        width: 100%;
+        width: 100% !important;
+        max-width: 100% !important;
         aspect-ratio: 2400 / 1400;
         height: auto;
     }
@@ -3196,7 +3197,7 @@ html, body {
         aspect-ratio: 2400 / 1400;
         height: auto;
     }
-    .book-stage { min-height: 230px; }
+     { min-height: 230px; }
     .viewer { min-height: 620px; }
 }
 
@@ -3205,7 +3206,7 @@ html, body {
 .viewer-title h2 { margin-bottom: 0 !important; }
 .viewer-title p { line-height: 1.15 !important; }
 .toolbar { margin-top: 2px !important; margin-bottom: 2px !important; }
-.book-stage { margin-top: 4px !important; margin-bottom: 4px !important; }
+ { margin-top: 4px !important; margin-bottom: 4px !important; }
 .status-row { margin-top: 6px !important; line-height: 1.1 !important; }
 .progress { margin-top: 6px !important; }
 .thumb-strip { margin-top: 8px !important; padding-bottom: 4px !important; }
@@ -3215,7 +3216,7 @@ html, body {
     .viewer-title h2 { font-size: 30px !important; line-height: 1 !important; }
     .viewer-title p { font-size: 14px !important; margin-top: 2px !important; }
     .toolbar { transform: scale(.82) !important; transform-origin: center top !important; }
-    .book-stage { min-height: 235px !important; }
+     { min-height: 235px !important; }
     .status-row { margin-top: 4px !important; }
     .page-label { font-size: 18px !important; }
     .counter-pill { font-size: 16px !important; padding: 3px 9px !important; }
@@ -3224,7 +3225,7 @@ html, body {
 
 /* REMOVE DARK VIEWER BACKGROUND */
 .viewer,
-.book-stage,
+,
 .book-shell,
 #book {
     background: transparent !important;
