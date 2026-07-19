@@ -4216,7 +4216,7 @@ def render_baoquan_page():
             </tr>
         </thead>
         <tbody>
-            <tr><td><strong>Ngày đóng gói:</strong></td><td>20/10/2026 (Sản xuất và đóng gói ngay trong ngày)</td></tr>
+            <tr><td><strong>Ngày đóng gói:</strong></td><td>21/07/2026 (Sản xuất và đóng gói ngay trong ngày)</td></tr>
             <tr><td><strong>Hạn sử dụng (HSD):</strong></td><td>03 ngày (nhiệt độ thường) — Khuyến khích lên đến 15 ngày (nếu cấp đông)</td></tr>
             <tr><td><strong>Mã số mẻ / Lô sản xuất:</strong></td><td><code>#LOT-CV-SANG-2010</code> (Tra cứu minh bạch trên chuỗi cung ứng)</td></tr>
             <tr><td><strong>Địa điểm đóng gói:</strong></td><td>Cơ sở sản xuất Cốm Làng Vòng Bà Hoản, Cầu Giấy, Hà Nội.</td></tr>
